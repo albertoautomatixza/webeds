@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 
 export default function Hero() {
@@ -10,11 +11,16 @@ export default function Hero() {
       className="relative min-h-screen flex items-center justify-center overflow-hidden bg-black grid-bg"
     >
       <div className="absolute inset-0 bg-black">
-        <img
-          src="https://images.pexels.com/photos/1108572/pexels-photo-1108572.jpeg?auto=compress&cs=tinysrgb&w=1920"
-          alt="Industrial Manufacturing"
-          className="w-full h-full object-cover opacity-30"
-        />
+        <div className="relative h-full w-full">
+          <Image
+            src="https://images.pexels.com/photos/1108572/pexels-photo-1108572.jpeg?auto=compress&cs=tinysrgb&w=1920"
+            alt="Industrial manufacturing equipment"
+            fill
+            priority
+            className="object-cover opacity-30"
+            sizes="100vw"
+          />
+        </div>
         <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 to-transparent" />
       </div>
 

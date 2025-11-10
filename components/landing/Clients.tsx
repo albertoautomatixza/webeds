@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
+import Image from 'next/image';
 import { useRef } from 'react';
 
 const clients = [
@@ -64,10 +65,12 @@ export default function Clients() {
                 className="flex-shrink-0 grayscale hover:grayscale-0 transition-all duration-300"
               >
                 <div className="w-40 h-20 flex items-center justify-center bg-zinc-900 hover:bg-zinc-800 border border-zinc-800 hover:border-yellow-400/50 rounded-lg transition-all p-4">
-                  <img
+                  <Image
                     src={client.logo}
                     alt={client.name}
-                    className="max-w-full max-h-full object-contain"
+                    width={150}
+                    height={80}
+                    className="h-full w-auto max-w-full object-contain"
                   />
                 </div>
               </motion.div>
