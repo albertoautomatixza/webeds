@@ -150,32 +150,39 @@ main {
   pointer-events: none;
 }
 
+
 .loading-wrapper {
   text-align: center;
   display: grid;
   gap: 1.75rem;
+  justify-items: center;
+  max-width: min(90vw, 22rem);
 }
 
 .loading-progress {
   display: grid;
-  place-items: center;
-  gap: 1.1rem;
+  justify-items: center;
+  align-content: center;
+  gap: 1.25rem;
+  position: relative;
 }
 
 .loading-percentage {
-  font-size: clamp(1.25rem, 3.8vw, 2rem);
+  font-size: clamp(1.35rem, 4.2vw, 2.2rem);
   font-weight: 700;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.75);
+  color: rgba(255, 255, 255, 0.8);
+  text-align: center;
 }
 
 .loading-circle {
   position: relative;
-  width: clamp(8.25rem, 24vw, 10.5rem);
+  width: clamp(8.5rem, 25vw, 11.25rem);
   aspect-ratio: 1;
   display: grid;
   place-items: center;
+  isolation: isolate;
 }
 
 .loading-circle::before {
@@ -213,20 +220,21 @@ main {
   transition: stroke-dashoffset 0.3s ease;
 }
 
+
 .loading-emblem {
-  width: 56%;
+  width: 58%;
   aspect-ratio: 1;
   display: grid;
   place-items: center;
   border-radius: 50%;
-  background: radial-gradient(circle at 40% 40%, rgba(250, 204, 21, 0.22), rgba(250, 204, 21, 0.08) 55%, rgba(17, 17, 17, 0.65) 85%);
+  background: radial-gradient(circle at 40% 40%, rgba(250, 204, 21, 0.24), rgba(250, 204, 21, 0.1) 58%, rgba(15, 15, 15, 0.55) 85%);
   box-shadow:
-    0 26px 55px rgba(250, 204, 21, 0.22),
+    0 28px 60px rgba(250, 204, 21, 0.25),
     inset 0 0 0 1px rgba(255, 255, 255, 0.12);
   font-weight: 900;
-  font-size: clamp(2.5rem, 8vw, 3.3rem);
+  font-size: clamp(2.3rem, 7vw, 3rem);
   color: var(--yellow);
-  letter-spacing: 0.12em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   position: relative;
 }
