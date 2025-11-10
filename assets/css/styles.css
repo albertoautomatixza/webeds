@@ -977,8 +977,13 @@ textarea {
   box-shadow:
     0 0 0 2px rgba(255, 255, 255, 0.08),
     0 16px 32px rgba(37, 211, 102, 0.38);
-  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+  transition: transform 0.45s ease, box-shadow 0.45s ease;
   z-index: 19;
+}
+
+.whatsapp-button svg {
+  width: 58%;
+  height: 58%;
 }
 
 .whatsapp-button span {
@@ -998,8 +1003,7 @@ textarea {
 }
 
 .whatsapp-button:hover {
-  transform: translateY(-4px);
-  background: #21c85a;
+  transform: scale(1.08);
   box-shadow:
     0 0 0 2px rgba(255, 255, 255, 0.1),
     0 24px 52px rgba(37, 211, 102, 0.46);
