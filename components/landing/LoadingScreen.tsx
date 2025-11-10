@@ -35,10 +35,22 @@ export default function LoadingScreen() {
           }}
           className="mb-8"
         >
-          <div className="w-32 h-32 bg-yellow-400 rounded-2xl flex items-center justify-center mx-auto shadow-2xl border-4 border-black">
-            <span className="text-7xl font-black text-black">
-              EDS
-            </span>
+          <div className="relative mx-auto flex h-32 w-32 items-center justify-center rounded-[1.5rem]">
+            <div className="pointer-events-none absolute -inset-[6px] rounded-[inherit] border border-white/25" />
+            <div
+              className="pointer-events-none absolute -inset-[6px] rounded-[inherit] opacity-80"
+              style={{
+                maskImage:
+                  'radial-gradient(farthest-side, transparent calc(100% - 4px), black calc(100% - 0px))',
+                WebkitMaskImage:
+                  'radial-gradient(farthest-side, transparent calc(100% - 4px), black calc(100% - 0px))',
+              }}
+            >
+              <div className="h-full w-full animate-[spin_5s_linear_infinite] rounded-[inherit] bg-[conic-gradient(from_0deg_at_50%_50%,transparent_0deg,rgba(255,255,255,0.9)_120deg,transparent_240deg)]" />
+            </div>
+            <div className="relative flex h-full w-full items-center justify-center rounded-[inherit] bg-yellow-400 shadow-2xl">
+              <span className="text-7xl font-black text-black">EDS</span>
+            </div>
           </div>
         </motion.div>
 
