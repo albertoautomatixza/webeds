@@ -1,7 +1,6 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 
 export default function Hero() {
@@ -10,19 +9,8 @@ export default function Hero() {
       id="hero"
       className="relative min-h-screen flex items-center justify-center overflow-hidden bg-black grid-bg"
     >
-      <div className="absolute inset-0 bg-black">
-        <div className="relative h-full w-full">
-          <Image
-            src="https://images.pexels.com/photos/1108572/pexels-photo-1108572.jpeg?auto=compress&cs=tinysrgb&w=1920"
-            alt="Industrial manufacturing equipment"
-            fill
-            priority
-            className="object-cover opacity-30"
-            sizes="100vw"
-          />
-        </div>
-        <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 to-transparent" />
-      </div>
+      <div className="absolute inset-0 bg-gradient-to-br from-zinc-950 via-black to-zinc-900 opacity-90" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(255,215,0,0.1),_transparent_55%)]" />
 
       <div className="absolute top-32 left-10 decorative-box w-96 h-72 opacity-20" />
       <div className="absolute top-1/4 right-20 decorative-box w-64 h-80 opacity-15" />

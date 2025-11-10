@@ -2,18 +2,17 @@
 
 import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
-import Image from 'next/image';
 import { useRef } from 'react';
 
 const clients = [
-  { name: 'PEMEX', logo: 'https://via.placeholder.com/150x80/FFD700/000000?text=PEMEX' },
-  { name: 'CFE', logo: 'https://via.placeholder.com/150x80/FFD700/000000?text=CFE' },
-  { name: 'Grupo Bimbo', logo: 'https://via.placeholder.com/150x80/FFD700/000000?text=BIMBO' },
-  { name: 'Nissan', logo: 'https://via.placeholder.com/150x80/FFD700/000000?text=NISSAN' },
-  { name: 'Coca-Cola FEMSA', logo: 'https://via.placeholder.com/150x80/FFD700/000000?text=FEMSA' },
-  { name: 'Cemex', logo: 'https://via.placeholder.com/150x80/FFD700/000000?text=CEMEX' },
-  { name: 'Schneider Electric', logo: 'https://via.placeholder.com/150x80/FFD700/000000?text=SCHNEIDER' },
-  { name: 'ABB', logo: 'https://via.placeholder.com/150x80/FFD700/000000?text=ABB' },
+  'PEMEX',
+  'CFE',
+  'Grupo Bimbo',
+  'Nissan',
+  'Coca-Cola FEMSA',
+  'Cemex',
+  'Schneider Electric',
+  'ABB',
 ];
 
 export default function Clients() {
@@ -65,13 +64,9 @@ export default function Clients() {
                 className="flex-shrink-0 grayscale hover:grayscale-0 transition-all duration-300"
               >
                 <div className="w-40 h-20 flex items-center justify-center bg-zinc-900 hover:bg-zinc-800 border border-zinc-800 hover:border-yellow-400/50 rounded-lg transition-all p-4">
-                  <Image
-                    src={client.logo}
-                    alt={client.name}
-                    width={150}
-                    height={80}
-                    className="h-full w-auto max-w-full object-contain"
-                  />
+                  <span className="text-sm font-semibold tracking-wide text-yellow-400 uppercase text-center">
+                    {client}
+                  </span>
                 </div>
               </motion.div>
             ))}
