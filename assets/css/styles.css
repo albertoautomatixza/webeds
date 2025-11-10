@@ -10,7 +10,7 @@
   --yellow: #facc15;
   --yellow-soft: rgba(250, 204, 21, 0.12);
   --white: #ffffff;
-  font-family: 'Archivo', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-family: 'Roboto', 'Helvetica Neue', Arial, sans-serif;
 }
 
 * {
