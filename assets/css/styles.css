@@ -717,44 +717,87 @@ main {
   overflow: hidden;
 }
 
-.clients-carousel {
+.clients-marquee {
   position: relative;
   overflow: hidden;
   border-radius: 1.75rem;
   border: 1px solid rgba(255, 255, 255, 0.06);
   background: rgba(17, 17, 17, 0.85);
-  padding: 3.5rem 0;
-}
-
-.clients-track {
+  padding: clamp(2.5rem, 6vw, 3.75rem) 0;
   display: grid;
-  grid-auto-flow: column;
-  grid-auto-columns: max-content;
-  gap: 3rem;
-  white-space: nowrap;
-  animation: marquee 30s linear infinite;
-  font-weight: 700;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: rgba(229, 231, 235, 0.75);
+  gap: clamp(1.75rem, 4vw, 2.5rem);
 }
 
-.clients-track span {
-  display: inline-flex;
+.marquee-row {
+  position: relative;
+  overflow: hidden;
+  --marquee-duration: 26s;
+}
+
+.marquee-track {
+  display: flex;
+  align-items: stretch;
+  gap: clamp(1.5rem, 4vw, 2.5rem);
+  width: max-content;
+  animation: marquee-scroll var(--marquee-duration) linear infinite;
+}
+
+.marquee-row.reverse .marquee-track {
+  animation-direction: reverse;
+}
+
+.client-card {
+  flex: 0 0 auto;
+  width: clamp(200px, 18vw, 260px);
+  display: flex;
   align-items: center;
-  justify-content: center;
-  padding: 1rem 2.5rem;
-  border-radius: 1.25rem;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  background: rgba(8, 8, 8, 0.75);
-  min-width: 200px;
-  transition: transform 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+  gap: 1rem;
+  padding: 1.25rem 1.5rem;
+  border-radius: 1.4rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: linear-gradient(135deg, rgba(36, 36, 36, 0.95), rgba(18, 18, 18, 0.6));
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+  transition: transform 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
 }
 
-.clients-track span:hover {
-  transform: translateY(-6px);
-  color: var(--yellow);
-  border-color: rgba(250, 204, 21, 0.4);
+.client-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(250, 204, 21, 0.3);
+  box-shadow: 0 28px 55px rgba(0, 0, 0, 0.45);
+}
+
+.client-avatar {
+  width: 3.25rem;
+  height: 3.25rem;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  color: var(--black);
+  background: radial-gradient(circle at top left, rgba(255, 255, 255, 0.95), rgba(250, 204, 21, 0.75));
+  box-shadow: 0 10px 22px rgba(250, 204, 21, 0.35);
+}
+
+.client-info {
+  display: grid;
+  gap: 0.35rem;
+}
+
+.client-name {
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.client-tagline {
+  font-size: 0.85rem;
+  letter-spacing: 0.03em;
+  color: rgba(229, 231, 235, 0.65);
 }
 
 .clients-gradient {
@@ -764,19 +807,19 @@ main {
   width: 120px;
   pointer-events: none;
   z-index: 1;
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0.85), transparent);
 }
 
 .clients-gradient.left {
   left: 0;
-  background: linear-gradient(90deg, var(--black), transparent);
 }
 
 .clients-gradient.right {
   right: 0;
-  background: linear-gradient(270deg, var(--black), transparent);
+  transform: scaleX(-1);
 }
 
-@keyframes marquee {
+@keyframes marquee-scroll {
   0% {
     transform: translateX(0);
   }
