@@ -95,6 +95,123 @@ const ready = () => {
     });
   }
 
+  const initClientsSlider = () => {
+    const slider = document.querySelector('.clients-slider');
+    if (!slider) return;
+
+    const viewport = slider.querySelector('[data-clients-viewport]');
+    const track = slider.querySelector('.clients-track');
+    const cards = track ? Array.from(track.children) : [];
+    const prevButton = slider.querySelector('[data-clients-prev]');
+    const nextButton = slider.querySelector('[data-clients-next]');
+
+    if (!viewport || !track || cards.length === 0 || !prevButton || !nextButton) {
+      return;
+    }
+
+    let activeIndex = 0;
+    let autoSlideId = null;
+    let scrollTimeout;
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+    const normaliseIndex = (index) => {
+      const length = cards.length;
+      return ((index % length) + length) % length;
+    };
+
+    const clamp = (value, min, max) => Math.max(min, Math.min(max, value));
+
+    const goToIndex = (index, smooth = true) => {
+      if (!cards.length) return;
+      activeIndex = normaliseIndex(index);
+      const card = cards[activeIndex];
+      const maxScroll = Math.max(0, viewport.scrollWidth - viewport.clientWidth);
+      let target = card.offsetLeft - (viewport.clientWidth / 2 - card.clientWidth / 2);
+      target = clamp(target, 0, maxScroll);
+      viewport.scrollTo({ left: target, behavior: smooth ? 'smooth' : 'auto' });
+    };
+
+    const updateActiveFromScroll = () => {
+      const { scrollLeft, clientWidth } = viewport;
+      const center = scrollLeft + clientWidth / 2;
+      let closestIndex = activeIndex;
+      let minDistance = Infinity;
+
+      cards.forEach((card, index) => {
+        const cardCenter = card.offsetLeft + card.clientWidth / 2;
+        const distance = Math.abs(center - cardCenter);
+        if (distance < minDistance) {
+          minDistance = distance;
+          closestIndex = index;
+        }
+      });
+
+      activeIndex = closestIndex;
+    };
+
+    const stopAutoSlide = () => {
+      if (autoSlideId) {
+        window.clearInterval(autoSlideId);
+        autoSlideId = null;
+      }
+    };
+
+    const startAutoSlide = () => {
+      stopAutoSlide();
+      if (prefersReducedMotion.matches) {
+        return;
+      }
+      autoSlideId = window.setInterval(() => {
+        goToIndex(activeIndex + 1);
+      }, 4000);
+    };
+
+    prevButton.addEventListener('click', () => {
+      stopAutoSlide();
+      goToIndex(activeIndex - 1);
+      startAutoSlide();
+    });
+
+    nextButton.addEventListener('click', () => {
+      stopAutoSlide();
+      goToIndex(activeIndex + 1);
+      startAutoSlide();
+    });
+
+    slider.addEventListener('mouseenter', stopAutoSlide);
+    slider.addEventListener('mouseleave', startAutoSlide);
+
+    viewport.addEventListener('scroll', () => {
+      if (scrollTimeout) {
+        window.clearTimeout(scrollTimeout);
+      }
+      scrollTimeout = window.setTimeout(updateActiveFromScroll, 120);
+    });
+
+    window.addEventListener('resize', () => {
+      goToIndex(activeIndex, false);
+    });
+
+    const handleMotionPreference = () => {
+      if (prefersReducedMotion.matches) {
+        stopAutoSlide();
+      } else {
+        startAutoSlide();
+      }
+    };
+
+    if (typeof prefersReducedMotion.addEventListener === 'function') {
+      prefersReducedMotion.addEventListener('change', handleMotionPreference);
+    } else if (typeof prefersReducedMotion.addListener === 'function') {
+      prefersReducedMotion.addListener(handleMotionPreference);
+    }
+
+    goToIndex(0, false);
+    startAutoSlide();
+  };
+
+  initClientsSlider();
+
   window.addEventListener('load', () => {
     if (!loadingScreen) return;
 
