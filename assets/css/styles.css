@@ -40,6 +40,22 @@ svg {
   display: block;
 }
 
+.icon-fade {
+  opacity: 0;
+  animation: iconFadeIn 0.9s ease forwards;
+}
+
+@keyframes iconFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .container {
   width: min(1120px, 92%);
   margin: 0 auto;
@@ -660,18 +676,19 @@ main {
 }
 
 .benefit-icon {
-  width: 4.25rem;
-  height: 4.25rem;
-  border-radius: 50%;
-  background: var(--yellow);
-  color: var(--black);
+  width: 3.25rem;
+  height: 3.25rem;
+  border-radius: 999px;
+  background: rgba(250, 204, 21, 0.12);
+  border: 1px solid rgba(250, 204, 21, 0.35);
+  color: var(--yellow);
   display: grid;
   place-items: center;
-  transition: transform 0.3s ease;
 }
 
-.benefit-card:hover .benefit-icon {
-  transform: rotate(12deg) scale(1.05);
+.benefit-icon svg {
+  width: 1.5rem;
+  height: 1.5rem;
 }
 
 .benefit-card h3 {
@@ -807,7 +824,7 @@ main {
   width: 1.35rem;
   height: 1.35rem;
   stroke: currentColor;
-  stroke-width: 1.8;
+  stroke-width: 1.4;
   fill: none;
 }
 
@@ -986,13 +1003,19 @@ textarea {
 }
 
 .contact-card .icon {
-  width: 3.5rem;
-  height: 3.5rem;
-  border-radius: 1rem;
-  background: var(--yellow);
-  color: var(--black);
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 999px;
+  background: rgba(250, 204, 21, 0.12);
+  border: 1px solid rgba(250, 204, 21, 0.35);
+  color: var(--yellow);
   display: grid;
   place-items: center;
+}
+
+.contact-card .icon svg {
+  width: 1.4rem;
+  height: 1.4rem;
 }
 
 .contact-card h3 {
