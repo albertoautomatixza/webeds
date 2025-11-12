@@ -1033,6 +1033,21 @@ textarea {
   gap: 3rem;
 }
 
+.footer-tagline {
+  margin-top: 1rem;
+  font-size: 0.95rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.92);
+  line-height: 1.8;
+}
+
+.footer-tagline span {
+  display: block;
+  letter-spacing: 0.4em;
+  color: rgba(255, 255, 255, 0.72);
+}
+
 .footer-brand p {
   max-width: 360px;
   color: rgba(226, 232, 240, 0.68);
