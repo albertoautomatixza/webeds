@@ -717,9 +717,68 @@ main {
 }
 
 .stat-number {
+  display: inline-flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 0.15em;
   font-size: 2.75rem;
   font-weight: 900;
   color: var(--yellow);
+  font-variant-numeric: tabular-nums;
+  --ticker-duration: 2400ms;
+}
+
+.stat-number .ticker-digit,
+.stat-number .ticker-symbol {
+  display: inline-flex;
+  align-items: flex-end;
+  justify-content: center;
+  color: inherit;
+}
+
+.stat-number .ticker-digit {
+  position: relative;
+  overflow: hidden;
+  height: 1em;
+  min-width: 0.65em;
+}
+
+.stat-number .ticker-digit-track {
+  display: flex;
+  flex-direction: column;
+  transform: translateY(0%);
+  transition: transform var(--ticker-duration) cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: var(--digit-delay, 0ms);
+}
+
+.stat-number .ticker-digit-track span {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  height: 1em;
+}
+
+.stat-number.is-active .ticker-digit-track {
+  transform: translateY(calc(-1 * var(--digit-final, 0) * 100%));
+}
+
+.stat-number .ticker-prefix,
+.stat-number .ticker-suffix {
+  font-size: 0.4em;
+  letter-spacing: 0.12em;
+  padding-bottom: 0.1em;
+  text-transform: uppercase;
+}
+
+.stat-number .ticker-prefix {
+  margin-right: 0.25em;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .stat-number .ticker-digit-track {
+    transition-duration: 0.01ms !important;
+    transition-delay: 0ms !important;
+  }
 }
 
 .stat-label {

@@ -80,6 +80,116 @@ const ready = () => {
     });
   }
 
+  const initStatTicker = () => {
+    const statNumbers = document.querySelectorAll('.stat-number[data-stat-value]');
+    if (!statNumbers.length) return;
+
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+    const buildTicker = (stat) => {
+      if (stat.dataset.tickerReady === 'true') return;
+
+      const value = stat.getAttribute('data-stat-value');
+      if (!value) return;
+
+      const suffix = stat.getAttribute('data-stat-suffix') || '';
+      const prefix = stat.getAttribute('data-stat-prefix') || '';
+      const durationAttr = stat.getAttribute('data-stat-duration');
+      const duration = durationAttr ? Number.parseInt(durationAttr, 10) : 2400;
+
+      if (!Number.isNaN(duration)) {
+        stat.style.setProperty('--ticker-duration', `${duration}ms`);
+      }
+
+      const fragment = document.createDocumentFragment();
+
+      if (prefix) {
+        const prefixEl = document.createElement('span');
+        prefixEl.className = 'ticker-prefix';
+        prefixEl.textContent = prefix;
+        fragment.appendChild(prefixEl);
+      }
+
+      Array.from(value).forEach((char, index) => {
+        if (/\d/.test(char)) {
+          const digitWrap = document.createElement('span');
+          digitWrap.className = 'ticker-digit';
+          digitWrap.style.setProperty('--digit-delay', `${index * 120}ms`);
+
+          const track = document.createElement('span');
+          track.className = 'ticker-digit-track';
+          track.style.setProperty('--digit-final', char);
+
+          for (let i = 0; i <= 9; i += 1) {
+            const slot = document.createElement('span');
+            slot.textContent = i.toString();
+            track.appendChild(slot);
+          }
+
+          digitWrap.appendChild(track);
+          fragment.appendChild(digitWrap);
+        } else {
+          const symbol = document.createElement('span');
+          symbol.className = 'ticker-symbol';
+          symbol.textContent = char;
+          fragment.appendChild(symbol);
+        }
+      });
+
+      if (suffix) {
+        const suffixEl = document.createElement('span');
+        suffixEl.className = 'ticker-suffix';
+        suffixEl.textContent = suffix;
+        fragment.appendChild(suffixEl);
+      }
+
+      stat.textContent = '';
+      stat.appendChild(fragment);
+      stat.dataset.tickerReady = 'true';
+    };
+
+    statNumbers.forEach((stat) => {
+      buildTicker(stat);
+    });
+
+    const activate = (stat) => {
+      stat.classList.add('is-active');
+    };
+
+    if (prefersReducedMotion.matches) {
+      statNumbers.forEach((stat) => activate(stat));
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            activate(entry.target);
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.45 }
+    );
+
+    statNumbers.forEach((stat) => observer.observe(stat));
+
+    const handlePreferenceChange = () => {
+      if (prefersReducedMotion.matches) {
+        statNumbers.forEach((stat) => activate(stat));
+      }
+    };
+
+    if (typeof prefersReducedMotion.addEventListener === 'function') {
+      prefersReducedMotion.addEventListener('change', handlePreferenceChange);
+    } else if (typeof prefersReducedMotion.addListener === 'function') {
+      prefersReducedMotion.addListener(handlePreferenceChange);
+    }
+  };
+
+  initStatTicker();
+
   const initClientsSlider = () => {
     const slider = document.querySelector('.clients-slider');
     if (!slider) return;
