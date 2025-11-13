@@ -399,6 +399,7 @@ main {
 .header-cta:hover {
   transform: translateY(-2px);
   background: #ffd830;
+  color: var(--white);
 }
 
 .menu-toggle {
