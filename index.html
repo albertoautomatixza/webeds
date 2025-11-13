@@ -102,60 +102,73 @@
             <p class="eyebrow">What we deliver</p>
             <h2>Services</h2>
           </div>
-          <div class="services-grid">
-            <article class="service-card" data-reveal>
-              <h3>HOBS FELSOMAT RETOOL</h3>
-              <ul>
-                <li>ASI Automation Integration.</li>
-                <li>Retool Schunk Gripper.</li>
-                <li>Sensor relocation.</li>
-                <li>Reprogramming FANUC Robot.</li>
-                <li>Redesign NOK &amp; SPC Drawers.</li>
-                <li>PLC Programming.</li>
-                <li>HMI Interface Readapted.</li>
-                <li>Structure Painting.</li>
-              </ul>
-            </article>
-            <article class="service-card" data-reveal>
-              <h3>NAGEL AUTOMATION OP70_OP80</h3>
-              <ul>
-                <li>Automation Integration.</li>
-                <li>Retool Schunk Gripper.</li>
-                <li>Sensor relocation.</li>
-                <li>Reprogramming GANTRY.</li>
-                <li>Alignment GANTRY.</li>
-                <li>Redesign NOK &amp; SPC Drawers.</li>
-                <li>HMI Interface Readapted.</li>
-                <li>Oil Whizzer Enabling.</li>
-                <li>PLC Programming.</li>
-              </ul>
-            </article>
-            <article class="service-card" data-reveal>
-              <h3>ELECTRICAL PROJECTS</h3>
-              <ul>
-                <li>High voltage systems.</li>
-                <li>Low voltage installations.</li>
-                <li>Industrial wiring.</li>
-                <li>Power distribution.</li>
-                <li>Control panels.</li>
-                <li>Cable management.</li>
-                <li>Testing &amp; commissioning.</li>
-                <li>Maintenance services.</li>
-              </ul>
-            </article>
-            <article class="service-card" data-reveal>
-              <h3>INDUSTRIAL AUTOMATION</h3>
-              <ul>
-                <li>PLC Programming.</li>
-                <li>SCADA Systems.</li>
-                <li>HMI Development.</li>
-                <li>Robot Integration.</li>
-                <li>Sensor Networks.</li>
-                <li>Process Control.</li>
-                <li>Data Acquisition.</li>
-                <li>System Integration.</li>
-              </ul>
-            </article>
+          <div class="services-slider" data-reveal>
+            <div class="services-fade services-fade--left" aria-hidden="true"></div>
+            <div class="services-fade services-fade--right" aria-hidden="true"></div>
+            <button
+              class="services-arrow services-arrow--prev"
+              type="button"
+              aria-label="Scroll services left"
+              data-services-prev
+            >
+              <svg
+                class="icon-fade"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.4"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path d="M15 19 8 12l7-7" />
+              </svg>
+            </button>
+            <div class="services-viewport" data-services-viewport>
+              <div class="services-track">
+                <article class="service-card">
+                  <span class="service-title">CNC &amp; CMM:</span>
+                  <p class="service-description">CNC machine troubleshooting and CMM integration.</p>
+                </article>
+                <article class="service-card">
+                  <span class="service-title">Parts Manufacturing:</span>
+                  <p class="service-description">CNC milling, turning, EDM, laser cutting, welding.</p>
+                </article>
+                <article class="service-card">
+                  <span class="service-title">System:</span>
+                  <p class="service-description">RFID, vision systems, barcode, and laser making solution.</p>
+                </article>
+                <article class="service-card">
+                  <span class="service-title">Automation:</span>
+                  <p class="service-description">Programming and support for CNC machines, PLC and robots.</p>
+                </article>
+                <article class="service-card">
+                  <span class="service-title">Robot Integration:</span>
+                  <p class="service-description">Integration of Fanuc, ABB, KUKA, UR, and other robots.</p>
+                </article>
+              </div>
+            </div>
+            <button
+              class="services-arrow services-arrow--next"
+              type="button"
+              aria-label="Scroll services right"
+              data-services-next
+            >
+              <svg
+                class="icon-fade"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.4"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path d="m9 5 7 7-7 7" />
+              </svg>
+            </button>
           </div>
         </div>
       </section>
