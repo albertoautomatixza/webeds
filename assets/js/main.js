@@ -63,6 +63,24 @@ const ready = () => {
 
   const revealElements = document.querySelectorAll('[data-reveal]');
   if (revealElements.length > 0) {
+    revealElements.forEach((element) => {
+      const delayAttr = element.getAttribute('data-reveal-delay');
+      if (!delayAttr) return;
+
+      let delayValue = Number.NaN;
+      if (/ms$/i.test(delayAttr.trim())) {
+        delayValue = Number.parseFloat(delayAttr);
+      } else if (/s$/i.test(delayAttr.trim())) {
+        delayValue = Number.parseFloat(delayAttr) * 1000;
+      } else {
+        delayValue = Number.parseFloat(delayAttr);
+      }
+
+      if (!Number.isNaN(delayValue)) {
+        element.style.setProperty('--reveal-delay', `${delayValue}ms`);
+      }
+    });
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
