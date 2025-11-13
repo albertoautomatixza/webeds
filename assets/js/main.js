@@ -112,13 +112,14 @@ const ready = () => {
 
       Array.from(value).forEach((char, index) => {
         if (/\d/.test(char)) {
+          const finalDigit = Number.parseInt(char, 10);
           const digitWrap = document.createElement('span');
           digitWrap.className = 'ticker-digit';
           digitWrap.style.setProperty('--digit-delay', `${index * 120}ms`);
 
           const track = document.createElement('span');
           track.className = 'ticker-digit-track';
-          track.style.setProperty('--digit-final', char);
+          track.style.setProperty('--digit-final', Number.isNaN(finalDigit) ? 0 : finalDigit);
 
           for (let i = 0; i <= 9; i += 1) {
             const slot = document.createElement('span');
