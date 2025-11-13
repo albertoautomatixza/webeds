@@ -99,7 +99,7 @@ const ready = () => {
   }
 
   const initStatTicker = () => {
-    const statNumbers = document.querySelectorAll('.stat-number[data-stat-value]');
+    const statNumbers = Array.from(document.querySelectorAll('.stat-number[data-stat-value]'));
     if (!statNumbers.length) return;
 
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
@@ -137,7 +137,8 @@ const ready = () => {
 
           const track = document.createElement('span');
           track.className = 'ticker-digit-track';
-          track.style.setProperty('--digit-final', Number.isNaN(finalDigit) ? 0 : finalDigit);
+          track.style.setProperty('--digit-final', `${Number.isNaN(finalDigit) ? 0 : finalDigit}`);
+          track.style.setProperty('--digit-start', '0');
 
           for (let i = 0; i <= 9; i += 1) {
             const slot = document.createElement('span');
@@ -175,28 +176,42 @@ const ready = () => {
       stat.classList.add('is-active');
     };
 
+    const activateSequence = () => {
+      if (activateSequence.hasStarted) return;
+      activateSequence.hasStarted = true;
+      statNumbers.forEach((stat, index) => {
+        window.setTimeout(() => activate(stat), index * 480);
+      });
+    };
+    activateSequence.hasStarted = false;
+
     if (prefersReducedMotion.matches) {
       statNumbers.forEach((stat) => activate(stat));
       return;
     }
 
+    const statsGroup = statNumbers[0].closest('.stats-grid') || statNumbers[0].parentElement;
+    const observerTarget = statsGroup || statNumbers[0];
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            activate(entry.target);
-            observer.unobserve(entry.target);
+            activateSequence();
+            observer.disconnect();
           }
         });
       },
-      { threshold: 0.45 }
+      { threshold: 0.35 }
     );
 
-    statNumbers.forEach((stat) => observer.observe(stat));
+    observer.observe(observerTarget);
 
     const handlePreferenceChange = () => {
       if (prefersReducedMotion.matches) {
         statNumbers.forEach((stat) => activate(stat));
+      } else {
+        activateSequence();
       }
     };
 
