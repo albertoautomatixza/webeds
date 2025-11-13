@@ -8,7 +8,6 @@ const ready = () => {
   const progressCircle = document.querySelector('.loading-ring-progress');
   const progressLabel = document.getElementById('loading-percentage');
   const yearTarget = document.getElementById('year');
-  const form = document.querySelector('.contact-form');
 
   const updateHeader = () => {
     if (!header) return;
@@ -60,20 +59,6 @@ const ready = () => {
 
   if (yearTarget) {
     yearTarget.textContent = new Date().getFullYear().toString();
-  }
-
-  if (form) {
-    const successMessage = form.querySelector('.form-success');
-    form.addEventListener('submit', (event) => {
-      event.preventDefault();
-      form.reset();
-      if (successMessage) {
-        successMessage.textContent = 'Message sent! We will contact you soon.';
-        setTimeout(() => {
-          successMessage.textContent = '';
-        }, 4000);
-      }
-    });
   }
 
   const revealElements = document.querySelectorAll('[data-reveal]');

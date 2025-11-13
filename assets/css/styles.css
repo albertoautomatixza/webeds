@@ -916,67 +916,34 @@ main {
   z-index: 1;
 }
 
-.contact-form {
+.calendly-wrapper {
   background: rgba(17, 17, 17, 0.85);
   border-radius: 1.75rem;
   border: 1px solid rgba(255, 255, 255, 0.06);
   padding: clamp(2rem, 6vw, 3rem);
-  display: grid;
-  gap: 1.5rem;
   box-shadow: 0 32px 60px rgba(0, 0, 0, 0.35);
+  position: relative;
+  overflow: hidden;
 }
 
-.form-row {
-  display: grid;
-  gap: 1.5rem;
+.calendly-wrapper::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(circle at top, rgba(221, 209, 0, 0.12), transparent 55%);
+  pointer-events: none;
+  opacity: 0.7;
 }
 
-.form-group {
-  display: grid;
-  gap: 0.6rem;
+.calendly-wrapper > * {
+  position: relative;
+  z-index: 1;
 }
 
-.form-group label {
-  font-size: 0.9rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.6);
-}
-
-input,
-textarea {
+.calendly-inline-widget {
   width: 100%;
-  border-radius: 1rem;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  background: rgba(8, 8, 8, 0.75);
-  color: var(--white);
-  padding: 0.9rem 1.1rem;
-  font-size: 1rem;
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
-  resize: vertical;
-}
-
-input:focus-visible,
-textarea:focus-visible {
-  outline: none;
-  border-color: rgba(250, 204, 21, 0.6);
-  box-shadow: 0 0 0 4px rgba(250, 204, 21, 0.15);
-}
-
-textarea {
-  min-height: 160px;
-}
-
-.submit-btn {
-  width: 100%;
-}
-
-.form-success {
-  min-height: 1.5rem;
-  font-size: 0.9rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--yellow);
+  min-height: 32rem;
 }
 
 .contact-details {
@@ -1216,10 +1183,6 @@ textarea {
 
   .contact-grid {
     grid-template-columns: 1fr 1fr;
-  }
-
-  .form-row {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .footer-grid {

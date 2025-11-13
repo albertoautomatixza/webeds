@@ -321,28 +321,16 @@
               Share the details of your next project and our engineering team will respond shortly.
             </p>
           </div>
-          <form class="contact-form" aria-label="Contact form" data-reveal>
-            <div class="form-group">
-              <label for="name">Full Name</label>
-              <input id="name" name="name" type="text" placeholder="Your name" required />
-            </div>
-            <div class="form-row">
-              <div class="form-group">
-                <label for="email">Email Address</label>
-                <input id="email" name="email" type="email" placeholder="your@email.com" required />
-              </div>
-              <div class="form-group">
-                <label for="phone">Phone</label>
-                <input id="phone" name="phone" type="tel" placeholder="+52 123 456 7890" />
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="message">Message</label>
-              <textarea id="message" name="message" rows="5" placeholder="Tell us about your project..." required></textarea>
-            </div>
-            <button type="submit" class="btn submit-btn">Send Message</button>
-            <p class="form-success" role="status" aria-live="polite"></p>
-          </form>
+          <div class="calendly-wrapper" data-reveal>
+            <!-- Calendly inline widget begin -->
+            <div
+              class="calendly-inline-widget"
+              data-url="https://calendly.com/carlosacevestrillo?primary_color=ddd100"
+              style="min-width: 320px; height: 700px"
+            ></div>
+            <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+            <!-- Calendly inline widget end -->
+          </div>
           <div class="contact-details">
             <a class="contact-card" href="tel:+528112345678" data-reveal>
               <div class="icon icon-fade" aria-hidden="true">
