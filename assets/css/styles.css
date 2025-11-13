@@ -910,11 +910,11 @@ main {
 
 /* Contact */
 .contact-grid {
-  display: grid;
+  display: flex;
+  flex-direction: column;
   gap: clamp(3rem, 6vw, 5rem);
   position: relative;
   z-index: 1;
-  align-items: start;
 }
 
 .contact-panel {
@@ -987,6 +987,10 @@ main {
 .contact-details {
   display: grid;
   gap: 1.5rem;
+  margin-top: clamp(1.5rem, 4vw, 2.5rem);
+  padding-top: clamp(1.25rem, 3vw, 2rem);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
 }
 
 .contact-card {
@@ -1220,7 +1224,7 @@ main {
   }
 
   .contact-grid {
-    grid-template-columns: 1fr 1fr;
+    flex-direction: column;
   }
 
   .footer-grid {
