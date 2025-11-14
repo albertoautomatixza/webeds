@@ -1277,6 +1277,16 @@ main {
   color: rgba(226, 232, 240, 0.6);
 }
 
+.footer-credit {
+  display: inline-flex;
+  align-items: center;
+  margin-left: 0.75rem;
+  color: rgba(226, 232, 240, 0.72);
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+}
+
 .footer-legal {
   display: flex;
   gap: 1.5rem;
@@ -1420,6 +1430,11 @@ main {
 
   .service-card {
     width: min(80vw, 280px);
+  }
+
+  .footer-credit {
+    display: block;
+    margin: 0.5rem 0 0;
   }
 }
 
