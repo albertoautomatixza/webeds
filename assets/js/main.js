@@ -182,6 +182,7 @@ const ready = () => {
       statNumbers.forEach((stat, index) => {
         window.setTimeout(() => activate(stat), index * 480);
       });
+      cleanupScrollFallback();
     };
     activateSequence.hasStarted = false;
 
@@ -193,19 +194,39 @@ const ready = () => {
     const statsGroup = statNumbers[0].closest('.stats-grid') || statNumbers[0].parentElement;
     const observerTarget = statsGroup || statNumbers[0];
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            activateSequence();
-            observer.disconnect();
-          }
-        });
-      },
-      { threshold: 0.35 }
-    );
+    const scrollFallback = () => {
+      if (activateSequence.hasStarted || !observerTarget) return;
+      const rect = observerTarget.getBoundingClientRect();
+      const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
+      if (rect.top <= viewportHeight * 0.85 && rect.bottom >= 0) {
+        activateSequence();
+      }
+    };
 
-    observer.observe(observerTarget);
+    const cleanupScrollFallback = () => {
+      window.removeEventListener('scroll', scrollFallback);
+      window.removeEventListener('resize', scrollFallback);
+    };
+
+    if ('IntersectionObserver' in window && observerTarget) {
+      const observer = new IntersectionObserver(
+        (entries, obs) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              activateSequence();
+              obs.disconnect();
+            }
+          });
+        },
+        { threshold: 0.2, rootMargin: '0px 0px -10% 0px' }
+      );
+
+      observer.observe(observerTarget);
+    }
+
+    window.addEventListener('scroll', scrollFallback, { passive: true });
+    window.addEventListener('resize', scrollFallback);
+    scrollFallback();
 
     const handlePreferenceChange = () => {
       if (prefersReducedMotion.matches) {
