@@ -796,7 +796,6 @@ main {
   content: '';
   position: absolute;
   inset: 0;
-  background-image: url('../edswebimagen1.jpg');
   background-size: cover;
   background-position: center;
   filter: blur(8px);
@@ -808,6 +807,18 @@ main {
 .benefit-card:hover::before {
   filter: blur(6px);
   opacity: 0.25;
+}
+
+/* Safety First card - more visible image */
+.benefit-card-safety::before {
+  background-image: url('../edswebimagen1.jpg');
+  filter: blur(2px);
+  opacity: 0.35;
+}
+
+.benefit-card-safety:hover::before {
+  filter: blur(1px);
+  opacity: 0.5;
 }
 
 .benefit-card:hover {
