@@ -547,6 +547,7 @@ main {
   display: none;
   position: relative;
   min-height: 420px;
+  pointer-events: none;
 }
 
 .decor-box {
@@ -587,6 +588,40 @@ main {
   bottom: 12%;
   left: 20%;
   animation-delay: 6s;
+}
+
+.hero-globe {
+  position: absolute;
+  top: -10%;
+  right: -6%;
+  width: clamp(220px, 32vw, 420px);
+  aspect-ratio: 1 / 1;
+  border-radius: 2.75rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.01));
+  overflow: hidden;
+  box-shadow: 0 35px 80px rgba(0, 0, 0, 0.55);
+  isolation: isolate;
+}
+
+.hero-globe canvas {
+  position: absolute;
+  inset: -10%;
+  width: 120%;
+  height: 120%;
+  opacity: 0;
+  transition: opacity 0.8s ease;
+  filter: drop-shadow(0 0 35px rgba(250, 204, 21, 0.3));
+  mix-blend-mode: screen;
+}
+
+.hero-globe-halo {
+  position: absolute;
+  inset: 12%;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(250, 204, 33, 0.35), rgba(250, 204, 33, 0.05) 60%, transparent 90%);
+  filter: blur(4px);
+  opacity: 0.9;
 }
 
 @keyframes float {
