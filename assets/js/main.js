@@ -133,15 +133,16 @@ const ready = () => {
           const finalDigit = Number.parseInt(char, 10);
           const digitWrap = document.createElement('span');
           digitWrap.className = 'ticker-digit';
-          digitWrap.style.setProperty('--digit-delay', `${index * 120}ms`);
+          digitWrap.style.setProperty('--digit-delay', `${index * 80}ms`);
 
           const track = document.createElement('span');
           track.className = 'ticker-digit-track';
-          track.style.setProperty('--digit-final', `${Number.isNaN(finalDigit) ? 0 : finalDigit}`);
+          track.style.setProperty('--digit-final', String(finalDigit));
           track.style.setProperty('--digit-start', '0');
 
           for (let i = 0; i <= 9; i += 1) {
             const slot = document.createElement('span');
+            slot.className = 'ticker-digit-slot';
             slot.textContent = i.toString();
             track.appendChild(slot);
           }

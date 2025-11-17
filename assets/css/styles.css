@@ -869,11 +869,12 @@ main {
   transition-delay: var(--digit-delay, 0ms);
 }
 
-.stat-number .ticker-digit-track span {
+.stat-number .ticker-digit-slot {
   display: flex;
   align-items: center;
   justify-content: center;
   height: 1em;
+  flex-shrink: 0;
 }
 
 .stat-number.is-active .ticker-digit-track {
