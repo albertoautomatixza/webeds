@@ -821,6 +821,18 @@ main {
   opacity: 0.5;
 }
 
+/* Precision Engineering card - more visible image */
+.benefit-card-precision::before {
+  background-image: url('../edswebimagen2 copy.jpg');
+  filter: blur(2px);
+  opacity: 0.35;
+}
+
+.benefit-card-precision:hover::before {
+  filter: blur(1px);
+  opacity: 0.5;
+}
+
 .benefit-card:hover {
   transform: translateY(-6px);
   border-color: rgba(250, 204, 21, 0.35);
