@@ -847,7 +847,7 @@ main {
 
 /* Continuous Innovation card - more visible image */
 .benefit-card-innovation::before {
-  background-image: url('../edswebimagen3.jpg');
+  background-image: url('../edswebimagen4.jpeg');
   filter: blur(2px);
   opacity: 0.35;
 }
