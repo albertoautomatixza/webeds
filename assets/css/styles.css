@@ -833,6 +833,30 @@ main {
   opacity: 0.5;
 }
 
+/* Expert Team card - more visible image */
+.benefit-card-team::before {
+  background-image: url('../edswebimagen3.jpg');
+  filter: blur(2px);
+  opacity: 0.35;
+}
+
+.benefit-card-team:hover::before {
+  filter: blur(1px);
+  opacity: 0.5;
+}
+
+/* Continuous Innovation card - more visible image */
+.benefit-card-innovation::before {
+  background-image: url('../edswebimagen3.jpg');
+  filter: blur(2px);
+  opacity: 0.35;
+}
+
+.benefit-card-innovation:hover::before {
+  filter: blur(1px);
+  opacity: 0.5;
+}
+
 .benefit-card:hover {
   transform: translateY(-6px);
   border-color: rgba(250, 204, 21, 0.35);
