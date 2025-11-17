@@ -962,15 +962,17 @@ main {
 
 .client-logo {
   width: 100%;
-  max-width: 140px;
+  max-width: 160px;
+  min-height: 50px;
   height: auto;
-  filter: grayscale(100%) brightness(0.9) opacity(0.8);
+  object-fit: contain;
+  filter: grayscale(100%) brightness(1.5) opacity(0.7);
   transition: filter 0.45s ease, transform 0.45s ease;
 }
 
 .client-card:hover .client-logo {
-  filter: grayscale(0%) brightness(1) opacity(1);
-  transform: scale(1.05);
+  filter: grayscale(0%) brightness(1.8) opacity(1);
+  transform: scale(1.08);
 }
 
 .client-tagline {
