@@ -316,7 +316,7 @@ const ready = () => {
       }
       autoSlideId = window.setInterval(() => {
         goToIndex(activeIndex + 1);
-      }, 4500);
+      }, 3500);
     };
 
     prevButton.addEventListener('click', () => {
@@ -340,6 +340,22 @@ const ready = () => {
       }
       scrollTimeout = window.setTimeout(updateActiveFromScroll, 120);
     });
+
+    let lastPageScroll = window.pageYOffset;
+    let pageScrollTimeout;
+    const handlePageScroll = () => {
+      const currentScroll = window.pageYOffset;
+      if (Math.abs(currentScroll - lastPageScroll) > 100) {
+        if (pageScrollTimeout) {
+          window.clearTimeout(pageScrollTimeout);
+        }
+        pageScrollTimeout = window.setTimeout(() => {
+          goToIndex(activeIndex + 1);
+          lastPageScroll = currentScroll;
+        }, 150);
+      }
+    };
+    window.addEventListener('scroll', handlePageScroll, { passive: true });
 
     window.addEventListener('resize', () => {
       goToIndex(activeIndex, false);
@@ -433,7 +449,7 @@ const ready = () => {
       }
       autoSlideId = window.setInterval(() => {
         goToIndex(activeIndex + 1);
-      }, 4000);
+      }, 3000);
     };
 
     prevButton.addEventListener('click', () => {
@@ -457,6 +473,22 @@ const ready = () => {
       }
       scrollTimeout = window.setTimeout(updateActiveFromScroll, 120);
     });
+
+    let lastClientPageScroll = window.pageYOffset;
+    let clientPageScrollTimeout;
+    const handleClientPageScroll = () => {
+      const currentScroll = window.pageYOffset;
+      if (Math.abs(currentScroll - lastClientPageScroll) > 100) {
+        if (clientPageScrollTimeout) {
+          window.clearTimeout(clientPageScrollTimeout);
+        }
+        clientPageScrollTimeout = window.setTimeout(() => {
+          goToIndex(activeIndex + 1);
+          lastClientPageScroll = currentScroll;
+        }, 150);
+      }
+    };
+    window.addEventListener('scroll', handleClientPageScroll, { passive: true });
 
     window.addEventListener('resize', () => {
       goToIndex(activeIndex, false);
