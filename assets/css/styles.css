@@ -780,6 +780,7 @@ main {
 }
 
 .benefit-card {
+  position: relative;
   background: rgba(17, 17, 17, 0.85);
   border-radius: 1.5rem;
   padding: 2.5rem;
@@ -788,6 +789,25 @@ main {
   gap: 1.5rem;
   text-align: left;
   transition: transform 0.3s ease, border-color 0.3s ease;
+  overflow: hidden;
+}
+
+.benefit-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url('../edswebimagen1.jpg');
+  background-size: cover;
+  background-position: center;
+  filter: blur(8px);
+  opacity: 0.15;
+  z-index: 0;
+  transition: opacity 0.3s ease, filter 0.3s ease;
+}
+
+.benefit-card:hover::before {
+  filter: blur(6px);
+  opacity: 0.25;
 }
 
 .benefit-card:hover {
@@ -804,6 +824,8 @@ main {
   color: var(--yellow);
   display: grid;
   place-items: center;
+  position: relative;
+  z-index: 1;
 }
 
 .benefit-icon svg {
@@ -814,10 +836,14 @@ main {
 .benefit-card h3 {
   font-size: 1.3rem;
   font-weight: 700;
+  position: relative;
+  z-index: 1;
 }
 
 .benefit-card p {
-  color: rgba(226, 232, 240, 0.68);
+  color: rgba(226, 232, 240, 0.85);
+  position: relative;
+  z-index: 1;
 }
 
 .stats-grid {
