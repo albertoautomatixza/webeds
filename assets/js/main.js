@@ -174,7 +174,9 @@ const ready = () => {
     });
 
     const activate = (stat) => {
-      stat.classList.add('is-active');
+      setTimeout(() => {
+        stat.classList.add('is-active');
+      }, 100);
     };
 
     const activateSequence = () => {
