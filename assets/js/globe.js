@@ -1,6 +1,7 @@
 import createGlobe from 'https://cdn.jsdelivr.net/npm/cobe@0.6.3/dist/cobe.esm.js';
 
-const MOVEMENT_DAMPING = 1400;
+const MOVEMENT_DAMPING = 1800;
+const AUTO_ROTATION_SPEED = 0.0025;
 
 const HERO_GLOBE_CONFIG = {
   width: 800,
@@ -9,23 +10,24 @@ const HERO_GLOBE_CONFIG = {
   phi: 0,
   theta: 0.3,
   dark: 0,
-  diffuse: 0.4,
+  diffuse: 1.2,
   mapSamples: 16000,
-  mapBrightness: 1.2,
-  baseColor: [1, 1, 1],
-  markerColor: [251 / 255, 100 / 255, 21 / 255],
+  mapBrightness: 6,
+  baseColor: [0.12, 0.12, 0.16],
+  mapColor: [0.52, 0.54, 0.58],
+  markerColor: [250 / 255, 220 / 255, 82 / 255],
   glowColor: [1, 1, 1],
   markers: [
-    { location: [14.5995, 120.9842], size: 0.03 },
-    { location: [19.076, 72.8777], size: 0.1 },
+    { location: [19.4326, -99.1332], size: 0.12 },
+    { location: [34.6937, 135.5022], size: 0.06 },
+    { location: [14.5995, 120.9842], size: 0.05 },
+    { location: [19.076, 72.8777], size: 0.08 },
     { location: [23.8103, 90.4125], size: 0.05 },
-    { location: [30.0444, 31.2357], size: 0.07 },
+    { location: [30.0444, 31.2357], size: 0.06 },
     { location: [39.9042, 116.4074], size: 0.08 },
-    { location: [-23.5505, -46.6333], size: 0.1 },
-    { location: [19.4326, -99.1332], size: 0.1 },
-    { location: [40.7128, -74.006], size: 0.1 },
-    { location: [34.6937, 135.5022], size: 0.05 },
-    { location: [41.0082, 28.9784], size: 0.06 },
+    { location: [-23.5505, -46.6333], size: 0.08 },
+    { location: [40.7128, -74.006], size: 0.08 },
+    { location: [41.0082, 28.9784], size: 0.05 },
   ],
 };
 
@@ -33,24 +35,32 @@ const initHeroGlobe = () => {
   const canvas = document.getElementById('hero-globe');
   if (!canvas) return;
 
-  let phi = 0;
   let width = 0;
-  let pointerInteracting = null;
+  let rotation = 0;
+  let pointerActive = false;
+  let lastPointerX = 0;
+  let dragOffset = 0;
 
   const resize = () => {
-    width = canvas.offsetWidth || canvas.clientWidth || 0;
+    width = canvas.offsetWidth || HERO_GLOBE_CONFIG.width / 2;
   };
 
-  const updatePointerInteraction = (value) => {
-    pointerInteracting = value;
-    canvas.style.cursor = value !== null ? 'grabbing' : 'grab';
+  const startPointer = (clientX) => {
+    pointerActive = true;
+    lastPointerX = clientX;
+    canvas.style.cursor = 'grabbing';
   };
 
-  const handlePointerMove = (clientX) => {
-    if (pointerInteracting === null) return;
-    const delta = clientX - pointerInteracting;
-    phi += delta / MOVEMENT_DAMPING;
-    updatePointerInteraction(clientX);
+  const stopPointer = () => {
+    pointerActive = false;
+    canvas.style.cursor = 'grab';
+  };
+
+  const movePointer = (clientX) => {
+    if (!pointerActive) return;
+    const delta = clientX - lastPointerX;
+    dragOffset += delta / MOVEMENT_DAMPING;
+    lastPointerX = clientX;
   };
 
   resize();
@@ -61,30 +71,51 @@ const initHeroGlobe = () => {
     width: (width || HERO_GLOBE_CONFIG.width) * 2,
     height: (width || HERO_GLOBE_CONFIG.height) * 2,
     onRender: (state) => {
-      if (pointerInteracting === null) {
-        phi += 0.005;
-      }
+      rotation += AUTO_ROTATION_SPEED;
+      dragOffset *= 0.92;
 
-      state.phi = phi;
+      state.phi = rotation + dragOffset;
       state.theta = HERO_GLOBE_CONFIG.theta;
       state.width = (width || HERO_GLOBE_CONFIG.width) * 2;
       state.height = (width || HERO_GLOBE_CONFIG.height) * 2;
     },
   });
 
-  canvas.addEventListener('pointerdown', (event) => {
-    updatePointerInteraction(event.clientX);
-  });
+  canvas.style.cursor = 'grab';
 
-  window.addEventListener('pointerup', () => updatePointerInteraction(null));
-  window.addEventListener('pointerout', () => updatePointerInteraction(null));
+  canvas.addEventListener('pointerdown', (event) => startPointer(event.clientX));
+  window.addEventListener('pointerup', stopPointer);
+  window.addEventListener('pointerleave', stopPointer);
+  window.addEventListener('pointermove', (event) => movePointer(event.clientX));
 
-  window.addEventListener('pointermove', (event) => handlePointerMove(event.clientX));
-  window.addEventListener('touchmove', (event) => {
-    if (event.touches && event.touches[0]) {
-      handlePointerMove(event.touches[0].clientX);
-    }
-  });
+  canvas.addEventListener(
+    'touchstart',
+    (event) => {
+      const touch = event.touches && event.touches[0];
+      if (!touch) return;
+      startPointer(touch.clientX);
+    },
+    { passive: true }
+  );
+
+  window.addEventListener(
+    'touchend',
+    () => {
+      stopPointer();
+    },
+    { passive: true }
+  );
+
+  window.addEventListener(
+    'touchmove',
+    (event) => {
+      const touch = event.touches && event.touches[0];
+      if (touch) {
+        movePointer(touch.clientX);
+      }
+    },
+    { passive: true }
+  );
 
   requestAnimationFrame(() => {
     canvas.style.opacity = '1';
