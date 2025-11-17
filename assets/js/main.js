@@ -113,7 +113,7 @@ const ready = () => {
       const suffix = stat.getAttribute('data-stat-suffix') || '';
       const prefix = stat.getAttribute('data-stat-prefix') || '';
       const durationAttr = stat.getAttribute('data-stat-duration');
-      const duration = durationAttr ? Number.parseInt(durationAttr, 10) : 2400;
+      const duration = durationAttr ? Number.parseInt(durationAttr, 10) : 2000;
 
       if (!Number.isNaN(duration)) {
         stat.style.setProperty('--ticker-duration', `${duration}ms`);
@@ -180,7 +180,7 @@ const ready = () => {
       if (activateSequence.hasStarted) return;
       activateSequence.hasStarted = true;
       statNumbers.forEach((stat, index) => {
-        window.setTimeout(() => activate(stat), index * 480);
+        window.setTimeout(() => activate(stat), index * 200);
       });
       cleanupScrollFallback();
     };
@@ -218,7 +218,7 @@ const ready = () => {
             }
           });
         },
-        { threshold: 0.2, rootMargin: '0px 0px -10% 0px' }
+        { threshold: 0.3, rootMargin: '0px 0px -15% 0px' }
       );
 
       observer.observe(observerTarget);
