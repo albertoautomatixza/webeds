@@ -312,6 +312,12 @@ main {
   text-shadow: 0 12px 32px rgba(250, 204, 21, 0.3);
 }
 
+.loading-logo-img {
+  width: 5rem;
+  height: auto;
+  filter: drop-shadow(0 12px 32px rgba(250, 204, 21, 0.3));
+}
+
 .loading-title {
   font-size: clamp(1.3rem, 4vw, 1.75rem);
   font-weight: 700;
@@ -361,16 +367,10 @@ main {
   letter-spacing: 0.02em;
 }
 
-.brand-badge {
-  width: 3rem;
+.brand-logo {
   height: 3rem;
-  border-radius: 0.9rem;
-  background: var(--yellow);
-  color: var(--black);
-  display: grid;
-  place-items: center;
-  font-weight: 900;
-  letter-spacing: 0.1em;
+  width: auto;
+  display: block;
 }
 
 .brand-copy {
