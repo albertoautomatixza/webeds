@@ -1174,43 +1174,6 @@ main {
   }
 }
 
-/* Video Showcase */
-.showcase-video {
-  padding: clamp(2rem, 4vw, 3rem) 0;
-}
-
-.video-showcase-container {
-  position: relative;
-  width: clamp(200px, 22vw, 280px);
-  margin: 0 auto;
-  border-radius: 1.4rem;
-  overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  background: linear-gradient(135deg, rgba(36, 36, 36, 0.95), rgba(18, 18, 18, 0.6));
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
-}
-
-.video-showcase-container::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 35%;
-  height: 35%;
-  background: linear-gradient(135deg, rgba(36, 36, 36, 0.98), rgba(18, 18, 18, 0.95));
-  z-index: 3;
-  pointer-events: none;
-}
-
-.showcase-video-element {
-  display: block;
-  width: 100%;
-  height: auto;
-  opacity: 0.8;
-  position: relative;
-  z-index: 2;
-}
-
 /* Contact */
 .contact-grid {
   display: flex;
