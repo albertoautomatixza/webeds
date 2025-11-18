@@ -1182,7 +1182,7 @@ main {
 .video-showcase-container {
   position: relative;
   width: 100%;
-  max-width: 600px;
+  max-width: 780px;
   margin: 0 auto;
   border-radius: 1.5rem;
   overflow: hidden;
@@ -1220,7 +1220,7 @@ main {
   display: block;
   width: 100%;
   height: auto;
-  opacity: 0.5;
+  opacity: 0.7;
   transition: opacity 0.45s ease;
   position: relative;
   z-index: 2;
