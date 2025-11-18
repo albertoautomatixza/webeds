@@ -1,5 +1,3 @@
-import createGlobe from 'https://cdn.jsdelivr.net/npm/cobe@0.6.3/dist/cobe.esm.js';
-
 const GLOBE_CONFIG = {
   width: 800,
   height: 800,
@@ -36,7 +34,15 @@ const GLOBE_CONFIG = {
 
 const initGlobe = () => {
   const canvas = document.getElementById('hero-globe');
-  if (!canvas) return;
+  if (!canvas) {
+    console.log('Canvas not found');
+    return;
+  }
+
+  if (typeof COBE === 'undefined') {
+    console.error('COBE library not loaded');
+    return;
+  }
 
   let phi = 0;
   let width = 0;
@@ -59,7 +65,7 @@ const initGlobe = () => {
   resize();
   window.addEventListener('resize', resize);
 
-  const globe = createGlobe(canvas, {
+  const globe = COBE.default(canvas, {
     ...GLOBE_CONFIG,
     width: width * 2,
     height: width * 2,
@@ -80,6 +86,8 @@ const initGlobe = () => {
     canvas.style.opacity = '1';
   }, 100);
 
+  console.log('Globe initialized successfully');
+
   return () => {
     globe.destroy();
     window.removeEventListener('resize', resize);
@@ -88,8 +96,6 @@ const initGlobe = () => {
   };
 };
 
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', initGlobe, { once: true });
-} else {
-  initGlobe();
-}
+window.addEventListener('load', () => {
+  setTimeout(initGlobe, 100);
+});
