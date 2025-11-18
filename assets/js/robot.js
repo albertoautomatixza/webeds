@@ -17,7 +17,7 @@
     const height = container.offsetHeight;
 
     const camera = new THREE.PerspectiveCamera(50, width / height, 0.1, 100);
-    camera.position.set(0, 2.5, 7);
+    camera.position.set(3, 2.5, 6);
 
     const renderer = new THREE.WebGLRenderer({
       canvas,
@@ -26,233 +26,200 @@
     });
     renderer.setSize(width, height);
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-    renderer.shadowMap.enabled = true;
-    renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 
-    const keyLight = new THREE.DirectionalLight(0xffffff, 1.2);
-    keyLight.position.set(5, 10, 5);
-    keyLight.castShadow = true;
-    keyLight.shadow.mapSize.width = 2048;
-    keyLight.shadow.mapSize.height = 2048;
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+    scene.add(ambientLight);
+
+    const keyLight = new THREE.DirectionalLight(0xfacc15, 1.5);
+    keyLight.position.set(5, 8, 5);
     scene.add(keyLight);
 
-    const fillLight = new THREE.DirectionalLight(0xfff6d0, 0.6);
-    fillLight.position.set(-4, 3, -2);
+    const fillLight = new THREE.DirectionalLight(0xfacc15, 0.8);
+    fillLight.position.set(-3, 2, -3);
     scene.add(fillLight);
 
-    scene.add(new THREE.AmbientLight(0xffffff, 0.4));
-
-    const yellowMat = new THREE.MeshStandardMaterial({
-      color: 0xf4b000,
-      roughness: 0.35,
-      metalness: 0.6,
-      envMapIntensity: 1.2
+    const lineMaterial = new THREE.LineBasicMaterial({
+      color: 0xfacc15,
+      linewidth: 2,
+      transparent: true,
+      opacity: 0.9
     });
 
-    const blackMat = new THREE.MeshStandardMaterial({
-      color: 0x1a1a1a,
-      roughness: 0.4,
-      metalness: 0.8
+    const edgesMaterial = new THREE.LineBasicMaterial({
+      color: 0xfacc15,
+      linewidth: 2,
+      transparent: true,
+      opacity: 0.85
     });
 
-    const grayMat = new THREE.MeshStandardMaterial({
-      color: 0x404040,
-      roughness: 0.5,
-      metalness: 0.7
-    });
+    function createWireframeFromGeometry(geometry) {
+      const edges = new THREE.EdgesGeometry(geometry);
+      return new THREE.LineSegments(edges, edgesMaterial);
+    }
 
     const armGroup = new THREE.Group();
     scene.add(armGroup);
 
-    const base = new THREE.Group();
-    const baseCyl = new THREE.Mesh(
-      new THREE.CylinderGeometry(1.2, 1.4, 0.5, 32),
-      blackMat
-    );
-    baseCyl.castShadow = true;
-    base.add(baseCyl);
+    const baseGroup = new THREE.Group();
+    armGroup.add(baseGroup);
 
-    const baseRing = new THREE.Mesh(
-      new THREE.TorusGeometry(1.3, 0.08, 16, 32),
-      grayMat
-    );
-    baseRing.rotation.x = Math.PI / 2;
-    baseRing.position.y = 0.25;
-    base.add(baseRing);
+    const baseCylGeo = new THREE.CylinderGeometry(1.2, 1.5, 0.6, 32);
+    const baseWire = createWireframeFromGeometry(baseCylGeo);
+    baseGroup.add(baseWire);
 
-    armGroup.add(base);
+    const baseTopRingGeo = new THREE.TorusGeometry(1.2, 0.1, 16, 32);
+    const baseTopRing = createWireframeFromGeometry(baseTopRingGeo);
+    baseTopRing.rotation.x = Math.PI / 2;
+    baseTopRing.position.y = 0.3;
+    baseGroup.add(baseTopRing);
 
-    const joint1 = new THREE.Group();
-    joint1.position.y = 0.25;
-    base.add(joint1);
+    const baseBottomRingGeo = new THREE.TorusGeometry(1.5, 0.08, 16, 32);
+    const baseBottomRing = createWireframeFromGeometry(baseBottomRingGeo);
+    baseBottomRing.rotation.x = Math.PI / 2;
+    baseBottomRing.position.y = -0.3;
+    baseGroup.add(baseBottomRing);
 
-    const joint1Sphere = new THREE.Mesh(
-      new THREE.SphereGeometry(0.35, 32, 32),
-      grayMat
-    );
-    joint1Sphere.castShadow = true;
-    joint1.add(joint1Sphere);
+    const joint1Group = new THREE.Group();
+    joint1Group.position.y = 0.6;
+    baseGroup.add(joint1Group);
 
-    const segment1 = new THREE.Group();
-    segment1.position.y = 0.35;
-    joint1.add(segment1);
+    const joint1SphereGeo = new THREE.SphereGeometry(0.4, 16, 16);
+    const joint1Wire = createWireframeFromGeometry(joint1SphereGeo);
+    joint1Group.add(joint1Wire);
 
-    const seg1Main = new THREE.Mesh(
-      new THREE.BoxGeometry(0.5, 2.2, 0.5),
-      yellowMat
-    );
-    seg1Main.position.y = 1.1;
-    seg1Main.castShadow = true;
-    segment1.add(seg1Main);
+    const segment1Group = new THREE.Group();
+    segment1Group.position.y = 0.4;
+    joint1Group.add(segment1Group);
+
+    const seg1BoxGeo = new THREE.BoxGeometry(0.6, 2.5, 0.55);
+    const seg1Wire = createWireframeFromGeometry(seg1BoxGeo);
+    seg1Wire.position.y = 1.25;
+    segment1Group.add(seg1Wire);
 
     for (let i = 0; i < 3; i++) {
-      const band = new THREE.Mesh(
-        new THREE.CylinderGeometry(0.28, 0.28, 0.12, 32),
-        blackMat
-      );
-      band.position.y = 0.5 + i * 0.7;
-      band.castShadow = true;
-      segment1.add(band);
+      const ringGeo = new THREE.TorusGeometry(0.32, 0.05, 12, 24);
+      const ring = createWireframeFromGeometry(ringGeo);
+      ring.rotation.x = Math.PI / 2;
+      ring.position.y = 0.5 + i * 0.8;
+      segment1Group.add(ring);
     }
 
-    const joint2 = new THREE.Group();
-    joint2.position.y = 2.2;
-    segment1.add(joint2);
+    const joint2Group = new THREE.Group();
+    joint2Group.position.y = 2.5;
+    segment1Group.add(joint2Group);
 
-    const joint2Sphere = new THREE.Mesh(
-      new THREE.SphereGeometry(0.32, 32, 32),
-      grayMat
-    );
-    joint2Sphere.castShadow = true;
-    joint2.add(joint2Sphere);
+    const joint2SphereGeo = new THREE.SphereGeometry(0.35, 16, 16);
+    const joint2Wire = createWireframeFromGeometry(joint2SphereGeo);
+    joint2Group.add(joint2Wire);
 
-    const segment2 = new THREE.Group();
-    segment2.position.y = 0.32;
-    joint2.add(segment2);
+    const segment2Group = new THREE.Group();
+    segment2Group.position.y = 0.35;
+    joint2Group.add(segment2Group);
 
-    const seg2Main = new THREE.Mesh(
-      new THREE.BoxGeometry(0.45, 1.9, 0.45),
-      yellowMat
-    );
-    seg2Main.position.y = 0.95;
-    seg2Main.castShadow = true;
-    segment2.add(seg2Main);
+    const seg2BoxGeo = new THREE.BoxGeometry(0.5, 2.2, 0.48);
+    const seg2Wire = createWireframeFromGeometry(seg2BoxGeo);
+    seg2Wire.position.y = 1.1;
+    segment2Group.add(seg2Wire);
 
     for (let i = 0; i < 2; i++) {
-      const band = new THREE.Mesh(
-        new THREE.CylinderGeometry(0.25, 0.25, 0.11, 32),
-        blackMat
-      );
-      band.position.y = 0.4 + i * 0.8;
-      band.castShadow = true;
-      segment2.add(band);
+      const ringGeo = new THREE.TorusGeometry(0.28, 0.04, 12, 24);
+      const ring = createWireframeFromGeometry(ringGeo);
+      ring.rotation.x = Math.PI / 2;
+      ring.position.y = 0.5 + i * 1;
+      segment2Group.add(ring);
     }
 
-    const joint3 = new THREE.Group();
-    joint3.position.y = 1.9;
-    segment2.add(joint3);
+    const joint3Group = new THREE.Group();
+    joint3Group.position.y = 2.2;
+    segment2Group.add(joint3Group);
 
-    const joint3Sphere = new THREE.Mesh(
-      new THREE.SphereGeometry(0.28, 32, 32),
-      grayMat
-    );
-    joint3Sphere.castShadow = true;
-    joint3.add(joint3Sphere);
+    const joint3SphereGeo = new THREE.SphereGeometry(0.3, 16, 16);
+    const joint3Wire = createWireframeFromGeometry(joint3SphereGeo);
+    joint3Group.add(joint3Wire);
 
-    const segment3 = new THREE.Group();
-    segment3.position.y = 0.28;
-    joint3.add(segment3);
+    const segment3Group = new THREE.Group();
+    segment3Group.position.y = 0.3;
+    joint3Group.add(segment3Group);
 
-    const seg3Main = new THREE.Mesh(
-      new THREE.BoxGeometry(0.38, 1.5, 0.38),
-      yellowMat
-    );
-    seg3Main.position.y = 0.75;
-    seg3Main.castShadow = true;
-    segment3.add(seg3Main);
+    const seg3BoxGeo = new THREE.BoxGeometry(0.42, 1.6, 0.4);
+    const seg3Wire = createWireframeFromGeometry(seg3BoxGeo);
+    seg3Wire.position.y = 0.8;
+    segment3Group.add(seg3Wire);
 
-    const wrist = new THREE.Group();
-    wrist.position.y = 1.5;
-    segment3.add(wrist);
+    const wristGroup = new THREE.Group();
+    wristGroup.position.y = 1.6;
+    segment3Group.add(wristGroup);
 
-    const wristCyl = new THREE.Mesh(
-      new THREE.CylinderGeometry(0.22, 0.22, 0.3, 32),
-      grayMat
-    );
-    wristCyl.castShadow = true;
-    wrist.add(wristCyl);
+    const wristCylGeo = new THREE.CylinderGeometry(0.25, 0.25, 0.35, 16);
+    const wristWire = createWireframeFromGeometry(wristCylGeo);
+    wristGroup.add(wristWire);
 
-    const endEffector = new THREE.Group();
-    endEffector.position.y = 0.3;
-    wrist.add(endEffector);
+    const wristRingGeo = new THREE.TorusGeometry(0.25, 0.03, 12, 24);
+    const wristRing = createWireframeFromGeometry(wristRingGeo);
+    wristRing.rotation.x = Math.PI / 2;
+    wristGroup.add(wristRing);
 
-    const clawBase = new THREE.Mesh(
-      new THREE.BoxGeometry(0.4, 0.25, 0.3),
-      blackMat
-    );
-    clawBase.castShadow = true;
-    endEffector.add(clawBase);
+    const endEffectorGroup = new THREE.Group();
+    endEffectorGroup.position.y = 0.35;
+    wristGroup.add(endEffectorGroup);
 
-    const claw1 = new THREE.Mesh(
-      new THREE.BoxGeometry(0.15, 0.5, 0.12),
-      grayMat
-    );
-    claw1.position.set(0.2, 0, 0);
-    claw1.castShadow = true;
-    endEffector.add(claw1);
+    const clawBaseGeo = new THREE.BoxGeometry(0.45, 0.28, 0.32);
+    const clawBaseWire = createWireframeFromGeometry(clawBaseGeo);
+    endEffectorGroup.add(clawBaseWire);
 
-    const claw2 = new THREE.Mesh(
-      new THREE.BoxGeometry(0.15, 0.5, 0.12),
-      grayMat
-    );
-    claw2.position.set(-0.2, 0, 0);
-    claw2.castShadow = true;
-    endEffector.add(claw2);
+    const claw1Geo = new THREE.BoxGeometry(0.12, 0.55, 0.15);
+    const claw1Wire = createWireframeFromGeometry(claw1Geo);
+    claw1Wire.position.set(0.25, -0.05, 0);
+    endEffectorGroup.add(claw1Wire);
 
-    armGroup.position.set(0, 0, 0);
-    armGroup.scale.set(1, 1, 1);
+    const claw2Wire = createWireframeFromGeometry(claw1Geo);
+    claw2Wire.position.set(-0.25, -0.05, 0);
+    endEffectorGroup.add(claw2Wire);
 
-    let targetRotY = 0;
-    let targetRotX = 0;
-    let targetSeg1 = 0;
-    let targetSeg2 = 0;
-    let targetSeg3 = 0;
+    armGroup.position.set(0, -0.5, 0);
+    armGroup.rotation.y = -0.3;
 
-    const handleMouseMove = (e) => {
-      const x = e.clientX / window.innerWidth - 0.5;
-      const y = e.clientY / window.innerHeight - 0.5;
+    let isHovered = false;
+    let time = 0;
+    let animProgress = 0;
 
-      targetRotY = x * Math.PI * 0.6;
-      targetRotX = -y * Math.PI * 0.25;
-
-      targetSeg1 = x * 0.4;
-      targetSeg2 = y * 0.5;
-      targetSeg3 = -x * 0.3;
+    const handleMouseEnter = () => {
+      isHovered = true;
     };
 
-    document.addEventListener("mousemove", handleMouseMove);
+    const handleMouseLeave = () => {
+      isHovered = false;
+    };
 
-    let time = 0;
+    canvas.addEventListener('mouseenter', handleMouseEnter);
+    canvas.addEventListener('mouseleave', handleMouseLeave);
 
     function animate() {
       requestAnimationFrame(animate);
 
       time += 0.01;
 
-      armGroup.rotation.y += (targetRotY - armGroup.rotation.y) * 0.08;
-      armGroup.rotation.x += (targetRotX - armGroup.rotation.x) * 0.08;
+      if (isHovered) {
+        animProgress = Math.min(animProgress + 0.02, 1);
+      } else {
+        animProgress = Math.max(animProgress - 0.015, 0);
+      }
 
-      joint1.rotation.z += (targetSeg1 - joint1.rotation.z) * 0.06;
-      joint2.rotation.z += (targetSeg2 - joint2.rotation.z) * 0.06;
-      joint3.rotation.z += (targetSeg3 - joint3.rotation.z) * 0.06;
+      armGroup.rotation.y = -0.3 + Math.sin(time * 0.5) * 0.15 * animProgress;
 
-      base.rotation.y += 0.002;
+      joint1Group.rotation.z = Math.sin(time * 0.8) * 0.25 * animProgress;
+      joint2Group.rotation.z = Math.sin(time * 0.6 + 1) * 0.3 * animProgress;
+      joint3Group.rotation.z = Math.sin(time * 0.7 + 2) * 0.2 * animProgress;
 
-      wrist.rotation.y = time * 0.5;
+      wristGroup.rotation.y = time * 0.8 * animProgress;
 
-      const clawOpen = Math.sin(time * 2) * 0.15;
-      claw1.position.x = 0.2 + clawOpen;
-      claw2.position.x = -0.2 - clawOpen;
+      const clawAnim = Math.sin(time * 2) * 0.18 * animProgress;
+      claw1Wire.position.x = 0.25 + clawAnim;
+      claw2Wire.position.x = -0.25 - clawAnim;
+
+      baseGroup.rotation.y += 0.003;
+
+      edgesMaterial.opacity = 0.75 + Math.sin(time * 2) * 0.15;
 
       renderer.render(scene, camera);
     }
@@ -274,7 +241,8 @@
     }, 100);
 
     return () => {
-      document.removeEventListener('mousemove', handleMouseMove);
+      canvas.removeEventListener('mouseenter', handleMouseEnter);
+      canvas.removeEventListener('mouseleave', handleMouseLeave);
       window.removeEventListener('resize', handleResize);
       renderer.dispose();
     };
