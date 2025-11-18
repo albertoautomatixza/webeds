@@ -16,8 +16,8 @@
     const width = container.offsetWidth;
     const height = container.offsetHeight;
 
-    const camera = new THREE.PerspectiveCamera(35, width / height, 0.1, 100);
-    camera.position.set(2.5, 2.2, 5);
+    const camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 100);
+    camera.position.set(0, 3, 8);
 
     const renderer = new THREE.WebGLRenderer({
       canvas,
@@ -209,8 +209,8 @@
     claw2.castShadow = true;
     endEffector.add(claw2);
 
-    armGroup.position.set(0, -1.2, 0);
-    armGroup.scale.set(1.3, 1.3, 1.3);
+    armGroup.position.set(0, -0.5, 0);
+    armGroup.scale.set(0.85, 0.85, 0.85);
 
     let targetRotY = 0;
     let targetRotX = 0;

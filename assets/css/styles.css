@@ -581,10 +581,10 @@ main {
 }
 
 .hero-decor {
-  display: none;
+  display: flex;
   position: relative;
-  width: clamp(300px, 45vw, 600px);
-  height: clamp(300px, 45vw, 600px);
+  width: clamp(350px, 50vw, 650px);
+  height: clamp(400px, 55vh, 700px);
   align-items: center;
   justify-content: center;
 }
@@ -594,6 +594,15 @@ main {
   height: 100%;
   opacity: 0;
   transition: opacity 0.8s ease;
+}
+
+@media (max-width: 768px) {
+  .hero-decor {
+    width: 100%;
+    max-width: 400px;
+    height: 400px;
+    margin: 2rem auto 0;
+  }
 }
 
 
