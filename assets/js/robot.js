@@ -46,6 +46,37 @@
       opacity: 0.35
     });
 
+    const gridHelper = new THREE.GridHelper(20, 40, 0xffffff, 0xffffff);
+    gridHelper.material.transparent = true;
+    gridHelper.material.opacity = 0.08;
+    gridHelper.position.y = -0.1;
+    scene.add(gridHelper);
+
+    const verticalGridMaterial = new THREE.LineBasicMaterial({
+      color: 0xffffff,
+      transparent: true,
+      opacity: 0.06
+    });
+
+    for (let i = -10; i <= 10; i += 0.5) {
+      const points = [
+        new THREE.Vector3(i, -0.1, -10),
+        new THREE.Vector3(i, 8, -10)
+      ];
+      const geometry = new THREE.BufferGeometry().setFromPoints(points);
+      const line = new THREE.Line(geometry, verticalGridMaterial);
+      scene.add(line);
+    }
+
+    for (let j = 0; j <= 8; j += 0.5) {
+      const points = [
+        new THREE.Vector3(-10, j, -10),
+        new THREE.Vector3(10, j, -10)
+      ];
+      const geometry = new THREE.BufferGeometry().setFromPoints(points);
+      const line = new THREE.Line(geometry, verticalGridMaterial);
+      scene.add(line);
+    }
 
     const armGroup = new THREE.Group();
     scene.add(armGroup);
