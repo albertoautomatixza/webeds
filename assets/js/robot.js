@@ -16,9 +16,9 @@
     const width = container.offsetWidth;
     const height = container.offsetHeight;
 
-    const camera = new THREE.PerspectiveCamera(40, width / height, 0.1, 100);
-    camera.position.set(3.5, 2.5, 8);
-    camera.lookAt(0, 1.8, 0);
+    const camera = new THREE.PerspectiveCamera(38, width / height, 0.1, 100);
+    camera.position.set(4, 2.5, 7);
+    camera.lookAt(0, 2, 0);
 
     const renderer = new THREE.WebGLRenderer({
       canvas,
@@ -64,146 +64,192 @@
     const baseGroup = new THREE.Group();
     armGroup.add(baseGroup);
 
-    const baseCylGeo = new THREE.CylinderGeometry(1.2, 1.5, 0.5, 32, 4);
-    const baseMesh = new THREE.Mesh(baseCylGeo, meshMaterial);
-    baseGroup.add(baseMesh);
-
-    const baseTopGeo = new THREE.CylinderGeometry(1.2, 1.2, 0.15, 32, 2);
-    const baseTop = new THREE.Mesh(baseTopGeo, meshMaterial);
-    baseTop.position.y = 0.325;
-    baseGroup.add(baseTop);
-
-    const basePlateGeo = new THREE.CylinderGeometry(1.5, 1.5, 0.1, 32, 1);
+    const basePlateGeo = new THREE.BoxGeometry(2.2, 0.12, 1.8, 6, 1, 5);
     const basePlate = new THREE.Mesh(basePlateGeo, meshMaterial);
-    basePlate.position.y = -0.3;
+    basePlate.position.y = -0.06;
     baseGroup.add(basePlate);
 
-    for (let i = 0; i < 8; i++) {
-      const angle = (i / 8) * Math.PI * 2;
-      const boltGeo = new THREE.CylinderGeometry(0.06, 0.06, 0.12, 8, 1);
+    const baseRiserGeo = new THREE.BoxGeometry(1.6, 0.35, 1.3, 5, 2, 4);
+    const baseRiser = new THREE.Mesh(baseRiserGeo, meshMaterial);
+    baseRiser.position.y = 0.175;
+    baseGroup.add(baseRiser);
+
+    const baseMainGeo = new THREE.CylinderGeometry(0.85, 0.95, 0.5, 32, 3);
+    const baseMain = new THREE.Mesh(baseMainGeo, meshMaterial);
+    baseMain.position.y = 0.6;
+    baseGroup.add(baseMain);
+
+    const baseTopGeo = new THREE.CylinderGeometry(0.75, 0.85, 0.25, 32, 2);
+    const baseTop = new THREE.Mesh(baseTopGeo, meshMaterial);
+    baseTop.position.y = 0.975;
+    baseGroup.add(baseTop);
+
+    for (let i = 0; i < 6; i++) {
+      const angle = (i / 6) * Math.PI * 2;
+      const x = Math.cos(angle) * 0.95;
+      const z = Math.sin(angle) * 0.95;
+
+      const boltGeo = new THREE.CylinderGeometry(0.04, 0.04, 0.08, 8, 1);
       const bolt = new THREE.Mesh(boltGeo, meshMaterial);
-      bolt.position.x = Math.cos(angle) * 1.35;
-      bolt.position.z = Math.sin(angle) * 1.35;
-      bolt.position.y = -0.3;
+      bolt.position.set(x, -0.1, z);
       baseGroup.add(bolt);
     }
 
-    const joint1Group = new THREE.Group();
-    joint1Group.position.y = 0.5;
-    baseGroup.add(joint1Group);
+    const shoulderGroup = new THREE.Group();
+    shoulderGroup.position.y = 1.1;
+    shoulderGroup.rotation.z = -0.25;
+    baseGroup.add(shoulderGroup);
 
-    const joint1Geo = new THREE.SphereGeometry(0.45, 24, 24);
-    const joint1 = new THREE.Mesh(joint1Geo, meshMaterial);
-    joint1Group.add(joint1);
+    const shoulderHousingGeo = new THREE.BoxGeometry(0.9, 0.65, 0.75, 4, 3, 3);
+    const shoulderHousing = new THREE.Mesh(shoulderHousingGeo, meshMaterial);
+    shoulderGroup.add(shoulderHousing);
 
-    const segment1Group = new THREE.Group();
-    segment1Group.position.y = 0.45;
-    joint1Group.add(segment1Group);
+    const shoulderJointGeo = new THREE.CylinderGeometry(0.42, 0.42, 0.85, 24, 3);
+    const shoulderJoint = new THREE.Mesh(shoulderJointGeo, meshMaterial);
+    shoulderJoint.rotation.z = Math.PI / 2;
+    shoulderGroup.add(shoulderJoint);
 
-    const seg1MainGeo = new THREE.CylinderGeometry(0.35, 0.35, 2.2, 24, 8);
-    const seg1Main = new THREE.Mesh(seg1MainGeo, meshMaterial);
-    seg1Main.position.y = 1.1;
-    segment1Group.add(seg1Main);
+    for (let side of [-1, 1]) {
+      const capGeo = new THREE.SphereGeometry(0.42, 16, 16, 0, Math.PI * 2, 0, Math.PI / 2);
+      const cap = new THREE.Mesh(capGeo, meshMaterial);
+      cap.rotation.z = side === 1 ? -Math.PI / 2 : Math.PI / 2;
+      cap.position.z = side * 0.425;
+      shoulderGroup.add(cap);
+    }
 
-    const seg1BoxGeo = new THREE.BoxGeometry(0.65, 2.2, 0.5, 4, 8, 3);
-    const seg1Box = new THREE.Mesh(seg1BoxGeo, meshMaterial);
-    seg1Box.position.y = 1.1;
-    segment1Group.add(seg1Box);
+    const upperArmGroup = new THREE.Group();
+    upperArmGroup.position.y = 0.3;
+    shoulderGroup.add(upperArmGroup);
+
+    const upperArmMainGeo = new THREE.BoxGeometry(0.55, 2.4, 0.52, 3, 10, 3);
+    const upperArmMain = new THREE.Mesh(upperArmMainGeo, meshMaterial);
+    upperArmMain.position.y = 1.2;
+    upperArmGroup.add(upperArmMain);
+
+    const upperArmCylGeo = new THREE.CylinderGeometry(0.28, 0.28, 2.3, 20, 8);
+    const upperArmCyl = new THREE.Mesh(upperArmCylGeo, meshMaterial);
+    upperArmCyl.position.y = 1.15;
+    upperArmGroup.add(upperArmCyl);
 
     for (let i = 0; i < 3; i++) {
-      const plateGeo = new THREE.CylinderGeometry(0.38, 0.38, 0.08, 24, 1);
-      const plate = new THREE.Mesh(plateGeo, meshMaterial);
-      plate.position.y = 0.3 + i * 0.9;
-      segment1Group.add(plate);
-    }
-
-    const joint2Group = new THREE.Group();
-    joint2Group.position.y = 2.2;
-    segment1Group.add(joint2Group);
-
-    const joint2Geo = new THREE.SphereGeometry(0.4, 24, 24);
-    const joint2 = new THREE.Mesh(joint2Geo, meshMaterial);
-    joint2Group.add(joint2);
-
-    const segment2Group = new THREE.Group();
-    segment2Group.position.y = 0.4;
-    joint2Group.add(segment2Group);
-
-    const seg2MainGeo = new THREE.CylinderGeometry(0.3, 0.3, 1.8, 24, 8);
-    const seg2Main = new THREE.Mesh(seg2MainGeo, meshMaterial);
-    seg2Main.position.y = 0.9;
-    segment2Group.add(seg2Main);
-
-    const seg2BoxGeo = new THREE.BoxGeometry(0.55, 1.8, 0.45, 4, 8, 3);
-    const seg2Box = new THREE.Mesh(seg2BoxGeo, meshMaterial);
-    seg2Box.position.y = 0.9;
-    segment2Group.add(seg2Box);
-
-    for (let i = 0; i < 2; i++) {
       const plateGeo = new THREE.CylinderGeometry(0.32, 0.32, 0.08, 24, 1);
       const plate = new THREE.Mesh(plateGeo, meshMaterial);
-      plate.position.y = 0.2 + i * 1.2;
-      segment2Group.add(plate);
+      plate.position.y = 0.3 + i * 0.95;
+      upperArmGroup.add(plate);
     }
 
-    const joint3Group = new THREE.Group();
-    joint3Group.position.y = 1.8;
-    segment2Group.add(joint3Group);
+    const elbowGroup = new THREE.Group();
+    elbowGroup.position.y = 2.4;
+    elbowGroup.rotation.z = 0.85;
+    upperArmGroup.add(elbowGroup);
 
-    const joint3Geo = new THREE.SphereGeometry(0.35, 24, 24);
-    const joint3 = new THREE.Mesh(joint3Geo, meshMaterial);
-    joint3Group.add(joint3);
+    const elbowHousingGeo = new THREE.BoxGeometry(0.75, 0.55, 0.65, 3, 3, 3);
+    const elbowHousing = new THREE.Mesh(elbowHousingGeo, meshMaterial);
+    elbowGroup.add(elbowHousing);
 
-    const segment3Group = new THREE.Group();
-    segment3Group.position.y = 0.35;
-    joint3Group.add(segment3Group);
+    const elbowJointGeo = new THREE.CylinderGeometry(0.36, 0.36, 0.75, 24, 3);
+    const elbowJoint = new THREE.Mesh(elbowJointGeo, meshMaterial);
+    elbowJoint.rotation.z = Math.PI / 2;
+    elbowGroup.add(elbowJoint);
 
-    const seg3Geo = new THREE.CylinderGeometry(0.25, 0.25, 1.3, 24, 6);
-    const seg3 = new THREE.Mesh(seg3Geo, meshMaterial);
-    seg3.position.y = 0.65;
-    segment3Group.add(seg3);
+    for (let side of [-1, 1]) {
+      const capGeo = new THREE.SphereGeometry(0.36, 16, 16, 0, Math.PI * 2, 0, Math.PI / 2);
+      const cap = new THREE.Mesh(capGeo, meshMaterial);
+      cap.rotation.z = side === 1 ? -Math.PI / 2 : Math.PI / 2;
+      cap.position.z = side * 0.375;
+      elbowGroup.add(cap);
+    }
 
-    const seg3BoxGeo = new THREE.BoxGeometry(0.45, 1.3, 0.38, 4, 6, 3);
-    const seg3Box = new THREE.Mesh(seg3BoxGeo, meshMaterial);
-    seg3Box.position.y = 0.65;
-    segment3Group.add(seg3Box);
+    const forearmGroup = new THREE.Group();
+    forearmGroup.position.y = 0.25;
+    elbowGroup.add(forearmGroup);
+
+    const forearmBoxGeo = new THREE.BoxGeometry(0.48, 1.85, 0.45, 3, 8, 3);
+    const forearmBox = new THREE.Mesh(forearmBoxGeo, meshMaterial);
+    forearmBox.position.y = 0.925;
+    forearmGroup.add(forearmBox);
+
+    const forearmCylGeo = new THREE.CylinderGeometry(0.24, 0.24, 1.75, 20, 7);
+    const forearmCyl = new THREE.Mesh(forearmCylGeo, meshMaterial);
+    forearmCyl.position.y = 0.875;
+    forearmGroup.add(forearmCyl);
+
+    for (let i = 0; i < 2; i++) {
+      const plateGeo = new THREE.CylinderGeometry(0.28, 0.28, 0.06, 20, 1);
+      const plate = new THREE.Mesh(plateGeo, meshMaterial);
+      plate.position.y = 0.2 + i * 1.25;
+      forearmGroup.add(plate);
+    }
 
     const wristGroup = new THREE.Group();
-    wristGroup.position.y = 1.3;
-    segment3Group.add(wristGroup);
+    wristGroup.position.y = 1.85;
+    wristGroup.rotation.z = -0.15;
+    forearmGroup.add(wristGroup);
 
-    const wristGeo = new THREE.SphereGeometry(0.28, 24, 24);
-    const wrist = new THREE.Mesh(wristGeo, meshMaterial);
-    wristGroup.add(wrist);
+    const wristHousingGeo = new THREE.BoxGeometry(0.55, 0.4, 0.5, 3, 2, 3);
+    const wristHousing = new THREE.Mesh(wristHousingGeo, meshMaterial);
+    wristGroup.add(wristHousing);
 
-    const wristCylGeo = new THREE.CylinderGeometry(0.22, 0.22, 0.3, 24, 2);
-    const wristCyl = new THREE.Mesh(wristCylGeo, meshMaterial);
-    wristCyl.position.y = 0.15;
-    wristGroup.add(wristCyl);
+    const wristJoint1Geo = new THREE.CylinderGeometry(0.28, 0.28, 0.55, 20, 2);
+    const wristJoint1 = new THREE.Mesh(wristJoint1Geo, meshMaterial);
+    wristJoint1.rotation.z = Math.PI / 2;
+    wristGroup.add(wristJoint1);
+
+    const wristExtensionGeo = new THREE.CylinderGeometry(0.22, 0.22, 0.35, 20, 2);
+    const wristExtension = new THREE.Mesh(wristExtensionGeo, meshMaterial);
+    wristExtension.position.y = 0.35;
+    wristGroup.add(wristExtension);
+
+    const wristJoint2Geo = new THREE.CylinderGeometry(0.2, 0.2, 0.58, 20, 2);
+    const wristJoint2 = new THREE.Mesh(wristJoint2Geo, meshMaterial);
+    wristJoint2.position.y = 0.525;
+    wristJoint2.rotation.x = Math.PI / 2;
+    wristGroup.add(wristJoint2);
 
     const endEffectorGroup = new THREE.Group();
-    endEffectorGroup.position.y = 0.35;
+    endEffectorGroup.position.y = 0.75;
     wristGroup.add(endEffectorGroup);
 
-    const gripperBaseGeo = new THREE.BoxGeometry(0.4, 0.25, 0.3, 3, 2, 2);
+    const toolMountGeo = new THREE.CylinderGeometry(0.18, 0.2, 0.25, 20, 2);
+    const toolMount = new THREE.Mesh(toolMountGeo, meshMaterial);
+    endEffectorGroup.add(toolMount);
+
+    const toolPlateGeo = new THREE.BoxGeometry(0.38, 0.15, 0.32, 3, 1, 3);
+    const toolPlate = new THREE.Mesh(toolPlateGeo, meshMaterial);
+    toolPlate.position.y = 0.2;
+    endEffectorGroup.add(toolPlate);
+
+    const gripperBaseGeo = new THREE.BoxGeometry(0.35, 0.22, 0.28, 3, 2, 2);
     const gripperBase = new THREE.Mesh(gripperBaseGeo, meshMaterial);
+    gripperBase.position.y = 0.38;
     endEffectorGroup.add(gripperBase);
 
-    const claw1Geo = new THREE.BoxGeometry(0.1, 0.5, 0.12, 2, 6, 2);
+    const claw1Geo = new THREE.BoxGeometry(0.08, 0.45, 0.1, 2, 6, 2);
     const claw1 = new THREE.Mesh(claw1Geo, meshMaterial);
-    claw1.position.set(0.22, -0.05, 0);
+    claw1.position.set(0.18, 0.25, 0);
     endEffectorGroup.add(claw1);
 
     const claw2 = new THREE.Mesh(claw1Geo, meshMaterial);
-    claw2.position.set(-0.22, -0.05, 0);
+    claw2.position.set(-0.18, 0.25, 0);
     endEffectorGroup.add(claw2);
+
+    const finger1Geo = new THREE.BoxGeometry(0.06, 0.25, 0.08, 2, 4, 2);
+    const finger1 = new THREE.Mesh(finger1Geo, meshMaterial);
+    finger1.position.set(0.18, 0.6, 0);
+    finger1.rotation.z = -0.2;
+    endEffectorGroup.add(finger1);
+
+    const finger2 = new THREE.Mesh(finger1Geo, meshMaterial);
+    finger2.position.set(-0.18, 0.6, 0);
+    finger2.rotation.z = 0.2;
+    endEffectorGroup.add(finger2);
 
     const annotations = [];
 
     function createAnnotation(position, direction, length = 1.5) {
       const group = new THREE.Group();
 
-      const dotGeo = new THREE.SphereGeometry(0.04, 8, 8);
+      const dotGeo = new THREE.SphereGeometry(0.035, 8, 8);
       const dot = new THREE.Mesh(dotGeo, annotationDotMaterial);
       group.add(dot);
 
@@ -221,18 +267,18 @@
       return group;
     }
 
-    createAnnotation(new THREE.Vector3(0, -0.35, 0), new THREE.Vector3(1.2, -0.3, 0.8), 1.8);
-    createAnnotation(new THREE.Vector3(0.35, 0.8, 0.3), new THREE.Vector3(1, 0.2, 0.5), 1.6);
-    createAnnotation(new THREE.Vector3(-0.3, 1.5, -0.25), new THREE.Vector3(-0.8, 0.3, -0.6), 1.5);
-    createAnnotation(new THREE.Vector3(0.3, 2.8, 0.2), new THREE.Vector3(0.9, 0.4, 0.4), 1.7);
-    createAnnotation(new THREE.Vector3(-0.25, 3.8, -0.2), new THREE.Vector3(-0.8, 0.5, -0.5), 1.6);
-    createAnnotation(new THREE.Vector3(0.2, 5.2, 0.15), new THREE.Vector3(0.7, 0.6, 0.4), 1.5);
-    createAnnotation(new THREE.Vector3(-0.15, 6.1, -0.15), new THREE.Vector3(-0.6, 0.7, -0.5), 1.4);
-    createAnnotation(new THREE.Vector3(0.25, 6.8, 0.1), new THREE.Vector3(0.8, 0.3, 0.5), 1.3);
+    createAnnotation(new THREE.Vector3(0.9, 0, 0.5), new THREE.Vector3(1.3, -0.2, 0.7), 1.9);
+    createAnnotation(new THREE.Vector3(0.4, 1.2, 0.4), new THREE.Vector3(1, 0.3, 0.6), 1.7);
+    createAnnotation(new THREE.Vector3(-0.35, 1.8, -0.3), new THREE.Vector3(-0.9, 0.4, -0.6), 1.6);
+    createAnnotation(new THREE.Vector3(0.5, 2.5, 0.35), new THREE.Vector3(1.1, 0.5, 0.5), 1.8);
+    createAnnotation(new THREE.Vector3(-0.4, 3.5, -0.25), new THREE.Vector3(-0.9, 0.6, -0.5), 1.7);
+    createAnnotation(new THREE.Vector3(0.45, 4.8, 0.3), new THREE.Vector3(1, 0.7, 0.4), 1.6);
+    createAnnotation(new THREE.Vector3(-0.3, 5.8, -0.2), new THREE.Vector3(-0.8, 0.8, -0.5), 1.5);
+    createAnnotation(new THREE.Vector3(0.3, 6.5, 0.2), new THREE.Vector3(0.9, 0.5, 0.5), 1.4);
 
     armGroup.position.set(0, 0, 0);
-    armGroup.rotation.y = -0.3;
-    armGroup.scale.set(0.65, 0.65, 0.65);
+    armGroup.rotation.y = -0.25;
+    armGroup.scale.set(0.62, 0.62, 0.62);
 
     let isHovered = false;
     let time = 0;
@@ -260,19 +306,24 @@
         animProgress = Math.max(animProgress - 0.01, 0);
       }
 
-      armGroup.rotation.y = -0.3 + Math.sin(time * 0.5) * 0.12 * animProgress;
-
-      joint1Group.rotation.z = Math.sin(time * 0.6) * 0.2 * animProgress;
-      joint2Group.rotation.z = Math.sin(time * 0.5 + 1) * 0.25 * animProgress;
-      joint3Group.rotation.z = Math.sin(time * 0.55 + 2) * 0.18 * animProgress;
-
-      wristGroup.rotation.y = time * 0.6 * animProgress;
-
-      const clawAnim = Math.sin(time * 1.5) * 0.15 * animProgress;
-      claw1.position.x = 0.22 + clawAnim;
-      claw2.position.x = -0.22 - clawAnim;
-
       baseGroup.rotation.y += 0.002;
+
+      const shoulderBase = -0.25;
+      shoulderGroup.rotation.z = shoulderBase + Math.sin(time * 0.5) * 0.15 * animProgress;
+
+      const elbowBase = 0.85;
+      elbowGroup.rotation.z = elbowBase + Math.sin(time * 0.4 + 1) * 0.2 * animProgress;
+
+      const wristBase = -0.15;
+      wristGroup.rotation.z = wristBase + Math.sin(time * 0.45 + 2) * 0.12 * animProgress;
+
+      wristJoint2.rotation.x = Math.PI / 2 + time * 0.6 * animProgress;
+
+      const clawAnim = Math.sin(time * 1.5) * 0.12 * animProgress;
+      claw1.position.x = 0.18 + clawAnim;
+      claw2.position.x = -0.18 - clawAnim;
+      finger1.position.x = 0.18 + clawAnim;
+      finger2.position.x = -0.18 - clawAnim;
 
       meshMaterial.opacity = 0.32 + Math.sin(time * 1.8) * 0.06;
       annotationLineMaterial.opacity = 0.22 + Math.sin(time * 2.2) * 0.06;
