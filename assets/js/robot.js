@@ -16,8 +16,9 @@
     const width = container.offsetWidth;
     const height = container.offsetHeight;
 
-    const camera = new THREE.PerspectiveCamera(50, width / height, 0.1, 100);
-    camera.position.set(3, 2.5, 6);
+    const camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 100);
+    camera.position.set(2, 3, 10);
+    camera.lookAt(0, 2, 0);
 
     const renderer = new THREE.WebGLRenderer({
       canvas,
@@ -176,8 +177,9 @@
     claw2Wire.position.set(-0.25, -0.05, 0);
     endEffectorGroup.add(claw2Wire);
 
-    armGroup.position.set(0, -0.5, 0);
-    armGroup.rotation.y = -0.3;
+    armGroup.position.set(0, 0.5, 0);
+    armGroup.rotation.y = -0.4;
+    armGroup.scale.set(0.7, 0.7, 0.7);
 
     let isHovered = false;
     let time = 0;
