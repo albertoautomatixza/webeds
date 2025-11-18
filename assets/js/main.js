@@ -8,6 +8,7 @@ const ready = () => {
   const progressCircle = document.querySelector('.loading-ring-progress');
   const progressLabel = document.getElementById('loading-percentage');
   const yearTarget = document.getElementById('year');
+  const scrollTopButton = document.getElementById('scroll-top-button');
 
   const updateHeader = () => {
     if (!header) return;
@@ -558,6 +559,34 @@ const ready = () => {
 
     requestAnimationFrame(step);
   });
+
+  const handleScrollTopButton = () => {
+    if (!scrollTopButton) return;
+
+    const servicesSection = document.getElementById('servicios');
+    if (!servicesSection) return;
+
+    const servicesTop = servicesSection.offsetTop;
+    const currentScroll = window.scrollY;
+
+    if (currentScroll > servicesTop) {
+      scrollTopButton.classList.add('visible');
+    } else {
+      scrollTopButton.classList.remove('visible');
+    }
+  };
+
+  if (scrollTopButton) {
+    scrollTopButton.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+
+    window.addEventListener('scroll', handleScrollTopButton, { passive: true });
+    handleScrollTopButton();
+  }
 };
 
 document.addEventListener('DOMContentLoaded', ready);

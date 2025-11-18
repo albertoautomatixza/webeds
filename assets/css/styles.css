@@ -1420,6 +1420,73 @@ main {
   color: var(--yellow);
 }
 
+/* Scroll to Top button */
+.scroll-top-button {
+  position: fixed;
+  bottom: 6.5rem;
+  right: 1.75rem;
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(17, 17, 17, 0.85);
+  border: 1.5px solid rgba(250, 204, 21, 0.35);
+  color: var(--yellow);
+  backdrop-filter: blur(8px);
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px);
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 19;
+}
+
+.scroll-top-button.visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.scroll-top-button svg {
+  width: 1.5rem;
+  height: 1.5rem;
+  stroke-width: 2.5;
+}
+
+.scroll-top-button span {
+  position: absolute;
+  right: calc(100% + 0.75rem);
+  background: rgba(0, 0, 0, 0.85);
+  color: var(--white);
+  padding: 0.4rem 0.85rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  opacity: 0;
+  transform: translateX(12px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  pointer-events: none;
+}
+
+.scroll-top-button:hover {
+  transform: translateY(-3px) scale(1.05);
+  border-color: rgba(250, 204, 21, 0.5);
+  background: radial-gradient(circle at 30% 30%, rgba(250, 204, 21, 0.25), rgba(17, 17, 17, 0.95));
+  box-shadow: 0 12px 28px rgba(250, 204, 21, 0.25);
+}
+
+.scroll-top-button:hover span {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.scroll-top-button:active {
+  transform: translateY(-2px) scale(1.02);
+}
+
 /* WhatsApp button */
 .whatsapp-button {
   position: fixed;
