@@ -46,17 +46,6 @@
       opacity: 0.35
     });
 
-    const annotationLineMaterial = new THREE.LineBasicMaterial({
-      color: 0xffffff,
-      transparent: true,
-      opacity: 0.25
-    });
-
-    const annotationDotMaterial = new THREE.MeshBasicMaterial({
-      color: 0xffffff,
-      transparent: true,
-      opacity: 0.4
-    });
 
     const armGroup = new THREE.Group();
     scene.add(armGroup);
@@ -244,38 +233,6 @@
     finger2.rotation.z = 0.2;
     endEffectorGroup.add(finger2);
 
-    const annotations = [];
-
-    function createAnnotation(position, direction, length = 1.5) {
-      const group = new THREE.Group();
-
-      const dotGeo = new THREE.SphereGeometry(0.035, 8, 8);
-      const dot = new THREE.Mesh(dotGeo, annotationDotMaterial);
-      group.add(dot);
-
-      const linePoints = [
-        new THREE.Vector3(0, 0, 0),
-        new THREE.Vector3(direction.x * length, direction.y * length, direction.z * length)
-      ];
-      const lineGeo = new THREE.BufferGeometry().setFromPoints(linePoints);
-      const line = new THREE.Line(lineGeo, annotationLineMaterial);
-      group.add(line);
-
-      group.position.copy(position);
-      armGroup.add(group);
-      annotations.push({ group, dot, line });
-      return group;
-    }
-
-    createAnnotation(new THREE.Vector3(0.9, 0, 0.5), new THREE.Vector3(1.3, -0.2, 0.7), 1.9);
-    createAnnotation(new THREE.Vector3(0.4, 1.2, 0.4), new THREE.Vector3(1, 0.3, 0.6), 1.7);
-    createAnnotation(new THREE.Vector3(-0.35, 1.8, -0.3), new THREE.Vector3(-0.9, 0.4, -0.6), 1.6);
-    createAnnotation(new THREE.Vector3(0.5, 2.5, 0.35), new THREE.Vector3(1.1, 0.5, 0.5), 1.8);
-    createAnnotation(new THREE.Vector3(-0.4, 3.5, -0.25), new THREE.Vector3(-0.9, 0.6, -0.5), 1.7);
-    createAnnotation(new THREE.Vector3(0.45, 4.8, 0.3), new THREE.Vector3(1, 0.7, 0.4), 1.6);
-    createAnnotation(new THREE.Vector3(-0.3, 5.8, -0.2), new THREE.Vector3(-0.8, 0.8, -0.5), 1.5);
-    createAnnotation(new THREE.Vector3(0.3, 6.5, 0.2), new THREE.Vector3(0.9, 0.5, 0.5), 1.4);
-
     armGroup.position.set(0, 0, 0);
     armGroup.rotation.y = -0.25;
     armGroup.scale.set(0.62, 0.62, 0.62);
@@ -326,14 +283,6 @@
       finger2.position.x = -0.18 - clawAnim;
 
       meshMaterial.opacity = 0.32 + Math.sin(time * 1.8) * 0.06;
-      annotationLineMaterial.opacity = 0.22 + Math.sin(time * 2.2) * 0.06;
-      annotationDotMaterial.opacity = 0.35 + Math.sin(time * 2) * 0.08;
-
-      annotations.forEach((ann, i) => {
-        const offset = i * 0.5;
-        const pulse = Math.sin(time * 2 + offset) * 0.02 + 0.02;
-        ann.dot.scale.set(1 + pulse, 1 + pulse, 1 + pulse);
-      });
 
       renderer.render(scene, camera);
     }
