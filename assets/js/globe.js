@@ -15,7 +15,7 @@ const HERO_GLOBE_CONFIG = {
   mapBrightness: 1.2,
   baseColor: [1, 1, 1],
   mapColor: [0.65, 0.7, 0.78],
-  markerColor: [251 / 255, 100 / 255, 21 / 255],
+  markerColor: [250 / 255, 204 / 255, 21 / 255],
   glowColor: [1, 1, 1],
   markers: [
     { location: [19.4326, -99.1332], size: 0.12 },
