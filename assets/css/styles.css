@@ -1364,9 +1364,10 @@ main {
 }
 
 .footer-logo {
-  width: 48px;
-  height: auto;
+  height: 2.8rem;
+  width: auto;
   display: block;
+  object-fit: contain;
 }
 
 .footer-links h3 {
