@@ -188,11 +188,11 @@ main {
   background: conic-gradient(
     from 0deg,
     transparent 0deg,
-    transparent 90deg,
-    rgba(255,255,255,0.18) 100deg,
-    rgba(255,255,255,0.55) 108deg,
-    rgba(255,255,255,0.18) 116deg,
-    transparent 126deg,
+    transparent 80deg,
+    rgba(255,255,255,0.15) 93deg,
+    rgba(255,255,255,0.9) 105deg,
+    rgba(255,255,255,0.15) 117deg,
+    transparent 130deg,
     transparent 360deg
   );
   opacity: 0;
@@ -370,11 +370,11 @@ main {
   background: conic-gradient(
     from 0deg,
     transparent 0deg,
-    transparent 90deg,
-    rgba(255,255,255,0.18) 100deg,
-    rgba(255,255,255,0.55) 108deg,
-    rgba(255,255,255,0.18) 116deg,
-    transparent 126deg,
+    transparent 80deg,
+    rgba(255,255,255,0.15) 93deg,
+    rgba(255,255,255,0.9) 105deg,
+    rgba(255,255,255,0.15) 117deg,
+    transparent 130deg,
     transparent 360deg
   );
   opacity: 0;
