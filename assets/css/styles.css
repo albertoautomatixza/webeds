@@ -188,10 +188,11 @@ main {
   background: conic-gradient(
     from 0deg,
     transparent 0deg,
-    transparent 75deg,
-    #ffffff 110deg,
-    #000000 145deg,
-    transparent 180deg,
+    transparent 90deg,
+    rgba(255,255,255,0.18) 100deg,
+    rgba(255,255,255,0.55) 108deg,
+    rgba(255,255,255,0.18) 116deg,
+    transparent 126deg,
     transparent 360deg
   );
   opacity: 0;
@@ -203,8 +204,8 @@ main {
 .btn::after {
   content: '';
   position: absolute;
-  inset: 3px;
-  border-radius: 7px;
+  inset: 2px;
+  border-radius: 8px;
   background: var(--yellow);
   z-index: 1;
 }
@@ -369,10 +370,11 @@ main {
   background: conic-gradient(
     from 0deg,
     transparent 0deg,
-    transparent 75deg,
-    #ffffff 110deg,
-    #000000 145deg,
-    transparent 180deg,
+    transparent 90deg,
+    rgba(255,255,255,0.18) 100deg,
+    rgba(255,255,255,0.55) 108deg,
+    rgba(255,255,255,0.18) 116deg,
+    transparent 126deg,
     transparent 360deg
   );
   opacity: 0;
@@ -383,8 +385,8 @@ main {
 .header-cta::after {
   content: '';
   position: absolute;
-  inset: 3px;
-  border-radius: 7px;
+  inset: 2px;
+  border-radius: 8px;
   background: var(--yellow);
   z-index: 1;
 }
