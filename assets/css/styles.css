@@ -187,6 +187,25 @@ main {
   outline-offset: 3px;
 }
 
+.btn-outline {
+  background: transparent;
+  color: var(--white);
+  border: 2px solid var(--white);
+  box-shadow: none;
+}
+
+.btn-outline:hover {
+  background: var(--white);
+  color: var(--black);
+  box-shadow: 0 28px 60px rgba(255, 255, 255, 0.15);
+}
+
+.hero-btns {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
 
 /* Header */
 .site-header {
