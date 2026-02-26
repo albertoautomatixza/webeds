@@ -1421,7 +1421,7 @@ main {
   opacity: 0;
   visibility: hidden;
   transform: translateY(20px);
-  transition: color 0.3s ease, box-shadow 0.3s ease, opacity 0.35s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.35s cubic-bezier(0.4, 0, 0.2, 1), transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: box-shadow 0.3s ease, opacity 0.35s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.35s cubic-bezier(0.4, 0, 0.2, 1), transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
   overflow: hidden;
   z-index: 19;
 }
@@ -1469,7 +1469,10 @@ main {
   width: 1.5rem;
   height: 1.5rem;
   stroke-width: 2.5;
-  position: relative;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   z-index: 2;
 }
 
