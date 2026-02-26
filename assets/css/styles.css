@@ -1734,6 +1734,16 @@ main {
   white-space: nowrap;
 }
 
+.footer-credit a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.footer-credit a:hover {
+  color: var(--yellow);
+}
+
 .footer-legal {
   display: flex;
   gap: 1.5rem;
