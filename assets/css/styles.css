@@ -712,8 +712,8 @@ main {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  width: 3rem;
-  height: 3rem;
+  width: 3.5rem;
+  height: 3.5rem;
   border-radius: 10px;
   border: 1px solid var(--yellow);
   background: #111111;
@@ -761,6 +761,8 @@ main {
 }
 
 .services-arrow svg {
+  width: 1.5rem;
+  height: 1.5rem;
   position: relative;
   z-index: 2;
 }
@@ -1178,8 +1180,8 @@ main {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  width: 3.25rem;
-  height: 3.25rem;
+  width: 3.5rem;
+  height: 3.5rem;
   border-radius: 10px;
   border: 1px solid var(--yellow);
   background: #111111;
@@ -1227,8 +1229,8 @@ main {
 }
 
 .clients-arrow svg {
-  width: 1.35rem;
-  height: 1.35rem;
+  width: 1.5rem;
+  height: 1.5rem;
   stroke: currentColor;
   stroke-width: 1.4;
   fill: none;
@@ -1775,8 +1777,8 @@ main {
 
 @media (max-width: 640px) {
   .services-arrow {
-    width: 2.6rem;
-    height: 2.6rem;
+    width: 3rem;
+    height: 3rem;
   }
 
   .service-card {
