@@ -1415,9 +1415,8 @@ main {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background: rgba(17, 17, 17, 0.85);
+  background: #111111;
   color: var(--yellow);
-  backdrop-filter: blur(8px);
   cursor: pointer;
   opacity: 0;
   visibility: hidden;
@@ -1456,7 +1455,7 @@ main {
   position: absolute;
   inset: 2px;
   border-radius: 8px;
-  background: rgba(17, 17, 17, 0.85);
+  background: #111111;
   z-index: 1;
 }
 
