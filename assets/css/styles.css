@@ -180,15 +180,18 @@ main {
 .btn::before {
   content: '';
   position: absolute;
-  inset: -2px;
-  border-radius: 12px;
+  width: 250%;
+  aspect-ratio: 1;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
   background: conic-gradient(
-    from var(--beam-angle, 0deg),
+    from 0deg,
     transparent 0deg,
-    transparent 60deg,
-    #fff 120deg,
-    #000 180deg,
-    transparent 240deg,
+    transparent 75deg,
+    #ffffff 110deg,
+    #000000 145deg,
+    transparent 180deg,
     transparent 360deg
   );
   opacity: 0;
@@ -200,11 +203,10 @@ main {
 .btn::after {
   content: '';
   position: absolute;
-  inset: 2px;
-  border-radius: 8px;
+  inset: 3px;
+  border-radius: 7px;
   background: var(--yellow);
   z-index: 1;
-  transition: background 0.3s ease;
 }
 
 .btn span,
@@ -213,20 +215,14 @@ main {
   z-index: 2;
 }
 
-@keyframes beam-spin {
-  from { --beam-angle: 0deg; }
-  to   { --beam-angle: 360deg; }
-}
-
-@property --beam-angle {
-  syntax: '<angle>';
-  initial-value: 0deg;
-  inherits: false;
+@keyframes border-rotate {
+  from { rotate: 0deg; }
+  to   { rotate: 360deg; }
 }
 
 .btn:hover::before {
   opacity: 1;
-  animation: beam-spin 1.8s linear infinite;
+  animation: border-rotate 1.6s linear infinite;
 }
 
 .btn:hover {
@@ -365,15 +361,18 @@ main {
 .header-cta::before {
   content: '';
   position: absolute;
-  inset: -2px;
-  border-radius: 12px;
+  width: 250%;
+  aspect-ratio: 1;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
   background: conic-gradient(
-    from var(--beam-angle, 0deg),
+    from 0deg,
     transparent 0deg,
-    transparent 60deg,
-    #fff 120deg,
-    #000 180deg,
-    transparent 240deg,
+    transparent 75deg,
+    #ffffff 110deg,
+    #000000 145deg,
+    transparent 180deg,
     transparent 360deg
   );
   opacity: 0;
@@ -384,15 +383,15 @@ main {
 .header-cta::after {
   content: '';
   position: absolute;
-  inset: 2px;
-  border-radius: 8px;
+  inset: 3px;
+  border-radius: 7px;
   background: var(--yellow);
   z-index: 1;
 }
 
 .header-cta:hover::before {
   opacity: 1;
-  animation: beam-spin 1.8s linear infinite;
+  animation: border-rotate 1.6s linear infinite;
 }
 
 .header-cta:hover {
