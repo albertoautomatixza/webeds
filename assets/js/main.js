@@ -97,8 +97,8 @@ const ready = () => {
   }
 
   const initStatTicker = () => {
-    const statNumbers = Array.from(document.querySelectorAll('.stat-number[data-stat-value]'));
-    if (!statNumbers.length) return;
+    const allStatNumbers = Array.from(document.querySelectorAll('.stat-number[data-stat-value]'));
+    if (!allStatNumbers.length) return;
 
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
@@ -167,7 +167,7 @@ const ready = () => {
       stat.dataset.tickerReady = 'true';
     };
 
-    statNumbers.forEach((stat) => {
+    allStatNumbers.forEach((stat) => {
       buildTicker(stat);
     });
 
@@ -177,71 +177,60 @@ const ready = () => {
       }, 100);
     };
 
-    const activateSequence = () => {
-      if (activateSequence.hasStarted) return;
-      activateSequence.hasStarted = true;
-      statNumbers.forEach((stat, index) => {
-        window.setTimeout(() => activate(stat), index * 200);
-      });
-      cleanupScrollFallback();
-    };
-    activateSequence.hasStarted = false;
+    const initGroupTicker = (groupStats) => {
+      let hasStarted = false;
 
-    if (prefersReducedMotion.matches) {
-      statNumbers.forEach((stat) => activate(stat));
-      return;
-    }
+      const activateGroup = () => {
+        if (hasStarted) return;
+        hasStarted = true;
+        groupStats.forEach((stat, index) => {
+          window.setTimeout(() => activate(stat), index * 200);
+        });
+        window.removeEventListener('scroll', scrollFallback);
+        window.removeEventListener('resize', scrollFallback);
+      };
 
-    const statsGroup = statNumbers[0].closest('.stats-grid') || statNumbers[0].parentElement;
-    const observerTarget = statsGroup || statNumbers[0];
-
-    const scrollFallback = () => {
-      if (activateSequence.hasStarted || !observerTarget) return;
-      const rect = observerTarget.getBoundingClientRect();
-      const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
-      if (rect.top <= viewportHeight * 0.85 && rect.bottom >= 0) {
-        activateSequence();
-      }
-    };
-
-    const cleanupScrollFallback = () => {
-      window.removeEventListener('scroll', scrollFallback);
-      window.removeEventListener('resize', scrollFallback);
-    };
-
-    if ('IntersectionObserver' in window && observerTarget) {
-      const observer = new IntersectionObserver(
-        (entries, obs) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              activateSequence();
-              obs.disconnect();
-            }
-          });
-        },
-        { threshold: 0.3, rootMargin: '0px 0px -15% 0px' }
-      );
-
-      observer.observe(observerTarget);
-    }
-
-    window.addEventListener('scroll', scrollFallback, { passive: true });
-    window.addEventListener('resize', scrollFallback);
-    scrollFallback();
-
-    const handlePreferenceChange = () => {
       if (prefersReducedMotion.matches) {
-        statNumbers.forEach((stat) => activate(stat));
-      } else {
-        activateSequence();
+        groupStats.forEach((stat) => activate(stat));
+        return;
       }
+
+      const observerTarget = groupStats[0].closest('.hero-stats-grid, .stats-grid') || groupStats[0].parentElement;
+
+      const scrollFallback = () => {
+        if (hasStarted || !observerTarget) return;
+        const rect = observerTarget.getBoundingClientRect();
+        const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
+        if (rect.top <= viewportHeight * 0.85 && rect.bottom >= 0) {
+          activateGroup();
+        }
+      };
+
+      if ('IntersectionObserver' in window && observerTarget) {
+        const observer = new IntersectionObserver(
+          (entries, obs) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                activateGroup();
+                obs.disconnect();
+              }
+            });
+          },
+          { threshold: 0.3, rootMargin: '0px 0px -10% 0px' }
+        );
+        observer.observe(observerTarget);
+      }
+
+      window.addEventListener('scroll', scrollFallback, { passive: true });
+      window.addEventListener('resize', scrollFallback);
+      scrollFallback();
     };
 
-    if (typeof prefersReducedMotion.addEventListener === 'function') {
-      prefersReducedMotion.addEventListener('change', handlePreferenceChange);
-    } else if (typeof prefersReducedMotion.addListener === 'function') {
-      prefersReducedMotion.addListener(handlePreferenceChange);
-    }
+    const heroStats = allStatNumbers.filter((s) => s.closest('.hero-stats-grid'));
+    const otherStats = allStatNumbers.filter((s) => !s.closest('.hero-stats-grid'));
+
+    if (heroStats.length) initGroupTicker(heroStats);
+    if (otherStats.length) initGroupTicker(otherStats);
   };
 
   initStatTicker();
