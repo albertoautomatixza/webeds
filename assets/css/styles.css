@@ -223,7 +223,7 @@ main {
 
 .btn:hover::before {
   opacity: 1;
-  animation: border-rotate 4s linear infinite;
+  animation: border-rotate 2.8s linear infinite;
 }
 
 .btn:hover {
@@ -393,7 +393,7 @@ main {
 
 .header-cta:hover::before {
   opacity: 1;
-  animation: border-rotate 4s linear infinite;
+  animation: border-rotate 2.8s linear infinite;
 }
 
 .header-cta:hover {
