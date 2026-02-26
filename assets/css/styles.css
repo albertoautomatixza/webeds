@@ -1415,14 +1415,14 @@ main {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background: var(--yellow);
-  color: var(--black);
+  background: rgba(17, 17, 17, 0.85);
+  color: var(--yellow);
+  backdrop-filter: blur(8px);
   cursor: pointer;
   opacity: 0;
   visibility: hidden;
   transform: translateY(20px);
   transition: color 0.3s ease, box-shadow 0.3s ease, opacity 0.35s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.35s cubic-bezier(0.4, 0, 0.2, 1), transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: 0 20px 45px rgba(250, 204, 21, 0.25);
   overflow: hidden;
   z-index: 19;
 }
@@ -1439,9 +1439,9 @@ main {
     from 0deg,
     transparent 0deg,
     transparent 80deg,
-    rgba(255,255,255,0.15) 93deg,
-    rgba(255,255,255,0.9) 105deg,
-    rgba(255,255,255,0.15) 117deg,
+    rgba(250, 204, 21, 0.15) 93deg,
+    rgba(250, 204, 21, 0.9) 105deg,
+    rgba(250, 204, 21, 0.15) 117deg,
     transparent 130deg,
     transparent 360deg
   );
@@ -1456,7 +1456,7 @@ main {
   position: absolute;
   inset: 2px;
   border-radius: 8px;
-  background: var(--yellow);
+  background: rgba(17, 17, 17, 0.85);
   z-index: 1;
 }
 
@@ -1480,8 +1480,7 @@ main {
 }
 
 .scroll-top-button:hover {
-  color: #fff;
-  box-shadow: 0 20px 45px rgba(250, 204, 21, 0.35);
+  box-shadow: 0 12px 28px rgba(250, 204, 21, 0.25);
 }
 
 .scroll-top-button:active {
