@@ -415,7 +415,8 @@ main {
 }
 
 .nav-list a:hover,
-.nav-list a:focus-visible {
+.nav-list a:focus-visible,
+.nav-list a.nav-active {
   background: rgba(250, 204, 21, 0.15);
   color: var(--yellow);
 }
