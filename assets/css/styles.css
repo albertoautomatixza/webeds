@@ -1411,20 +1411,53 @@ main {
   right: 1.75rem;
   width: 3.5rem;
   height: 3.5rem;
-  border-radius: 50%;
+  border-radius: 10px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background: rgba(17, 17, 17, 0.85);
-  border: 1.5px solid rgba(250, 204, 21, 0.35);
-  color: var(--yellow);
-  backdrop-filter: blur(8px);
+  background: var(--yellow);
+  color: var(--black);
   cursor: pointer;
   opacity: 0;
   visibility: hidden;
   transform: translateY(20px);
-  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: color 0.3s ease, box-shadow 0.3s ease, opacity 0.35s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.35s cubic-bezier(0.4, 0, 0.2, 1), transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 20px 45px rgba(250, 204, 21, 0.25);
+  overflow: hidden;
   z-index: 19;
+}
+
+.scroll-top-button::before {
+  content: '';
+  position: absolute;
+  width: 250%;
+  aspect-ratio: 1;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+  background: conic-gradient(
+    from 0deg,
+    transparent 0deg,
+    transparent 80deg,
+    rgba(255,255,255,0.15) 93deg,
+    rgba(255,255,255,0.9) 105deg,
+    rgba(255,255,255,0.15) 117deg,
+    transparent 130deg,
+    transparent 360deg
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 0;
+  animation: none;
+}
+
+.scroll-top-button::after {
+  content: '';
+  position: absolute;
+  inset: 2px;
+  border-radius: 8px;
+  background: var(--yellow);
+  z-index: 1;
 }
 
 .scroll-top-button.visible {
@@ -1437,34 +1470,18 @@ main {
   width: 1.5rem;
   height: 1.5rem;
   stroke-width: 2.5;
+  position: relative;
+  z-index: 2;
 }
 
-.scroll-top-button span {
-  position: absolute;
-  right: calc(100% + 0.75rem);
-  background: rgba(0, 0, 0, 0.85);
-  color: var(--white);
-  padding: 0.4rem 0.85rem;
-  border-radius: 999px;
-  font-size: 0.8rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  opacity: 0;
-  transform: translateX(12px);
-  transition: opacity 0.3s ease, transform 0.3s ease;
-  pointer-events: none;
+.scroll-top-button:hover::before {
+  opacity: 1;
+  animation: border-rotate 2.8s linear infinite;
 }
 
 .scroll-top-button:hover {
-  transform: translateY(-3px) scale(1.05);
-  border-color: rgba(250, 204, 21, 0.5);
-  background: radial-gradient(circle at 30% 30%, rgba(250, 204, 21, 0.25), rgba(17, 17, 17, 0.95));
-  box-shadow: 0 12px 28px rgba(250, 204, 21, 0.25);
-}
-
-.scroll-top-button:hover span {
-  opacity: 1;
-  transform: translateX(0);
+  color: #fff;
+  box-shadow: 0 20px 45px rgba(250, 204, 21, 0.35);
 }
 
 .scroll-top-button:active {
