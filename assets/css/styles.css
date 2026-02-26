@@ -649,7 +649,7 @@ main {
 .bento-icon {
   width: 3rem;
   height: 3rem;
-  border-radius: 50% 50% 0 0;
+  border-radius: 10px;
   background: rgba(250, 204, 21, 0.1);
   border: 1px solid rgba(250, 204, 21, 0.3);
   color: var(--yellow);
@@ -1087,7 +1087,7 @@ main {
 .benefit-icon {
   width: 3.25rem;
   height: 3.25rem;
-  border-radius: 50% 50% 0 0;
+  border-radius: 10px;
   background: rgba(250, 204, 21, 0.12);
   border: 1px solid rgba(250, 204, 21, 0.35);
   color: var(--yellow);
@@ -1610,7 +1610,7 @@ main {
 .contact-card .icon {
   width: 2.75rem;
   height: 2.75rem;
-  border-radius: 50% 50% 0 0;
+  border-radius: 10px;
   background: rgba(250, 204, 21, 0.12);
   border: 1px solid rgba(250, 204, 21, 0.35);
   color: var(--yellow);
