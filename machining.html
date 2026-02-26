@@ -248,9 +248,20 @@
         background: rgba(250,204,21,0.05);
       }
 
+      .mach-cap-icon-wrap {
+        width: 3rem;
+        height: 3rem;
+        border-radius: 50% 50% 0 0;
+        background: rgba(250, 204, 21, 0.1);
+        border: 1px solid rgba(250, 204, 21, 0.3);
+        display: grid;
+        place-items: center;
+        flex-shrink: 0;
+      }
+
       .mach-cap-icon {
-        width: 2.25rem;
-        height: 2.25rem;
+        width: 1.4rem;
+        height: 1.4rem;
         stroke: var(--yellow);
         fill: none;
         stroke-width: 1.5;
@@ -337,27 +348,27 @@
           </div>
           <div class="mach-capabilities-grid">
             <div class="mach-cap-item" data-reveal data-reveal-delay="0">
-              <svg class="mach-cap-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+              <div class="mach-cap-icon-wrap"><svg class="mach-cap-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div>
               <span class="mach-cap-label">Multi-Axis</span>
             </div>
             <div class="mach-cap-item" data-reveal data-reveal-delay="60">
-              <svg class="mach-cap-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
+              <div class="mach-cap-icon-wrap"><svg class="mach-cap-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg></div>
               <span class="mach-cap-label">±0.001&quot; Tol.</span>
             </div>
             <div class="mach-cap-item" data-reveal data-reveal-delay="120">
-              <svg class="mach-cap-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+              <div class="mach-cap-icon-wrap"><svg class="mach-cap-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
               <span class="mach-cap-label">CAD / CAM</span>
             </div>
             <div class="mach-cap-item" data-reveal data-reveal-delay="180">
-              <svg class="mach-cap-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2v-4M9 21H5a2 2 0 0 1-2-2v-4m0 0h18"/></svg>
+              <div class="mach-cap-icon-wrap"><svg class="mach-cap-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2v-4M9 21H5a2 2 0 0 1-2-2v-4m0 0h18"/></svg></div>
               <span class="mach-cap-label">All Alloys</span>
             </div>
             <div class="mach-cap-item" data-reveal data-reveal-delay="240">
-              <svg class="mach-cap-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+              <div class="mach-cap-icon-wrap"><svg class="mach-cap-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
               <span class="mach-cap-label">CMM Inspect.</span>
             </div>
             <div class="mach-cap-item" data-reveal data-reveal-delay="300">
-              <svg class="mach-cap-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+              <div class="mach-cap-icon-wrap"><svg class="mach-cap-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
               <span class="mach-cap-label">Fast Delivery</span>
             </div>
           </div>
