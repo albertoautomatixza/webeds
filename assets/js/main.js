@@ -4,9 +4,6 @@ const ready = () => {
   const mobileMenu = document.getElementById('mobile-menu');
   const headerCta = document.querySelector('.header-cta');
   const navLinks = document.querySelectorAll('a[href^="#"]');
-  const loadingScreen = document.getElementById('loading-screen');
-  const progressCircle = document.querySelector('.loading-ring-progress');
-  const progressLabel = document.getElementById('loading-percentage');
   const yearTarget = document.getElementById('year');
   const scrollTopButton = document.getElementById('scroll-top-button');
 
@@ -514,51 +511,6 @@ const ready = () => {
   };
 
   initClientsSlider();
-
-  window.addEventListener('load', () => {
-    if (!loadingScreen) return;
-
-    if (!progressCircle || !progressLabel) {
-      loadingScreen.classList.add('hidden');
-      loadingScreen.setAttribute('aria-busy', 'false');
-      return;
-    }
-
-    const radius = progressCircle.r.baseVal.value;
-    if (!radius) {
-      loadingScreen.classList.add('hidden');
-      loadingScreen.setAttribute('aria-busy', 'false');
-      return;
-    }
-    const circumference = 2 * Math.PI * radius;
-    progressCircle.style.strokeDasharray = `${circumference} ${circumference}`;
-    progressCircle.style.strokeDashoffset = circumference;
-    progressLabel.textContent = '0%';
-
-    const duration = 5000;
-    const start = performance.now();
-
-    const step = (now) => {
-      const elapsed = now - start;
-      const progress = Math.min(elapsed / duration, 1);
-      const offset = circumference * (1 - progress);
-      progressCircle.style.strokeDashoffset = offset;
-      progressLabel.textContent = `${Math.round(progress * 100)}%`;
-
-      if (progress < 1) {
-        requestAnimationFrame(step);
-      } else {
-        progressCircle.style.strokeDashoffset = 0;
-        progressLabel.textContent = '100%';
-        setTimeout(() => {
-          loadingScreen.classList.add('hidden');
-          loadingScreen.setAttribute('aria-busy', 'false');
-        }, 400);
-      }
-    };
-
-    requestAnimationFrame(step);
-  });
 
   const handleScrollTopButton = () => {
     if (!scrollTopButton) return;
