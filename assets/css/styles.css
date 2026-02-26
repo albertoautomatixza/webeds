@@ -714,23 +714,68 @@ main {
   transform: translateY(-50%);
   width: 3rem;
   height: 3rem;
-  border-radius: 999px;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  background: rgba(17, 17, 17, 0.7);
-  display: grid;
-  place-items: center;
-  color: rgba(255, 255, 255, 0.7);
+  border-radius: 10px;
+  border: 1px solid var(--yellow);
+  background: #111111;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--yellow);
   cursor: pointer;
-  transition: transform 0.25s ease, background 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+  transition: box-shadow 0.3s ease, transform 0.25s ease;
   z-index: 2;
-  backdrop-filter: blur(8px);
+  overflow: hidden;
+}
+
+.services-arrow::before {
+  content: '';
+  position: absolute;
+  width: 250%;
+  aspect-ratio: 1;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+  background: conic-gradient(
+    from 0deg,
+    transparent 0deg,
+    transparent 80deg,
+    rgba(255, 255, 255, 0.1) 93deg,
+    rgba(255, 255, 255, 0.85) 105deg,
+    rgba(255, 255, 255, 0.1) 117deg,
+    transparent 130deg,
+    transparent 360deg
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 0;
+  animation: none;
+}
+
+.services-arrow::after {
+  content: '';
+  position: absolute;
+  inset: 1px;
+  border-radius: 9px;
+  background: #111111;
+  z-index: 1;
+}
+
+.services-arrow svg {
+  position: relative;
+  z-index: 2;
+}
+
+.services-arrow:hover::before {
+  opacity: 1;
+  animation: border-rotate 2.8s linear infinite;
 }
 
 .services-arrow:hover {
-  transform: translateY(-50%) scale(1.05);
-  background: rgba(250, 204, 21, 0.18);
-  border-color: rgba(250, 204, 21, 0.35);
-  color: var(--yellow);
+  box-shadow: 0 8px 20px rgba(255, 255, 255, 0.15);
+}
+
+.services-arrow:active {
+  transform: translateY(-50%) scale(1.02);
 }
 
 .services-arrow:focus-visible {
@@ -1135,15 +1180,50 @@ main {
   transform: translateY(-50%);
   width: 3.25rem;
   height: 3.25rem;
-  border-radius: 50%;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.2), rgba(17, 17, 17, 0.85));
-  display: grid;
-  place-items: center;
-  color: rgba(255, 255, 255, 0.82);
+  border-radius: 10px;
+  border: 1px solid var(--yellow);
+  background: #111111;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--yellow);
   cursor: pointer;
-  transition: transform 0.35s ease, border-color 0.35s ease, background 0.35s ease, box-shadow 0.35s ease;
+  transition: box-shadow 0.3s ease, transform 0.35s ease;
   z-index: 3;
+  overflow: hidden;
+}
+
+.clients-arrow::before {
+  content: '';
+  position: absolute;
+  width: 250%;
+  aspect-ratio: 1;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+  background: conic-gradient(
+    from 0deg,
+    transparent 0deg,
+    transparent 80deg,
+    rgba(255, 255, 255, 0.1) 93deg,
+    rgba(255, 255, 255, 0.85) 105deg,
+    rgba(255, 255, 255, 0.1) 117deg,
+    transparent 130deg,
+    transparent 360deg
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 0;
+  animation: none;
+}
+
+.clients-arrow::after {
+  content: '';
+  position: absolute;
+  inset: 1px;
+  border-radius: 9px;
+  background: #111111;
+  z-index: 1;
 }
 
 .clients-arrow svg {
@@ -1152,13 +1232,21 @@ main {
   stroke: currentColor;
   stroke-width: 1.4;
   fill: none;
+  position: relative;
+  z-index: 2;
+}
+
+.clients-arrow:hover::before {
+  opacity: 1;
+  animation: border-rotate 2.8s linear infinite;
 }
 
 .clients-arrow:hover {
-  transform: translateY(-50%) scale(1.08);
-  border-color: rgba(250, 204, 21, 0.35);
-  background: radial-gradient(circle at 30% 30%, rgba(250, 204, 21, 0.35), rgba(17, 17, 17, 0.85));
-  box-shadow: 0 18px 36px rgba(250, 204, 21, 0.25);
+  box-shadow: 0 8px 20px rgba(255, 255, 255, 0.15);
+}
+
+.clients-arrow:active {
+  transform: translateY(-50%) scale(1.02);
 }
 
 .clients-arrow:focus-visible {
