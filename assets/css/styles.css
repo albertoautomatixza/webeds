@@ -188,16 +188,16 @@ main {
 }
 
 .btn-outline {
-  background: transparent;
-  color: var(--white);
-  border: 2px solid var(--white);
-  box-shadow: none;
+  background: var(--yellow);
+  color: var(--black);
+  border: none;
+  box-shadow: 0 20px 45px rgba(250, 204, 21, 0.25);
 }
 
 .btn-outline:hover {
-  background: var(--white);
+  background: #ffd830;
   color: var(--black);
-  box-shadow: 0 28px 60px rgba(255, 255, 255, 0.15);
+  box-shadow: 0 28px 60px rgba(250, 204, 21, 0.35);
 }
 
 .hero-btns {
