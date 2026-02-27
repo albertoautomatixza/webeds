@@ -972,41 +972,61 @@
       (function() {
         const DURATION = 22000;
         const STREAK_HEIGHT = 120;
+        const FLASH_WINDOW = 18;
 
-        function scheduleDotFlashes() {
+        function runFlashLoop() {
           const spine = document.querySelector('.timeline-spine');
           const dots = document.querySelectorAll('.tl-dot');
           if (!spine || !dots.length) return;
 
-          const spineRect = spine.getBoundingClientRect();
-          const spineTop = spineRect.top + window.scrollY;
-          const spineHeight = spine.offsetHeight;
-
-          dots.forEach((dot) => {
+          const dotData = Array.from(dots).map((dot) => {
+            const spineRect = spine.getBoundingClientRect();
+            const spineTop = spineRect.top + window.scrollY;
+            const spineHeight = spine.offsetHeight;
             const dotRect = dot.getBoundingClientRect();
             const dotCenter = dotRect.top + window.scrollY + dotRect.height / 2;
             const relPos = (dotCenter - spineTop) / spineHeight;
-
-            function triggerFlash() {
-              dot.classList.add('flash');
-              setTimeout(() => dot.classList.remove('flash'), 500);
-            }
-
-            function loop() {
-              const delay = relPos * DURATION;
-              setTimeout(triggerFlash, delay);
-              setTimeout(loop, DURATION);
-            }
-
-            const delay = relPos * DURATION;
-            setTimeout(() => { triggerFlash(); setTimeout(loop, DURATION); }, delay);
+            return { dot, relPos, flashing: false };
           });
+
+          let startTime = null;
+
+          function tick(now) {
+            if (!startTime) startTime = now;
+            const elapsed = (now - startTime) % DURATION;
+
+            const spineRect = spine.getBoundingClientRect();
+            const spineHeight = spine.offsetHeight;
+            const lightOffset = -STREAK_HEIGHT + (elapsed / DURATION) * (spineHeight + STREAK_HEIGHT);
+            const lightCenter = lightOffset + STREAK_HEIGHT / 2;
+
+            dotData.forEach((item) => {
+              const dotPixel = item.relPos * spineHeight;
+              const diff = Math.abs(lightCenter - dotPixel);
+
+              if (diff < FLASH_WINDOW) {
+                if (!item.flashing) {
+                  item.flashing = true;
+                  item.dot.classList.add('flash');
+                }
+              } else {
+                if (item.flashing) {
+                  item.flashing = false;
+                  item.dot.classList.remove('flash');
+                }
+              }
+            });
+
+            requestAnimationFrame(tick);
+          }
+
+          requestAnimationFrame(tick);
         }
 
         if (document.readyState === 'loading') {
-          document.addEventListener('DOMContentLoaded', scheduleDotFlashes);
+          document.addEventListener('DOMContentLoaded', runFlashLoop);
         } else {
-          scheduleDotFlashes();
+          runFlashLoop();
         }
       })();
     </script>
