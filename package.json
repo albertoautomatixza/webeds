@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "description": "Engineering Design & Solutions - Industrial Automation",
   "scripts": {
-    "dev": "npx serve . -p 3000",
-    "build": "echo 'Static site - no build needed'",
-    "start": "npx serve . -p 3000"
+    "dev": "vite",
+    "build": "vite build",
+    "start": "vite preview"
   },
   "keywords": [
     "engineering",
@@ -16,5 +16,8 @@
   "license": "MIT",
   "dependencies": {
     "serve": "^14.2.1"
+  },
+  "devDependencies": {
+    "vite": "^7.3.1"
   }
 }
