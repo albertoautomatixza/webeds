@@ -562,13 +562,31 @@ main {
   text-shadow: 0 0 45px rgba(250, 204, 21, 0.35);
 }
 
+.hero-copy h1 span.highlight {
+  color: #111;
+  background: var(--yellow);
+  padding: 0 0.15em;
+  border-radius: 0.15em;
+  text-shadow: none;
+  display: inline-block;
+}
+
+.hero-mission-label {
+  color: var(--yellow);
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  margin-bottom: 0.5rem;
+  margin-top: 0.25rem;
+}
+
 .hero-copy .lead {
   color: rgba(226, 232, 240, 0.68);
   font-size: clamp(1rem, 2.8vw, 1.15rem);
   max-width: 620px;
   margin-bottom: 2rem;
-  font-style: italic;
   letter-spacing: 0.015em;
+  text-align: justify;
 }
 
 .hero-decor {
