@@ -1549,6 +1549,7 @@ main {
 .contact-panel .section-heading .section-subtitle {
   margin-top: 0.75rem;
   max-width: 48ch;
+  margin-inline: 0;
 }
 
 .calendly-wrapper {
