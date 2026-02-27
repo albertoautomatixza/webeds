@@ -747,7 +747,7 @@ main {
 }
 
 .bento-card-visual--milling {
-  background-image: url('../edswebimagen3.jpg');
+  background-image: url('/assets/edswebimagen3.jpg');
 }
 
 .bento-card--milling::after {
@@ -1033,7 +1033,7 @@ main {
 
 /* Safety First card - more visible image */
 .benefit-card-safety::before {
-  background-image: url('../edswebimagen1.jpg');
+  background-image: url('/assets/edswebimagen1.jpg');
   filter: blur(2px);
   opacity: 0.35;
 }
@@ -1045,7 +1045,7 @@ main {
 
 /* Precision Engineering card - more visible image */
 .benefit-card-precision::before {
-  background-image: url('../edswebimagen2 copy.jpg');
+  background-image: url('/assets/edswebimagen2-copy.jpg');
   filter: blur(2px);
   opacity: 0.35;
 }
@@ -1057,7 +1057,7 @@ main {
 
 /* Expert Team card - more visible image */
 .benefit-card-team::before {
-  background-image: url('../edswebimagen3.jpg');
+  background-image: url('/assets/edswebimagen3.jpg');
   filter: blur(2px);
   opacity: 0.35;
 }
@@ -1069,7 +1069,7 @@ main {
 
 /* Continuous Innovation card - more visible image */
 .benefit-card-innovation::before {
-  background-image: url('../edswebimagen4.jpeg');
+  background-image: url('/assets/edswebimagen4.jpeg');
   filter: blur(2px);
   opacity: 0.35;
 }
