@@ -18,122 +18,70 @@
     <link rel="stylesheet" href="assets/css/styles.css" />
     <style>
       .about-hero {
-        min-height: 100vh;
+        min-height: 52vh;
         display: flex;
-        align-items: center;
-        padding-top: clamp(6rem, 12vw, 10rem);
-        padding-bottom: clamp(4rem, 8vw, 7rem);
+        align-items: flex-end;
+        padding-top: clamp(5rem, 10vw, 8rem);
+        padding-bottom: clamp(3rem, 6vw, 6rem);
         position: relative;
         overflow: hidden;
-        background: #0a0a0a;
-      }
-
-      .about-hero-bg-img {
-        position: absolute;
-        inset: 0;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        object-position: center;
-        opacity: 0.28;
-        filter: brightness(0.7) saturate(1.3);
+        background: linear-gradient(160deg, #0d0d0d 0%, #111 60%, #050505 100%);
       }
 
       .about-hero::before {
         content: '';
         position: absolute;
         inset: 0;
-        background: linear-gradient(
-          to right,
-          rgba(0,0,0,0.92) 0%,
-          rgba(0,0,0,0.7) 50%,
-          rgba(0,0,0,0.4) 100%
-        );
-        z-index: 1;
+        background:
+          radial-gradient(ellipse 60% 60% at 80% 20%, rgba(250, 204, 21, 0.07), transparent 70%),
+          linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+        background-size: 100% 100%, 50px 50px, 50px 50px;
         pointer-events: none;
       }
 
       .about-hero-content {
         position: relative;
-        z-index: 2;
-        max-width: 780px;
+        z-index: 1;
+        max-width: 800px;
       }
 
-      .about-hero-star {
-        font-size: 2.2rem;
-        font-weight: 300;
-        color: var(--white);
-        line-height: 1;
-        margin-bottom: 1.5rem;
-        display: block;
+      .about-hero-content .eyebrow {
+        color: var(--yellow);
+        font-size: 0.75rem;
+        font-weight: 700;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        margin-bottom: 1rem;
       }
 
       .about-hero-content h1 {
-        font-size: clamp(2.6rem, 6.5vw, 5.2rem);
-        font-weight: 800;
-        line-height: 1.06;
+        font-size: clamp(2.4rem, 6vw, 5rem);
+        font-weight: 900;
+        line-height: 1.08;
         letter-spacing: -0.02em;
-        font-style: italic;
-        margin-bottom: 0.25rem;
-        color: var(--white);
+        margin-bottom: 1.5rem;
       }
 
-      .about-hero-content h1 .highlight {
-        background: var(--yellow);
-        color: #000;
-        padding: 0 0.2em;
-        font-style: italic;
-      }
-
-      .about-hero-arrow {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        width: 54px;
-        height: 54px;
-        border: 1.5px solid rgba(255,255,255,0.35);
-        border-radius: 50%;
-        color: var(--white);
-        margin-left: 1rem;
-        vertical-align: middle;
-        position: relative;
-        top: -0.1em;
-        flex-shrink: 0;
-      }
-
-      .about-hero-arrow svg {
-        width: 22px;
-        height: 22px;
-      }
-
-      .about-hero-title-row {
-        display: flex;
-        align-items: center;
-        flex-wrap: wrap;
-        gap: 0.5rem;
-        margin-bottom: 2.5rem;
-      }
-
-      .about-hero-mission-label {
+      .about-hero-content h1 span {
         color: var(--yellow);
-        font-size: 1rem;
-        font-weight: 600;
-        font-style: normal;
-        letter-spacing: 0.02em;
-        margin-bottom: 0.75rem;
       }
 
       .about-hero-content .lead {
-        font-size: clamp(1rem, 1.6vw, 1.1rem);
-        color: rgba(255,255,255,0.82);
+        font-size: clamp(1rem, 1.8vw, 1.2rem);
+        color: var(--gray-300);
         font-weight: 300;
-        line-height: 1.75;
-        max-width: 580px;
-        text-align: justify;
+        line-height: 1.65;
+        max-width: 620px;
       }
 
       .about-divider {
-        display: none;
+        width: 48px;
+        height: 3px;
+        background: var(--yellow);
+        border: none;
+        margin: 2.5rem 0;
+        border-radius: 2px;
       }
 
       .about-story {
@@ -525,23 +473,11 @@
 
     <main>
       <section class="about-hero">
-        <img
-          class="about-hero-bg-img"
-          src="https://images.pexels.com/photos/3862132/pexels-photo-3862132.jpeg?auto=compress&cs=tinysrgb&w=1400"
-          alt=""
-          aria-hidden="true"
-        />
         <div class="container about-hero-content" data-reveal>
-          <span class="about-hero-star">*</span>
-          <div class="about-hero-title-row">
-            <h1>We've Been Improve Amazing <span class="highlight">Solutions</span> Since 2011</h1>
-            <span class="about-hero-arrow" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                <line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/>
-              </svg>
-            </span>
-          </div>
-          <p class="about-hero-mission-label">Our Mission and Vision</p>
+          <p class="eyebrow">Who we are</p>
+          <h1>We've Been Improve Amazing <span>Solutions</span> Since 2011</h1>
+          <hr class="about-divider" />
+          <p class="eyebrow" style="margin-bottom: 0.75rem;">Our Mission and Vision</p>
           <p class="lead">
             We are a consolidated company that provides solutions to a massive industry, we focus on offering the best technical solutions in machinery projects and work areas, with the continuous support of our specialist technician and engineers.
           </p>
