@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Machining Services — Engineering Design &amp; Service</title>
+    <meta
+      name="description"
+      content="Precision machining services: CNC milling, CNC turning, laser cutting, EDM wire, welding, and sheet metal fabrication."
+    />
+    <link rel="icon" type="image/svg+xml" href="/assets/1svgeds%20copy%20copy%20copy-C_N_PCEP.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* ── Page Hero ── */
+      .mach-hero {
+        min-height: 60vh;
+        display: flex;
+        align-items: flex-end;
+        padding-bottom: clamp(3.5rem, 7vw, 7rem);
+        position: relative;
+        overflow: hidden;
+        background: linear-gradient(160deg, #0d0d0d 0%, #111 60%, #050505 100%);
+      }
+
+      .mach-hero::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background:
+          radial-gradient(ellipse 70% 60% at 75% 15%, rgba(250, 204, 21, 0.08), transparent 65%),
+          linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px);
+        background-size: 100% 100%, 50px 50px, 50px 50px;
+        pointer-events: none;
+      }
+
+      .mach-hero-content {
+        position: relative;
+        z-index: 1;
+        max-width: 800px;
+        padding-top: 9rem;
+      }
+
+      .mach-hero-content .eyebrow {
+        color: var(--yellow);
+        font-size: 0.75rem;
+        font-weight: 700;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        margin-bottom: 1rem;
+        display: inline-block;
+      }
+
+      .mach-hero-content h1 {
+        font-size: clamp(2.6rem, 6vw, 5.2rem);
+        font-weight: 900;
+        line-height: 1.06;
+        letter-spacing: -0.01em;
+        color: var(--white);
+        margin-bottom: 1.5rem;
+      }
+
+      .mach-divider {
+        width: 48px;
+        height: 3px;
+        background: var(--yellow);
+        border: none;
+        margin: 0 0 2.5rem;
+        border-radius: 2px;
+      }
+
+      .mach-hero-content h1 span {
+        color: var(--yellow);
+      }
+
+      .mach-hero-content p {
+        font-size: clamp(1rem, 2vw, 1.2rem);
+        color: rgba(229, 231, 235, 0.72);
+        max-width: 640px;
+        line-height: 1.7;
+      }
+
+      /* ── Service Grid ── */
+      .mach-services {
+        padding: clamp(5rem, 9vw, 9rem) 0;
+        position: relative;
+      }
+
+      .mach-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 1.75rem;
+        margin-top: clamp(3rem, 6vw, 4.5rem);
+      }
+
+      .mach-card {
+        position: relative;
+        border-radius: 1.25rem;
+        overflow: hidden;
+        background: rgba(255,255,255,0.04);
+        border: 1px solid rgba(255,255,255,0.08);
+        transition: border-color 0.35s ease, transform 0.35s ease, box-shadow 0.35s ease;
+        cursor: default;
+      }
+
+      .mach-card:hover {
+        border-color: rgba(250, 204, 21, 0.45);
+        transform: translateY(-6px);
+        box-shadow: 0 24px 60px rgba(0,0,0,0.45), 0 0 0 1px rgba(250,204,21,0.15);
+      }
+
+      .mach-card-img {
+        width: 100%;
+        height: 220px;
+        object-fit: cover;
+        display: block;
+        transition: transform 0.5s ease;
+        filter: brightness(0.75) saturate(0.9);
+      }
+
+      .mach-card:hover .mach-card-img {
+        transform: scale(1.04);
+        filter: brightness(0.85) saturate(1);
+      }
+
+      .mach-card-img-wrap {
+        overflow: hidden;
+        position: relative;
+      }
+
+      .mach-card-img-wrap::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(to top, rgba(5,5,5,0.85) 0%, rgba(5,5,5,0.1) 55%, transparent 100%);
+        pointer-events: none;
+      }
+
+      .mach-card-body {
+        padding: 1.75rem 1.75rem 2rem;
+      }
+
+      .mach-card-number {
+        font-size: 0.7rem;
+        font-weight: 700;
+        letter-spacing: 0.25em;
+        color: var(--yellow);
+        text-transform: uppercase;
+        margin-bottom: 0.75rem;
+        display: block;
+      }
+
+      .mach-card-title {
+        font-size: 1.35rem;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        color: var(--white);
+        margin-bottom: 0.9rem;
+        line-height: 1.2;
+      }
+
+      .mach-card-desc {
+        font-size: 0.95rem;
+        color: rgba(229, 231, 235, 0.68);
+        line-height: 1.7;
+        margin-bottom: 1.25rem;
+      }
+
+      .mach-card-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+      }
+
+      .mach-tag {
+        font-size: 0.72rem;
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        background: rgba(250, 204, 21, 0.1);
+        color: var(--yellow);
+        border: 1px solid rgba(250, 204, 21, 0.25);
+        border-radius: 4px;
+        padding: 0.3rem 0.65rem;
+      }
+
+      /* ── CTA Strip ── */
+      .mach-cta {
+        padding: clamp(4rem, 8vw, 7rem) 0;
+        background: linear-gradient(135deg, rgba(250,204,21,0.06) 0%, transparent 60%);
+        border-top: 1px solid rgba(255,255,255,0.06);
+      }
+
+      .mach-cta-inner {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 1.5rem;
+      }
+
+      .mach-cta h2 {
+        font-size: clamp(1.8rem, 4vw, 3rem);
+        font-weight: 900;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        color: var(--white);
+      }
+
+      .mach-cta h2 span {
+        color: var(--yellow);
+      }
+
+      .mach-cta p {
+        font-size: 1.05rem;
+        color: rgba(229,231,235,0.65);
+        max-width: 520px;
+        line-height: 1.7;
+      }
+
+      /* ── Capabilities bar ── */
+      .mach-capabilities {
+        padding: clamp(3rem, 5vw, 5rem) 0;
+        border-top: 1px solid rgba(255,255,255,0.06);
+      }
+
+      .mach-capabilities-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+        gap: 1rem;
+        margin-top: 2.5rem;
+      }
+
+      .mach-cap-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 1.5rem 1rem;
+        border: 1px solid rgba(255,255,255,0.08);
+        border-radius: 1rem;
+        background: rgba(255,255,255,0.03);
+        gap: 0.6rem;
+        transition: border-color 0.3s ease, background 0.3s ease;
+      }
+
+      .mach-cap-item:hover {
+        border-color: rgba(250,204,21,0.3);
+        background: rgba(250,204,21,0.05);
+      }
+
+      .mach-cap-icon-wrap {
+        width: 3rem;
+        height: 3rem;
+        border-radius: 10px;
+        background: rgba(250, 204, 21, 0.1);
+        border: 1px solid rgba(250, 204, 21, 0.3);
+        display: grid;
+        place-items: center;
+        flex-shrink: 0;
+      }
+
+      .mach-cap-icon {
+        width: 1.4rem;
+        height: 1.4rem;
+        stroke: var(--yellow);
+        fill: none;
+        stroke-width: 1.5;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+
+      .mach-cap-label {
+        font-size: 0.8rem;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: rgba(229,231,235,0.75);
+      }
+
+      /* ── Automation Services ── */
+      .mach-automation {
+        padding: clamp(4rem, 6vw, 7rem) 0;
+        position: relative;
+        overflow: hidden;
+        border-top: 1px solid rgba(255,255,255,0.06);
+        background: linear-gradient(135deg, #0a0a0a 0%, #111 50%, #080808 100%);
+      }
+
+      .mach-automation::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background:
+          radial-gradient(ellipse 55% 70% at 80% 50%, rgba(250,204,21,0.05), transparent 65%),
+          radial-gradient(ellipse 40% 60% at 10% 80%, rgba(250,204,21,0.03), transparent 60%);
+        pointer-events: none;
+      }
+
+      .mach-automation-inner {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: clamp(3rem, 5vw, 6rem);
+        align-items: center;
+        position: relative;
+        z-index: 1;
+      }
+
+      @media (max-width: 768px) {
+        .mach-automation-inner {
+          grid-template-columns: 1fr;
+        }
+        .mach-automation-visual {
+          order: -1;
+        }
+      }
+
+      .mach-automation-heading {
+        margin-bottom: 0.5rem;
+      }
+
+      .mach-automation-heading .eyebrow {
+        margin-bottom: 0.75rem;
+      }
+
+      .mach-automation-heading h2 {
+        font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+        font-weight: 900;
+        color: var(--white);
+        letter-spacing: -0.01em;
+        line-height: 1.1;
+        margin-bottom: 1rem;
+      }
+
+      .mach-automation-heading h2 span {
+        color: var(--yellow);
+      }
+
+      .mach-automation-heading p {
+        color: rgba(229,231,235,0.6);
+        font-size: 0.95rem;
+        line-height: 1.7;
+        max-width: 480px;
+        margin-bottom: 2rem;
+      }
+
+      .mach-services-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 0.6rem;
+      }
+
+      .mach-services-list li {
+        display: flex;
+        align-items: flex-start;
+        gap: 0.75rem;
+        font-size: 0.95rem;
+        font-weight: 600;
+        color: rgba(186,230,253,0.9);
+        padding: 0.65rem 1rem;
+        border-radius: 0.5rem;
+        background: rgba(186,230,253,0.04);
+        border: 1px solid rgba(186,230,253,0.07);
+        transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+        cursor: default;
+      }
+
+      .mach-services-list li:hover {
+        background: rgba(250,204,21,0.07);
+        border-color: rgba(250,204,21,0.2);
+        color: var(--white);
+        transform: translateX(4px);
+      }
+
+      .mach-services-list li .bullet-dot {
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: var(--yellow);
+        flex-shrink: 0;
+        margin-top: 0.35rem;
+        box-shadow: 0 0 6px rgba(250,204,21,0.5);
+      }
+
+      .mach-automation-visual {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .mach-automation-visual img {
+        width: 100%;
+        max-width: 480px;
+        border-radius: 1.25rem;
+        border: 1px solid rgba(250,204,21,0.15);
+        filter: brightness(0.85) saturate(1.1);
+        transition: filter 0.3s ease;
+      }
+
+      .mach-automation-visual img:hover {
+        filter: brightness(1) saturate(1.2);
+      }
+
+      .mach-automation-visual::after {
+        content: '';
+        position: absolute;
+        inset: -1px;
+        border-radius: 1.3rem;
+        background: linear-gradient(135deg, rgba(250,204,21,0.12), transparent 60%);
+        pointer-events: none;
+      }
+
+      .mach-visual-badge {
+        position: absolute;
+        bottom: 1.25rem;
+        left: 1.25rem;
+        background: rgba(0,0,0,0.85);
+        border: 1px solid rgba(250,204,21,0.3);
+        border-radius: 0.75rem;
+        padding: 0.6rem 1rem;
+        backdrop-filter: blur(8px);
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .mach-visual-badge span {
+        font-size: 0.8rem;
+        font-weight: 700;
+        color: var(--yellow);
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+      }
+
+      /* ── Responsive ── */
+      @media (max-width: 640px) {
+        .mach-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+    <link rel="stylesheet" crossorigin href="/assets/styles-BLXBdUmY.css">
+  </head>
+  <body>
+
+    <header class="site-header" id="top">
+      <div class="container">
+        <a class="brand" href="index.html" aria-label="Engineering Design &amp; Service home">
+          <img src="/assets/logo_para_web._-B98yKRAj.png?v=2" alt="EDS Logo" class="brand-logo">
+        </a>
+        <nav class="site-nav" aria-label="Primary navigation">
+          <ul class="nav-list">
+            <li><a href="index.html#servicios"><span>Services</span></a></li>
+            <li><a href="about.html"><span>About Us</span></a></li>
+            <li><a href="projects.html"><span>Projects</span></a></li>
+            <li><a class="nav-active" href="machining.html"><span>Machining</span></a></li>
+            <li><a href="index.html#clientes"><span>Clients</span></a></li>
+            <li><a href="index.html#contacto"><span>Contact</span></a></li>
+          </ul>
+        </nav>
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu">
+          <span class="menu-bar"></span>
+          <span class="menu-bar"></span>
+          <span class="menu-bar"></span>
+          <span class="sr-only">Toggle navigation</span>
+        </button>
+        <a class="header-cta" href="mailto:sales@engineeringds.com.mx"><span>Contact Us</span></a>
+      </div>
+      <nav id="mobile-menu" class="mobile-menu" aria-label="Mobile navigation">
+        <ul>
+          <li><a href="index.html#servicios">Services</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="projects.html">Projects</a></li>
+          <li><a href="machining.html">Machining</a></li>
+          <li><a href="index.html#clientes">Clients</a></li>
+          <li><a href="index.html#contacto">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+
+      <!-- Hero -->
+      <section class="mach-hero">
+        <div class="container">
+          <div class="mach-hero-content" data-reveal>
+            <span class="eyebrow">The perfect ecosystem.</span>
+            <h1>Automation <span>Integration</span></h1>
+            <hr class="mach-divider" />
+            <p>
+              With a dedicated focus on automation, we streamline operations, boost efficiency and
+              enhance precision. Our integration mastery ensures seamless collaboration between
+              systems, optimizing workflows.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Capabilities Strip -->
+      <section class="mach-capabilities">
+        <div class="container">
+          <div class="section-heading" data-reveal>
+            <p class="eyebrow">What we work with</p>
+            <h2 style="font-size:clamp(1.4rem,3vw,2rem); letter-spacing:0.06em;">Core Capabilities</h2>
+          </div>
+          <div class="mach-capabilities-grid">
+            <div class="mach-cap-item" data-reveal data-reveal-delay="0">
+              <div class="mach-cap-icon-wrap"><svg class="mach-cap-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div>
+              <span class="mach-cap-label">Multi-Axis</span>
+            </div>
+            <div class="mach-cap-item" data-reveal data-reveal-delay="60">
+              <div class="mach-cap-icon-wrap"><svg class="mach-cap-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg></div>
+              <span class="mach-cap-label">±0.001&quot; Tol.</span>
+            </div>
+            <div class="mach-cap-item" data-reveal data-reveal-delay="120">
+              <div class="mach-cap-icon-wrap"><svg class="mach-cap-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
+              <span class="mach-cap-label">CAD / CAM</span>
+            </div>
+            <div class="mach-cap-item" data-reveal data-reveal-delay="180">
+              <div class="mach-cap-icon-wrap"><svg class="mach-cap-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2v-4M9 21H5a2 2 0 0 1-2-2v-4m0 0h18"/></svg></div>
+              <span class="mach-cap-label">All Alloys</span>
+            </div>
+            <div class="mach-cap-item" data-reveal data-reveal-delay="240">
+              <div class="mach-cap-icon-wrap"><svg class="mach-cap-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
+              <span class="mach-cap-label">CMM Inspect.</span>
+            </div>
+            <div class="mach-cap-item" data-reveal data-reveal-delay="300">
+              <div class="mach-cap-icon-wrap"><svg class="mach-cap-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
+              <span class="mach-cap-label">Fast Delivery</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Automation Services -->
+      <section class="mach-automation">
+        <div class="container">
+          <div class="mach-automation-inner">
+            <div class="mach-automation-content" data-reveal>
+              <div class="mach-automation-heading">
+                <p class="eyebrow">What we do</p>
+                <h2>Automation &amp; <span>Control Services</span></h2>
+                <p>
+                  End-to-end industrial automation support — from fault diagnosis and PLC programming
+                  to full-scale system refurbishment and PPAP startups.
+                </p>
+              </div>
+              <ul class="mach-services-list">
+                <li><span class="bullet-dot"></span>Automation and control fault diagnosis</li>
+                <li><span class="bullet-dot"></span>Predictive, preventive and corrective maintenance</li>
+                <li><span class="bullet-dot"></span>Error proofing development</li>
+                <li><span class="bullet-dot"></span>Process Capability Analysis</li>
+                <li><span class="bullet-dot"></span>Machinery maintenance</li>
+                <li><span class="bullet-dot"></span>Ladder logic editing</li>
+                <li><span class="bullet-dot"></span>Startups and PPAPs</li>
+                <li><span class="bullet-dot"></span>Refurbishment</li>
+                <li><span class="bullet-dot"></span>Fine tuning</li>
+              </ul>
+            </div>
+            <div class="mach-automation-visual" data-reveal data-reveal-delay="120">
+              <img src="https://images.pexels.com/photos/257736/pexels-photo-257736.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Industrial PLC automation control panel" loading="lazy" />
+              <div class="mach-visual-badge">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#facc15" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <span>Industry 4.0 Ready</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Services Grid -->
+      <section class="mach-services">
+        <div class="container">
+          <div class="section-heading" data-reveal>
+            <p class="eyebrow">What we offer</p>
+            <h2>Machining Processes</h2>
+          </div>
+
+          <div class="mach-grid">
+
+            <!-- 1. CNC Milling -->
+            <article class="mach-card" data-reveal data-reveal-delay="0">
+              <div class="mach-card-img-wrap">
+                <img
+                  class="mach-card-img"
+                  src="https://images.pexels.com/photos/1108101/pexels-photo-1108101.jpeg?auto=compress&cs=tinysrgb&w=800"
+                  alt="CNC Milling"
+                  loading="lazy"
+                />
+              </div>
+              <div class="mach-card-body">
+                <span class="mach-card-number">01</span>
+                <h3 class="mach-card-title">CNC Milling</h3>
+                <p class="mach-card-desc">
+                  3, 4, and 5-axis CNC milling for complex geometries, fixtures, molds, and structural
+                  components. We hold tight tolerances on aluminum, steel, stainless, titanium, and
+                  engineering plastics with consistent, repeatable results.
+                </p>
+                <div class="mach-card-tags">
+                  <span class="mach-tag">3–5 Axis</span>
+                  <span class="mach-tag">Aluminum</span>
+                  <span class="mach-tag">Steel</span>
+                  <span class="mach-tag">Titanium</span>
+                </div>
+              </div>
+            </article>
+
+            <!-- 2. CNC Turning -->
+            <article class="mach-card" data-reveal data-reveal-delay="80">
+              <div class="mach-card-img-wrap">
+                <img
+                  class="mach-card-img"
+                  src="https://images.pexels.com/photos/3862365/pexels-photo-3862365.jpeg?auto=compress&cs=tinysrgb&w=800"
+                  alt="CNC Turning"
+                  loading="lazy"
+                />
+              </div>
+              <div class="mach-card-body">
+                <span class="mach-card-number">02</span>
+                <h3 class="mach-card-title">CNC Turning</h3>
+                <p class="mach-card-desc">
+                  High-precision CNC lathe turning for shafts, bushings, pulleys, and rotational
+                  components. Live tooling and sub-spindle capabilities allow complete part
+                  processing in a single setup, reducing lead times and handling errors.
+                </p>
+                <div class="mach-card-tags">
+                  <span class="mach-tag">Live Tooling</span>
+                  <span class="mach-tag">Swiss-type</span>
+                  <span class="mach-tag">OD / ID</span>
+                </div>
+              </div>
+            </article>
+
+            <!-- 3. Laser Cutting -->
+            <article class="mach-card" data-reveal data-reveal-delay="160">
+              <div class="mach-card-img-wrap">
+                <img
+                  class="mach-card-img"
+                  src="https://images.pexels.com/photos/3913025/pexels-photo-3913025.jpeg?auto=compress&cs=tinysrgb&w=800"
+                  alt="Laser Cutting"
+                  loading="lazy"
+                />
+              </div>
+              <div class="mach-card-body">
+                <span class="mach-card-number">03</span>
+                <h3 class="mach-card-title">Laser Cutting</h3>
+                <p class="mach-card-desc">
+                  Fiber and CO₂ laser cutting for sheet metal, tubing, and structural profiles with
+                  burr-free edges and minimal heat-affected zones. Ideal for high-volume flat patterns,
+                  brackets, enclosures, and custom fabrications.
+                </p>
+                <div class="mach-card-tags">
+                  <span class="mach-tag">Fiber Laser</span>
+                  <span class="mach-tag">CO₂</span>
+                  <span class="mach-tag">Sheet Metal</span>
+                  <span class="mach-tag">Tube Cutting</span>
+                </div>
+              </div>
+            </article>
+
+            <!-- 4. EDM Wire -->
+            <article class="mach-card" data-reveal data-reveal-delay="0">
+              <div class="mach-card-img-wrap">
+                <img
+                  class="mach-card-img"
+                  src="https://images.pexels.com/photos/2760243/pexels-photo-2760243.jpeg?auto=compress&cs=tinysrgb&w=800"
+                  alt="EDM Wire"
+                  loading="lazy"
+                />
+              </div>
+              <div class="mach-card-body">
+                <span class="mach-card-number">04</span>
+                <h3 class="mach-card-title">EDM Wire</h3>
+                <p class="mach-card-desc">
+                  Wire electrical discharge machining for hardened steels, exotic alloys, and
+                  intricate profiles where conventional cutting is not feasible. Achieves micron-level
+                  precision on dies, punches, gears, and fine-feature components.
+                </p>
+                <div class="mach-card-tags">
+                  <span class="mach-tag">Hardened Steel</span>
+                  <span class="mach-tag">Exotic Alloys</span>
+                  <span class="mach-tag">Dies & Punches</span>
+                </div>
+              </div>
+            </article>
+
+            <!-- 5. Welding -->
+            <article class="mach-card" data-reveal data-reveal-delay="80">
+              <div class="mach-card-img-wrap">
+                <img
+                  class="mach-card-img"
+                  src="https://images.pexels.com/photos/1267338/pexels-photo-1267338.jpeg?auto=compress&cs=tinysrgb&w=800"
+                  alt="Welding"
+                  loading="lazy"
+                />
+              </div>
+              <div class="mach-card-body">
+                <span class="mach-card-number">05</span>
+                <h3 class="mach-card-title">Welding</h3>
+                <p class="mach-card-desc">
+                  Certified MIG, TIG, and spot welding for structural assemblies, frames, and precision
+                  weldments. We work with carbon steel, stainless steel, and aluminum alloys, ensuring
+                  full penetration, dimensional stability, and weld quality per AWS/ISO standards.
+                </p>
+                <div class="mach-card-tags">
+                  <span class="mach-tag">MIG</span>
+                  <span class="mach-tag">TIG</span>
+                  <span class="mach-tag">Spot</span>
+                  <span class="mach-tag">AWS / ISO</span>
+                </div>
+              </div>
+            </article>
+
+            <!-- 6. Sheet Metal Fabrication -->
+            <article class="mach-card" data-reveal data-reveal-delay="160">
+              <div class="mach-card-img-wrap">
+                <img
+                  class="mach-card-img"
+                  src="https://images.pexels.com/photos/3846208/pexels-photo-3846208.jpeg?auto=compress&cs=tinysrgb&w=800"
+                  alt="Sheet Metal Fabrication"
+                  loading="lazy"
+                />
+              </div>
+              <div class="mach-card-body">
+                <span class="mach-card-number">06</span>
+                <h3 class="mach-card-title">Sheet Metal Fabrication</h3>
+                <p class="mach-card-desc">
+                  Full-service sheet metal fabrication including shearing, bending, punching, forming,
+                  and finishing. From single prototypes to production runs, we deliver precision-formed
+                  enclosures, panels, brackets, and structural components ready for assembly.
+                </p>
+                <div class="mach-card-tags">
+                  <span class="mach-tag">Bending</span>
+                  <span class="mach-tag">Punching</span>
+                  <span class="mach-tag">Forming</span>
+                  <span class="mach-tag">Finishing</span>
+                </div>
+              </div>
+            </article>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA -->
+      <section class="mach-cta">
+        <div class="container">
+          <div class="mach-cta-inner" data-reveal>
+            <h2>Ready to start your <span>next project?</span></h2>
+            <p>
+              Send us your drawings or specifications and we will provide a competitive quote
+              with fast turnaround times and guaranteed precision.
+            </p>
+            <div class="hero-btns">
+              <a class="btn" href="mailto:sales@engineeringds.com.mx"><span>Request a Quote</span></a>
+              <a class="btn btn-outline" href="index.html"><span>Back to Home</span></a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <div class="footer-brand">
+          <a class="brand" href="index.html">
+            <img src="/assets/logo_para_web._-B98yKRAj.png?v=2" alt="EDS Logo" class="footer-logo">
+          </a>
+          <p class="footer-tagline">
+            ENGINEERING DESIGN &amp; SERVICE<br />
+            <span>SEEKING TOWARDS IMPROVEMENT.</span>
+          </p>
+          <p>
+            Engineering solutions for the automotive industry with over 15 years of experience.
+          </p>
+        </div>
+        <div class="footer-links">
+          <h3>Company</h3>
+          <ul>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="machining.html">Machining</a></li>
+            <li><a href="index.html#servicios">Services</a></li>
+            <li><a href="index.html#clientes">Clients</a></li>
+            <li><a href="index.html#contacto">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <h3>Services</h3>
+          <ul>
+            <li><a href="index.html#servicios">Ball Bar Test</a></li>
+            <li><a href="index.html#servicios">Axis Interpolation</a></li>
+            <li><a href="index.html#servicios">Custom Precision Shim Fabrication</a></li>
+            <li><a href="index.html#servicios">Geometric Alignment &amp; Machine Leveling</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>
+          &copy; 2026 Engineering EDS. All rights reserved.
+          <span class="footer-credit">⎸ creado por <a href="https://wa.me/524491809587" target="_blank" rel="noopener noreferrer">Albertoautomatiza</a></span>
+        </p>
+        <div class="footer-legal">
+          <a href="#" data-modal="privacy">Privacy</a>
+          <a href="#" data-modal="terms">Terms</a>
+          <a href="#" data-modal="legal">Legal</a>
+        </div>
+      </div>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/modals.js"></script>
+  </body>
+</html>

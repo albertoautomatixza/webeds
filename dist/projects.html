@@ -1,0 +1,1083 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Projects — Engineering Design &amp; Service</title>
+    <meta
+      name="description"
+      content="Explore Engineering Design & Service's portfolio of industrial automation, CNC, and engineering projects across the automotive sector."
+    />
+    <link rel="icon" type="image/svg+xml" href="/assets/1svgeds%20copy%20copy%20copy-C_N_PCEP.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      .projects-hero {
+        min-height: 52vh;
+        display: flex;
+        align-items: flex-end;
+        padding-top: clamp(7rem, 14vw, 11rem);
+        padding-bottom: clamp(3rem, 6vw, 6rem);
+        position: relative;
+        overflow: hidden;
+        background: linear-gradient(160deg, #0d0d0d 0%, #111 60%, #050505 100%);
+      }
+
+      .projects-hero::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background:
+          radial-gradient(ellipse 60% 60% at 20% 80%, rgba(250, 204, 21, 0.07), transparent 70%),
+          linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+        background-size: 100% 100%, 50px 50px, 50px 50px;
+        pointer-events: none;
+      }
+
+      .projects-hero-content {
+        position: relative;
+        z-index: 1;
+        max-width: 820px;
+      }
+
+      .projects-hero-content .eyebrow {
+        color: var(--yellow);
+        font-size: 0.75rem;
+        font-weight: 700;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        margin-bottom: 1rem;
+      }
+
+      .projects-hero-content h1 {
+        font-size: clamp(2.4rem, 6vw, 5rem);
+        font-weight: 900;
+        line-height: 1.08;
+        letter-spacing: -0.02em;
+        margin-bottom: 1.5rem;
+      }
+
+      .projects-hero-content h1 span {
+        color: var(--yellow);
+      }
+
+      .projects-hero-content .lead {
+        font-size: clamp(1rem, 1.8vw, 1.2rem);
+        color: var(--gray-300);
+        font-weight: 300;
+        line-height: 1.65;
+        max-width: 600px;
+      }
+
+      .projects-divider {
+        width: 48px;
+        height: 3px;
+        background: var(--yellow);
+        border: none;
+        margin: 2.5rem 0;
+        border-radius: 2px;
+      }
+
+      /* ========= TIMELINE ========= */
+      .timeline-section {
+        background: #080808;
+        padding: 6rem 0 8rem;
+        position: relative;
+      }
+
+      .timeline-section .section-header {
+        text-align: center;
+        margin-bottom: 5rem;
+      }
+
+      .timeline-section .eyebrow {
+        color: var(--yellow);
+        font-size: 0.75rem;
+        font-weight: 700;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        margin-bottom: 1rem;
+      }
+
+      .timeline-section h2 {
+        font-size: clamp(2rem, 4vw, 3.2rem);
+        font-weight: 900;
+        line-height: 1.1;
+        letter-spacing: -0.02em;
+        color: #f1f5f9;
+      }
+
+      .timeline-section h2 span {
+        color: var(--yellow);
+      }
+
+      .timeline-wrapper {
+        position: relative;
+        max-width: 1100px;
+        margin: 0 auto;
+      }
+
+      .timeline-spine {
+        position: absolute;
+        left: 50%;
+        top: 0;
+        bottom: 0;
+        width: 2px;
+        background: linear-gradient(to bottom, transparent, rgba(250,204,21,0.35) 5%, rgba(250,204,21,0.35) 95%, transparent);
+        transform: translateX(-50%);
+        overflow: hidden;
+      }
+
+      .timeline-spine::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        width: 100%;
+        height: 120px;
+        background: linear-gradient(
+          to bottom,
+          transparent 0%,
+          rgba(255,255,255,0.15) 30%,
+          rgba(255,255,255,0.95) 50%,
+          rgba(255,255,255,0.15) 70%,
+          transparent 100%
+        );
+        animation: spine-sweep 22s linear infinite;
+      }
+
+      @keyframes spine-sweep {
+        0%   { top: -120px; }
+        100% { top: 100%; }
+      }
+
+      .timeline-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 0;
+        margin-bottom: 5rem;
+        position: relative;
+      }
+
+      .timeline-item:last-child {
+        margin-bottom: 0;
+      }
+
+      .timeline-item.left {
+        flex-direction: row;
+      }
+
+      .timeline-item.right {
+        flex-direction: row-reverse;
+      }
+
+      .tl-card {
+        width: calc(50% - 3.5rem);
+        background: rgba(17,17,17,0.98);
+        border: 1px solid rgba(255,255,255,0.07);
+        border-radius: 1.25rem;
+        overflow: hidden;
+        transition: border-color 0.3s ease, transform 0.3s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.3s ease;
+        cursor: default;
+      }
+
+      .tl-card:hover {
+        border-color: rgba(250,204,21,0.4);
+        transform: translateY(-5px);
+        box-shadow: 0 20px 56px rgba(0,0,0,0.6), 0 0 0 1px rgba(250,204,21,0.12);
+      }
+
+      .tl-card-img {
+        position: relative;
+        height: 200px;
+        overflow: hidden;
+      }
+
+      .tl-card-img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        filter: grayscale(20%);
+        transition: transform 0.55s ease, filter 0.4s ease;
+      }
+
+      .tl-card:hover .tl-card-img img {
+        transform: scale(1.06);
+        filter: grayscale(0%);
+      }
+
+      .tl-card-tag {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        background: rgba(250,204,21,0.92);
+        color: #0a0a0a;
+        font-size: 0.66rem;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        padding: 0.28rem 1rem 0.55rem;
+        border-radius: 0 0 10px 10px;
+        white-space: nowrap;
+      }
+
+      .tl-card-body {
+        padding: 1.4rem 1.6rem 1.7rem;
+      }
+
+      .tl-card-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 0.75rem;
+        gap: 0.75rem;
+      }
+
+      .tl-card-meta-left {
+        display: flex;
+        flex-direction: column;
+        gap: 0.2rem;
+      }
+
+      .tl-card-period {
+        font-size: 0.68rem;
+        font-weight: 700;
+        color: rgba(250,204,21,0.5);
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+      }
+
+      .tl-card-client {
+        font-size: 0.7rem;
+        font-weight: 600;
+        color: rgba(250,204,21,0.8);
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+      }
+
+      .tl-client-logo {
+        height: 28px;
+        width: auto;
+        max-width: 90px;
+        object-fit: contain;
+        filter: brightness(0) invert(1);
+        opacity: 0.55;
+        flex-shrink: 0;
+        transition: opacity 0.25s ease;
+      }
+
+      .tl-card:hover .tl-client-logo {
+        opacity: 0.85;
+      }
+
+      .tl-card-title {
+        font-size: 1.05rem;
+        font-weight: 700;
+        color: #f1f5f9;
+        line-height: 1.3;
+        letter-spacing: -0.01em;
+        margin-bottom: 0.7rem;
+      }
+
+      .tl-card-desc {
+        font-size: 0.84rem;
+        color: rgba(229,231,235,0.5);
+        line-height: 1.68;
+        font-weight: 300;
+      }
+
+      .tl-center {
+        flex-shrink: 0;
+        width: 7rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0;
+        position: relative;
+        z-index: 2;
+      }
+
+      .tl-year-badge {
+        background: var(--yellow);
+        color: #0a0a0a;
+        font-size: 0.78rem;
+        font-weight: 900;
+        letter-spacing: 0.03em;
+        padding: 0.38rem 0.75rem;
+        border-radius: 10px;
+        white-space: nowrap;
+        box-shadow: 0 4px 20px rgba(250,204,21,0.35);
+        text-align: center;
+      }
+
+      .tl-dot {
+        width: 14px;
+        height: 14px;
+        background: var(--yellow);
+        border-radius: 50%;
+        box-shadow: 0 0 0 4px rgba(250,204,21,0.18), 0 0 16px rgba(250,204,21,0.3);
+        margin-top: 0.6rem;
+        transition: box-shadow 0.15s ease, background 0.15s ease;
+      }
+
+      .tl-dot.flash {
+        background: #fff;
+        box-shadow: 0 0 0 6px rgba(255,255,255,0.25), 0 0 28px rgba(255,255,255,0.9), 0 0 56px rgba(255,255,255,0.4);
+      }
+
+      .tl-spacer {
+        flex: 1;
+        width: calc(50% - 3.5rem);
+      }
+
+      .timeline-cta {
+        display: flex;
+        justify-content: center;
+        margin-top: 5rem;
+      }
+
+      /* CTA Banner */
+      .projects-cta {
+        background: linear-gradient(135deg, rgba(17,17,17,0.98), rgba(10,10,10,0.98));
+        border-top: 1px solid rgba(255,255,255,0.06);
+        padding: 5rem 0;
+      }
+
+      .projects-cta-inner {
+        text-align: center;
+        max-width: 620px;
+        margin: 0 auto;
+      }
+
+      .projects-cta-inner .eyebrow {
+        color: var(--yellow);
+        font-size: 0.75rem;
+        font-weight: 700;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        margin-bottom: 1rem;
+      }
+
+      .projects-cta-inner h2 {
+        font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+        font-weight: 900;
+        line-height: 1.15;
+        letter-spacing: -0.02em;
+        margin-bottom: 1rem;
+      }
+
+      .projects-cta-inner h2 span {
+        color: var(--yellow);
+      }
+
+      .projects-cta-inner p {
+        color: var(--gray-300);
+        font-weight: 300;
+        line-height: 1.65;
+        margin-bottom: 2.5rem;
+      }
+
+      .projects-cta-btns {
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+
+      @media (max-width: 860px) {
+        .timeline-spine { left: 1.5rem; }
+        .tl-center { width: 3rem; }
+        .tl-year-badge { font-size: 0.72rem; padding: 0.3rem 0.6rem; }
+        .timeline-item.left,
+        .timeline-item.right {
+          flex-direction: row;
+        }
+        .tl-card {
+          width: calc(100% - 4.5rem);
+        }
+        .tl-spacer { display: none; }
+      }
+
+      @media (max-width: 500px) {
+        .tl-card-img { height: 160px; }
+        .tl-card-body { padding: 1.1rem 1.2rem 1.3rem; }
+        .tl-card-title { font-size: 0.95rem; }
+      }
+    </style>
+    <link rel="stylesheet" crossorigin href="/assets/styles-BLXBdUmY.css">
+  </head>
+  <body>
+    <header class="site-header" id="top">
+      <div class="container">
+        <a class="brand" href="index.html" aria-label="Engineering Design &amp; Service home">
+          <img src="/assets/logo_para_web._-B98yKRAj.png?v=2" alt="EDS Logo" class="brand-logo">
+        </a>
+        <nav class="site-nav" aria-label="Primary navigation">
+          <ul class="nav-list">
+            <li><a href="index.html#servicios"><span>Services</span></a></li>
+            <li><a href="about.html"><span>About Us</span></a></li>
+            <li><a href="projects.html" class="nav-active"><span>Projects</span></a></li>
+            <li><a href="machining.html"><span>Machining</span></a></li>
+            <li><a href="index.html#clientes"><span>Clients</span></a></li>
+            <li><a href="index.html#contacto"><span>Contact</span></a></li>
+          </ul>
+        </nav>
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu">
+          <span class="menu-bar"></span>
+          <span class="menu-bar"></span>
+          <span class="menu-bar"></span>
+          <span class="sr-only">Toggle navigation</span>
+        </button>
+        <a class="header-cta" href="mailto:sales@engineeringds.com.mx"><span>Contact Us</span></a>
+      </div>
+      <nav id="mobile-menu" class="mobile-menu" aria-label="Mobile navigation">
+        <ul>
+          <li><a href="index.html#servicios">Services</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="projects.html">Projects</a></li>
+          <li><a href="machining.html">Machining</a></li>
+          <li><a href="index.html#clientes">Clients</a></li>
+          <li><a href="index.html#contacto">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section class="projects-hero">
+        <div class="container projects-hero-content" data-reveal>
+          <p class="eyebrow">Our portfolio</p>
+          <h1>Work that <span>speaks</span> for itself</h1>
+          <hr class="projects-divider" />
+          <p class="lead">
+            From CNC automation and robotic integration to full-scale electrical system design, here is a look at the projects that define who we are.
+          </p>
+        </div>
+      </section>
+
+      <section class="timeline-section">
+        <div class="container">
+          <div class="section-header" data-reveal>
+            <p class="eyebrow">Our journey</p>
+            <h2>15 years of <span>engineering excellence</span></h2>
+          </div>
+
+          <div class="timeline-wrapper">
+            <div class="timeline-spine"></div>
+
+            <!-- 2011 -->
+            <div class="timeline-item left" data-reveal>
+              <div class="tl-card">
+                <div class="tl-card-img">
+                  <img src="https://images.pexels.com/photos/1108101/pexels-photo-1108101.jpeg?auto=compress&cs=tinysrgb&w=700" alt="Company founded 2011" loading="lazy" />
+                  <span class="tl-card-tag">Founding</span>
+                </div>
+                <div class="tl-card-body">
+                  <div class="tl-card-header">
+                    <div class="tl-card-meta-left">
+                      <span class="tl-card-period">2011 — 2012</span>
+                      <span class="tl-card-client">Engineering DS</span>
+                    </div>
+                    <img src="data:image/svg+xml,%3c?xml%20version='1.0'%20encoding='UTF-8'?%3e%3csvg%20id='Layer_2'%20data-name='Layer%202'%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201473.39%20741.16'%3e%3cdefs%3e%3cstyle%3e%20.cls-1%20{%20fill:%20%23010101;%20}%20.cls-2%20{%20fill:%20%23ebd700;%20}%20%3c/style%3e%3c/defs%3e%3cg%20id='Capa_1'%20data-name='Capa%201'%3e%3cg%3e%3crect%20class='cls-2'%20x='29.8'%20y='11.36'%20width='1419.4'%20height='714'%20rx='138.95'%20ry='138.95'/%3e%3cpath%20class='cls-1'%20d='M439.37,110.95h-196.23c-73.01,0-132.19,59.18-132.19,132.19v258.68c0,68.46,55.49,123.95,123.95,123.95h204.47l-.16-120.46h-149.96c-15.66,0-28.35-12.69-28.35-28.35v-42.97h155.49v-114.12h-155.49v-45.75c0-15.74,12.69-28.53,28.43-28.66l149.89-1.2.16-133.3Z'/%3e%3cpath%20class='cls-1'%20d='M741.8,110.95h-240.29v519.26l221.89-2.05c142.56-1.32,257.43-117.26,257.43-259.82v-18.36c0-132.01-107.01-239.02-239.02-239.02ZM831.51,371.93c0,73.66-59.72,133.38-133.38,133.38h-50.64V245.68h74.89c60.27,0,109.13,48.86,109.13,109.13v17.12Z'/%3e%3cpath%20class='cls-1'%20d='M1207.55,243.55c11.1-13.81,33.52-18.46,49.77-19.55,27.94-1.87,56.19,6.01,80.86,18.85,0,0,5.46,2.84,5.46,2.84V110.95h-147.33c-32.71,0-64.67,10.92-90.56,30.92-50.77,39.22-76.45,112.1-53.74,173.5,11.73,31.71,35.74,56.76,62.07,77.11,24.38,18.84,52.9,31.37,77.5,49.84,14.16,10.63,27.61,27.91,18.48,45.92-4.71,9.29-13.61,15.95-23.27,19.84-34.59,13.96-81.96,8.68-117.64,1.95l-25.08-4.73v124.9h182.91c44.26,0,85.48-20.32,112.16-55.66,31.09-41.19,39.39-95.94,24.42-145.04-10.52-34.49-32.92-61.49-61.1-83.26-21.28-16.44-115.05-58.97-99.12-95.75,1.1-2.54,2.53-4.86,4.22-6.96Z'/%3e%3cpath%20class='cls-1'%20d='M1329.15,0H144.24C64.58,0,0,64.58,0,144.24v452.69c0,79.66,64.58,144.24,144.24,144.24h1184.91c79.66,0,144.24-64.58,144.24-144.24V144.24c0-79.66-64.58-144.24-144.24-144.24ZM1337.35,705.66H135.36c-52.7,0-95.42-42.72-95.42-95.42V135.36c0-52.7,42.72-95.42,95.42-95.42h1198.62c52.43,0,95.04,42.31,95.42,94.74l3.37,474.88c.38,52.96-42.45,96.1-95.42,96.1Z'/%3e%3c/g%3e%3c/g%3e%3c/svg%3e" alt="EDS" class="tl-client-logo" />
+                  </div>
+                  <h3 class="tl-card-title">Company Founded &amp; First Electrical Projects</h3>
+                  <p class="tl-card-desc">Engineering Design &amp; Service was established in Aguascalientes, Mexico. Our first contracts focused on electrical panel design and installation for local industrial clients in the automotive supply chain.</p>
+                </div>
+              </div>
+              <div class="tl-center">
+                <span class="tl-year-badge">2011–2012</span>
+                <div class="tl-dot"></div>
+              </div>
+              <div class="tl-spacer"></div>
+            </div>
+
+            <!-- 2012 -->
+            <div class="timeline-item right" data-reveal>
+              <div class="tl-card">
+                <div class="tl-card-img">
+                  <img src="https://images.pexels.com/photos/257736/pexels-photo-257736.jpeg?auto=compress&cs=tinysrgb&w=700" alt="PLC programming 2012" loading="lazy" />
+                  <span class="tl-card-tag">Automation</span>
+                </div>
+                <div class="tl-card-body">
+                  <div class="tl-card-header">
+                    <div class="tl-card-meta-left">
+                      <span class="tl-card-period">2012 — 2013</span>
+                      <span class="tl-card-client">Tier 2 Supplier</span>
+                    </div>
+                    <img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyBpZD0iTGF5ZXJfMiIgZGF0YS1uYW1lPSJMYXllciAyIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjAgNDAiPgogIDxkZWZzPgogICAgPHN0eWxlPgogICAgICAuY2xzLTEgewogICAgICAgIGZpbGw6ICMwMEE5NEY7CiAgICAgIH0KICAgIDwvc3R5bGU+CiAgPC9kZWZzPgogIDxnIGlkPSJDYXBhXzEiIGRhdGEtbmFtZT0iQ2FwYSAxIj4KICAgIDx0ZXh0IHg9IjYwIiB5PSIyOCIgZm9udC1mYW1pbHk9IidBcmlhbCBCbGFjaycsIEFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjIyIiBmb250LXdlaWdodD0iOTAwIiBmaWxsPSIjMDBBOTRGIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBsZXR0ZXItc3BhY2luZz0iMS41Ij5FQVRPTjwvdGV4dD4KICA8L2c+Cjwvc3ZnPgo=" alt="Eaton" class="tl-client-logo" />
+                  </div>
+                  <h3 class="tl-card-title">First PLC Programming Contracts</h3>
+                  <p class="tl-card-desc">Expanded into industrial automation with our first Allen-Bradley PLC programming projects, delivering conveyor control and press machine safety upgrades for Tier 2 automotive suppliers.</p>
+                </div>
+              </div>
+              <div class="tl-center">
+                <span class="tl-year-badge">2012–2013</span>
+                <div class="tl-dot"></div>
+              </div>
+              <div class="tl-spacer"></div>
+            </div>
+
+            <!-- 2013 -->
+            <div class="timeline-item left" data-reveal>
+              <div class="tl-card">
+                <div class="tl-card-img">
+                  <img src="https://images.pexels.com/photos/2760243/pexels-photo-2760243.jpeg?auto=compress&cs=tinysrgb&w=700" alt="Motor control center 2013" loading="lazy" />
+                  <span class="tl-card-tag">Electrical</span>
+                </div>
+                <div class="tl-card-body">
+                  <div class="tl-card-header">
+                    <div class="tl-card-meta-left">
+                      <span class="tl-card-period">2013 — 2014</span>
+                      <span class="tl-card-client">Eaton</span>
+                    </div>
+                    <img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyBpZD0iTGF5ZXJfMiIgZGF0YS1uYW1lPSJMYXllciAyIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjAgNDAiPgogIDxkZWZzPgogICAgPHN0eWxlPgogICAgICAuY2xzLTEgewogICAgICAgIGZpbGw6ICMwMEE5NEY7CiAgICAgIH0KICAgIDwvc3R5bGU+CiAgPC9kZWZzPgogIDxnIGlkPSJDYXBhXzEiIGRhdGEtbmFtZT0iQ2FwYSAxIj4KICAgIDx0ZXh0IHg9IjYwIiB5PSIyOCIgZm9udC1mYW1pbHk9IidBcmlhbCBCbGFjaycsIEFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjIyIiBmb250LXdlaWdodD0iOTAwIiBmaWxsPSIjMDBBOTRGIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBsZXR0ZXItc3BhY2luZz0iMS41Ij5FQVRPTjwvdGV4dD4KICA8L2c+Cjwvc3ZnPgo=" alt="Eaton" class="tl-client-logo" />
+                  </div>
+                  <h3 class="tl-card-title">Motor Control Center Design &amp; First MCC Project</h3>
+                  <p class="tl-card-desc">Delivered a 16-circuit Motor Control Center with soft starters and remote I/O for an Eaton production facility — our first project with a globally recognized client.</p>
+                </div>
+              </div>
+              <div class="tl-center">
+                <span class="tl-year-badge">2013–2014</span>
+                <div class="tl-dot"></div>
+              </div>
+              <div class="tl-spacer"></div>
+            </div>
+
+            <!-- 2014 -->
+            <div class="timeline-item right" data-reveal>
+              <div class="tl-card">
+                <div class="tl-card-img">
+                  <img src="https://images.pexels.com/photos/3912981/pexels-photo-3912981.jpeg?auto=compress&cs=tinysrgb&w=700" alt="Assembly line 2014" loading="lazy" />
+                  <span class="tl-card-tag">Automation</span>
+                </div>
+                <div class="tl-card-body">
+                  <div class="tl-card-header">
+                    <div class="tl-card-meta-left">
+                      <span class="tl-card-period">2014 — 2015</span>
+                      <span class="tl-card-client">General Motors</span>
+                    </div>
+                    <img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMDAgMjAwIj4KICA8cmVjdCB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0ibm9uZSIvPgogIDxnIGZpbGw9IiNGRkZGRkYiPgogICAgPHJlY3QgeD0iMTgiIHk9IjE4IiB3aWR0aD0iMTY0IiBoZWlnaHQ9IjE2NCIgcng9IjEyIiByeT0iMTIiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI0ZGRkZGRiIgc3Ryb2tlLXdpZHRoPSIxNCIvPgogICAgPHRleHQgeD0iMTAwIiB5PSIxMzAiIGZvbnQtZmFtaWx5PSInQXJpYWwgQmxhY2snLEFyaWFsLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iOTYiIGZvbnQtd2VpZ2h0PSI5MDAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGxldHRlci1zcGFjaW5nPSItMiI+R008L3RleHQ+CiAgPC9nPgo8L3N2Zz4K" alt="General Motors" class="tl-client-logo" />
+                  </div>
+                  <h3 class="tl-card-title">Assembly Line Integration — General Motors Plant</h3>
+                  <p class="tl-card-desc">Secured our first contract with General Motors for automation integration on a body assembly line, including Siemens S7-300 PLCs, HMI panels, and safety circuit design.</p>
+                </div>
+              </div>
+              <div class="tl-center">
+                <span class="tl-year-badge">2014–2015</span>
+                <div class="tl-dot"></div>
+              </div>
+              <div class="tl-spacer"></div>
+            </div>
+
+            <!-- 2015 -->
+            <div class="timeline-item left" data-reveal>
+              <div class="tl-card">
+                <div class="tl-card-img">
+                  <img src="https://images.pexels.com/photos/5726837/pexels-photo-5726837.jpeg?auto=compress&cs=tinysrgb&w=700" alt="CNC machining 2015" loading="lazy" />
+                  <span class="tl-card-tag">CNC</span>
+                </div>
+                <div class="tl-card-body">
+                  <div class="tl-card-header">
+                    <div class="tl-card-meta-left">
+                      <span class="tl-card-period">2015 — 2016</span>
+                      <span class="tl-card-client">Ford Motor Co.</span>
+                    </div>
+                    <img src="data:image/svg+xml,%3c?xml%20version='1.0'%20encoding='UTF-8'?%3e%3csvg%20id='Layer_2'%20data-name='Layer%202'%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2044.25%2016.74'%3e%3cdefs%3e%3cstyle%3e%20.cls-1%20{%20fill:%20%23fff;%20}%20%3c/style%3e%3c/defs%3e%3cg%20id='Capa_1'%20data-name='Capa%201'%3e%3cg%3e%3cpath%20class='cls-1'%20d='M22.13,0C9.9,0,0,3.75,0,8.38s9.9,8.36,22.13,8.36,22.12-3.74,22.12-8.36S34.35,0,22.13,0ZM22.13,15.88C10.4,15.88.87,12.54.87,8.38S10.4.84,22.13.84s21.28,3.38,21.28,7.54-9.52,7.51-21.28,7.51Z'/%3e%3cpath%20class='cls-1'%20d='M22.13,1.47C10.75,1.47,1.54,4.57,1.54,8.38s9.2,6.92,20.59,6.92,20.61-3.1,20.61-6.92S33.51,1.47,22.13,1.47ZM12.04,12.63c-1.24,0-2.34-.81-2.37-2.27-.01-.88.7-1.97,2.03-2.3.16,0,.21.06.21.14,0,.06-.06.13-.19.19-.39.14-1.06.9-1.06,1.6,0,.53.33,1.11.88,1.24.16.04.3.03.44.03,1.38,0,2.94-1.56,4.62-3.92-.27.01-1.43.14-1.71.47-.13.1-.21.04-.24-.07,0-.03.04-.13.09-.19.46-.51,1.83-.63,2.15-.67,1.25-1.91,2.84-3.12,3.24-3.17-.01,0-.03,0-.04-.01-1.1-.26-2.1-.47-2.88-.47-2.75,0-3.98,1.18-3.92,2.27.03.44.39.73.91.63.57-.1,1.37-.64,1.57-1.11.04-.1.16-.11.2-.09.09.07.06.17.06.17-.07.56-.93,2.1-2.41,2.1-.83,0-1.38-.77-1.37-1.53.01-1.41,1.46-2.84,5.01-2.84.67,0,1.43.06,2.26.2.96.17,3.34.57,5.28.6.71,0,1.63.03,2.37-.09.78-.13.61-.16.93-.16.29,0,.29.11.29.23,0,.46-1.6,1.33-2.95,1.33-2,0-4.07-.9-5.14-1.19.04.04.07.1.04.18-.01.03-.16.19-.21.23-.29.26-1.26.88-2.31,2.67.86-.04,1.86-.21,1.86-.21,0,0-.06-.19-.06-.34.04-.61.4-.98.86-.91.26.04.43.26.43.49,0,.24-.19.6-.37.77-.13.1-.27.2-.44.29,0,.16.21.29.4.3-.04.16-.03.23-.1.21-.43,0-.6-.41-.6-.41-.57.1-1.13.17-2.25.29-2.84,4.6-3.72,5.35-5.47,5.35ZM31.61,11.87c.61-.03,1.74-1.2,2.01-1.48.06-.07.16-.2.21-.2s.17.06.17.14c0,.06-.13.27-.23.4-.57.71-1.51,1.81-2.58,1.84-.53,0-.73-.21-.8-.63-.24.21-1.07.59-1.91.59-.7-.01-.98-.43-1.13-.76-.13-.27-.19-.67-.09-1.07-.39.2-.74.23-1.26.21-.6-.01-.97-.29-1.16-.98-.69,1.26-.71,1.3-1.41,2.61h-1.21l1.56-2.64c.2-.36.3-.64.37-.94.04-.17-.09-.33-.27-.34-.2,0-.53.2-.84.5,0,0-.8.86-1.38,1.73-.56.83-1.51,1.77-2.55,1.77-.76,0-1.44-.41-1.58-1.21,0,0-.07.19-.74.57-.06.03-.2.11-.24.09-.13-.11-.2-.26-.21-.36.04.01.13-.06.4-.27.53-.4.64-.71.64-.71.13-.27.36-.7.51-1,.43-.86,1.17-1.73,2.38-1.77.2,0,.26.09.3.16.11.09.07.26.07.26-.86.13-1.44.63-1.8,1.11-.21.31-.44.83-.49,1.2-.09.64.21,1.07.66,1.17.83.13,1.51-.47,2.06-1.4.14-.24.24-.87.24-1.21s-.19-.7-.33-.84c0-.24.16-.4.34-.4.06,0,.11,0,.17.06.29.29.44.83.44,1.24,0,.14,0,.29-.03.43.6-.73,1.36-1.67,1.94-1.86.11-.06.23-.06.34-.06,1.07-.03.93.94.93.94.57-.66.97-.9,1.5-.87.57.03.77.43.77.74-.01.37-.29.8-.76.81-.41,0-.66-.2-.79-.57-.27.1-.4.29-.46.66-.09.47.27.84.73.84.78,0,1.13-.34,1.41-.6.97-.91,1.51-1.87,2.91-1.86.84.01,1.06.69,1.2.97l1.84-3.11h1.13l-3.05,5.41c-.06.11-.2.33-.19.5.03.27.37.2.24.2Z'/%3e%3cpath%20class='cls-1'%20d='M30.5,8.58c-.5-.06-1.13.37-1.64,1-.26.31-.53.91-.57,1.27-.06.36.04.71.17.81.13.1.7.4,1.58-.5.5-.5.98-1.31.98-1.31l-.16-.04c.3-.56.24-1.16-.37-1.23Z'/%3e%3cpath%20class='cls-1'%20d='M20.19,3.7s-.03.01-.04.01c.04,0,.09.03.14.04-.03-.03-.07-.05-.09-.05Z'/%3e%3cpath%20class='cls-1'%20d='M20.35,6.35c.09-.09.23-.34.2-.51-.01-.09-.06-.19-.16-.17-.21.04-.34.14-.4.36-.07.23-.04.39,0,.56,0,0,.14.01.36-.23Z'/%3e%3c/g%3e%3c/g%3e%3c/svg%3e" alt="Ford" class="tl-client-logo" />
+                  </div>
+                  <h3 class="tl-card-title">CNC Department Launch &amp; First Machining Contracts</h3>
+                  <p class="tl-card-desc">Opened our CNC division, offering programming, retrofitting, and maintenance services for machining centers. Completed first Fanuc retrofit project for Ford Motor Co.</p>
+                </div>
+              </div>
+              <div class="tl-center">
+                <span class="tl-year-badge">2015–2016</span>
+                <div class="tl-dot"></div>
+              </div>
+              <div class="tl-spacer"></div>
+            </div>
+
+            <!-- 2016 -->
+            <div class="timeline-item right" data-reveal>
+              <div class="tl-card">
+                <div class="tl-card-img">
+                  <img src="https://images.pexels.com/photos/1108572/pexels-photo-1108572.jpeg?auto=compress&cs=tinysrgb&w=700" alt="Conveyor system 2016" loading="lazy" />
+                  <span class="tl-card-tag">Automation</span>
+                </div>
+                <div class="tl-card-body">
+                  <div class="tl-card-header">
+                    <div class="tl-card-meta-left">
+                      <span class="tl-card-period">2016 — 2017</span>
+                      <span class="tl-card-client">ThyssenKrupp</span>
+                    </div>
+                    <img src="/assets/2thyssenkrupp-CWFr3-Zj.svg" alt="ThyssenKrupp" class="tl-client-logo" />
+                  </div>
+                  <h3 class="tl-card-title">High-Speed Conveyor &amp; Stamping Line Automation</h3>
+                  <p class="tl-card-desc">Automated a complete stamping and conveyor line at ThyssenKrupp with Allen-Bradley PLCs, servo drives, and real-time fault diagnostics — reducing cycle time by 22%.</p>
+                </div>
+              </div>
+              <div class="tl-center">
+                <span class="tl-year-badge">2016–2017</span>
+                <div class="tl-dot"></div>
+              </div>
+              <div class="tl-spacer"></div>
+            </div>
+
+            <!-- 2017 -->
+            <div class="timeline-item left" data-reveal>
+              <div class="tl-card">
+                <div class="tl-card-img">
+                  <img src="https://images.pexels.com/photos/2085831/pexels-photo-2085831.jpeg?auto=compress&cs=tinysrgb&w=700" alt="Robotics 2017" loading="lazy" />
+                  <span class="tl-card-tag">Robotics</span>
+                </div>
+                <div class="tl-card-body">
+                  <div class="tl-card-header">
+                    <div class="tl-card-meta-left">
+                      <span class="tl-card-period">2017 — 2018</span>
+                      <span class="tl-card-client">ArcelorMittal</span>
+                    </div>
+                    <img src="data:image/svg+xml,%3c?xml%20version='1.0'%20encoding='UTF-8'?%3e%3csvg%20id='Layer_2'%20data-name='Layer%202'%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2031.59%2013.12'%3e%3cdefs%3e%3cstyle%3e%20.cls-1%20{%20fill:%20%23fff;%20}%20%3c/style%3e%3c/defs%3e%3cg%20id='Capa_1'%20data-name='Capa%201'%3e%3cg%3e%3cg%3e%3cpath%20class='cls-1'%20d='M.44,12.95c-.04.1-.1.17-.22.17s-.22-.07-.22-.19c0-.06.05-.18.06-.23l1.14-3.03c.06-.16.15-.28.32-.28s.27.12.32.28l1.14,3.03s.06.16.06.23c0,.12-.1.19-.22.19s-.19-.07-.22-.17l-.24-.66H.67l-.24.66ZM1.53,9.92h-.01l-.7,1.98h1.42l-.7-1.98Z'/%3e%3cpath%20class='cls-1'%20d='M3.39,10.56c0-.15.09-.24.23-.24s.23.09.23.24v.23h.01c.1-.21.35-.47.62-.47.16,0,.25.1.25.23s-.09.21-.28.25c-.27.05-.6.25-.6.78v1.3c0,.15-.09.24-.23.24s-.23-.09-.23-.24v-2.31Z'/%3e%3cpath%20class='cls-1'%20d='M6.13,10.32c.46,0,.74.16.74.34,0,.09-.08.19-.19.19-.17,0-.24-.14-.55-.14-.56,0-.78.54-.78,1.01s.22,1.01.78,1.01c.32,0,.4-.15.54-.15.1,0,.17.07.17.19,0,.17-.25.35-.72.35-.83,0-1.23-.67-1.23-1.4s.4-1.4,1.23-1.4Z'/%3e%3cpath%20class='cls-1'%20d='M7.58,11.89c0,.47.3.83.81.83.6,0,.76-.37.93-.37.08,0,.16.07.16.2,0,.22-.56.56-1.09.56-.87,0-1.25-.67-1.25-1.4s.46-1.4,1.23-1.4,1.18.67,1.18,1.33c0,.16-.06.24-.25.24h-1.7ZM9.08,11.55c0-.39-.23-.84-.72-.84-.56-.02-.76.43-.78.84h1.5Z'/%3e%3cpath%20class='cls-1'%20d='M10.42,12.88c0,.15-.09.24-.23.24s-.23-.09-.23-.24v-3.52c0-.15.09-.24.23-.24s.23.09.23.24v3.52Z'/%3e%3cpath%20class='cls-1'%20d='M12.1,10.32c.77,0,1.2.67,1.2,1.4s-.43,1.4-1.2,1.4-1.2-.67-1.2-1.4.43-1.4,1.2-1.4ZM12.1,12.73c.56,0,.75-.54.75-1.01s-.2-1.01-.75-1.01-.75.54-.75,1.01.2,1.01.75,1.01Z'/%3e%3cpath%20class='cls-1'%20d='M13.78,10.56c0-.15.09-.24.23-.24s.23.09.23.24v.23h.01c.1-.21.35-.47.62-.47.16,0,.25.1.25.23s-.09.21-.28.25c-.27.05-.6.25-.6.78v1.3c0,.15-.09.24-.23.24s-.23-.09-.23-.24v-2.31Z'/%3e%3cpath%20class='cls-1'%20d='M15.96,12.92c-.02.16-.12.2-.24.2-.14,0-.21-.09-.21-.23,0-.05.01-.12.03-.21l.5-2.94c.05-.26.19-.34.35-.34.18,0,.28.07.33.24l.78,2.68h.01l.78-2.68c.05-.17.15-.24.33-.24.16,0,.31.09.35.34l.5,2.94c.02.09.03.15.03.21,0,.14-.07.23-.21.23-.12,0-.22-.04-.24-.2l-.43-2.94h-.01l-.87,2.95c-.05.15-.13.19-.23.19s-.19-.04-.23-.19l-.87-2.95h-.01l-.43,2.94Z'/%3e%3cpath%20class='cls-1'%20d='M20.22,9.4c.15,0,.28.12.28.28s-.12.28-.28.28-.28-.12-.28-.28.12-.28.28-.28ZM20.45,12.88c0,.15-.09.24-.23.24s-.23-.09-.23-.24v-2.31c0-.15.09-.24.23-.24s.23.09.23.24v2.31Z'/%3e%3cpath%20class='cls-1'%20d='M21.24,9.76c0-.15.09-.24.23-.24s.23.09.23.24v.59h.19c.15,0,.23.07.23.2s-.08.2-.23.2h-.19v2.13c0,.15-.09.24-.23.24s-.23-.09-.23-.24v-2.13h-.19c-.15,0-.23-.07-.23-.2s.08-.2.23-.2h.19v-.59Z'/%3e%3cpath%20class='cls-1'%20d='M22.7,9.76c0-.15.09-.24.23-.24s.23.09.23.24v.59h.19c.15,0,.23.07.23.2s-.08.2-.23.2h-.19v2.13c0,.15-.09.24-.23.24s-.23-.09-.23-.24v-2.13h-.19c-.15,0-.23-.07-.23-.2s.08-.2.23-.2h.19v-.59Z'/%3e%3cpath%20class='cls-1'%20d='M26.18,12.9c0,.16-.12.22-.21.22-.09,0-.21-.06-.21-.22v-.19h-.01c-.2.28-.45.41-.75.41-.77,0-1.2-.67-1.2-1.4s.43-1.4,1.2-1.4c.31,0,.53.13.75.36h.01v-.14c0-.16.12-.22.21-.22.09,0,.21.06.21.22v2.35ZM25,12.73c.56,0,.75-.54.75-1.01s-.2-1.01-.75-1.01-.75.54-.75,1.01.2,1.01.75,1.01Z'/%3e%3cpath%20class='cls-1'%20d='M27.26,12.88c0,.15-.09.24-.23.24s-.23-.09-.23-.24v-3.52c0-.15.09-.24.23-.24s.23.09.23.24v3.52Z'/%3e%3c/g%3e%3cpath%20class='cls-1'%20d='M31.35,4.39c-.57-.52-1.21-.98-1.61-1.26-.4-.29-1.95-1.26-2.81-1.72-.55-.29-1.84-.92-2.93-1.21-.76-.2-1.61-.23-2.18-.17-.57.06-1.22.36-1.38,1.09-.11.52.23,1.38.23,1.38,0,0,.23-.06.63-.11.44-.06.39,0,.63-.06l-.17-.8c.06-.34.63-.52,2.24-.06,1.31.37,4.36,1.84,4.36,1.84,0,0-2.35-1.03-4.99-.92-1.76.08-2.58.14-4.65.92-1.84.69-3.85,2.18-4.19,2.53-.46.46-.32.67-.11.92.23.29.7.19,1.15-.12.75-.52,2.18-1.61,3.33-2.07,1.15-.46,1.65-.55,2.58-.75.28.43,1.79,2.59,2.07,2.87.17.17.52.46.86.23.34-.23.4-.46,0-1.09-.25-.39-1.05-1.61-1.44-2.18.02,0,0,0,0,0,.69,0,1.85-.03,2.76.11,1.44.23,2.53.63,3.16.92.63.29,1.18.56,1.72.8.63.29,1.38-.52.75-1.09Z'/%3e%3c/g%3e%3c/g%3e%3c/svg%3e" alt="ArcelorMittal" class="tl-client-logo" />
+                  </div>
+                  <h3 class="tl-card-title">First Robotic Cell Integration — FANUC R-2000</h3>
+                  <p class="tl-card-desc">Launched our robotics division with the integration of a FANUC R-2000 material handling robot at an ArcelorMittal stamping facility, complete with safety fencing and vision guidance.</p>
+                </div>
+              </div>
+              <div class="tl-center">
+                <span class="tl-year-badge">2017–2018</span>
+                <div class="tl-dot"></div>
+              </div>
+              <div class="tl-spacer"></div>
+            </div>
+
+            <!-- 2018 -->
+            <div class="timeline-item right" data-reveal>
+              <div class="tl-card">
+                <div class="tl-card-img">
+                  <img src="https://images.pexels.com/photos/3862130/pexels-photo-3862130.jpeg?auto=compress&cs=tinysrgb&w=700" alt="CMM Inspection 2018" loading="lazy" />
+                  <span class="tl-card-tag">CNC &amp; CMM</span>
+                </div>
+                <div class="tl-card-body">
+                  <div class="tl-card-header">
+                    <div class="tl-card-meta-left">
+                      <span class="tl-card-period">2018 — 2019</span>
+                      <span class="tl-card-client">General Motors</span>
+                    </div>
+                    <img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMDAgMjAwIj4KICA8cmVjdCB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0ibm9uZSIvPgogIDxnIGZpbGw9IiNGRkZGRkYiPgogICAgPHJlY3QgeD0iMTgiIHk9IjE4IiB3aWR0aD0iMTY0IiBoZWlnaHQ9IjE2NCIgcng9IjEyIiByeT0iMTIiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI0ZGRkZGRiIgc3Ryb2tlLXdpZHRoPSIxNCIvPgogICAgPHRleHQgeD0iMTAwIiB5PSIxMzAiIGZvbnQtZmFtaWx5PSInQXJpYWwgQmxhY2snLEFyaWFsLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iOTYiIGZvbnQtd2VpZ2h0PSI5MDAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGxldHRlci1zcGFjaW5nPSItMiI+R008L3RleHQ+CiAgPC9nPgo8L3N2Zz4K" alt="General Motors" class="tl-client-logo" />
+                  </div>
+                  <h3 class="tl-card-title">CMM Automated Inspection Cell — 100% In-line QC</h3>
+                  <p class="tl-card-desc">Integrated a Zeiss CMM into a GM production line for full dimensional inspection at production speed. Automated rejection handling and SPC reporting to the plant QMS system.</p>
+                </div>
+              </div>
+              <div class="tl-center">
+                <span class="tl-year-badge">2018–2019</span>
+                <div class="tl-dot"></div>
+              </div>
+              <div class="tl-spacer"></div>
+            </div>
+
+            <!-- 2019 -->
+            <div class="timeline-item left" data-reveal>
+              <div class="tl-card">
+                <div class="tl-card-img">
+                  <img src="https://images.pexels.com/photos/325229/pexels-photo-325229.jpeg?auto=compress&cs=tinysrgb&w=700" alt="IIoT sensors 2019" loading="lazy" />
+                  <span class="tl-card-tag">Industry 4.0</span>
+                </div>
+                <div class="tl-card-body">
+                  <div class="tl-card-header">
+                    <div class="tl-card-meta-left">
+                      <span class="tl-card-period">2019 — 2020</span>
+                      <span class="tl-card-client">Hitachi Metals</span>
+                    </div>
+                    <img src="data:image/svg+xml,%3c?xml%20version='1.0'%20encoding='UTF-8'?%3e%3csvg%20id='Layer_2'%20data-name='Layer%202'%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2030.8%204.97'%3e%3cdefs%3e%3cstyle%3e%20.cls-1%20{%20fill:%20%23fff;%20}%20%3c/style%3e%3c/defs%3e%3cg%20id='Capa_1'%20data-name='Capa%201'%3e%3cpath%20class='cls-1'%20d='M24.75.13v1.89h2.54s-.02-1.89,0-1.89h1.25v4.74h-1.25v-2.08h-2.54v2.08h-1.25V.13h1.25M12.85.13v.81h-1.93v3.93h-1.26V.93h-1.91V.13h5.1M17.73,4.86h-1.4l-.41-1.03h-2.35l-.41,1.03h-1.39L13.97.13h1.53l2.23,4.74h0ZM14.74.93l-.88,2.15h1.75l-.87-2.15M29.54,4.86V.13h1.26v4.74h-1.26M1.26.13v1.89h2.53V.13h1.26v4.74h-1.26v-2.08H1.26v2.08H0S.02.13,0,.13h1.26M6.05,4.86V.13h1.25v4.74h-1.25M17.68,3.55c-.11-.33-.17-.66-.17-1.01,0-.51.09-.98.33-1.39.24-.41.62-.73,1.07-.9.43-.16.9-.25,1.39-.25.57,0,1.11.13,1.58.33.46.21.8.62.9,1.11.02.09.03.19.05.3h-1.31c-.02-.13-.03-.25-.08-.36-.09-.27-.32-.47-.58-.55-.18-.05-.36-.08-.55-.08-.22,0-.43.03-.62.11-.33.11-.58.36-.7.69-.11.3-.17.65-.17.99,0,.28.05.57.13.82.09.35.35.63.68.76.22.08.44.13.68.13.2,0,.39-.03.58-.09.24-.08.44-.25.55-.49.06-.16.09-.33.09-.51h1.33c-.02.14-.03.3-.06.44-.11.47-.44.87-.88,1.04-.49.22-1.04.33-1.61.33-.44,0-.87-.06-1.28-.19-.6-.19-1.14-.63-1.34-1.23'/%3e%3c/g%3e%3c/svg%3e" alt="Hitachi" class="tl-client-logo" />
+                  </div>
+                  <h3 class="tl-card-title">IIoT Sensor Network &amp; Predictive Maintenance Pilot</h3>
+                  <p class="tl-card-desc">Deployed a 28-node IIoT sensor network across Hitachi Metals' facility, monitoring vibration, temperature, and current on critical machines — first step toward predictive maintenance.</p>
+                </div>
+              </div>
+              <div class="tl-center">
+                <span class="tl-year-badge">2019–2020</span>
+                <div class="tl-dot"></div>
+              </div>
+              <div class="tl-spacer"></div>
+            </div>
+
+            <!-- 2020 -->
+            <div class="timeline-item right" data-reveal>
+              <div class="tl-card">
+                <div class="tl-card-img">
+                  <img src="https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg?auto=compress&cs=tinysrgb&w=700" alt="Remote monitoring 2020" loading="lazy" />
+                  <span class="tl-card-tag">Industry 4.0</span>
+                </div>
+                <div class="tl-card-body">
+                  <div class="tl-card-header">
+                    <div class="tl-card-meta-left">
+                      <span class="tl-card-period">2020 — 2021</span>
+                      <span class="tl-card-client">Eaton</span>
+                    </div>
+                    <img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyBpZD0iTGF5ZXJfMiIgZGF0YS1uYW1lPSJMYXllciAyIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjAgNDAiPgogIDxkZWZzPgogICAgPHN0eWxlPgogICAgICAuY2xzLTEgewogICAgICAgIGZpbGw6ICMwMEE5NEY7CiAgICAgIH0KICAgIDwvc3R5bGU+CiAgPC9kZWZzPgogIDxnIGlkPSJDYXBhXzEiIGRhdGEtbmFtZT0iQ2FwYSAxIj4KICAgIDx0ZXh0IHg9IjYwIiB5PSIyOCIgZm9udC1mYW1pbHk9IidBcmlhbCBCbGFjaycsIEFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjIyIiBmb250LXdlaWdodD0iOTAwIiBmaWxsPSIjMDBBOTRGIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBsZXR0ZXItc3BhY2luZz0iMS41Ij5FQVRPTjwvdGV4dD4KICA8L2c+Cjwvc3ZnPgo=" alt="Eaton" class="tl-client-logo" />
+                  </div>
+                  <h3 class="tl-card-title">Remote Monitoring Platform &amp; Digital Twin Pilot</h3>
+                  <p class="tl-card-desc">Launched a remote monitoring and diagnostics platform for Eaton during plant shutdowns, enabling engineers to detect faults and perform virtual commissioning from offsite.</p>
+                </div>
+              </div>
+              <div class="tl-center">
+                <span class="tl-year-badge">2020–2021</span>
+                <div class="tl-dot"></div>
+              </div>
+              <div class="tl-spacer"></div>
+            </div>
+
+            <!-- 2021 -->
+            <div class="timeline-item left" data-reveal>
+              <div class="tl-card">
+                <div class="tl-card-img">
+                  <img src="https://images.pexels.com/photos/210881/pexels-photo-210881.jpeg?auto=compress&cs=tinysrgb&w=700" alt="Predictive maintenance 2021" loading="lazy" />
+                  <span class="tl-card-tag">Industry 4.0</span>
+                </div>
+                <div class="tl-card-body">
+                  <div class="tl-card-header">
+                    <div class="tl-card-meta-left">
+                      <span class="tl-card-period">2021 — 2022</span>
+                      <span class="tl-card-client">Eaton</span>
+                    </div>
+                    <img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyBpZD0iTGF5ZXJfMiIgZGF0YS1uYW1lPSJMYXllciAyIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjAgNDAiPgogIDxkZWZzPgogICAgPHN0eWxlPgogICAgICAuY2xzLTEgewogICAgICAgIGZpbGw6ICMwMEE5NEY7CiAgICAgIH0KICAgIDwvc3R5bGU+CiAgPC9kZWZzPgogIDxnIGlkPSJDYXBhXzEiIGRhdGEtbmFtZT0iQ2FwYSAxIj4KICAgIDx0ZXh0IHg9IjYwIiB5PSIyOCIgZm9udC1mYW1pbHk9IidBcmlhbCBCbGFjaycsIEFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjIyIiBmb250LXdlaWdodD0iOTAwIiBmaWxsPSIjMDBBOTRGIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBsZXR0ZXItc3BhY2luZz0iMS41Ij5FQVRPTjwvdGV4dD4KICA8L2c+Cjwvc3ZnPgo=" alt="Eaton" class="tl-client-logo" />
+                  </div>
+                  <h3 class="tl-card-title">IIoT Predictive Maintenance — 40+ Asset Deployment</h3>
+                  <p class="tl-card-desc">Scaled the IIoT program to 40+ critical assets, connecting cloud analytics with automated maintenance alerts. Reduced unplanned downtime by 31% in the first six months of operation.</p>
+                </div>
+              </div>
+              <div class="tl-center">
+                <span class="tl-year-badge">2021–2022</span>
+                <div class="tl-dot"></div>
+              </div>
+              <div class="tl-spacer"></div>
+            </div>
+
+            <!-- 2022 -->
+            <div class="timeline-item right" data-reveal>
+              <div class="tl-card">
+                <div class="tl-card-img">
+                  <img src="https://images.pexels.com/photos/1108572/pexels-photo-1108572.jpeg?auto=compress&cs=tinysrgb&w=700" alt="Conveyor VFD 2022" loading="lazy" />
+                  <span class="tl-card-tag">Automation</span>
+                </div>
+                <div class="tl-card-body">
+                  <div class="tl-card-header">
+                    <div class="tl-card-meta-left">
+                      <span class="tl-card-period">2022 — 2023</span>
+                      <span class="tl-card-client">Ford Motor Co.</span>
+                    </div>
+                    <img src="data:image/svg+xml,%3c?xml%20version='1.0'%20encoding='UTF-8'?%3e%3csvg%20id='Layer_2'%20data-name='Layer%202'%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2044.25%2016.74'%3e%3cdefs%3e%3cstyle%3e%20.cls-1%20{%20fill:%20%23fff;%20}%20%3c/style%3e%3c/defs%3e%3cg%20id='Capa_1'%20data-name='Capa%201'%3e%3cg%3e%3cpath%20class='cls-1'%20d='M22.13,0C9.9,0,0,3.75,0,8.38s9.9,8.36,22.13,8.36,22.12-3.74,22.12-8.36S34.35,0,22.13,0ZM22.13,15.88C10.4,15.88.87,12.54.87,8.38S10.4.84,22.13.84s21.28,3.38,21.28,7.54-9.52,7.51-21.28,7.51Z'/%3e%3cpath%20class='cls-1'%20d='M22.13,1.47C10.75,1.47,1.54,4.57,1.54,8.38s9.2,6.92,20.59,6.92,20.61-3.1,20.61-6.92S33.51,1.47,22.13,1.47ZM12.04,12.63c-1.24,0-2.34-.81-2.37-2.27-.01-.88.7-1.97,2.03-2.3.16,0,.21.06.21.14,0,.06-.06.13-.19.19-.39.14-1.06.9-1.06,1.6,0,.53.33,1.11.88,1.24.16.04.3.03.44.03,1.38,0,2.94-1.56,4.62-3.92-.27.01-1.43.14-1.71.47-.13.1-.21.04-.24-.07,0-.03.04-.13.09-.19.46-.51,1.83-.63,2.15-.67,1.25-1.91,2.84-3.12,3.24-3.17-.01,0-.03,0-.04-.01-1.1-.26-2.1-.47-2.88-.47-2.75,0-3.98,1.18-3.92,2.27.03.44.39.73.91.63.57-.1,1.37-.64,1.57-1.11.04-.1.16-.11.2-.09.09.07.06.17.06.17-.07.56-.93,2.1-2.41,2.1-.83,0-1.38-.77-1.37-1.53.01-1.41,1.46-2.84,5.01-2.84.67,0,1.43.06,2.26.2.96.17,3.34.57,5.28.6.71,0,1.63.03,2.37-.09.78-.13.61-.16.93-.16.29,0,.29.11.29.23,0,.46-1.6,1.33-2.95,1.33-2,0-4.07-.9-5.14-1.19.04.04.07.1.04.18-.01.03-.16.19-.21.23-.29.26-1.26.88-2.31,2.67.86-.04,1.86-.21,1.86-.21,0,0-.06-.19-.06-.34.04-.61.4-.98.86-.91.26.04.43.26.43.49,0,.24-.19.6-.37.77-.13.1-.27.2-.44.29,0,.16.21.29.4.3-.04.16-.03.23-.1.21-.43,0-.6-.41-.6-.41-.57.1-1.13.17-2.25.29-2.84,4.6-3.72,5.35-5.47,5.35ZM31.61,11.87c.61-.03,1.74-1.2,2.01-1.48.06-.07.16-.2.21-.2s.17.06.17.14c0,.06-.13.27-.23.4-.57.71-1.51,1.81-2.58,1.84-.53,0-.73-.21-.8-.63-.24.21-1.07.59-1.91.59-.7-.01-.98-.43-1.13-.76-.13-.27-.19-.67-.09-1.07-.39.2-.74.23-1.26.21-.6-.01-.97-.29-1.16-.98-.69,1.26-.71,1.3-1.41,2.61h-1.21l1.56-2.64c.2-.36.3-.64.37-.94.04-.17-.09-.33-.27-.34-.2,0-.53.2-.84.5,0,0-.8.86-1.38,1.73-.56.83-1.51,1.77-2.55,1.77-.76,0-1.44-.41-1.58-1.21,0,0-.07.19-.74.57-.06.03-.2.11-.24.09-.13-.11-.2-.26-.21-.36.04.01.13-.06.4-.27.53-.4.64-.71.64-.71.13-.27.36-.7.51-1,.43-.86,1.17-1.73,2.38-1.77.2,0,.26.09.3.16.11.09.07.26.07.26-.86.13-1.44.63-1.8,1.11-.21.31-.44.83-.49,1.2-.09.64.21,1.07.66,1.17.83.13,1.51-.47,2.06-1.4.14-.24.24-.87.24-1.21s-.19-.7-.33-.84c0-.24.16-.4.34-.4.06,0,.11,0,.17.06.29.29.44.83.44,1.24,0,.14,0,.29-.03.43.6-.73,1.36-1.67,1.94-1.86.11-.06.23-.06.34-.06,1.07-.03.93.94.93.94.57-.66.97-.9,1.5-.87.57.03.77.43.77.74-.01.37-.29.8-.76.81-.41,0-.66-.2-.79-.57-.27.1-.4.29-.46.66-.09.47.27.84.73.84.78,0,1.13-.34,1.41-.6.97-.91,1.51-1.87,2.91-1.86.84.01,1.06.69,1.2.97l1.84-3.11h1.13l-3.05,5.41c-.06.11-.2.33-.19.5.03.27.37.2.24.2Z'/%3e%3cpath%20class='cls-1'%20d='M30.5,8.58c-.5-.06-1.13.37-1.64,1-.26.31-.53.91-.57,1.27-.06.36.04.71.17.81.13.1.7.4,1.58-.5.5-.5.98-1.31.98-1.31l-.16-.04c.3-.56.24-1.16-.37-1.23Z'/%3e%3cpath%20class='cls-1'%20d='M20.19,3.7s-.03.01-.04.01c.04,0,.09.03.14.04-.03-.03-.07-.05-.09-.05Z'/%3e%3cpath%20class='cls-1'%20d='M20.35,6.35c.09-.09.23-.34.2-.51-.01-.09-.06-.19-.16-.17-.21.04-.34.14-.4.36-.07.23-.04.39,0,.56,0,0,.14.01.36-.23Z'/%3e%3c/g%3e%3c/g%3e%3c/svg%3e" alt="Ford" class="tl-client-logo" />
+                  </div>
+                  <h3 class="tl-card-title">Variable Speed Conveyor System &amp; MCC Installation</h3>
+                  <p class="tl-card-desc">Delivered a Siemens S7-1200 controlled conveyor system with VFD drives and a custom 22-circuit Motor Control Center for Ford — synchronized with upstream press operations.</p>
+                </div>
+              </div>
+              <div class="tl-center">
+                <span class="tl-year-badge">2022–2023</span>
+                <div class="tl-dot"></div>
+              </div>
+              <div class="tl-spacer"></div>
+            </div>
+
+            <!-- 2023 -->
+            <div class="timeline-item left" data-reveal>
+              <div class="tl-card">
+                <div class="tl-card-img">
+                  <img src="https://images.pexels.com/photos/2085831/pexels-photo-2085831.jpeg?auto=compress&cs=tinysrgb&w=700" alt="Robotic welding 2023" loading="lazy" />
+                  <span class="tl-card-tag">Robotics</span>
+                </div>
+                <div class="tl-card-body">
+                  <div class="tl-card-header">
+                    <div class="tl-card-meta-left">
+                      <span class="tl-card-period">2023 — 2024</span>
+                      <span class="tl-card-client">General Motors</span>
+                    </div>
+                    <img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMDAgMjAwIj4KICA8cmVjdCB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0ibm9uZSIvPgogIDxnIGZpbGw9IiNGRkZGRkYiPgogICAgPHJlY3QgeD0iMTgiIHk9IjE4IiB3aWR0aD0iMTY0IiBoZWlnaHQ9IjE2NCIgcng9IjEyIiByeT0iMTIiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI0ZGRkZGRiIgc3Ryb2tlLXdpZHRoPSIxNCIvPgogICAgPHRleHQgeD0iMTAwIiB5PSIxMzAiIGZvbnQtZmFtaWx5PSInQXJpYWwgQmxhY2snLEFyaWFsLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iOTYiIGZvbnQtd2VpZ2h0PSI5MDAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGxldHRlci1zcGFjaW5nPSItMiI+R008L3RleHQ+CiAgPC9nPgo8L3N2Zz4K" alt="General Motors" class="tl-client-logo" />
+                  </div>
+                  <h3 class="tl-card-title">FANUC Robotic Welding Cell — ISO 10218 Certified</h3>
+                  <p class="tl-card-desc">Designed, installed, and commissioned a 6-axis FANUC robotic welding cell with fixture tooling, seam tracking, and full safety fencing. Certified to ISO 10218 standards.</p>
+                </div>
+              </div>
+              <div class="tl-center">
+                <span class="tl-year-badge">2023–2024</span>
+                <div class="tl-dot"></div>
+              </div>
+              <div class="tl-spacer"></div>
+            </div>
+
+            <!-- 2024 -->
+            <div class="timeline-item right" data-reveal>
+              <div class="tl-card">
+                <div class="tl-card-img">
+                  <img src="https://images.pexels.com/photos/3912981/pexels-photo-3912981.jpeg?auto=compress&cs=tinysrgb&w=700" alt="Assembly line automation 2024" loading="lazy" />
+                  <span class="tl-card-tag">Featured</span>
+                </div>
+                <div class="tl-card-body">
+                  <div class="tl-card-header">
+                    <div class="tl-card-meta-left">
+                      <span class="tl-card-period">2024 — 2025</span>
+                      <span class="tl-card-client">ArcelorMittal</span>
+                    </div>
+                    <img src="data:image/svg+xml,%3c?xml%20version='1.0'%20encoding='UTF-8'?%3e%3csvg%20id='Layer_2'%20data-name='Layer%202'%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2031.59%2013.12'%3e%3cdefs%3e%3cstyle%3e%20.cls-1%20{%20fill:%20%23fff;%20}%20%3c/style%3e%3c/defs%3e%3cg%20id='Capa_1'%20data-name='Capa%201'%3e%3cg%3e%3cg%3e%3cpath%20class='cls-1'%20d='M.44,12.95c-.04.1-.1.17-.22.17s-.22-.07-.22-.19c0-.06.05-.18.06-.23l1.14-3.03c.06-.16.15-.28.32-.28s.27.12.32.28l1.14,3.03s.06.16.06.23c0,.12-.1.19-.22.19s-.19-.07-.22-.17l-.24-.66H.67l-.24.66ZM1.53,9.92h-.01l-.7,1.98h1.42l-.7-1.98Z'/%3e%3cpath%20class='cls-1'%20d='M3.39,10.56c0-.15.09-.24.23-.24s.23.09.23.24v.23h.01c.1-.21.35-.47.62-.47.16,0,.25.1.25.23s-.09.21-.28.25c-.27.05-.6.25-.6.78v1.3c0,.15-.09.24-.23.24s-.23-.09-.23-.24v-2.31Z'/%3e%3cpath%20class='cls-1'%20d='M6.13,10.32c.46,0,.74.16.74.34,0,.09-.08.19-.19.19-.17,0-.24-.14-.55-.14-.56,0-.78.54-.78,1.01s.22,1.01.78,1.01c.32,0,.4-.15.54-.15.1,0,.17.07.17.19,0,.17-.25.35-.72.35-.83,0-1.23-.67-1.23-1.4s.4-1.4,1.23-1.4Z'/%3e%3cpath%20class='cls-1'%20d='M7.58,11.89c0,.47.3.83.81.83.6,0,.76-.37.93-.37.08,0,.16.07.16.2,0,.22-.56.56-1.09.56-.87,0-1.25-.67-1.25-1.4s.46-1.4,1.23-1.4,1.18.67,1.18,1.33c0,.16-.06.24-.25.24h-1.7ZM9.08,11.55c0-.39-.23-.84-.72-.84-.56-.02-.76.43-.78.84h1.5Z'/%3e%3cpath%20class='cls-1'%20d='M10.42,12.88c0,.15-.09.24-.23.24s-.23-.09-.23-.24v-3.52c0-.15.09-.24.23-.24s.23.09.23.24v3.52Z'/%3e%3cpath%20class='cls-1'%20d='M12.1,10.32c.77,0,1.2.67,1.2,1.4s-.43,1.4-1.2,1.4-1.2-.67-1.2-1.4.43-1.4,1.2-1.4ZM12.1,12.73c.56,0,.75-.54.75-1.01s-.2-1.01-.75-1.01-.75.54-.75,1.01.2,1.01.75,1.01Z'/%3e%3cpath%20class='cls-1'%20d='M13.78,10.56c0-.15.09-.24.23-.24s.23.09.23.24v.23h.01c.1-.21.35-.47.62-.47.16,0,.25.1.25.23s-.09.21-.28.25c-.27.05-.6.25-.6.78v1.3c0,.15-.09.24-.23.24s-.23-.09-.23-.24v-2.31Z'/%3e%3cpath%20class='cls-1'%20d='M15.96,12.92c-.02.16-.12.2-.24.2-.14,0-.21-.09-.21-.23,0-.05.01-.12.03-.21l.5-2.94c.05-.26.19-.34.35-.34.18,0,.28.07.33.24l.78,2.68h.01l.78-2.68c.05-.17.15-.24.33-.24.16,0,.31.09.35.34l.5,2.94c.02.09.03.15.03.21,0,.14-.07.23-.21.23-.12,0-.22-.04-.24-.2l-.43-2.94h-.01l-.87,2.95c-.05.15-.13.19-.23.19s-.19-.04-.23-.19l-.87-2.95h-.01l-.43,2.94Z'/%3e%3cpath%20class='cls-1'%20d='M20.22,9.4c.15,0,.28.12.28.28s-.12.28-.28.28-.28-.12-.28-.28.12-.28.28-.28ZM20.45,12.88c0,.15-.09.24-.23.24s-.23-.09-.23-.24v-2.31c0-.15.09-.24.23-.24s.23.09.23.24v2.31Z'/%3e%3cpath%20class='cls-1'%20d='M21.24,9.76c0-.15.09-.24.23-.24s.23.09.23.24v.59h.19c.15,0,.23.07.23.2s-.08.2-.23.2h-.19v2.13c0,.15-.09.24-.23.24s-.23-.09-.23-.24v-2.13h-.19c-.15,0-.23-.07-.23-.2s.08-.2.23-.2h.19v-.59Z'/%3e%3cpath%20class='cls-1'%20d='M22.7,9.76c0-.15.09-.24.23-.24s.23.09.23.24v.59h.19c.15,0,.23.07.23.2s-.08.2-.23.2h-.19v2.13c0,.15-.09.24-.23.24s-.23-.09-.23-.24v-2.13h-.19c-.15,0-.23-.07-.23-.2s.08-.2.23-.2h.19v-.59Z'/%3e%3cpath%20class='cls-1'%20d='M26.18,12.9c0,.16-.12.22-.21.22-.09,0-.21-.06-.21-.22v-.19h-.01c-.2.28-.45.41-.75.41-.77,0-1.2-.67-1.2-1.4s.43-1.4,1.2-1.4c.31,0,.53.13.75.36h.01v-.14c0-.16.12-.22.21-.22.09,0,.21.06.21.22v2.35ZM25,12.73c.56,0,.75-.54.75-1.01s-.2-1.01-.75-1.01-.75.54-.75,1.01.2,1.01.75,1.01Z'/%3e%3cpath%20class='cls-1'%20d='M27.26,12.88c0,.15-.09.24-.23.24s-.23-.09-.23-.24v-3.52c0-.15.09-.24.23-.24s.23.09.23.24v3.52Z'/%3e%3c/g%3e%3cpath%20class='cls-1'%20d='M31.35,4.39c-.57-.52-1.21-.98-1.61-1.26-.4-.29-1.95-1.26-2.81-1.72-.55-.29-1.84-.92-2.93-1.21-.76-.2-1.61-.23-2.18-.17-.57.06-1.22.36-1.38,1.09-.11.52.23,1.38.23,1.38,0,0,.23-.06.63-.11.44-.06.39,0,.63-.06l-.17-.8c.06-.34.63-.52,2.24-.06,1.31.37,4.36,1.84,4.36,1.84,0,0-2.35-1.03-4.99-.92-1.76.08-2.58.14-4.65.92-1.84.69-3.85,2.18-4.19,2.53-.46.46-.32.67-.11.92.23.29.7.19,1.15-.12.75-.52,2.18-1.61,3.33-2.07,1.15-.46,1.65-.55,2.58-.75.28.43,1.79,2.59,2.07,2.87.17.17.52.46.86.23.34-.23.4-.46,0-1.09-.25-.39-1.05-1.61-1.44-2.18.02,0,0,0,0,0,.69,0,1.85-.03,2.76.11,1.44.23,2.53.63,3.16.92.63.29,1.18.56,1.72.8.63.29,1.38-.52.75-1.09Z'/%3e%3c/g%3e%3c/g%3e%3c/svg%3e" alt="ArcelorMittal" class="tl-client-logo" />
+                  </div>
+                  <h3 class="tl-card-title">Full Assembly Line Automation — Tier 1 Plant</h3>
+                  <p class="tl-card-desc">Complete redesign and automation of a stamping and assembly line. Allen-Bradley PLCs, SCADA integration, safety relay systems, and real-time production monitoring reduced downtime by 38%.</p>
+                </div>
+              </div>
+              <div class="tl-center">
+                <span class="tl-year-badge">2024–2025</span>
+                <div class="tl-dot"></div>
+              </div>
+              <div class="tl-spacer"></div>
+            </div>
+
+            <!-- 2025 -->
+            <div class="timeline-item left" data-reveal>
+              <div class="tl-card">
+                <div class="tl-card-img">
+                  <img src="https://images.pexels.com/photos/5726837/pexels-photo-5726837.jpeg?auto=compress&cs=tinysrgb&w=700" alt="5-axis CNC 2025" loading="lazy" />
+                  <span class="tl-card-tag">CNC</span>
+                </div>
+                <div class="tl-card-body">
+                  <div class="tl-card-header">
+                    <div class="tl-card-meta-left">
+                      <span class="tl-card-period">2025 — 2026</span>
+                      <span class="tl-card-client">Ford Motor Co.</span>
+                    </div>
+                    <img src="data:image/svg+xml,%3c?xml%20version='1.0'%20encoding='UTF-8'?%3e%3csvg%20id='Layer_2'%20data-name='Layer%202'%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2044.25%2016.74'%3e%3cdefs%3e%3cstyle%3e%20.cls-1%20{%20fill:%20%23fff;%20}%20%3c/style%3e%3c/defs%3e%3cg%20id='Capa_1'%20data-name='Capa%201'%3e%3cg%3e%3cpath%20class='cls-1'%20d='M22.13,0C9.9,0,0,3.75,0,8.38s9.9,8.36,22.13,8.36,22.12-3.74,22.12-8.36S34.35,0,22.13,0ZM22.13,15.88C10.4,15.88.87,12.54.87,8.38S10.4.84,22.13.84s21.28,3.38,21.28,7.54-9.52,7.51-21.28,7.51Z'/%3e%3cpath%20class='cls-1'%20d='M22.13,1.47C10.75,1.47,1.54,4.57,1.54,8.38s9.2,6.92,20.59,6.92,20.61-3.1,20.61-6.92S33.51,1.47,22.13,1.47ZM12.04,12.63c-1.24,0-2.34-.81-2.37-2.27-.01-.88.7-1.97,2.03-2.3.16,0,.21.06.21.14,0,.06-.06.13-.19.19-.39.14-1.06.9-1.06,1.6,0,.53.33,1.11.88,1.24.16.04.3.03.44.03,1.38,0,2.94-1.56,4.62-3.92-.27.01-1.43.14-1.71.47-.13.1-.21.04-.24-.07,0-.03.04-.13.09-.19.46-.51,1.83-.63,2.15-.67,1.25-1.91,2.84-3.12,3.24-3.17-.01,0-.03,0-.04-.01-1.1-.26-2.1-.47-2.88-.47-2.75,0-3.98,1.18-3.92,2.27.03.44.39.73.91.63.57-.1,1.37-.64,1.57-1.11.04-.1.16-.11.2-.09.09.07.06.17.06.17-.07.56-.93,2.1-2.41,2.1-.83,0-1.38-.77-1.37-1.53.01-1.41,1.46-2.84,5.01-2.84.67,0,1.43.06,2.26.2.96.17,3.34.57,5.28.6.71,0,1.63.03,2.37-.09.78-.13.61-.16.93-.16.29,0,.29.11.29.23,0,.46-1.6,1.33-2.95,1.33-2,0-4.07-.9-5.14-1.19.04.04.07.1.04.18-.01.03-.16.19-.21.23-.29.26-1.26.88-2.31,2.67.86-.04,1.86-.21,1.86-.21,0,0-.06-.19-.06-.34.04-.61.4-.98.86-.91.26.04.43.26.43.49,0,.24-.19.6-.37.77-.13.1-.27.2-.44.29,0,.16.21.29.4.3-.04.16-.03.23-.1.21-.43,0-.6-.41-.6-.41-.57.1-1.13.17-2.25.29-2.84,4.6-3.72,5.35-5.47,5.35ZM31.61,11.87c.61-.03,1.74-1.2,2.01-1.48.06-.07.16-.2.21-.2s.17.06.17.14c0,.06-.13.27-.23.4-.57.71-1.51,1.81-2.58,1.84-.53,0-.73-.21-.8-.63-.24.21-1.07.59-1.91.59-.7-.01-.98-.43-1.13-.76-.13-.27-.19-.67-.09-1.07-.39.2-.74.23-1.26.21-.6-.01-.97-.29-1.16-.98-.69,1.26-.71,1.3-1.41,2.61h-1.21l1.56-2.64c.2-.36.3-.64.37-.94.04-.17-.09-.33-.27-.34-.2,0-.53.2-.84.5,0,0-.8.86-1.38,1.73-.56.83-1.51,1.77-2.55,1.77-.76,0-1.44-.41-1.58-1.21,0,0-.07.19-.74.57-.06.03-.2.11-.24.09-.13-.11-.2-.26-.21-.36.04.01.13-.06.4-.27.53-.4.64-.71.64-.71.13-.27.36-.7.51-1,.43-.86,1.17-1.73,2.38-1.77.2,0,.26.09.3.16.11.09.07.26.07.26-.86.13-1.44.63-1.8,1.11-.21.31-.44.83-.49,1.2-.09.64.21,1.07.66,1.17.83.13,1.51-.47,2.06-1.4.14-.24.24-.87.24-1.21s-.19-.7-.33-.84c0-.24.16-.4.34-.4.06,0,.11,0,.17.06.29.29.44.83.44,1.24,0,.14,0,.29-.03.43.6-.73,1.36-1.67,1.94-1.86.11-.06.23-.06.34-.06,1.07-.03.93.94.93.94.57-.66.97-.9,1.5-.87.57.03.77.43.77.74-.01.37-.29.8-.76.81-.41,0-.66-.2-.79-.57-.27.1-.4.29-.46.66-.09.47.27.84.73.84.78,0,1.13-.34,1.41-.6.97-.91,1.51-1.87,2.91-1.86.84.01,1.06.69,1.2.97l1.84-3.11h1.13l-3.05,5.41c-.06.11-.2.33-.19.5.03.27.37.2.24.2Z'/%3e%3cpath%20class='cls-1'%20d='M30.5,8.58c-.5-.06-1.13.37-1.64,1-.26.31-.53.91-.57,1.27-.06.36.04.71.17.81.13.1.7.4,1.58-.5.5-.5.98-1.31.98-1.31l-.16-.04c.3-.56.24-1.16-.37-1.23Z'/%3e%3cpath%20class='cls-1'%20d='M20.19,3.7s-.03.01-.04.01c.04,0,.09.03.14.04-.03-.03-.07-.05-.09-.05Z'/%3e%3cpath%20class='cls-1'%20d='M20.35,6.35c.09-.09.23-.34.2-.51-.01-.09-.06-.19-.16-.17-.21.04-.34.14-.4.36-.07.23-.04.39,0,.56,0,0,.14.01.36-.23Z'/%3e%3c/g%3e%3c/g%3e%3c/svg%3e" alt="Ford" class="tl-client-logo" />
+                  </div>
+                  <h3 class="tl-card-title">5-Axis CNC Retrofit &amp; Spindle Diagnostic System</h3>
+                  <p class="tl-card-desc">Retrofit of legacy 5-axis machining centers with modern Fanuc controls, vibration monitoring, and predictive spindle failure alerts integrated into the plant MES platform.</p>
+                </div>
+              </div>
+              <div class="tl-center">
+                <span class="tl-year-badge">2025–2026</span>
+                <div class="tl-dot"></div>
+              </div>
+              <div class="tl-spacer"></div>
+            </div>
+
+            <!-- 2026 -->
+            <div class="timeline-item right" data-reveal>
+              <div class="tl-card">
+                <div class="tl-card-img">
+                  <img src="https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg?auto=compress&cs=tinysrgb&w=700" alt="OEE Dashboard 2026" loading="lazy" />
+                  <span class="tl-card-tag">Industry 4.0</span>
+                </div>
+                <div class="tl-card-body">
+                  <div class="tl-card-header">
+                    <div class="tl-card-meta-left">
+                      <span class="tl-card-period">2026 — Presente</span>
+                      <span class="tl-card-client">Hitachi Metals</span>
+                    </div>
+                    <img src="data:image/svg+xml,%3c?xml%20version='1.0'%20encoding='UTF-8'?%3e%3csvg%20id='Layer_2'%20data-name='Layer%202'%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2030.8%204.97'%3e%3cdefs%3e%3cstyle%3e%20.cls-1%20{%20fill:%20%23fff;%20}%20%3c/style%3e%3c/defs%3e%3cg%20id='Capa_1'%20data-name='Capa%201'%3e%3cpath%20class='cls-1'%20d='M24.75.13v1.89h2.54s-.02-1.89,0-1.89h1.25v4.74h-1.25v-2.08h-2.54v2.08h-1.25V.13h1.25M12.85.13v.81h-1.93v3.93h-1.26V.93h-1.91V.13h5.1M17.73,4.86h-1.4l-.41-1.03h-2.35l-.41,1.03h-1.39L13.97.13h1.53l2.23,4.74h0ZM14.74.93l-.88,2.15h1.75l-.87-2.15M29.54,4.86V.13h1.26v4.74h-1.26M1.26.13v1.89h2.53V.13h1.26v4.74h-1.26v-2.08H1.26v2.08H0S.02.13,0,.13h1.26M6.05,4.86V.13h1.25v4.74h-1.25M17.68,3.55c-.11-.33-.17-.66-.17-1.01,0-.51.09-.98.33-1.39.24-.41.62-.73,1.07-.9.43-.16.9-.25,1.39-.25.57,0,1.11.13,1.58.33.46.21.8.62.9,1.11.02.09.03.19.05.3h-1.31c-.02-.13-.03-.25-.08-.36-.09-.27-.32-.47-.58-.55-.18-.05-.36-.08-.55-.08-.22,0-.43.03-.62.11-.33.11-.58.36-.7.69-.11.3-.17.65-.17.99,0,.28.05.57.13.82.09.35.35.63.68.76.22.08.44.13.68.13.2,0,.39-.03.58-.09.24-.08.44-.25.55-.49.06-.16.09-.33.09-.51h1.33c-.02.14-.03.3-.06.44-.11.47-.44.87-.88,1.04-.49.22-1.04.33-1.61.33-.44,0-.87-.06-1.28-.19-.6-.19-1.14-.63-1.34-1.23'/%3e%3c/g%3e%3c/svg%3e" alt="Hitachi" class="tl-client-logo" />
+                  </div>
+                  <h3 class="tl-card-title">OEE Real-Time Dashboard &amp; Full SCADA Rollout</h3>
+                  <p class="tl-card-desc">Deployed a cloud-connected OEE monitoring platform across 14 production lines via OPC-UA. Custom dashboards for shift supervisors and plant managers delivering live performance insights.</p>
+                </div>
+              </div>
+              <div class="tl-center">
+                <span class="tl-year-badge">2026</span>
+                <div class="tl-dot"></div>
+              </div>
+              <div class="tl-spacer"></div>
+            </div>
+
+          </div>
+
+
+        </div>
+      </section>
+
+      <section class="projects-cta">
+        <div class="container">
+          <div class="projects-cta-inner" data-reveal>
+            <p class="eyebrow">Start a project</p>
+            <h2>Have a challenge we can <span>solve?</span></h2>
+            <p>
+              Tell us about your project — our engineers will assess your needs and come back with a concrete proposal within 48 hours.
+            </p>
+            <div class="projects-cta-btns">
+              <a class="btn" href="mailto:sales@engineeringds.com.mx"><span>Get a Quote</span></a>
+              <a class="btn btn-outline" href="about.html"><span>About Us</span></a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <div class="footer-brand">
+          <a class="brand" href="index.html">
+            <img src="/assets/logo_para_web._-B98yKRAj.png?v=2" alt="EDS Logo" class="footer-logo">
+          </a>
+          <p class="footer-tagline">
+            ENGINEERING DESIGN &amp; SERVICE<br />
+            <span>SEEKING TOWARDS IMPROVEMENT.</span>
+          </p>
+          <p>
+            Engineering solutions for the automotive industry with over 15 years of experience.
+          </p>
+        </div>
+        <div class="footer-links">
+          <h3>Company</h3>
+          <ul>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="machining.html">Machining</a></li>
+            <li><a href="index.html#servicios">Services</a></li>
+            <li><a href="index.html#clientes">Clients</a></li>
+            <li><a href="index.html#contacto">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <h3>Services</h3>
+          <ul>
+            <li><a href="index.html#servicios">Ball Bar Test</a></li>
+            <li><a href="index.html#servicios">Axis Interpolation</a></li>
+            <li><a href="index.html#servicios">Custom Precision Shim Fabrication</a></li>
+            <li><a href="index.html#servicios">Geometric Alignment &amp; Machine Leveling</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>
+          &copy; 2026 Engineering EDS. All rights reserved.
+          <span class="footer-credit">⎸ creado por <a href="https://wa.me/524491809587" target="_blank" rel="noopener noreferrer">Albertoautomatiza</a></span>
+        </p>
+        <div class="footer-legal">
+          <a href="#" data-modal="privacy">Privacy</a>
+          <a href="#" data-modal="terms">Terms</a>
+          <a href="#" data-modal="legal">Legal</a>
+        </div>
+      </div>
+    </footer>
+
+    <button
+      class="scroll-top-button"
+      id="scroll-top-button"
+      aria-label="Scroll to top"
+    >
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <polyline points="18 15 12 9 6 15"></polyline>
+      </svg>
+      <span>Top</span>
+    </button>
+
+    <script>
+      (function() {
+        const DURATION = 22000;
+        const STREAK_HEIGHT = 120;
+        const FLASH_WINDOW = 18;
+
+        function runFlashLoop() {
+          const spine = document.querySelector('.timeline-spine');
+          const dots = document.querySelectorAll('.tl-dot');
+          if (!spine || !dots.length) return;
+
+          const dotData = Array.from(dots).map((dot) => {
+            const spineRect = spine.getBoundingClientRect();
+            const spineTop = spineRect.top + window.scrollY;
+            const spineHeight = spine.offsetHeight;
+            const dotRect = dot.getBoundingClientRect();
+            const dotCenter = dotRect.top + window.scrollY + dotRect.height / 2;
+            const relPos = (dotCenter - spineTop) / spineHeight;
+            return { dot, relPos, flashing: false };
+          });
+
+          let startTime = null;
+
+          function tick(now) {
+            if (!startTime) startTime = now;
+            const elapsed = (now - startTime) % DURATION;
+
+            const spineRect = spine.getBoundingClientRect();
+            const spineHeight = spine.offsetHeight;
+            const lightOffset = -STREAK_HEIGHT + (elapsed / DURATION) * (spineHeight + STREAK_HEIGHT);
+            const lightCenter = lightOffset + STREAK_HEIGHT / 2;
+
+            dotData.forEach((item) => {
+              const dotPixel = item.relPos * spineHeight;
+              const diff = Math.abs(lightCenter - dotPixel);
+
+              if (diff < FLASH_WINDOW) {
+                if (!item.flashing) {
+                  item.flashing = true;
+                  item.dot.classList.add('flash');
+                }
+              } else {
+                if (item.flashing) {
+                  item.flashing = false;
+                  item.dot.classList.remove('flash');
+                }
+              }
+            });
+
+            requestAnimationFrame(tick);
+          }
+
+          requestAnimationFrame(tick);
+        }
+
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', runFlashLoop);
+        } else {
+          runFlashLoop();
+        }
+      })();
+    </script>
+    <script>
+      const header = document.querySelector('.site-header');
+      const menuToggle = document.querySelector('.menu-toggle');
+      const mobileMenu = document.getElementById('mobile-menu');
+      const yearTarget = document.getElementById('year');
+      const scrollTopButton = document.getElementById('scroll-top-button');
+
+      if (yearTarget) yearTarget.textContent = new Date().getFullYear().toString();
+
+      const updateHeader = () => {
+        if (!header) return;
+        header.classList.toggle('scrolled', window.scrollY > 40);
+      };
+      window.addEventListener('scroll', updateHeader, { passive: true });
+      updateHeader();
+
+      if (menuToggle && mobileMenu) {
+        menuToggle.addEventListener('click', () => {
+          const expanded = menuToggle.getAttribute('aria-expanded') === 'true';
+          menuToggle.setAttribute('aria-expanded', String(!expanded));
+          mobileMenu.classList.toggle('open');
+        });
+      }
+
+      if (scrollTopButton) {
+        scrollTopButton.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+        window.addEventListener('scroll', () => {
+          scrollTopButton.classList.toggle('visible', window.scrollY > 400);
+        }, { passive: true });
+      }
+
+      const revealElements = document.querySelectorAll('[data-reveal]');
+      revealElements.forEach((el) => {
+        const delay = el.getAttribute('data-reveal-delay');
+        if (delay) el.style.setProperty('--reveal-delay', `${Number(delay)}ms`);
+      });
+
+      if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver(
+          (entries) => entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('revealed'); observer.unobserve(e.target); } }),
+          { threshold: 0.12 }
+        );
+        revealElements.forEach((el) => observer.observe(el));
+      } else {
+        revealElements.forEach((el) => el.classList.add('revealed'));
+      }
+
+    </script>
+    <script src="assets/js/modals.js"></script>
+  </body>
+</html>

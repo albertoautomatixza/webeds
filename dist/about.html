@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>About Us — Engineering Design &amp; Service</title>
+    <meta
+      name="description"
+      content="Learn about Engineering Design & Service — over 10 years of industrial automation expertise serving the automotive sector."
+    />
+    <link rel="icon" type="image/svg+xml" href="/assets/1svgeds%20copy%20copy%20copy-C_N_PCEP.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      .about-hero {
+        min-height: 52vh;
+        display: flex;
+        align-items: flex-end;
+        padding-top: clamp(5rem, 10vw, 8rem);
+        padding-bottom: clamp(3rem, 6vw, 6rem);
+        position: relative;
+        overflow: hidden;
+        background: linear-gradient(160deg, #0d0d0d 0%, #111 60%, #050505 100%);
+      }
+
+      .about-hero::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background:
+          radial-gradient(ellipse 60% 60% at 80% 20%, rgba(250, 204, 21, 0.07), transparent 70%),
+          linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+        background-size: 100% 100%, 50px 50px, 50px 50px;
+        pointer-events: none;
+      }
+
+      .about-hero-content {
+        position: relative;
+        z-index: 1;
+        max-width: 800px;
+      }
+
+      .about-hero-content .eyebrow {
+        color: var(--yellow);
+        font-size: 0.75rem;
+        font-weight: 700;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        margin-bottom: 1rem;
+      }
+
+      .about-hero-content h1 {
+        font-size: clamp(2.4rem, 6vw, 5rem);
+        font-weight: 900;
+        line-height: 1.08;
+        letter-spacing: -0.02em;
+        margin-bottom: 1.5rem;
+      }
+
+      .about-hero-content h1 span {
+        color: var(--yellow);
+      }
+
+      .about-hero-content .lead {
+        font-size: clamp(1rem, 1.8vw, 1.2rem);
+        color: var(--gray-300);
+        font-weight: 300;
+        line-height: 1.65;
+        max-width: 620px;
+      }
+
+      .about-divider {
+        width: 48px;
+        height: 3px;
+        background: var(--yellow);
+        border: none;
+        margin: 2.5rem 0;
+        border-radius: 2px;
+      }
+
+      .about-story {
+        background: var(--dark);
+      }
+
+      .about-story-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: clamp(3rem, 5vw, 6rem);
+        align-items: center;
+      }
+
+      .about-story-text h2 {
+        font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+        font-weight: 800;
+        line-height: 1.15;
+        margin-bottom: 1.5rem;
+        letter-spacing: -0.02em;
+      }
+
+      .about-story-text h2 span {
+        color: var(--yellow);
+      }
+
+      .about-story-text p {
+        color: var(--gray-300);
+        line-height: 1.75;
+        margin-bottom: 1.25rem;
+        font-weight: 300;
+      }
+
+      .about-story-image {
+        position: relative;
+        border-radius: 4px;
+        overflow: hidden;
+      }
+
+      .about-story-image img {
+        width: 100%;
+        height: 420px;
+        object-fit: cover;
+        display: block;
+        filter: grayscale(20%);
+        transition: filter 0.4s ease;
+      }
+
+      .about-story-image:hover img {
+        filter: grayscale(0%);
+      }
+
+      .about-story-image::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        border: 1px solid rgba(250, 204, 21, 0.15);
+        border-radius: 4px;
+        pointer-events: none;
+      }
+
+      .about-story-badge {
+        position: absolute;
+        bottom: 1.5rem;
+        left: 1.5rem;
+        background: var(--yellow);
+        color: #000;
+        padding: 0.75rem 1.25rem;
+        border-radius: 3px;
+        font-weight: 700;
+        font-size: 0.85rem;
+        line-height: 1.3;
+        letter-spacing: 0.02em;
+      }
+
+      .about-values {
+        background: var(--black);
+      }
+
+      .about-values-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.5rem;
+        margin-top: 3rem;
+      }
+
+      .value-card {
+        background: var(--gray-900);
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        border-radius: 4px;
+        padding: 2rem 1.75rem;
+        position: relative;
+        overflow: hidden;
+        transition: border-color 0.3s ease, transform 0.3s ease;
+      }
+
+      .value-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 2px;
+        background: var(--yellow);
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.35s ease;
+      }
+
+      .value-card:hover {
+        border-color: rgba(250, 204, 21, 0.25);
+        transform: translateY(-4px);
+      }
+
+      .value-card:hover::before {
+        transform: scaleX(1);
+      }
+
+      .value-icon {
+        width: 44px;
+        height: 44px;
+        background: var(--yellow-soft);
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 1.25rem;
+      }
+
+      .value-icon svg {
+        width: 22px;
+        height: 22px;
+        stroke: var(--yellow);
+      }
+
+      .value-card h3 {
+        font-size: 1rem;
+        font-weight: 700;
+        margin-bottom: 0.65rem;
+        letter-spacing: 0.01em;
+      }
+
+      .value-card p {
+        font-size: 0.9rem;
+        color: var(--gray-300);
+        line-height: 1.65;
+        font-weight: 300;
+      }
+
+      .about-team {
+        background: var(--dark);
+      }
+
+      .about-team-intro {
+        max-width: 640px;
+        margin: 0 auto;
+        text-align: center;
+      }
+
+      .about-team-intro p {
+        color: var(--gray-300);
+        line-height: 1.75;
+        font-weight: 300;
+        margin-top: 1rem;
+      }
+
+      .team-pillars {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+        margin-top: 3rem;
+      }
+
+      .team-pillar {
+        display: flex;
+        gap: 1.25rem;
+        align-items: flex-start;
+        padding: 1.75rem;
+        background: var(--gray-900);
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        border-radius: 4px;
+        transition: border-color 0.3s ease;
+      }
+
+      .team-pillar:hover {
+        border-color: rgba(250, 204, 21, 0.2);
+      }
+
+      .team-pillar-number {
+        flex-shrink: 0;
+        width: 36px;
+        height: 36px;
+        border: 1px solid var(--yellow);
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.8rem;
+        font-weight: 700;
+        color: var(--yellow);
+        letter-spacing: 0.04em;
+      }
+
+      .team-pillar-text h4 {
+        font-size: 0.95rem;
+        font-weight: 700;
+        margin-bottom: 0.4rem;
+      }
+
+      .team-pillar-text p {
+        font-size: 0.875rem;
+        color: var(--gray-300);
+        line-height: 1.6;
+        font-weight: 300;
+      }
+
+      .about-stats {
+        background: var(--gray-900);
+        padding: clamp(3rem, 5vw, 5rem) 0;
+      }
+
+      .about-stats .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 2rem;
+      }
+
+      .about-cta {
+        background: var(--black);
+        text-align: center;
+      }
+
+      .about-cta-box {
+        background: linear-gradient(135deg, var(--gray-900) 0%, #161616 100%);
+        border: 1px solid rgba(250, 204, 21, 0.2);
+        border-radius: 6px;
+        padding: clamp(3rem, 5vw, 5rem) clamp(2rem, 4vw, 4rem);
+        max-width: 700px;
+        margin: 0 auto;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .about-cta-box::before {
+        content: '';
+        position: absolute;
+        top: -60px;
+        right: -60px;
+        width: 200px;
+        height: 200px;
+        background: radial-gradient(circle, rgba(250, 204, 21, 0.08), transparent 70%);
+        pointer-events: none;
+      }
+
+      .about-cta-box h2 {
+        font-size: clamp(1.6rem, 3vw, 2.4rem);
+        font-weight: 800;
+        margin-bottom: 1rem;
+        letter-spacing: -0.02em;
+      }
+
+      .about-cta-box p {
+        color: var(--gray-300);
+        line-height: 1.7;
+        font-weight: 300;
+        margin-bottom: 2rem;
+        font-size: 1.05rem;
+      }
+
+      .about-cta-actions {
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+
+      .btn-primary {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        background: var(--yellow);
+        color: #000;
+        font-weight: 700;
+        font-size: 0.875rem;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        padding: 0.875rem 1.75rem;
+        border-radius: 3px;
+        transition: background 0.2s ease, transform 0.2s ease;
+        text-decoration: none;
+      }
+
+      .btn-primary:hover {
+        background: #f0c000;
+        color: #000;
+        transform: translateY(-2px);
+      }
+
+      .btn-secondary {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        background: transparent;
+        color: var(--white);
+        font-weight: 600;
+        font-size: 0.875rem;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        padding: 0.875rem 1.75rem;
+        border-radius: 3px;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        transition: border-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+        text-decoration: none;
+      }
+
+      .btn-secondary:hover {
+        border-color: var(--yellow);
+        color: var(--yellow);
+        transform: translateY(-2px);
+      }
+
+      @media (max-width: 900px) {
+        .about-story-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .about-story-image {
+          order: -1;
+        }
+
+        .about-values-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .about-stats .stats-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      @media (max-width: 600px) {
+        .about-values-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .team-pillars {
+          grid-template-columns: 1fr;
+        }
+
+        .about-stats .stats-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+    </style>
+    <link rel="stylesheet" crossorigin href="/assets/styles-BLXBdUmY.css">
+  </head>
+  <body>
+    <header class="site-header" id="top">
+      <div class="container">
+        <a class="brand" href="index.html" aria-label="Engineering Design &amp; Service home">
+          <img src="/assets/logo_para_web._-B98yKRAj.png?v=2" alt="EDS Logo" class="brand-logo">
+        </a>
+        <nav class="site-nav" aria-label="Primary navigation">
+          <ul class="nav-list">
+            <li><a href="index.html#servicios"><span>Services</span></a></li>
+            <li><a href="about.html" class="nav-active"><span>About Us</span></a></li>
+            <li><a href="projects.html"><span>Projects</span></a></li>
+            <li><a href="machining.html"><span>Machining</span></a></li>
+            <li><a href="index.html#clientes"><span>Clients</span></a></li>
+            <li><a href="index.html#contacto"><span>Contact</span></a></li>
+          </ul>
+        </nav>
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu">
+          <span class="menu-bar"></span>
+          <span class="menu-bar"></span>
+          <span class="menu-bar"></span>
+          <span class="sr-only">Toggle navigation</span>
+        </button>
+        <a class="header-cta" href="mailto:sales@engineeringds.com.mx"><span>Contact Us</span></a>
+      </div>
+      <nav id="mobile-menu" class="mobile-menu" aria-label="Mobile navigation">
+        <ul>
+          <li><a href="index.html#servicios">Services</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="projects.html">Projects</a></li>
+          <li><a href="machining.html">Machining</a></li>
+          <li><a href="index.html#clientes">Clients</a></li>
+          <li><a href="index.html#contacto">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section class="about-hero">
+        <div class="container about-hero-content" data-reveal>
+          <p class="eyebrow">Who we are</p>
+          <h1>We've Been Improve Amazing <span>Solutions</span> Since 2011</h1>
+          <hr class="about-divider" />
+          <p class="eyebrow" style="margin-bottom: 0.75rem;">Our Mission and Vision</p>
+          <p class="lead">
+            We are a consolidated company that provides solutions to a massive industry, we focus on offering the best technical solutions in machinery projects and work areas, with the continuous support of our specialist technician and engineers.
+          </p>
+        </div>
+      </section>
+
+      <section class="section about-story">
+        <div class="container">
+          <div class="about-story-grid">
+            <div class="about-story-text" data-reveal>
+              <p class="eyebrow">Our story</p>
+              <h2>Built on <span>experience</span>, driven by results</h2>
+              <p>
+                Founded with the vision of bridging the gap between cutting-edge technology and real-world industrial demands, Engineering DS has grown into a trusted partner for some of the largest automotive manufacturers in Mexico.
+              </p>
+              <p>
+                From electrical control panels and PLC programming to full-scale automation lines, every project we deliver is backed by rigorous engineering standards, strict safety compliance, and a commitment to on-time execution.
+              </p>
+              <p>
+                Our team of certified engineers and technicians brings decades of combined experience — always seeking towards improvement.
+              </p>
+            </div>
+            <div class="about-story-image" data-reveal data-reveal-delay="150">
+              <img
+                src="https://images.pexels.com/photos/1108101/pexels-photo-1108101.jpeg?auto=compress&cs=tinysrgb&w=800"
+                alt="Industrial engineering facility"
+              />
+              <div class="about-story-badge">
+                10+ Years<br>of Excellence
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section about-values">
+        <div class="container">
+          <div class="section-heading" data-reveal>
+            <p class="eyebrow">What guides us</p>
+            <h2>Our Core Values</h2>
+            <p class="section-subtitle">The principles behind every project we deliver</p>
+          </div>
+          <div class="about-values-grid">
+            <div class="value-card" data-reveal data-reveal-delay="0">
+              <div class="value-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                </svg>
+              </div>
+              <h3>Safety First</h3>
+              <p>Every project meets or exceeds international safety standards. No shortcuts — ever.</p>
+            </div>
+            <div class="value-card" data-reveal data-reveal-delay="120">
+              <div class="value-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="10" /><circle cx="12" cy="12" r="2" />
+                  <path d="M12 2v4M12 18v4m-7.07-14.07 2.83 2.83m8.48 8.48 2.83 2.83" />
+                </svg>
+              </div>
+              <h3>Precision Engineering</h3>
+              <p>Detailed planning and meticulous execution — millimeter accuracy in every deliverable.</p>
+            </div>
+            <div class="value-card" data-reveal data-reveal-delay="240">
+              <div class="value-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="17 1 21 5 17 9" />
+                  <path d="M3 11V9a4 4 0 0 1 4-4h14M7 23l-4-4 4-4M21 13v2a4 4 0 0 1-4 4H3" />
+                </svg>
+              </div>
+              <h3>Continuous Innovation</h3>
+              <p>We constantly integrate the latest technologies to keep our clients competitive.</p>
+            </div>
+            <div class="value-card" data-reveal data-reveal-delay="0">
+              <div class="value-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                  <circle cx="9" cy="7" r="4" />
+                  <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" />
+                </svg>
+              </div>
+              <h3>Expert Team</h3>
+              <p>Certified engineers with deep domain expertise in automotive industrial processes.</p>
+            </div>
+            <div class="value-card" data-reveal data-reveal-delay="120">
+              <div class="value-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="2" y="3" width="20" height="14" rx="2" ry="2" />
+                  <line x1="8" y1="21" x2="16" y2="21" />
+                  <line x1="12" y1="17" x2="12" y2="21" />
+                </svg>
+              </div>
+              <h3>Industry 4.0 Ready</h3>
+              <p>IoT integration, remote monitoring, and data-driven automation for modern facilities.</p>
+            </div>
+            <div class="value-card" data-reveal data-reveal-delay="240">
+              <div class="value-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
+                </svg>
+              </div>
+              <h3>On-Time Delivery</h3>
+              <p>Project timelines are commitments. We plan thoroughly and execute without delays.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section about-team">
+        <div class="container">
+          <div class="about-team-intro section-heading" data-reveal>
+            <p class="eyebrow">How we work</p>
+            <h2>Our Approach</h2>
+            <p>
+              A structured methodology that ensures quality, safety, and results on every engagement — from initial scope to final commissioning.
+            </p>
+          </div>
+          <div class="team-pillars">
+            <div class="team-pillar" data-reveal data-reveal-delay="0">
+              <div class="team-pillar-number">01</div>
+              <div class="team-pillar-text">
+                <h4>Discovery &amp; Scoping</h4>
+                <p>We analyze your processes, identify bottlenecks, and define clear project requirements before a single line of code or cable is run.</p>
+              </div>
+            </div>
+            <div class="team-pillar" data-reveal data-reveal-delay="120">
+              <div class="team-pillar-number">02</div>
+              <div class="team-pillar-text">
+                <h4>Engineering Design</h4>
+                <p>Our engineers produce detailed electrical schematics, PLC architectures, and automation logic — fully documented and auditable.</p>
+              </div>
+            </div>
+            <div class="team-pillar" data-reveal data-reveal-delay="240">
+              <div class="team-pillar-number">03</div>
+              <div class="team-pillar-text">
+                <h4>Implementation &amp; Integration</h4>
+                <p>Skilled technicians execute the build with precision. Every system is integrated and tested against defined acceptance criteria.</p>
+              </div>
+            </div>
+            <div class="team-pillar" data-reveal data-reveal-delay="360">
+              <div class="team-pillar-number">04</div>
+              <div class="team-pillar-text">
+                <h4>Commissioning &amp; Support</h4>
+                <p>We don't just hand over and leave. Comprehensive commissioning, operator training, and ongoing technical support are part of the service.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+      <section class="section about-cta">
+        <div class="container">
+          <div class="about-cta-box" data-reveal>
+            <h2>Ready to work with us?</h2>
+            <p>
+              Whether you need a full automation line, an electrical control panel, or an Industry 4.0 upgrade — our team is ready to scope your project.
+            </p>
+            <div class="about-cta-actions">
+              <a href="mailto:sales@engineeringds.com.mx" class="btn"><span>Get in Touch</span></a>
+              <a href="index.html#servicios" class="btn"><span>View Services</span></a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <div class="footer-brand">
+          <a class="brand" href="index.html">
+            <img src="/assets/logo_para_web._-B98yKRAj.png?v=2" alt="EDS Logo" class="footer-logo">
+          </a>
+          <p class="footer-tagline">
+            ENGINEERING DESIGN &amp; SERVICE<br />
+            <span>SEEKING TOWARDS IMPROVEMENT.</span>
+          </p>
+          <p>
+            Engineering solutions for the automotive industry with over 15 years of experience.
+          </p>
+        </div>
+        <div class="footer-links">
+          <h3>Company</h3>
+          <ul>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="machining.html">Machining</a></li>
+            <li><a href="index.html#servicios">Services</a></li>
+            <li><a href="index.html#clientes">Clients</a></li>
+            <li><a href="index.html#contacto">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <h3>Services</h3>
+          <ul>
+            <li><a href="index.html#servicios">Ball Bar Test</a></li>
+            <li><a href="index.html#servicios">Axis Interpolation</a></li>
+            <li><a href="index.html#servicios">Custom Precision Shim Fabrication</a></li>
+            <li><a href="index.html#servicios">Geometric Alignment &amp; Machine Leveling</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>
+          &copy; 2026 Engineering EDS. All rights reserved.
+          <span class="footer-credit">⎸ creado por <a href="https://wa.me/524491809587" target="_blank" rel="noopener noreferrer">Albertoautomatiza</a></span>
+        </p>
+        <div class="footer-legal">
+          <a href="#" data-modal="privacy">Privacy</a>
+          <a href="#" data-modal="terms">Terms</a>
+          <a href="#" data-modal="legal">Legal</a>
+        </div>
+      </div>
+    </footer>
+
+    <button
+      class="scroll-top-button"
+      id="scroll-top-button"
+      aria-label="Scroll to top"
+    >
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <polyline points="18 15 12 9 6 15"></polyline>
+      </svg>
+      <span>Top</span>
+    </button>
+
+    <script>
+      const header = document.querySelector('.site-header');
+      const menuToggle = document.querySelector('.menu-toggle');
+      const mobileMenu = document.getElementById('mobile-menu');
+      const yearTarget = document.getElementById('year');
+      const scrollTopButton = document.getElementById('scroll-top-button');
+
+      if (yearTarget) yearTarget.textContent = new Date().getFullYear().toString();
+
+      const updateHeader = () => {
+        if (!header) return;
+        header.classList.toggle('scrolled', window.scrollY > 40);
+      };
+      window.addEventListener('scroll', updateHeader, { passive: true });
+      updateHeader();
+
+      if (menuToggle && mobileMenu) {
+        menuToggle.addEventListener('click', () => {
+          const expanded = menuToggle.getAttribute('aria-expanded') === 'true';
+          menuToggle.setAttribute('aria-expanded', String(!expanded));
+          mobileMenu.classList.toggle('open');
+        });
+      }
+
+      if (scrollTopButton) {
+        scrollTopButton.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+        window.addEventListener('scroll', () => {
+          scrollTopButton.classList.toggle('visible', window.scrollY > 400);
+        }, { passive: true });
+      }
+
+      const revealElements = document.querySelectorAll('[data-reveal]');
+      revealElements.forEach((el) => {
+        const delay = el.getAttribute('data-reveal-delay');
+        if (delay) el.style.setProperty('--reveal-delay', `${Number(delay)}ms`);
+      });
+
+      if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver(
+          (entries) => entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('revealed'); observer.unobserve(e.target); } }),
+          { threshold: 0.15 }
+        );
+        revealElements.forEach((el) => observer.observe(el));
+      } else {
+        revealElements.forEach((el) => el.classList.add('revealed'));
+      }
+
+      const statNumbers = Array.from(document.querySelectorAll('.stat-number[data-stat-value]'));
+      if (statNumbers.length) {
+        const buildTicker = (stat) => {
+          const value = stat.getAttribute('data-stat-value');
+          const suffix = stat.getAttribute('data-stat-suffix') || '';
+          const fragment = document.createDocumentFragment();
+          Array.from(value).forEach((char, index) => {
+            if (/\d/.test(char)) {
+              const finalDigit = Number.parseInt(char, 10);
+              const digitWrap = document.createElement('span');
+              digitWrap.className = 'ticker-digit';
+              digitWrap.style.setProperty('--digit-delay', `${index * 80}ms`);
+              const track = document.createElement('span');
+              track.className = 'ticker-digit-track';
+              track.style.setProperty('--digit-final', String(finalDigit));
+              track.style.setProperty('--digit-start', '0');
+              for (let i = 0; i <= 9; i++) {
+                const slot = document.createElement('span');
+                slot.className = 'ticker-digit-slot';
+                slot.textContent = i.toString();
+                track.appendChild(slot);
+              }
+              digitWrap.appendChild(track);
+              fragment.appendChild(digitWrap);
+            } else {
+              const sym = document.createElement('span');
+              sym.className = 'ticker-symbol';
+              sym.textContent = char;
+              fragment.appendChild(sym);
+            }
+          });
+          if (suffix) {
+            const suf = document.createElement('span');
+            suf.className = 'ticker-suffix';
+            suf.textContent = suffix;
+            fragment.appendChild(suf);
+          }
+          stat.textContent = '';
+          stat.appendChild(fragment);
+          stat.dataset.tickerReady = 'true';
+        };
+
+        statNumbers.forEach(buildTicker);
+
+        const statsGroup = statNumbers[0].closest('.stats-grid') || statNumbers[0].parentElement;
+        let activated = false;
+        const activate = () => {
+          if (activated) return;
+          activated = true;
+          statNumbers.forEach((stat, i) => setTimeout(() => stat.classList.add('is-active'), i * 200));
+        };
+
+        if ('IntersectionObserver' in window) {
+          const obs = new IntersectionObserver((entries, o) => {
+            entries.forEach((e) => { if (e.isIntersecting) { activate(); o.disconnect(); } });
+          }, { threshold: 0.3 });
+          obs.observe(statsGroup || statNumbers[0]);
+        } else {
+          activate();
+        }
+      }
+    </script>
+    <script src="assets/js/modals.js"></script>
+  </body>
+</html>
