@@ -84,223 +84,189 @@
         border-radius: 2px;
       }
 
-      /* Filter Bar */
-      .projects-filter {
-        background: #0d0d0d;
-        border-bottom: 1px solid rgba(255,255,255,0.06);
-        position: sticky;
-        top: 72px;
-        z-index: 10;
-        padding: 1.1rem 0;
+      /* ========= TIMELINE ========= */
+      .timeline-section {
+        background: #080808;
+        padding: 6rem 0 8rem;
+        position: relative;
       }
 
-      .filter-bar {
-        display: flex;
-        gap: 0.5rem;
-        align-items: center;
-        flex-wrap: wrap;
+      .timeline-section .section-header {
+        text-align: center;
+        margin-bottom: 5rem;
       }
 
-      .filter-btn {
-        background: transparent;
-        border: 1px solid rgba(255,255,255,0.12);
-        color: rgba(229,231,235,0.6);
-        font-family: inherit;
-        font-size: 0.78rem;
-        font-weight: 500;
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
-        padding: 0.5rem 1.1rem;
-        border-radius: 100px;
-        cursor: pointer;
-        transition: all 0.22s ease;
-      }
-
-      .filter-btn:hover {
-        border-color: rgba(250, 204, 21, 0.4);
-        color: rgba(229,231,235,0.9);
-      }
-
-      .filter-btn.active {
-        background: var(--yellow);
-        border-color: var(--yellow);
-        color: #0a0a0a;
+      .timeline-section .eyebrow {
+        color: var(--yellow);
+        font-size: 0.75rem;
         font-weight: 700;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        margin-bottom: 1rem;
       }
 
-      /* Projects Grid */
-      .projects-section {
-        background: #0a0a0a;
-        padding: 4rem 0 6rem;
+      .timeline-section h2 {
+        font-size: clamp(2rem, 4vw, 3.2rem);
+        font-weight: 900;
+        line-height: 1.1;
+        letter-spacing: -0.02em;
+        color: #f1f5f9;
       }
 
-      .projects-grid {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 1.5rem;
+      .timeline-section h2 span {
+        color: var(--yellow);
       }
 
-      .project-card {
-        background: rgba(17,17,17,0.95);
+      .timeline-wrapper {
+        position: relative;
+        max-width: 1100px;
+        margin: 0 auto;
+      }
+
+      .timeline-spine {
+        position: absolute;
+        left: 50%;
+        top: 0;
+        bottom: 0;
+        width: 2px;
+        background: linear-gradient(to bottom, transparent, rgba(250,204,21,0.35) 5%, rgba(250,204,21,0.35) 95%, transparent);
+        transform: translateX(-50%);
+      }
+
+      .timeline-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 0;
+        margin-bottom: 5rem;
+        position: relative;
+      }
+
+      .timeline-item:last-child {
+        margin-bottom: 0;
+      }
+
+      .timeline-item.left {
+        flex-direction: row;
+      }
+
+      .timeline-item.right {
+        flex-direction: row-reverse;
+      }
+
+      .tl-card {
+        width: calc(50% - 3.5rem);
+        background: rgba(17,17,17,0.98);
         border: 1px solid rgba(255,255,255,0.07);
         border-radius: 1.25rem;
         overflow: hidden;
-        display: flex;
-        flex-direction: column;
-        transition: border-color 0.28s ease, transform 0.28s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.28s ease;
-        cursor: pointer;
+        transition: border-color 0.3s ease, transform 0.3s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.3s ease;
+        cursor: default;
       }
 
-      .project-card:hover {
-        border-color: rgba(250, 204, 21, 0.35);
-        transform: translateY(-6px);
-        box-shadow: 0 16px 48px rgba(0,0,0,0.5), 0 0 0 1px rgba(250, 204, 21, 0.1);
+      .tl-card:hover {
+        border-color: rgba(250,204,21,0.4);
+        transform: translateY(-5px);
+        box-shadow: 0 20px 56px rgba(0,0,0,0.6), 0 0 0 1px rgba(250,204,21,0.12);
       }
 
-      .project-card-img {
+      .tl-card-img {
         position: relative;
-        height: 220px;
+        height: 200px;
         overflow: hidden;
       }
 
-      .project-card-img img {
+      .tl-card-img img {
         width: 100%;
         height: 100%;
         object-fit: cover;
         display: block;
-        transition: transform 0.5s ease, filter 0.4s ease;
-        filter: grayscale(15%);
+        filter: grayscale(20%);
+        transition: transform 0.55s ease, filter 0.4s ease;
       }
 
-      .project-card:hover .project-card-img img {
-        transform: scale(1.05);
+      .tl-card:hover .tl-card-img img {
+        transform: scale(1.06);
         filter: grayscale(0%);
       }
 
-      .project-card-tag {
+      .tl-card-tag {
         position: absolute;
         top: 1rem;
         left: 1rem;
-        background: rgba(250, 204, 21, 0.92);
+        background: rgba(250,204,21,0.92);
         color: #0a0a0a;
-        font-size: 0.68rem;
+        font-size: 0.66rem;
         font-weight: 700;
         letter-spacing: 0.12em;
         text-transform: uppercase;
-        padding: 0.3rem 0.75rem;
+        padding: 0.28rem 0.7rem;
         border-radius: 100px;
       }
 
-      .project-card-body {
-        padding: 1.5rem 1.75rem 1.75rem;
-        flex: 1;
-        display: flex;
-        flex-direction: column;
-        gap: 0.75rem;
+      .tl-card-body {
+        padding: 1.4rem 1.6rem 1.7rem;
       }
 
-      .project-card-meta {
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-        font-size: 0.72rem;
-        color: rgba(229,231,235,0.4);
-        font-weight: 400;
-        letter-spacing: 0.06em;
+      .tl-card-client {
+        font-size: 0.7rem;
+        font-weight: 600;
+        color: rgba(250,204,21,0.65);
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        margin-bottom: 0.55rem;
       }
 
-      .project-card-meta span {
-        display: flex;
-        align-items: center;
-        gap: 0.3rem;
-      }
-
-      .project-card-meta .dot {
-        width: 3px;
-        height: 3px;
-        background: rgba(229,231,235,0.3);
-        border-radius: 50%;
-      }
-
-      .project-card-title {
-        font-size: 1.1rem;
+      .tl-card-title {
+        font-size: 1.05rem;
         font-weight: 700;
         color: #f1f5f9;
         line-height: 1.3;
         letter-spacing: -0.01em;
+        margin-bottom: 0.7rem;
       }
 
-      .project-card-desc {
-        font-size: 0.88rem;
-        color: rgba(229,231,235,0.55);
-        line-height: 1.65;
+      .tl-card-desc {
+        font-size: 0.84rem;
+        color: rgba(229,231,235,0.5);
+        line-height: 1.68;
         font-weight: 300;
-        flex: 1;
       }
 
-      .project-card-footer {
+      .tl-center {
+        flex-shrink: 0;
+        width: 7rem;
         display: flex;
+        flex-direction: column;
         align-items: center;
-        justify-content: space-between;
-        padding-top: 1rem;
-        border-top: 1px solid rgba(255,255,255,0.06);
-        margin-top: auto;
+        gap: 0;
+        position: relative;
+        z-index: 2;
       }
 
-      .project-card-client {
-        font-size: 0.75rem;
-        font-weight: 500;
-        color: rgba(250, 204, 21, 0.7);
-        letter-spacing: 0.06em;
-        text-transform: uppercase;
-      }
-
-      .project-card-arrow {
-        width: 30px;
-        height: 30px;
-        border-radius: 10px;
-        border: 1px solid rgba(255,255,255,0.1);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        transition: background 0.22s ease, border-color 0.22s ease;
-      }
-
-      .project-card:hover .project-card-arrow {
+      .tl-year-badge {
         background: var(--yellow);
-        border-color: var(--yellow);
+        color: #0a0a0a;
+        font-size: 0.88rem;
+        font-weight: 900;
+        letter-spacing: 0.04em;
+        padding: 0.4rem 0.9rem;
+        border-radius: 100px;
+        white-space: nowrap;
+        box-shadow: 0 4px 20px rgba(250,204,21,0.35);
       }
 
-      .project-card-arrow svg {
+      .tl-dot {
         width: 14px;
         height: 14px;
-        stroke: rgba(229,231,235,0.6);
-        transition: stroke 0.22s ease;
+        background: var(--yellow);
+        border-radius: 50%;
+        box-shadow: 0 0 0 4px rgba(250,204,21,0.18), 0 0 16px rgba(250,204,21,0.3);
+        margin-top: 0.6rem;
       }
 
-      .project-card:hover .project-card-arrow svg {
-        stroke: #0a0a0a;
-      }
-
-      /* Featured Card */
-      .project-card.featured {
-        grid-column: span 2;
-        flex-direction: row;
-      }
-
-      .project-card.featured .project-card-img {
-        width: 50%;
-        height: auto;
-        min-height: 280px;
-        flex-shrink: 0;
-      }
-
-      .project-card.featured .project-card-body {
-        padding: 2rem 2.25rem;
-      }
-
-      .project-card.featured .project-card-title {
-        font-size: 1.4rem;
+      .tl-spacer {
+        flex: 1;
+        width: calc(50% - 3.5rem);
       }
 
       /* CTA Banner */
@@ -351,37 +317,24 @@
         flex-wrap: wrap;
       }
 
-      @media (max-width: 1024px) {
-        .projects-grid {
-          grid-template-columns: repeat(2, 1fr);
+      @media (max-width: 860px) {
+        .timeline-spine { left: 1.5rem; }
+        .tl-center { width: 3rem; }
+        .tl-year-badge { font-size: 0.72rem; padding: 0.3rem 0.6rem; }
+        .timeline-item.left,
+        .timeline-item.right {
+          flex-direction: row;
         }
-        .project-card.featured {
-          grid-column: span 2;
+        .tl-card {
+          width: calc(100% - 4.5rem);
         }
+        .tl-spacer { display: none; }
       }
 
-      @media (max-width: 700px) {
-        .projects-grid {
-          grid-template-columns: 1fr;
-        }
-        .project-card.featured {
-          grid-column: span 1;
-          flex-direction: column;
-        }
-        .project-card.featured .project-card-img {
-          width: 100%;
-          height: 220px;
-        }
-      }
-
-      @media (max-width: 600px) {
-        .filter-bar {
-          gap: 0.4rem;
-        }
-        .filter-btn {
-          font-size: 0.72rem;
-          padding: 0.4rem 0.85rem;
-        }
+      @media (max-width: 500px) {
+        .tl-card-img { height: 160px; }
+        .tl-card-body { padding: 1.1rem 1.2rem 1.3rem; }
+        .tl-card-title { font-size: 0.95rem; }
       }
     </style>
   </head>
@@ -433,310 +386,335 @@
         </div>
       </section>
 
-      <div class="projects-filter">
+      <section class="timeline-section">
         <div class="container">
-          <div class="filter-bar">
-            <button class="filter-btn active" data-filter="all">All Projects</button>
-            <button class="filter-btn" data-filter="automation">Automation</button>
-            <button class="filter-btn" data-filter="cnc">CNC &amp; CMM</button>
-            <button class="filter-btn" data-filter="electrical">Electrical</button>
-            <button class="filter-btn" data-filter="robotics">Robotics</button>
-            <button class="filter-btn" data-filter="industry4">Industry 4.0</button>
+          <div class="section-header" data-reveal>
+            <p class="eyebrow">Our journey</p>
+            <h2>15 years of <span>engineering excellence</span></h2>
           </div>
-        </div>
-      </div>
 
-      <section class="projects-section">
-        <div class="container">
-          <div class="projects-grid" id="projects-grid">
+          <div class="timeline-wrapper">
+            <div class="timeline-spine"></div>
 
-            <!-- Featured -->
-            <article class="project-card featured" data-reveal data-category="automation">
-              <div class="project-card-img">
-                <img
-                  src="https://images.pexels.com/photos/3912981/pexels-photo-3912981.jpeg?auto=compress&cs=tinysrgb&w=900"
-                  alt="Full Assembly Line Automation"
-                  loading="lazy"
-                />
-                <span class="project-card-tag">Featured</span>
-              </div>
-              <div class="project-card-body">
-                <div class="project-card-meta">
-                  <span>Automation</span>
-                  <span class="dot"></span>
-                  <span>2024</span>
+            <!-- 2011 -->
+            <div class="timeline-item left" data-reveal>
+              <div class="tl-card">
+                <div class="tl-card-img">
+                  <img src="https://images.pexels.com/photos/1108101/pexels-photo-1108101.jpeg?auto=compress&cs=tinysrgb&w=700" alt="Company founded 2011" loading="lazy" />
+                  <span class="tl-card-tag">Founding</span>
                 </div>
-                <h2 class="project-card-title">Full Assembly Line Automation — Tier 1 Automotive Plant</h2>
-                <p class="project-card-desc">
-                  Complete redesign and automation of a stamping and assembly line for a Tier 1 automotive supplier. Implemented Allen-Bradley PLCs, SCADA integration, safety relay systems, and real-time production monitoring — reducing downtime by 38%.
-                </p>
-                <div class="project-card-footer">
-                  <span class="project-card-client">ArcelorMittal</span>
-                  <div class="project-card-arrow">
-                    <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                      <line x1="5" y1="12" x2="19" y2="12"></line>
-                      <polyline points="12 5 19 12 12 19"></polyline>
-                    </svg>
-                  </div>
+                <div class="tl-card-body">
+                  <p class="tl-card-client">Engineering DS — Origins</p>
+                  <h3 class="tl-card-title">Company Founded &amp; First Electrical Projects</h3>
+                  <p class="tl-card-desc">Engineering Design &amp; Service was established in Aguascalientes, Mexico. Our first contracts focused on electrical panel design and installation for local industrial clients in the automotive supply chain.</p>
                 </div>
               </div>
-            </article>
+              <div class="tl-center">
+                <span class="tl-year-badge">2011</span>
+                <div class="tl-dot"></div>
+              </div>
+              <div class="tl-spacer"></div>
+            </div>
 
-            <!-- Card 2 -->
-            <article class="project-card" data-reveal data-reveal-delay="80" data-category="cnc">
-              <div class="project-card-img">
-                <img
-                  src="https://images.pexels.com/photos/5726837/pexels-photo-5726837.jpeg?auto=compress&cs=tinysrgb&w=700"
-                  alt="CNC Machine Retrofit"
-                  loading="lazy"
-                />
-                <span class="project-card-tag">CNC</span>
-              </div>
-              <div class="project-card-body">
-                <div class="project-card-meta">
-                  <span>CNC &amp; CMM</span>
-                  <span class="dot"></span>
-                  <span>2024</span>
+            <!-- 2012 -->
+            <div class="timeline-item right" data-reveal>
+              <div class="tl-card">
+                <div class="tl-card-img">
+                  <img src="https://images.pexels.com/photos/257736/pexels-photo-257736.jpeg?auto=compress&cs=tinysrgb&w=700" alt="PLC programming 2012" loading="lazy" />
+                  <span class="tl-card-tag">Automation</span>
                 </div>
-                <h2 class="project-card-title">5-Axis CNC Retrofit &amp; Spindle Diagnostic System</h2>
-                <p class="project-card-desc">
-                  Retrofit of legacy 5-axis machining center with modern Fanuc control system, vibration monitoring, and predictive spindle failure alerts integrated into the plant MES.
-                </p>
-                <div class="project-card-footer">
-                  <span class="project-card-client">Ford Motor Co.</span>
-                  <div class="project-card-arrow">
-                    <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                      <line x1="5" y1="12" x2="19" y2="12"></line>
-                      <polyline points="12 5 19 12 12 19"></polyline>
-                    </svg>
-                  </div>
+                <div class="tl-card-body">
+                  <p class="tl-card-client">Tier 2 Supplier</p>
+                  <h3 class="tl-card-title">First PLC Programming Contracts</h3>
+                  <p class="tl-card-desc">Expanded into industrial automation with our first Allen-Bradley PLC programming projects, delivering conveyor control and press machine safety upgrades for Tier 2 automotive suppliers.</p>
                 </div>
               </div>
-            </article>
+              <div class="tl-center">
+                <span class="tl-year-badge">2012</span>
+                <div class="tl-dot"></div>
+              </div>
+              <div class="tl-spacer"></div>
+            </div>
 
-            <!-- Card 3 -->
-            <article class="project-card" data-reveal data-reveal-delay="120" data-category="robotics">
-              <div class="project-card-img">
-                <img
-                  src="https://images.pexels.com/photos/2085831/pexels-photo-2085831.jpeg?auto=compress&cs=tinysrgb&w=700"
-                  alt="Robotic Welding Cell"
-                  loading="lazy"
-                />
-                <span class="project-card-tag">Robotics</span>
-              </div>
-              <div class="project-card-body">
-                <div class="project-card-meta">
-                  <span>Robotics</span>
-                  <span class="dot"></span>
-                  <span>2023</span>
+            <!-- 2013 -->
+            <div class="timeline-item left" data-reveal>
+              <div class="tl-card">
+                <div class="tl-card-img">
+                  <img src="https://images.pexels.com/photos/2760243/pexels-photo-2760243.jpeg?auto=compress&cs=tinysrgb&w=700" alt="Motor control center 2013" loading="lazy" />
+                  <span class="tl-card-tag">Electrical</span>
                 </div>
-                <h2 class="project-card-title">FANUC Robotic Welding Cell Integration</h2>
-                <p class="project-card-desc">
-                  Design, installation, and commissioning of a 6-axis FANUC robotic welding cell with fixture tooling, vision guidance, and full safety fencing — certified to ISO 10218.
-                </p>
-                <div class="project-card-footer">
-                  <span class="project-card-client">General Motors</span>
-                  <div class="project-card-arrow">
-                    <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                      <line x1="5" y1="12" x2="19" y2="12"></line>
-                      <polyline points="12 5 19 12 12 19"></polyline>
-                    </svg>
-                  </div>
+                <div class="tl-card-body">
+                  <p class="tl-card-client">Eaton</p>
+                  <h3 class="tl-card-title">Motor Control Center Design &amp; First MCC Project</h3>
+                  <p class="tl-card-desc">Delivered a 16-circuit Motor Control Center with soft starters and remote I/O for an Eaton production facility — our first project with a globally recognized client.</p>
                 </div>
               </div>
-            </article>
+              <div class="tl-center">
+                <span class="tl-year-badge">2013</span>
+                <div class="tl-dot"></div>
+              </div>
+              <div class="tl-spacer"></div>
+            </div>
 
-            <!-- Card 4 -->
-            <article class="project-card" data-reveal data-reveal-delay="80" data-category="electrical">
-              <div class="project-card-img">
-                <img
-                  src="https://images.pexels.com/photos/257736/pexels-photo-257736.jpeg?auto=compress&cs=tinysrgb&w=700"
-                  alt="Electrical Control Panel"
-                  loading="lazy"
-                />
-                <span class="project-card-tag">Electrical</span>
-              </div>
-              <div class="project-card-body">
-                <div class="project-card-meta">
-                  <span>Electrical</span>
-                  <span class="dot"></span>
-                  <span>2023</span>
+            <!-- 2014 -->
+            <div class="timeline-item right" data-reveal>
+              <div class="tl-card">
+                <div class="tl-card-img">
+                  <img src="https://images.pexels.com/photos/3912981/pexels-photo-3912981.jpeg?auto=compress&cs=tinysrgb&w=700" alt="Assembly line 2014" loading="lazy" />
+                  <span class="tl-card-tag">Automation</span>
                 </div>
-                <h2 class="project-card-title">Main Distribution Panel &amp; Power Management Upgrade</h2>
-                <p class="project-card-desc">
-                  Full redesign and installation of main electrical distribution panels, including power factor correction, harmonic filtering, and NOM-001-SEDE compliance certification.
-                </p>
-                <div class="project-card-footer">
-                  <span class="project-card-client">ThyssenKrupp</span>
-                  <div class="project-card-arrow">
-                    <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                      <line x1="5" y1="12" x2="19" y2="12"></line>
-                      <polyline points="12 5 19 12 12 19"></polyline>
-                    </svg>
-                  </div>
+                <div class="tl-card-body">
+                  <p class="tl-card-client">General Motors</p>
+                  <h3 class="tl-card-title">Assembly Line Integration — General Motors Plant</h3>
+                  <p class="tl-card-desc">Secured our first contract with General Motors for automation integration on a body assembly line, including Siemens S7-300 PLCs, HMI panels, and safety circuit design.</p>
                 </div>
               </div>
-            </article>
+              <div class="tl-center">
+                <span class="tl-year-badge">2014</span>
+                <div class="tl-dot"></div>
+              </div>
+              <div class="tl-spacer"></div>
+            </div>
 
-            <!-- Card 5 -->
-            <article class="project-card" data-reveal data-reveal-delay="120" data-category="industry4">
-              <div class="project-card-img">
-                <img
-                  src="https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg?auto=compress&cs=tinysrgb&w=700"
-                  alt="Industry 4.0 SCADA Dashboard"
-                  loading="lazy"
-                />
-                <span class="project-card-tag">Industry 4.0</span>
-              </div>
-              <div class="project-card-body">
-                <div class="project-card-meta">
-                  <span>Industry 4.0</span>
-                  <span class="dot"></span>
-                  <span>2023</span>
+            <!-- 2015 -->
+            <div class="timeline-item left" data-reveal>
+              <div class="tl-card">
+                <div class="tl-card-img">
+                  <img src="https://images.pexels.com/photos/5726837/pexels-photo-5726837.jpeg?auto=compress&cs=tinysrgb&w=700" alt="CNC machining 2015" loading="lazy" />
+                  <span class="tl-card-tag">CNC</span>
                 </div>
-                <h2 class="project-card-title">OEE Real-Time Dashboard &amp; SCADA Integration</h2>
-                <p class="project-card-desc">
-                  Deployed a cloud-connected OEE monitoring platform pulling live data from 14 production lines via OPC-UA, with custom dashboards for shift supervisors and plant managers.
-                </p>
-                <div class="project-card-footer">
-                  <span class="project-card-client">Hitachi Metals</span>
-                  <div class="project-card-arrow">
-                    <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                      <line x1="5" y1="12" x2="19" y2="12"></line>
-                      <polyline points="12 5 19 12 12 19"></polyline>
-                    </svg>
-                  </div>
+                <div class="tl-card-body">
+                  <p class="tl-card-client">Ford Motor Co.</p>
+                  <h3 class="tl-card-title">CNC Department Launch &amp; First Machining Contracts</h3>
+                  <p class="tl-card-desc">Opened our CNC division, offering programming, retrofitting, and maintenance services for machining centers. Completed first Fanuc retrofit project for Ford Motor Co.</p>
                 </div>
               </div>
-            </article>
+              <div class="tl-center">
+                <span class="tl-year-badge">2015</span>
+                <div class="tl-dot"></div>
+              </div>
+              <div class="tl-spacer"></div>
+            </div>
 
-            <!-- Card 6 -->
-            <article class="project-card" data-reveal data-reveal-delay="80" data-category="automation">
-              <div class="project-card-img">
-                <img
-                  src="https://images.pexels.com/photos/1108572/pexels-photo-1108572.jpeg?auto=compress&cs=tinysrgb&w=700"
-                  alt="Conveyor Automation"
-                  loading="lazy"
-                />
-                <span class="project-card-tag">Automation</span>
-              </div>
-              <div class="project-card-body">
-                <div class="project-card-meta">
-                  <span>Automation</span>
-                  <span class="dot"></span>
-                  <span>2022</span>
+            <!-- 2016 -->
+            <div class="timeline-item right" data-reveal>
+              <div class="tl-card">
+                <div class="tl-card-img">
+                  <img src="https://images.pexels.com/photos/1108572/pexels-photo-1108572.jpeg?auto=compress&cs=tinysrgb&w=700" alt="Conveyor system 2016" loading="lazy" />
+                  <span class="tl-card-tag">Automation</span>
                 </div>
-                <h2 class="project-card-title">Variable Speed Conveyor System with PLC Control</h2>
-                <p class="project-card-desc">
-                  Automated conveyor system with Siemens S7-1200 PLC, VFD drives, and HMI touch panel. Integrated with upstream press line for synchronized production flow.
-                </p>
-                <div class="project-card-footer">
-                  <span class="project-card-client">Eaton</span>
-                  <div class="project-card-arrow">
-                    <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                      <line x1="5" y1="12" x2="19" y2="12"></line>
-                      <polyline points="12 5 19 12 12 19"></polyline>
-                    </svg>
-                  </div>
+                <div class="tl-card-body">
+                  <p class="tl-card-client">ThyssenKrupp</p>
+                  <h3 class="tl-card-title">High-Speed Conveyor &amp; Stamping Line Automation</h3>
+                  <p class="tl-card-desc">Automated a complete stamping and conveyor line at ThyssenKrupp with Allen-Bradley PLCs, servo drives, and real-time fault diagnostics — reducing cycle time by 22%.</p>
                 </div>
               </div>
-            </article>
+              <div class="tl-center">
+                <span class="tl-year-badge">2016</span>
+                <div class="tl-dot"></div>
+              </div>
+              <div class="tl-spacer"></div>
+            </div>
 
-            <!-- Card 7 -->
-            <article class="project-card" data-reveal data-reveal-delay="120" data-category="electrical">
-              <div class="project-card-img">
-                <img
-                  src="https://images.pexels.com/photos/2760243/pexels-photo-2760243.jpeg?auto=compress&cs=tinysrgb&w=700"
-                  alt="Motor Control Center"
-                  loading="lazy"
-                />
-                <span class="project-card-tag">Electrical</span>
-              </div>
-              <div class="project-card-body">
-                <div class="project-card-meta">
-                  <span>Electrical</span>
-                  <span class="dot"></span>
-                  <span>2022</span>
+            <!-- 2017 -->
+            <div class="timeline-item left" data-reveal>
+              <div class="tl-card">
+                <div class="tl-card-img">
+                  <img src="https://images.pexels.com/photos/2085831/pexels-photo-2085831.jpeg?auto=compress&cs=tinysrgb&w=700" alt="Robotics 2017" loading="lazy" />
+                  <span class="tl-card-tag">Robotics</span>
                 </div>
-                <h2 class="project-card-title">Motor Control Center Design &amp; Installation</h2>
-                <p class="project-card-desc">
-                  Custom MCC design for 22 motor circuits with soft starters, ground fault protection, remote I/O modules, and full CAD documentation package for plant records.
-                </p>
-                <div class="project-card-footer">
-                  <span class="project-card-client">Ford Motor Co.</span>
-                  <div class="project-card-arrow">
-                    <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                      <line x1="5" y1="12" x2="19" y2="12"></line>
-                      <polyline points="12 5 19 12 12 19"></polyline>
-                    </svg>
-                  </div>
+                <div class="tl-card-body">
+                  <p class="tl-card-client">ArcelorMittal</p>
+                  <h3 class="tl-card-title">First Robotic Cell Integration — FANUC R-2000</h3>
+                  <p class="tl-card-desc">Launched our robotics division with the integration of a FANUC R-2000 material handling robot at an ArcelorMittal stamping facility, complete with safety fencing and vision guidance.</p>
                 </div>
               </div>
-            </article>
+              <div class="tl-center">
+                <span class="tl-year-badge">2017</span>
+                <div class="tl-dot"></div>
+              </div>
+              <div class="tl-spacer"></div>
+            </div>
 
-            <!-- Card 8 -->
-            <article class="project-card" data-reveal data-reveal-delay="80" data-category="cnc">
-              <div class="project-card-img">
-                <img
-                  src="https://images.pexels.com/photos/3862130/pexels-photo-3862130.jpeg?auto=compress&cs=tinysrgb&w=700"
-                  alt="CMM Calibration System"
-                  loading="lazy"
-                />
-                <span class="project-card-tag">CMM</span>
-              </div>
-              <div class="project-card-body">
-                <div class="project-card-meta">
-                  <span>CNC &amp; CMM</span>
-                  <span class="dot"></span>
-                  <span>2022</span>
+            <!-- 2018 -->
+            <div class="timeline-item right" data-reveal>
+              <div class="tl-card">
+                <div class="tl-card-img">
+                  <img src="https://images.pexels.com/photos/3862130/pexels-photo-3862130.jpeg?auto=compress&cs=tinysrgb&w=700" alt="CMM Inspection 2018" loading="lazy" />
+                  <span class="tl-card-tag">CNC &amp; CMM</span>
                 </div>
-                <h2 class="project-card-title">CMM Integration &amp; Automated Inspection Cell</h2>
-                <p class="project-card-desc">
-                  Integration of a Zeiss CMM with the production line for 100% in-line dimensional inspection, automated rejection handling, and SPC data reporting to QMS.
-                </p>
-                <div class="project-card-footer">
-                  <span class="project-card-client">General Motors</span>
-                  <div class="project-card-arrow">
-                    <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                      <line x1="5" y1="12" x2="19" y2="12"></line>
-                      <polyline points="12 5 19 12 12 19"></polyline>
-                    </svg>
-                  </div>
+                <div class="tl-card-body">
+                  <p class="tl-card-client">General Motors</p>
+                  <h3 class="tl-card-title">CMM Automated Inspection Cell — 100% In-line QC</h3>
+                  <p class="tl-card-desc">Integrated a Zeiss CMM into a GM production line for full dimensional inspection at production speed. Automated rejection handling and SPC reporting to the plant QMS system.</p>
                 </div>
               </div>
-            </article>
+              <div class="tl-center">
+                <span class="tl-year-badge">2018</span>
+                <div class="tl-dot"></div>
+              </div>
+              <div class="tl-spacer"></div>
+            </div>
 
-            <!-- Card 9 -->
-            <article class="project-card" data-reveal data-reveal-delay="120" data-category="industry4">
-              <div class="project-card-img">
-                <img
-                  src="https://images.pexels.com/photos/325229/pexels-photo-325229.jpeg?auto=compress&cs=tinysrgb&w=700"
-                  alt="Predictive Maintenance System"
-                  loading="lazy"
-                />
-                <span class="project-card-tag">Industry 4.0</span>
-              </div>
-              <div class="project-card-body">
-                <div class="project-card-meta">
-                  <span>Industry 4.0</span>
-                  <span class="dot"></span>
-                  <span>2021</span>
+            <!-- 2019 -->
+            <div class="timeline-item left" data-reveal>
+              <div class="tl-card">
+                <div class="tl-card-img">
+                  <img src="https://images.pexels.com/photos/325229/pexels-photo-325229.jpeg?auto=compress&cs=tinysrgb&w=700" alt="IIoT sensors 2019" loading="lazy" />
+                  <span class="tl-card-tag">Industry 4.0</span>
                 </div>
-                <h2 class="project-card-title">IIoT Predictive Maintenance Deployment</h2>
-                <p class="project-card-desc">
-                  Installed vibration, temperature, and current sensors on 40+ critical assets; connected to cloud analytics platform generating automated maintenance alerts and failure predictions.
-                </p>
-                <div class="project-card-footer">
-                  <span class="project-card-client">Eaton</span>
-                  <div class="project-card-arrow">
-                    <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                      <line x1="5" y1="12" x2="19" y2="12"></line>
-                      <polyline points="12 5 19 12 12 19"></polyline>
-                    </svg>
-                  </div>
+                <div class="tl-card-body">
+                  <p class="tl-card-client">Hitachi Metals</p>
+                  <h3 class="tl-card-title">IIoT Sensor Network &amp; Predictive Maintenance Pilot</h3>
+                  <p class="tl-card-desc">Deployed a 28-node IIoT sensor network across Hitachi Metals' facility, monitoring vibration, temperature, and current on critical machines — first step toward predictive maintenance.</p>
                 </div>
               </div>
-            </article>
+              <div class="tl-center">
+                <span class="tl-year-badge">2019</span>
+                <div class="tl-dot"></div>
+              </div>
+              <div class="tl-spacer"></div>
+            </div>
+
+            <!-- 2020 -->
+            <div class="timeline-item right" data-reveal>
+              <div class="tl-card">
+                <div class="tl-card-img">
+                  <img src="https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg?auto=compress&cs=tinysrgb&w=700" alt="Remote monitoring 2020" loading="lazy" />
+                  <span class="tl-card-tag">Industry 4.0</span>
+                </div>
+                <div class="tl-card-body">
+                  <p class="tl-card-client">Eaton</p>
+                  <h3 class="tl-card-title">Remote Monitoring Platform &amp; Digital Twin Pilot</h3>
+                  <p class="tl-card-desc">Launched a remote monitoring and diagnostics platform for Eaton during plant shutdowns, enabling engineers to detect faults and perform virtual commissioning from offsite.</p>
+                </div>
+              </div>
+              <div class="tl-center">
+                <span class="tl-year-badge">2020</span>
+                <div class="tl-dot"></div>
+              </div>
+              <div class="tl-spacer"></div>
+            </div>
+
+            <!-- 2021 -->
+            <div class="timeline-item left" data-reveal>
+              <div class="tl-card">
+                <div class="tl-card-img">
+                  <img src="https://images.pexels.com/photos/210881/pexels-photo-210881.jpeg?auto=compress&cs=tinysrgb&w=700" alt="Predictive maintenance 2021" loading="lazy" />
+                  <span class="tl-card-tag">Industry 4.0</span>
+                </div>
+                <div class="tl-card-body">
+                  <p class="tl-card-client">Eaton</p>
+                  <h3 class="tl-card-title">IIoT Predictive Maintenance — 40+ Asset Deployment</h3>
+                  <p class="tl-card-desc">Scaled the IIoT program to 40+ critical assets, connecting cloud analytics with automated maintenance alerts. Reduced unplanned downtime by 31% in the first six months of operation.</p>
+                </div>
+              </div>
+              <div class="tl-center">
+                <span class="tl-year-badge">2021</span>
+                <div class="tl-dot"></div>
+              </div>
+              <div class="tl-spacer"></div>
+            </div>
+
+            <!-- 2022 -->
+            <div class="timeline-item right" data-reveal>
+              <div class="tl-card">
+                <div class="tl-card-img">
+                  <img src="https://images.pexels.com/photos/1108572/pexels-photo-1108572.jpeg?auto=compress&cs=tinysrgb&w=700" alt="Conveyor VFD 2022" loading="lazy" />
+                  <span class="tl-card-tag">Automation</span>
+                </div>
+                <div class="tl-card-body">
+                  <p class="tl-card-client">Ford Motor Co.</p>
+                  <h3 class="tl-card-title">Variable Speed Conveyor System &amp; MCC Installation</h3>
+                  <p class="tl-card-desc">Delivered a Siemens S7-1200 controlled conveyor system with VFD drives and a custom 22-circuit Motor Control Center for Ford — synchronized with upstream press operations.</p>
+                </div>
+              </div>
+              <div class="tl-center">
+                <span class="tl-year-badge">2022</span>
+                <div class="tl-dot"></div>
+              </div>
+              <div class="tl-spacer"></div>
+            </div>
+
+            <!-- 2023 -->
+            <div class="timeline-item left" data-reveal>
+              <div class="tl-card">
+                <div class="tl-card-img">
+                  <img src="https://images.pexels.com/photos/2085831/pexels-photo-2085831.jpeg?auto=compress&cs=tinysrgb&w=700" alt="Robotic welding 2023" loading="lazy" />
+                  <span class="tl-card-tag">Robotics</span>
+                </div>
+                <div class="tl-card-body">
+                  <p class="tl-card-client">General Motors</p>
+                  <h3 class="tl-card-title">FANUC Robotic Welding Cell — ISO 10218 Certified</h3>
+                  <p class="tl-card-desc">Designed, installed, and commissioned a 6-axis FANUC robotic welding cell with fixture tooling, seam tracking, and full safety fencing. Certified to ISO 10218 standards.</p>
+                </div>
+              </div>
+              <div class="tl-center">
+                <span class="tl-year-badge">2023</span>
+                <div class="tl-dot"></div>
+              </div>
+              <div class="tl-spacer"></div>
+            </div>
+
+            <!-- 2024 -->
+            <div class="timeline-item right" data-reveal>
+              <div class="tl-card">
+                <div class="tl-card-img">
+                  <img src="https://images.pexels.com/photos/3912981/pexels-photo-3912981.jpeg?auto=compress&cs=tinysrgb&w=700" alt="Assembly line automation 2024" loading="lazy" />
+                  <span class="tl-card-tag">Featured</span>
+                </div>
+                <div class="tl-card-body">
+                  <p class="tl-card-client">ArcelorMittal</p>
+                  <h3 class="tl-card-title">Full Assembly Line Automation — Tier 1 Plant</h3>
+                  <p class="tl-card-desc">Complete redesign and automation of a stamping and assembly line. Allen-Bradley PLCs, SCADA integration, safety relay systems, and real-time production monitoring reduced downtime by 38%.</p>
+                </div>
+              </div>
+              <div class="tl-center">
+                <span class="tl-year-badge">2024</span>
+                <div class="tl-dot"></div>
+              </div>
+              <div class="tl-spacer"></div>
+            </div>
+
+            <!-- 2025 -->
+            <div class="timeline-item left" data-reveal>
+              <div class="tl-card">
+                <div class="tl-card-img">
+                  <img src="https://images.pexels.com/photos/5726837/pexels-photo-5726837.jpeg?auto=compress&cs=tinysrgb&w=700" alt="5-axis CNC 2025" loading="lazy" />
+                  <span class="tl-card-tag">CNC</span>
+                </div>
+                <div class="tl-card-body">
+                  <p class="tl-card-client">Ford Motor Co.</p>
+                  <h3 class="tl-card-title">5-Axis CNC Retrofit &amp; Spindle Diagnostic System</h3>
+                  <p class="tl-card-desc">Retrofit of legacy 5-axis machining centers with modern Fanuc controls, vibration monitoring, and predictive spindle failure alerts integrated into the plant MES platform.</p>
+                </div>
+              </div>
+              <div class="tl-center">
+                <span class="tl-year-badge">2025</span>
+                <div class="tl-dot"></div>
+              </div>
+              <div class="tl-spacer"></div>
+            </div>
+
+            <!-- 2026 -->
+            <div class="timeline-item right" data-reveal>
+              <div class="tl-card">
+                <div class="tl-card-img">
+                  <img src="https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg?auto=compress&cs=tinysrgb&w=700" alt="OEE Dashboard 2026" loading="lazy" />
+                  <span class="tl-card-tag">Industry 4.0</span>
+                </div>
+                <div class="tl-card-body">
+                  <p class="tl-card-client">Hitachi Metals</p>
+                  <h3 class="tl-card-title">OEE Real-Time Dashboard &amp; Full SCADA Rollout</h3>
+                  <p class="tl-card-desc">Deployed a cloud-connected OEE monitoring platform across 14 production lines via OPC-UA. Custom dashboards for shift supervisors and plant managers delivering live performance insights.</p>
+                </div>
+              </div>
+              <div class="tl-center">
+                <span class="tl-year-badge">2026</span>
+                <div class="tl-dot"></div>
+              </div>
+              <div class="tl-spacer"></div>
+            </div>
 
           </div>
         </div>
@@ -863,25 +841,6 @@
         revealElements.forEach((el) => el.classList.add('revealed'));
       }
 
-      const filterBtns = document.querySelectorAll('.filter-btn');
-      const cards = document.querySelectorAll('.project-card');
-
-      filterBtns.forEach((btn) => {
-        btn.addEventListener('click', () => {
-          filterBtns.forEach((b) => b.classList.remove('active'));
-          btn.classList.add('active');
-          const filter = btn.getAttribute('data-filter');
-          cards.forEach((card) => {
-            const cat = card.getAttribute('data-category');
-            if (filter === 'all' || cat === filter) {
-              card.style.display = '';
-              card.style.opacity = '1';
-            } else {
-              card.style.display = 'none';
-            }
-          });
-        });
-      });
     </script>
     <script src="assets/js/modals.js"></script>
   </body>
