@@ -392,15 +392,27 @@
       }
 
       @media (max-width: 860px) {
-        .timeline-spine { left: 1.5rem; }
+        .timeline-spine { left: 50%; }
         .tl-center { width: 3rem; }
         .tl-year-badge { font-size: 0.72rem; padding: 0.3rem 0.6rem; }
         .timeline-item.left,
         .timeline-item.right {
+          flex-direction: column;
+          align-items: center;
+        }
+        .tl-center {
+          order: -1;
           flex-direction: row;
+          gap: 0.5rem;
+          align-items: center;
+          width: auto;
+          margin-bottom: 0.75rem;
+        }
+        .tl-dot {
+          margin-top: 0;
         }
         .tl-card {
-          width: calc(100% - 4.5rem);
+          width: 100%;
         }
         .tl-spacer { display: none; }
       }
