@@ -257,6 +257,12 @@ main {
   flex-wrap: wrap;
 }
 
+@media (max-width: 767px) {
+  .hero-btns {
+    justify-content: center;
+  }
+}
+
 
 /* Header */
 .site-header {
