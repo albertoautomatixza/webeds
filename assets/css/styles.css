@@ -2350,3 +2350,228 @@ main {
     padding: 1rem 1.25rem 1.25rem;
   }
 }
+
+/* =========================================
+   TOUCH DEVICE HOVER SIMULATION
+   On devices with no hover (touchscreens),
+   apply hover-equivalent styles via .touch-active
+   ========================================= */
+
+@media (hover: none) {
+  a.touch-active { color: var(--yellow); }
+
+  .glass-box.touch-active {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 12px 48px rgba(0, 0, 0, 0.4);
+  }
+
+  .btn.touch-active {
+    color: #fff;
+    box-shadow: 0 20px 45px rgba(250, 204, 21, 0.35);
+  }
+  .btn.touch-active::before,
+  .header-cta.touch-active::before {
+    opacity: 1;
+    animation: border-rotate 2.8s linear infinite;
+  }
+
+  .header-cta.touch-active {
+    color: #fff;
+    box-shadow: 0 20px 45px rgba(250, 204, 21, 0.35);
+  }
+
+  .nav-list a.touch-active {
+    color: var(--yellow);
+  }
+  .nav-list a.touch-active::before {
+    opacity: 1;
+    background: rgba(250, 204, 21, 0.18);
+  }
+
+  .mobile-menu a.touch-active {
+    background: rgba(250, 204, 21, 0.2);
+    color: var(--yellow);
+  }
+
+  .bento-card.touch-active {
+    transform: translateY(-5px);
+    border-color: rgba(250, 204, 21, 0.3);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+  }
+  .bento-card--wide.touch-active .bento-card-visual {
+    opacity: 0.28;
+  }
+
+  .service-card.touch-active {
+    transform: translateY(-10px);
+    border-color: rgba(250, 204, 21, 0.3);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 32px 70px rgba(250, 204, 21, 0.18);
+  }
+  .service-card.touch-active::before { opacity: 1; }
+
+  .services-arrow.touch-active {
+    box-shadow: 0 8px 20px rgba(255, 255, 255, 0.15);
+  }
+  .services-arrow.touch-active::before {
+    opacity: 1;
+    animation: border-rotate 2.8s linear infinite;
+  }
+
+  .benefit-card.touch-active {
+    transform: translateY(-6px);
+    border-color: rgba(250, 204, 21, 0.35);
+  }
+  .benefit-card-safety.touch-active::before,
+  .benefit-card-precision.touch-active::before,
+  .benefit-card-team.touch-active::before,
+  .benefit-card-innovation.touch-active::before {
+    filter: blur(1px);
+    opacity: 0.5;
+  }
+
+  .stat.touch-active {
+    transform: translateY(-4px);
+    border-color: rgba(250, 204, 21, 0.4);
+    background: rgba(17, 17, 17, 0.95);
+    box-shadow: 0 8px 24px rgba(250, 204, 21, 0.15);
+  }
+
+  .hero-stat.touch-active {
+    border-color: rgba(250, 204, 21, 0.6);
+    box-shadow: 0 8px 32px rgba(250, 204, 21, 0.18), 0 0 0 1px rgba(250, 204, 21, 0.15);
+    transform: scale(1.06);
+  }
+
+  .client-card.touch-active {
+    transform: translateY(-10px);
+    border-color: rgba(250, 204, 21, 0.3);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.45);
+  }
+  .client-card.touch-active .client-logo {
+    filter: grayscale(0%) brightness(1.8) opacity(1);
+    transform: scale(1.08);
+  }
+
+  .clients-arrow.touch-active {
+    box-shadow: 0 8px 20px rgba(255, 255, 255, 0.15);
+  }
+  .clients-arrow.touch-active::before {
+    opacity: 1;
+    animation: border-rotate 2.8s linear infinite;
+  }
+
+  .contact-card.touch-active {
+    transform: translateY(-4px);
+    border-color: rgba(250, 204, 21, 0.3);
+    color: var(--yellow);
+  }
+  .contact-card--whatsapp.touch-active {
+    color: #f8fafc;
+    border-color: rgba(37, 211, 102, 0.55);
+    box-shadow: 0 0 0 1px rgba(37, 211, 102, 0.18), 0 16px 40px rgba(9, 33, 18, 0.55);
+  }
+
+  .scroll-top-button.touch-active {
+    box-shadow: 0 8px 20px rgba(255, 255, 255, 0.15);
+  }
+  .scroll-top-button.touch-active::before {
+    opacity: 1;
+    animation: border-rotate 2.8s linear infinite;
+  }
+
+  .whatsapp-button.touch-active {
+    transform: scale(1.08);
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.28), 0 24px 52px rgba(37, 211, 102, 0.46);
+  }
+  .whatsapp-button.touch-active span {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .eds-modal-close.touch-active {
+    border-color: #facc15;
+    color: #facc15;
+    background: rgba(250, 204, 21, 0.08);
+  }
+
+  .eds-modal-accept.touch-active {
+    background: #fde047;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 28px rgba(250, 204, 21, 0.4);
+  }
+  .eds-modal-accept.touch-active::after {
+    background: rgba(255, 255, 255, 0.08);
+  }
+
+  .story-card.touch-active {
+    border-color: rgba(250, 204, 21, 0.2);
+    transform: translateY(-4px);
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.5), 0 0 30px rgba(250, 204, 21, 0.05);
+  }
+  .story-card.touch-active::before { opacity: 1; }
+  .story-card.touch-active .story-logo { opacity: 1; }
+
+  .about-story-image.touch-active img { filter: grayscale(0%); }
+
+  .value-card.touch-active {
+    border-color: rgba(250, 204, 21, 0.25);
+    transform: translateY(-4px);
+  }
+  .value-card.touch-active::before { transform: scaleX(1); }
+
+  .team-pillar.touch-active { border-color: rgba(250, 204, 21, 0.2); }
+
+  .btn-primary.touch-active {
+    background: #f0c000;
+    color: #000;
+    transform: translateY(-2px);
+  }
+
+  .btn-secondary.touch-active {
+    border-color: var(--yellow);
+    color: var(--yellow);
+    transform: translateY(-2px);
+  }
+
+  .mach-card.touch-active {
+    border-color: rgba(250, 204, 21, 0.45);
+    transform: translateY(-6px);
+    box-shadow: 0 24px 60px rgba(0,0,0,0.45), 0 0 0 1px rgba(250,204,21,0.15);
+  }
+  .mach-card.touch-active img {
+    transform: scale(1.04);
+    filter: brightness(0.85) saturate(1);
+  }
+
+  .mach-cap-item.touch-active {
+    border-color: rgba(250,204,21,0.3);
+    background: rgba(250,204,21,0.05);
+  }
+
+  .mach-services-list li.touch-active {
+    background: rgba(250,204,21,0.07);
+    border-color: rgba(250,204,21,0.2);
+    color: var(--white);
+    transform: translateX(4px);
+  }
+
+  .mach-automation-visual img.touch-active {
+    filter: brightness(1) saturate(1.2);
+  }
+
+  .tl-card.touch-active {
+    border-color: rgba(250,204,21,0.4);
+    transform: translateY(-5px);
+    box-shadow: 0 20px 56px rgba(0,0,0,0.6), 0 0 0 1px rgba(250,204,21,0.12);
+  }
+  .tl-card.touch-active img {
+    transform: scale(1.06);
+    filter: grayscale(0%);
+  }
+  .tl-card.touch-active .tl-logo { opacity: 0.85; }
+
+  .footer-links a.touch-active,
+  .footer-credit a.touch-active,
+  .footer-legal a.touch-active { color: var(--yellow); }
+}

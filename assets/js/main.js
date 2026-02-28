@@ -320,6 +320,8 @@ const ready = () => {
 
     slider.addEventListener('mouseenter', stopAutoSlide);
     slider.addEventListener('mouseleave', startAutoSlide);
+    slider.addEventListener('touchstart', stopAutoSlide, { passive: true });
+    slider.addEventListener('touchend', () => window.setTimeout(startAutoSlide, 2000), { passive: true });
 
     viewport.addEventListener('scroll', () => {
       if (scrollTimeout) {
@@ -453,6 +455,8 @@ const ready = () => {
 
     slider.addEventListener('mouseenter', stopAutoSlide);
     slider.addEventListener('mouseleave', startAutoSlide);
+    slider.addEventListener('touchstart', stopAutoSlide, { passive: true });
+    slider.addEventListener('touchend', () => window.setTimeout(startAutoSlide, 2000), { passive: true });
 
     viewport.addEventListener('scroll', () => {
       if (scrollTimeout) {
@@ -530,4 +534,87 @@ const ready = () => {
   }
 };
 
+const initTouchHover = () => {
+  if (window.matchMedia('(hover: hover)').matches) return;
+
+  const SELECTORS = [
+    'a',
+    '.glass-box',
+    '.btn',
+    '.header-cta',
+    '.nav-list a',
+    '.mobile-menu a',
+    '.bento-card',
+    '.service-card',
+    '.services-arrow',
+    '.benefit-card',
+    '.stat',
+    '.hero-stat',
+    '.client-card',
+    '.clients-arrow',
+    '.contact-card',
+    '.contact-card--whatsapp',
+    '.scroll-top-button',
+    '.whatsapp-button',
+    '.eds-modal-close',
+    '.eds-modal-accept',
+    '.story-card',
+    '.about-story-image',
+    '.value-card',
+    '.team-pillar',
+    '.btn-primary',
+    '.btn-secondary',
+    '.mach-card',
+    '.mach-cap-item',
+    '.mach-services-list li',
+    '.mach-automation-visual img',
+    '.tl-card',
+    '.footer-links a',
+    '.footer-credit a',
+    '.footer-legal a',
+  ];
+
+  let activeEl = null;
+  let releaseTimer = null;
+
+  const activate = (el) => {
+    if (activeEl && activeEl !== el) {
+      activeEl.classList.remove('touch-active');
+    }
+    el.classList.add('touch-active');
+    activeEl = el;
+  };
+
+  const deactivate = (el) => {
+    if (releaseTimer) window.clearTimeout(releaseTimer);
+    releaseTimer = window.setTimeout(() => {
+      el.classList.remove('touch-active');
+      if (activeEl === el) activeEl = null;
+    }, 400);
+  };
+
+  document.addEventListener('touchstart', (e) => {
+    const target = e.target;
+    const matched = SELECTORS.map((sel) => target.closest(sel)).filter(Boolean);
+    if (matched.length === 0) return;
+    const el = matched[0];
+    activate(el);
+  }, { passive: true });
+
+  document.addEventListener('touchend', (e) => {
+    const target = e.target;
+    const matched = SELECTORS.map((sel) => target.closest(sel)).filter(Boolean);
+    if (matched.length === 0) return;
+    deactivate(matched[0]);
+  }, { passive: true });
+
+  document.addEventListener('touchcancel', () => {
+    if (activeEl) {
+      activeEl.classList.remove('touch-active');
+      activeEl = null;
+    }
+  }, { passive: true });
+};
+
 document.addEventListener('DOMContentLoaded', ready);
+document.addEventListener('DOMContentLoaded', initTouchHover);
