@@ -22,6 +22,16 @@ webeds/
 2. Open `index.html` directly in your browser, or serve the folder with any static server (for example, `python -m http.server`).
 3. Update the content inside `index.html`, `assets/css/styles.css`, and `assets/js/main.js` as needed for your deployment.
 
+### Quick local preview
+
+You can run a lightweight local server for previewing the site:
+
+```bash
+python -m http.server 4173 --bind 0.0.0.0
+```
+
+Then open `http://127.0.0.1:4173/index.html` in your browser.
+
 ## Features
 
 - Lightweight loading screen with an animated white border around the yellow EDS badge.
