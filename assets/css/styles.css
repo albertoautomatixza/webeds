@@ -1023,6 +1023,10 @@ main {
   background-image: url('/assets/edswebimagen4.jpeg');
 }
 
+.other-service-card-5::before {
+  background-image: url('/assets/edswebimagen2.jpg');
+}
+
 .other-service-card:hover {
   transform: translateY(-6px);
   border-color: rgba(250, 204, 21, 0.35);
@@ -1067,7 +1071,7 @@ main {
 
 @media (min-width: 1024px) {
   .other-services-grid {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-columns: repeat(5, minmax(0, 1fr));
   }
 }
 
