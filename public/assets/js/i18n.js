@@ -263,7 +263,7 @@ const translations = {
     cnc_eyebrow: "Precision en cada eje",
     cnc_title: "Capacidades CNC",
     cnc_subtitle: "Mecanizado, programacion y soporte integral para los entornos industriales mas exigentes.",
-    cnc_control_title: "Soporte de Control CNC (Siemens y Fanuc)",
+    cnc_control_title: "Soporte de Control CNC",
     cnc_control_desc: "Soporte tecnico avanzado para sistemas de control CNC incluyendo Siemens 840D y Fanuc Series 16 y posteriores, cubriendo diagnosticos, ajustes de parametros y solucion de problemas.",
     cnc_turning_title: "Torneado CNC",
     cnc_turning_desc: "Torneado de alta precision de ejes, bujes y piezas rotacionales en acero, aluminio y aleaciones especiales.",
