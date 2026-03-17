@@ -179,7 +179,22 @@ const translations = {
     form_email: "Email",
     form_company: "Company",
     form_message: "Message",
-    form_submit: "Send Message"
+    form_submit: "Send Message",
+    approach_eyebrow: "How we work",
+    approach_title: "Our Approach",
+    approach_desc: "A structured methodology that ensures quality, safety, and results on every engagement — from initial scope to final commissioning.",
+    approach_step1_title: "Discovery & Scoping",
+    approach_step1_desc: "We analyze your processes, identify bottlenecks, and define clear project requirements before a single line of code or cable is run.",
+    approach_step2_title: "Engineering Design",
+    approach_step2_desc: "Our engineers produce detailed electrical schematics, PLC architectures, and automation logic, fully documented and auditable.",
+    approach_step3_title: "Implementation & Integration",
+    approach_step3_desc: "Skilled technicians execute the build with precision. Every system is integrated and tested against defined acceptance criteria.",
+    approach_step4_title: "Commissioning & Support",
+    approach_step4_desc: "We don't just hand over and leave. Comprehensive commissioning, operator training, and ongoing technical support are part of the service.",
+    cta_title: "Ready to work with us?",
+    cta_desc: "Whether you need a full automation line, an electrical control panel, or an Industry 4.0 upgrade — our team is ready to scope your project.",
+    cta_btn_contact: "Get in Touch",
+    cta_btn_services: "View Services"
   },
   es: {
     nav_services: "Servicios",
@@ -361,7 +376,22 @@ const translations = {
     form_email: "Correo",
     form_company: "Empresa",
     form_message: "Mensaje",
-    form_submit: "Enviar Mensaje"
+    form_submit: "Enviar Mensaje",
+    approach_eyebrow: "Como trabajamos",
+    approach_title: "Nuestro Enfoque",
+    approach_desc: "Una metodologia estructurada que garantiza calidad, seguridad y resultados en cada proyecto, desde el alcance inicial hasta la puesta en marcha final.",
+    approach_step1_title: "Descubrimiento y Alcance",
+    approach_step1_desc: "Analizamos sus procesos, identificamos cuellos de botella y definimos requisitos claros del proyecto antes de escribir una sola linea de codigo o tender un cable.",
+    approach_step2_title: "Diseno de Ingenieria",
+    approach_step2_desc: "Nuestros ingenieros producen esquemas electricos detallados, arquitecturas PLC y logica de automatizacion, completamente documentados y auditables.",
+    approach_step3_title: "Implementacion e Integracion",
+    approach_step3_desc: "Tecnicos especializados ejecutan la construccion con precision. Cada sistema se integra y prueba contra criterios de aceptacion definidos.",
+    approach_step4_title: "Puesta en Marcha y Soporte",
+    approach_step4_desc: "No solo entregamos y nos vamos. La puesta en marcha integral, capacitacion de operadores y soporte tecnico continuo son parte del servicio.",
+    cta_title: "Listo para trabajar con nosotros?",
+    cta_desc: "Ya sea que necesite una linea de automatizacion completa, un panel de control electrico o una actualizacion a Industria 4.0, nuestro equipo esta listo para evaluar su proyecto.",
+    cta_btn_contact: "Contactenos",
+    cta_btn_services: "Ver Servicios"
   }
 };
 
