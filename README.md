@@ -19,8 +19,30 @@ webeds/
 ## Getting started
 
 1. Clone the repository or download the source code.
-2. Open `index.html` directly in your browser, or serve the folder with any static server (for example, `python -m http.server`).
-3. Update the content inside `index.html`, `assets/css/styles.css`, and `assets/js/main.js` as needed for your deployment.
+2. Install dependencies with `npm install`.
+3. Run `npm run dev` to preview the site with Vite (recommended).
+4. Update the content inside `index.html`, `assets/css/styles.css`, and `assets/js/main.js` as needed for your deployment.
+
+### Quick local preview
+
+Recommended (includes correct public asset handling):
+
+```bash
+npm install
+npm run dev
+```
+
+Then open the local URL printed by Vite (usually `http://localhost:5173`).
+
+Static build preview:
+
+```bash
+npm run build
+npm run start
+```
+
+
+> Note: Binary media files (e.g., `.png`, `.mp4`) are kept under `public/assets/` for preview/deploy workflows; avoid duplicating them into `assets/`.
 
 ## Features
 
