@@ -194,10 +194,10 @@ const translations = {
     approach_step3_desc: "Skilled technicians execute the build with precision. Every system is integrated and tested against defined acceptance criteria.",
     approach_step4_title: "Commissioning & Support",
     approach_step4_desc: "We don't just hand over and leave. Comprehensive commissioning, operator training, and ongoing technical support are part of the service.",
-    cta_title: "Ready to work with us?",
-    cta_desc: "Whether you need a full automation line, an electrical control panel, or an Industry 4.0 upgrade — our team is ready to scope your project.",
-    cta_btn_contact: "Get in Touch",
-    cta_btn_services: "View Services"
+    cta_title: "Ready to start your next project?",
+    cta_desc: "Send us your project details and we will provide a competitive quote with fast turnaround times and guaranteed precision.",
+    cta_btn_contact: "Request a Quote",
+    cta_btn_services: "Back to Home"
   },
   es: {
     nav_services: "Servicios",
@@ -394,10 +394,10 @@ const translations = {
     approach_step3_desc: "Tecnicos especializados ejecutan la construccion con precision. Cada sistema se integra y prueba contra criterios de aceptacion definidos.",
     approach_step4_title: "Puesta en Marcha y Soporte",
     approach_step4_desc: "No solo entregamos y nos vamos. La puesta en marcha integral, capacitacion de operadores y soporte tecnico continuo son parte del servicio.",
-    cta_title: "Listo para trabajar con nosotros?",
-    cta_desc: "Ya sea que necesite una linea de automatizacion completa, un panel de control electrico o una actualizacion a Industria 4.0, nuestro equipo esta listo para evaluar su proyecto.",
-    cta_btn_contact: "Contactenos",
-    cta_btn_services: "Ver Servicios"
+    cta_title: "Listo para comenzar tu proximo proyecto?",
+    cta_desc: "Envianos los detalles de tu proyecto y te proporcionaremos una cotizacion competitiva con tiempos rapidos de respuesta y precision garantizada.",
+    cta_btn_contact: "Solicitar Cotizacion",
+    cta_btn_services: "Volver al Inicio"
   }
 };
 
