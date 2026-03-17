@@ -515,51 +515,56 @@ const ready = () => {
       return;
     }
 
-    let activeIndex = 0;
-    let autoSlideId = null;
+    let currentIndex = 0;
+    const totalCards = cards.length;
 
-    const normaliseIndex = (index) => {
-      const length = cards.length;
-      return ((index % length) + length) % length;
+    const scrollToCard = (index) => {
+      currentIndex = ((index % totalCards) + totalCards) % totalCards;
+      const card = cards[currentIndex];
+      if (!card) return;
+
+      const cardLeft = card.offsetLeft;
+      const cardWidth = card.offsetWidth;
+      const viewportWidth = viewport.offsetWidth;
+      const scrollTarget = cardLeft - (viewportWidth / 2) + (cardWidth / 2);
+
+      viewport.scrollTo({
+        left: Math.max(0, scrollTarget),
+        behavior: 'smooth'
+      });
     };
 
-    const clamp = (value, min, max) => Math.max(min, Math.min(max, value));
-
-    const goToIndex = (index, smooth = true) => {
-      if (!cards.length) return;
-      activeIndex = normaliseIndex(index);
-      const card = cards[activeIndex];
-      const maxScroll = Math.max(0, viewport.scrollWidth - viewport.clientWidth);
-      let target = card.offsetLeft - (viewport.clientWidth / 2 - card.clientWidth / 2);
-      target = clamp(target, 0, maxScroll);
-      viewport.scrollTo({ left: target, behavior: smooth ? 'smooth' : 'auto' });
+    const nextSlide = () => {
+      scrollToCard(currentIndex + 1);
     };
 
-    const startAutoSlide = () => {
-      if (autoSlideId) return;
-      autoSlideId = window.setInterval(() => {
-        goToIndex(activeIndex + 1);
-      }, 4000);
+    const prevSlide = () => {
+      scrollToCard(currentIndex - 1);
     };
 
     if (prevButton) {
-      prevButton.addEventListener('click', () => {
-        goToIndex(activeIndex - 1);
+      prevButton.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        prevSlide();
       });
     }
 
     if (nextButton) {
-      nextButton.addEventListener('click', () => {
-        goToIndex(activeIndex + 1);
+      nextButton.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        nextSlide();
       });
     }
 
     window.addEventListener('resize', () => {
-      goToIndex(activeIndex, false);
+      scrollToCard(currentIndex);
     });
 
-    goToIndex(0, false);
-    startAutoSlide();
+    scrollToCard(0);
+
+    setInterval(nextSlide, 4000);
   };
 
   initBenefitsSlider();

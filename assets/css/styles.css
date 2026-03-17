@@ -1239,6 +1239,7 @@ main {
   transition: opacity 0.3s ease;
   z-index: 0;
   animation: none;
+  pointer-events: none;
 }
 
 .benefits-arrow::after {
@@ -1248,6 +1249,7 @@ main {
   border-radius: 9px;
   background: #111111;
   z-index: 1;
+  pointer-events: none;
 }
 
 .benefits-arrow svg {
