@@ -505,11 +505,11 @@ const ready = () => {
     const slider = document.querySelector('.benefits-slider');
     if (!slider) return;
 
-    const viewport = slider.querySelector('[data-benefits-viewport]');
+    const viewport = slider.querySelector('.benefits-viewport');
     const track = slider.querySelector('.benefits-track');
-    const cards = track ? Array.from(track.children) : [];
-    const prevButton = slider.querySelector('[data-benefits-prev]');
-    const nextButton = slider.querySelector('[data-benefits-next]');
+    const cards = track ? Array.from(track.querySelectorAll('.benefit-card')) : [];
+    const prevButton = slider.querySelector('.benefits-arrow--prev');
+    const nextButton = slider.querySelector('.benefits-arrow--next');
 
     if (!viewport || !track || cards.length === 0 || !prevButton || !nextButton) {
       return;
@@ -518,6 +518,7 @@ const ready = () => {
     let activeIndex = 0;
     let autoSlideId = null;
     let scrollTimeout;
+    let hasStarted = false;
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
     const normaliseIndex = (index) => {
@@ -594,22 +595,6 @@ const ready = () => {
       scrollTimeout = window.setTimeout(updateActiveFromScroll, 120);
     });
 
-    let lastBenefitPageScroll = window.pageYOffset;
-    let benefitPageScrollTimeout;
-    const handleBenefitPageScroll = () => {
-      const currentScroll = window.pageYOffset;
-      if (Math.abs(currentScroll - lastBenefitPageScroll) > 100) {
-        if (benefitPageScrollTimeout) {
-          window.clearTimeout(benefitPageScrollTimeout);
-        }
-        benefitPageScrollTimeout = window.setTimeout(() => {
-          goToIndex(activeIndex + 1);
-          lastBenefitPageScroll = currentScroll;
-        }, 150);
-      }
-    };
-    window.addEventListener('scroll', handleBenefitPageScroll, { passive: true });
-
     window.addEventListener('resize', () => {
       goToIndex(activeIndex, false);
     });
@@ -617,7 +602,7 @@ const ready = () => {
     const handleMotionPreference = () => {
       if (prefersReducedMotion.matches) {
         stopAutoSlide();
-      } else {
+      } else if (hasStarted) {
         startAutoSlide();
       }
     };
@@ -629,7 +614,28 @@ const ready = () => {
     }
 
     goToIndex(0, false);
-    startAutoSlide();
+
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting && !hasStarted) {
+              hasStarted = true;
+              startAutoSlide();
+            } else if (!entry.isIntersecting && hasStarted) {
+              stopAutoSlide();
+            } else if (entry.isIntersecting && hasStarted) {
+              startAutoSlide();
+            }
+          });
+        },
+        { threshold: 0.3 }
+      );
+      observer.observe(slider);
+    } else {
+      hasStarted = true;
+      startAutoSlide();
+    }
   };
 
   initBenefitsSlider();
