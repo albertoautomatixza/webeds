@@ -132,6 +132,30 @@
         filter: grayscale(0%);
       }
 
+      .about-story-image::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background:
+          linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+          repeating-linear-gradient(
+            0deg,
+            transparent,
+            transparent 40px,
+            rgba(250, 204, 21, 0.08) 40px,
+            rgba(250, 204, 21, 0.08) 41px
+          ),
+          repeating-linear-gradient(
+            90deg,
+            transparent,
+            transparent 40px,
+            rgba(250, 204, 21, 0.08) 40px,
+            rgba(250, 204, 21, 0.08) 41px
+          );
+        z-index: 1;
+        pointer-events: none;
+      }
+
       .about-story-image::after {
         content: '';
         position: absolute;
@@ -139,6 +163,7 @@
         border: 1px solid rgba(250, 204, 21, 0.15);
         border-radius: 4px;
         pointer-events: none;
+        z-index: 2;
       }
 
       .about-story-badge {
@@ -433,7 +458,8 @@
         }
       }
     </style>
-    <link rel="stylesheet" crossorigin href="/assets/styles-CpRefbxr.css">
+    <script type="module" crossorigin src="/assets/styles-Bu_tpGUo.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/styles-3E_eyjJa.css">
   </head>
   <body>
     <header class="site-header" id="top">
@@ -443,30 +469,34 @@
         </a>
         <nav class="site-nav" aria-label="Primary navigation">
           <ul class="nav-list">
-            <li><a href="index.html#servicios"><span>Services</span></a></li>
-            <li><a href="about.html" class="nav-active"><span>About Us</span></a></li>
-            <li><a href="projects.html"><span>Projects</span></a></li>
-            <li><a href="machining.html"><span>Machining</span></a></li>
-            <li><a href="index.html#clientes"><span>Clients</span></a></li>
-            <li><a href="index.html#contacto"><span>Contact</span></a></li>
+            <li><a href="index.html#servicios"><span data-i18n="nav_services">Services</span></a></li>
+            <li><a href="about.html" class="nav-active"><span data-i18n="nav_about">About Us</span></a></li>
+            <li><a href="projects.html"><span data-i18n="nav_portfolio">Portfolio</span></a></li>
+            <li><a href="automation.html"><span data-i18n="nav_automation">Automation</span></a></li>
+            <li><a href="machining.html"><span data-i18n="nav_manufacture">Manufacture</span></a></li>
+            <li><a href="index.html#contacto"><span data-i18n="nav_contact">Contact</span></a></li>
           </ul>
         </nav>
+        <div class="lang-toggle">
+          <button type="button" class="lang-btn active" data-lang="en"><span>EN</span></button>
+          <button type="button" class="lang-btn" data-lang="es"><span>ES</span></button>
+        </div>
         <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu">
           <span class="menu-bar"></span>
           <span class="menu-bar"></span>
           <span class="menu-bar"></span>
           <span class="sr-only">Toggle navigation</span>
         </button>
-        <a class="header-cta" href="mailto:sales@engineeringds.com.mx"><span>Contact Us</span></a>
+        <a class="header-cta" href="mailto:sales@engineeringds.com.mx"><span data-i18n="contact_us">Contact Us</span></a>
       </div>
       <nav id="mobile-menu" class="mobile-menu" aria-label="Mobile navigation">
         <ul>
-          <li><a href="index.html#servicios">Services</a></li>
-          <li><a href="about.html">About Us</a></li>
-          <li><a href="projects.html">Projects</a></li>
-          <li><a href="machining.html">Machining</a></li>
-          <li><a href="index.html#clientes">Clients</a></li>
-          <li><a href="index.html#contacto">Contact</a></li>
+          <li><a href="index.html#servicios" data-i18n="nav_services">Services</a></li>
+          <li><a href="about.html" data-i18n="nav_about">About Us</a></li>
+          <li><a href="projects.html" data-i18n="nav_portfolio">Portfolio</a></li>
+          <li><a href="automation.html" data-i18n="nav_automation">Automation</a></li>
+          <li><a href="machining.html" data-i18n="nav_manufacture">Manufacture</a></li>
+          <li><a href="index.html#contacto" data-i18n="nav_contact">Contact</a></li>
         </ul>
       </nav>
     </header>
@@ -474,11 +504,11 @@
     <main>
       <section class="about-hero">
         <div class="container about-hero-content" data-reveal>
-          <p class="eyebrow">Who we are</p>
-          <h1>We've Been Improve Amazing <span>Solutions</span> Since 2011</h1>
+          <p class="eyebrow" data-i18n="about_eyebrow">Who we are</p>
+          <h1><span data-i18n="about_title_1">We've Been Improve Amazing</span> <span data-i18n="about_title_2">Solutions</span> <span data-i18n="about_title_3">Since 2011</span></h1>
           <hr class="about-divider" />
-          <p class="eyebrow" style="margin-bottom: 0.75rem;">Our Mission and Vision</p>
-          <p class="lead">
+          <p class="eyebrow" style="margin-bottom: 0.75rem;" data-i18n="about_mission_eyebrow">Our Mission and Vision</p>
+          <p class="lead" data-i18n="about_mission_desc">
             We are a consolidated company that provides solutions to a massive industry, we focus on offering the best technical solutions in machinery projects and work areas, with the continuous support of our specialist technician and engineers.
           </p>
         </div>
@@ -488,25 +518,25 @@
         <div class="container">
           <div class="about-story-grid">
             <div class="about-story-text" data-reveal>
-              <p class="eyebrow">Our story</p>
-              <h2>Built on <span>experience</span>, driven by results</h2>
-              <p>
-                Founded with the vision of bridging the gap between cutting-edge technology and real-world industrial demands, Engineering DS has grown into a trusted partner for some of the largest automotive manufacturers in Mexico.
+              <p class="eyebrow" data-i18n="about_story_eyebrow">Our story</p>
+              <h2><span data-i18n="about_story_title_1">Built on</span> <span data-i18n="about_story_title_2">experience</span><span data-i18n="about_story_title_3">, driven by results</span></h2>
+              <p data-i18n="about_story_p1">
+                Founded with the vision of bridging the gap between cutting edge technology and real world industrial demands, Engineering DS has grown into a trusted partner for some of the largest automotive manufacturers in Mexico.
               </p>
-              <p>
-                From electrical control panels and PLC programming to full-scale automation lines, every project we deliver is backed by rigorous engineering standards, strict safety compliance, and a commitment to on-time execution.
+              <p data-i18n="about_story_p2">
+                From electrical control panels and PLC programming to full scale automation lines, every project we deliver is backed by rigorous engineering standards, strict safety compliance, and a commitment to on time execution.
               </p>
-              <p>
-                Our team of certified engineers and technicians brings decades of combined experience — always seeking towards improvement.
+              <p data-i18n="about_story_p3">
+                Our team of certified engineers and technicians brings decades of combined experience, always seeking towards improvement.
               </p>
             </div>
             <div class="about-story-image" data-reveal data-reveal-delay="150">
               <img
-                src="https://images.pexels.com/photos/1108101/pexels-photo-1108101.jpeg?auto=compress&cs=tinysrgb&w=800"
-                alt="Industrial engineering facility"
+                src="/WhatsApp_Image_2026-03-16_at_7.38.41_PM.jpeg"
+                alt="EDS Engineer at work"
               />
-              <div class="about-story-badge">
-                10+ Years<br>of Excellence
+              <div class="about-story-badge" data-i18n="about_story_badge">
+                15+ Years of Excellence
               </div>
             </div>
           </div>
@@ -516,9 +546,9 @@
       <section class="section about-values">
         <div class="container">
           <div class="section-heading" data-reveal>
-            <p class="eyebrow">What guides us</p>
-            <h2>Our Core Values</h2>
-            <p class="section-subtitle">The principles behind every project we deliver</p>
+            <p class="eyebrow" data-i18n="about_values_eyebrow">What guides us</p>
+            <h2 data-i18n="about_values_title">Our Core Values</h2>
+            <p class="section-subtitle" data-i18n="about_values_subtitle">The principles behind every project we deliver</p>
           </div>
           <div class="about-values-grid">
             <div class="value-card" data-reveal data-reveal-delay="0">
@@ -527,8 +557,8 @@
                   <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
                 </svg>
               </div>
-              <h3>Safety First</h3>
-              <p>Every project meets or exceeds international safety standards. No shortcuts — ever.</p>
+              <h3 data-i18n="about_value_safety_title">Safety First</h3>
+              <p data-i18n="about_value_safety_desc">Every project meets or exceeds international safety standards. No shortcuts, ever.</p>
             </div>
             <div class="value-card" data-reveal data-reveal-delay="120">
               <div class="value-icon">
@@ -537,8 +567,8 @@
                   <path d="M12 2v4M12 18v4m-7.07-14.07 2.83 2.83m8.48 8.48 2.83 2.83" />
                 </svg>
               </div>
-              <h3>Precision Engineering</h3>
-              <p>Detailed planning and meticulous execution — millimeter accuracy in every deliverable.</p>
+              <h3 data-i18n="about_value_precision_title">Precision Engineering</h3>
+              <p data-i18n="about_value_precision_desc">Detailed planning and meticulous execution with millimeter accuracy in every deliverable.</p>
             </div>
             <div class="value-card" data-reveal data-reveal-delay="240">
               <div class="value-icon">
@@ -547,8 +577,8 @@
                   <path d="M3 11V9a4 4 0 0 1 4-4h14M7 23l-4-4 4-4M21 13v2a4 4 0 0 1-4 4H3" />
                 </svg>
               </div>
-              <h3>Continuous Innovation</h3>
-              <p>We constantly integrate the latest technologies to keep our clients competitive.</p>
+              <h3 data-i18n="about_value_innovation_title">Continuous Innovation</h3>
+              <p data-i18n="about_value_innovation_desc">We constantly integrate the latest technologies to keep our clients competitive.</p>
             </div>
             <div class="value-card" data-reveal data-reveal-delay="0">
               <div class="value-icon">
@@ -558,19 +588,19 @@
                   <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" />
                 </svg>
               </div>
-              <h3>Expert Team</h3>
-              <p>Certified engineers with deep domain expertise in automotive industrial processes.</p>
+              <h3 data-i18n="about_value_team_title">Expert Team</h3>
+              <p data-i18n="about_value_team_desc">Certified engineers with deep domain expertise in automotive industrial processes.</p>
             </div>
             <div class="value-card" data-reveal data-reveal-delay="120">
               <div class="value-icon">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
-                  <rect x="2" y="3" width="20" height="14" rx="2" ry="2" />
-                  <line x1="8" y1="21" x2="16" y2="21" />
-                  <line x1="12" y1="17" x2="12" y2="21" />
+                  <path d="M12 20V10" />
+                  <path d="M18 20V4" />
+                  <path d="M6 20v-4" />
                 </svg>
               </div>
-              <h3>Industry 4.0 Ready</h3>
-              <p>IoT integration, remote monitoring, and data-driven automation for modern facilities.</p>
+              <h3>Operational Efficiency</h3>
+              <p>We focus on improving machine performance, reducing downtime, and optimizing processes to deliver measurable productivity gains and return on investment for our clients.</p>
             </div>
             <div class="value-card" data-reveal data-reveal-delay="240">
               <div class="value-icon">
@@ -578,7 +608,7 @@
                   <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
                 </svg>
               </div>
-              <h3>On-Time Delivery</h3>
+              <h3>On Time Delivery</h3>
               <p>Project timelines are commitments. We plan thoroughly and execute without delays.</p>
             </div>
           </div>
@@ -588,9 +618,9 @@
       <section class="section about-team">
         <div class="container">
           <div class="about-team-intro section-heading" data-reveal>
-            <p class="eyebrow">How we work</p>
-            <h2>Our Approach</h2>
-            <p>
+            <p class="eyebrow" data-i18n="approach_eyebrow">How we work</p>
+            <h2 data-i18n="approach_title">Our Approach</h2>
+            <p data-i18n="approach_desc">
               A structured methodology that ensures quality, safety, and results on every engagement — from initial scope to final commissioning.
             </p>
           </div>
@@ -598,29 +628,29 @@
             <div class="team-pillar" data-reveal data-reveal-delay="0">
               <div class="team-pillar-number">01</div>
               <div class="team-pillar-text">
-                <h4>Discovery &amp; Scoping</h4>
-                <p>We analyze your processes, identify bottlenecks, and define clear project requirements before a single line of code or cable is run.</p>
+                <h4 data-i18n="approach_step1_title">Discovery &amp; Scoping</h4>
+                <p data-i18n="approach_step1_desc">We analyze your processes, identify bottlenecks, and define clear project requirements before a single line of code or cable is run.</p>
               </div>
             </div>
             <div class="team-pillar" data-reveal data-reveal-delay="120">
               <div class="team-pillar-number">02</div>
               <div class="team-pillar-text">
-                <h4>Engineering Design</h4>
-                <p>Our engineers produce detailed electrical schematics, PLC architectures, and automation logic — fully documented and auditable.</p>
+                <h4 data-i18n="approach_step2_title">Engineering Design</h4>
+                <p data-i18n="approach_step2_desc">Our engineers produce detailed electrical schematics, PLC architectures, and automation logic, fully documented and auditable.</p>
               </div>
             </div>
             <div class="team-pillar" data-reveal data-reveal-delay="240">
               <div class="team-pillar-number">03</div>
               <div class="team-pillar-text">
-                <h4>Implementation &amp; Integration</h4>
-                <p>Skilled technicians execute the build with precision. Every system is integrated and tested against defined acceptance criteria.</p>
+                <h4 data-i18n="approach_step3_title">Implementation &amp; Integration</h4>
+                <p data-i18n="approach_step3_desc">Skilled technicians execute the build with precision. Every system is integrated and tested against defined acceptance criteria.</p>
               </div>
             </div>
             <div class="team-pillar" data-reveal data-reveal-delay="360">
               <div class="team-pillar-number">04</div>
               <div class="team-pillar-text">
-                <h4>Commissioning &amp; Support</h4>
-                <p>We don't just hand over and leave. Comprehensive commissioning, operator training, and ongoing technical support are part of the service.</p>
+                <h4 data-i18n="approach_step4_title">Commissioning &amp; Support</h4>
+                <p data-i18n="approach_step4_desc">We don't just hand over and leave. Comprehensive commissioning, operator training, and ongoing technical support are part of the service.</p>
               </div>
             </div>
           </div>
@@ -631,13 +661,13 @@
       <section class="section about-cta">
         <div class="container">
           <div class="about-cta-box" data-reveal>
-            <h2>Ready to work with us?</h2>
-            <p>
+            <h2 data-i18n="cta_title">Ready to work with us?</h2>
+            <p data-i18n="cta_desc">
               Whether you need a full automation line, an electrical control panel, or an Industry 4.0 upgrade — our team is ready to scope your project.
             </p>
             <div class="about-cta-actions">
-              <a href="mailto:sales@engineeringds.com.mx" class="btn"><span>Get in Touch</span></a>
-              <a href="index.html#servicios" class="btn"><span>View Services</span></a>
+              <a href="mailto:sales@engineeringds.com.mx" class="btn"><span data-i18n="cta_btn_contact">Get in Touch</span></a>
+              <a href="index.html#servicios" class="btn"><span data-i18n="cta_btn_services">View Services</span></a>
             </div>
           </div>
         </div>
@@ -651,43 +681,43 @@
             <img src="/assets/logo.png" alt="EDS Logo" class="footer-logo">
           </a>
           <p class="footer-tagline">
-            ENGINEERING DESIGN &amp; SERVICE<br />
-            <span>SEEKING TOWARDS IMPROVEMENT.</span>
+            <span data-i18n="footer_tagline">ENGINEERING DESIGN &amp; SERVICE</span><br />
+            <span data-i18n="footer_tagline_sub">SEEKING TOWARDS IMPROVEMENT.</span>
           </p>
-          <p>
+          <p data-i18n="footer_desc">
             Engineering solutions for the automotive industry with over 15 years of experience.
           </p>
         </div>
         <div class="footer-links">
-          <h3>Company</h3>
+          <h3 data-i18n="footer_company">Company</h3>
           <ul>
-            <li><a href="about.html">About Us</a></li>
-            <li><a href="projects.html">Projects</a></li>
-            <li><a href="machining.html">Machining</a></li>
-            <li><a href="index.html#servicios">Services</a></li>
-            <li><a href="index.html#clientes">Clients</a></li>
-            <li><a href="index.html#contacto">Contact</a></li>
+            <li><a href="about.html" data-i18n="nav_about">About Us</a></li>
+            <li><a href="projects.html" data-i18n="nav_portfolio">Portfolio</a></li>
+            <li><a href="automation.html" data-i18n="nav_automation">Automation</a></li>
+            <li><a href="machining.html" data-i18n="nav_manufacture">Manufacture</a></li>
+            <li><a href="index.html#servicios" data-i18n="nav_services">Services</a></li>
+            <li><a href="index.html#contacto" data-i18n="nav_contact">Contact</a></li>
           </ul>
         </div>
         <div class="footer-links">
-          <h3>Services</h3>
+          <h3 data-i18n="footer_services">Services</h3>
           <ul>
-            <li><a href="index.html#servicios">Ball Bar Test</a></li>
-            <li><a href="index.html#servicios">Axis Interpolation</a></li>
-            <li><a href="index.html#servicios">Custom Precision Shim Fabrication</a></li>
-            <li><a href="index.html#servicios">Geometric Alignment &amp; Machine Leveling</a></li>
+            <li><a href="index.html#servicios" data-i18n="cnc_control_title">Ball Bar Test</a></li>
+            <li><a href="index.html#servicios" data-i18n="mach_cap_multiaxis">Axis Interpolation</a></li>
+            <li><a href="index.html#servicios" data-i18n="mach_cap_tolerance">Custom Precision Shim Fabrication</a></li>
+            <li><a href="index.html#servicios" data-i18n="cnc_cmm_title">Geometric Alignment &amp; Machine Leveling</a></li>
           </ul>
         </div>
       </div>
       <div class="footer-bottom">
         <p>
-          &copy; 2026 Engineering EDS. All rights reserved.
-          <span class="footer-credit">⎸ creado por <a href="https://wa.me/524491809587" target="_blank" rel="noopener noreferrer">Albertoautomatiza</a></span>
+          © 2026 <span data-i18n="footer_copyright">Engineering EDS. All rights reserved.</span>
+          <span class="footer-credit">| <span data-i18n="footer_created_by">created by</span> <a href="https://wa.me/524491809587" target="_blank" rel="noopener noreferrer">Albertoautomatiza</a></span>
         </p>
         <div class="footer-legal">
-          <a href="#" data-modal="privacy">Privacy</a>
-          <a href="#" data-modal="terms">Terms</a>
-          <a href="#" data-modal="legal">Legal</a>
+          <a href="#" data-modal="privacy" data-i18n="footer_privacy">Privacy</a>
+          <a href="#" data-modal="terms" data-i18n="footer_terms">Terms</a>
+          <a href="#" data-modal="legal" data-i18n="footer_legal">Legal</a>
         </div>
       </div>
     </footer>
@@ -813,5 +843,6 @@
       }
     </script>
     <script src="/assets/js/modals.js"></script>
+    <script type="module" src="/assets/js/i18n.js"></script>
   </body>
 </html>
