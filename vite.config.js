@@ -9,6 +9,7 @@ export default defineConfig({
       input: {
         main: 'index.html',
         about: 'about.html',
+        automation: 'automation.html',
         machining: 'machining.html',
         projects: 'projects.html',
       },
