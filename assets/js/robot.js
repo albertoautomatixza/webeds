@@ -16,9 +16,9 @@
     const width = container.offsetWidth;
     const height = container.offsetHeight;
 
-    const camera = new THREE.PerspectiveCamera(38, width / height, 0.1, 100);
-    camera.position.set(5, 3, 6);
-    camera.lookAt(0, 1.5, 0);
+    const camera = new THREE.PerspectiveCamera(32, width / height, 0.1, 100);
+    camera.position.set(6, 4.5, 7);
+    camera.lookAt(0, 1.2, 0);
 
     const renderer = new THREE.WebGLRenderer({
       canvas,
@@ -28,18 +28,18 @@
     renderer.setSize(width, height);
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
-    const ambientLight = new THREE.AmbientLight(0xffffff, 0.25);
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.3);
     scene.add(ambientLight);
 
-    const keyLight = new THREE.DirectionalLight(0xfacc15, 0.5);
+    const keyLight = new THREE.DirectionalLight(0xfacc15, 0.6);
     keyLight.position.set(5, 8, 5);
     scene.add(keyLight);
 
-    const fillLight = new THREE.DirectionalLight(0xfacc15, 0.35);
+    const fillLight = new THREE.DirectionalLight(0xfacc15, 0.3);
     fillLight.position.set(-3, 2, -3);
     scene.add(fillLight);
 
-    const meshMaterial = new THREE.MeshBasicMaterial({
+    const mat = new THREE.MeshBasicMaterial({
       color: 0xfacc15,
       wireframe: true,
       transparent: true,
@@ -49,185 +49,296 @@
     const cncGroup = new THREE.Group();
     scene.add(cncGroup);
 
-    const baseGeo = new THREE.BoxGeometry(3.5, 0.25, 2.5, 8, 2, 6);
-    const base = new THREE.Mesh(baseGeo, meshMaterial);
-    base.position.y = 0.125;
-    cncGroup.add(base);
+    var basePlatformGeo = new THREE.BoxGeometry(4.2, 0.4, 3.2, 10, 2, 8);
+    var basePlatform = new THREE.Mesh(basePlatformGeo, mat);
+    basePlatform.position.y = 0.2;
+    cncGroup.add(basePlatform);
 
-    const leftColumnGeo = new THREE.BoxGeometry(0.35, 2.8, 0.35, 3, 10, 3);
-    const leftColumn = new THREE.Mesh(leftColumnGeo, meshMaterial);
-    leftColumn.position.set(-1.4, 1.65, -1);
-    cncGroup.add(leftColumn);
+    var baseTopGeo = new THREE.BoxGeometry(4.0, 0.15, 3.0, 10, 1, 8);
+    var baseTopPlate = new THREE.Mesh(baseTopGeo, mat);
+    baseTopPlate.position.y = 0.475;
+    cncGroup.add(baseTopPlate);
 
-    const rightColumnGeo = new THREE.BoxGeometry(0.35, 2.8, 0.35, 3, 10, 3);
-    const rightColumn = new THREE.Mesh(rightColumnGeo, meshMaterial);
-    rightColumn.position.set(1.4, 1.65, -1);
-    cncGroup.add(rightColumn);
+    var baseFrontGeo = new THREE.BoxGeometry(4.2, 0.3, 0.15, 10, 2, 1);
+    var baseFront = new THREE.Mesh(baseFrontGeo, mat);
+    baseFront.position.set(0, 0.2, 1.6);
+    cncGroup.add(baseFront);
 
-    const topBeamGeo = new THREE.BoxGeometry(3.2, 0.3, 0.4, 10, 2, 3);
-    const topBeam = new THREE.Mesh(topBeamGeo, meshMaterial);
-    topBeam.position.set(0, 3.05, -1);
-    cncGroup.add(topBeam);
+    var baseBackGeo = new THREE.BoxGeometry(4.2, 0.3, 0.15, 10, 2, 1);
+    var baseBack = new THREE.Mesh(baseBackGeo, mat);
+    baseBack.position.set(0, 0.2, -1.6);
+    cncGroup.add(baseBack);
 
-    const xAxisGroup = new THREE.Group();
-    xAxisGroup.position.set(0, 3.05, -1);
-    cncGroup.add(xAxisGroup);
-
-    const xCarriageGeo = new THREE.BoxGeometry(0.5, 0.45, 0.55, 4, 3, 4);
-    const xCarriage = new THREE.Mesh(xCarriageGeo, meshMaterial);
-    xAxisGroup.add(xCarriage);
-
-    const yAxisGroup = new THREE.Group();
-    yAxisGroup.position.y = -0.4;
-    xAxisGroup.add(yAxisGroup);
-
-    const yCarriageGeo = new THREE.BoxGeometry(0.4, 1.2, 0.45, 3, 6, 3);
-    const yCarriage = new THREE.Mesh(yCarriageGeo, meshMaterial);
-    yCarriage.position.y = -0.6;
-    yAxisGroup.add(yCarriage);
-
-    const zAxisGroup = new THREE.Group();
-    zAxisGroup.position.y = -1.2;
-    yAxisGroup.add(zAxisGroup);
-
-    const zHousingGeo = new THREE.BoxGeometry(0.35, 0.5, 0.4, 3, 4, 3);
-    const zHousing = new THREE.Mesh(zHousingGeo, meshMaterial);
-    yAxisGroup.add(zHousingGeo);
-
-    const spindleGeo = new THREE.CylinderGeometry(0.12, 0.12, 0.9, 20, 8);
-    const spindle = new THREE.Mesh(spindleGeo, meshMaterial);
-    spindle.position.y = -0.7;
-    zAxisGroup.add(spindle);
-
-    const spindleHeadGeo = new THREE.CylinderGeometry(0.15, 0.12, 0.2, 20, 2);
-    const spindleHead = new THREE.Mesh(spindleHeadGeo, meshMaterial);
-    spindleHead.position.y = -0.55;
-    zAxisGroup.add(spindleHead);
-
-    const toolHolderGeo = new THREE.CylinderGeometry(0.08, 0.08, 0.3, 16, 3);
-    const toolHolder = new THREE.Mesh(toolHolderGeo, meshMaterial);
-    toolHolder.position.y = -1.3;
-    zAxisGroup.add(toolHolder);
-
-    const cuttingToolGeo = new THREE.ConeGeometry(0.06, 0.25, 16, 4);
-    const cuttingTool = new THREE.Mesh(cuttingToolGeo, meshMaterial);
-    cuttingTool.position.y = -1.575;
-    zAxisGroup.add(cuttingTool);
-
-    const rotaryTableGroup = new THREE.Group();
-    rotaryTableGroup.position.set(0, 0.5, 0.3);
-    cncGroup.add(rotaryTableGroup);
-
-    const rotaryBaseGeo = new THREE.CylinderGeometry(0.8, 0.85, 0.25, 32, 2);
-    const rotaryBase = new THREE.Mesh(rotaryBaseGeo, meshMaterial);
-    rotaryTableGroup.add(rotaryBase);
-
-    const rotaryTopGeo = new THREE.CylinderGeometry(0.75, 0.78, 0.15, 32, 2);
-    const rotaryTop = new THREE.Mesh(rotaryTopGeo, meshMaterial);
-    rotaryTop.position.y = 0.2;
-    rotaryTableGroup.add(rotaryTop);
-
-    const tiltAxisGroup = new THREE.Group();
-    tiltAxisGroup.position.y = 0.35;
-    rotaryTableGroup.add(tiltAxisGroup);
-
-    const tiltHousingGeo = new THREE.BoxGeometry(0.9, 0.3, 0.6, 5, 2, 4);
-    const tiltHousing = new THREE.Mesh(tiltHousingGeo, meshMaterial);
-    tiltAxisGroup.add(tiltHousing);
-
-    const workpieceGroup = new THREE.Group();
-    workpieceGroup.position.y = 0.25;
-    tiltAxisGroup.add(workpieceGroup);
-
-    const workpieceGeo = new THREE.CylinderGeometry(0.35, 0.35, 0.6, 24, 8);
-    const workpiece = new THREE.Mesh(workpieceGeo, meshMaterial);
-    workpiece.rotation.x = Math.PI / 2;
-    workpieceGroup.add(workpiece);
-
-    const workpieceDetail1Geo = new THREE.TorusGeometry(0.25, 0.08, 12, 24);
-    const workpieceDetail1 = new THREE.Mesh(workpieceDetail1Geo, meshMaterial);
-    workpieceDetail1.rotation.y = Math.PI / 2;
-    workpieceGroup.add(workpieceDetail1);
-
-    const workpieceDetail2Geo = new THREE.ConeGeometry(0.2, 0.35, 20, 6);
-    const workpieceDetail2 = new THREE.Mesh(workpieceDetail2Geo, meshMaterial);
-    workpieceDetail2.rotation.z = Math.PI / 2;
-    workpieceDetail2.position.x = 0.3;
-    workpieceGroup.add(workpieceDetail2);
-
-    for (let i = 0; i < 3; i++) {
-      const railGeo = new THREE.BoxGeometry(3.2, 0.08, 0.08, 12, 1, 1);
-      const rail = new THREE.Mesh(railGeo, meshMaterial);
-      rail.position.set(0, 3.15 + i * 0.1, -1.15);
-      cncGroup.add(rail);
+    for (var bi = 0; bi < 8; bi++) {
+      var bx = -1.8 + (bi % 4) * 1.2;
+      var bz = bi < 4 ? 1.6 : -1.6;
+      var boltGeo = new THREE.CylinderGeometry(0.05, 0.05, 0.12, 8, 1);
+      var boltMesh = new THREE.Mesh(boltGeo, mat);
+      boltMesh.position.set(bx, 0.46, bz);
+      cncGroup.add(boltMesh);
     }
 
-    for (let i = 0; i < 6; i++) {
-      const angle = (i / 6) * Math.PI * 2;
-      const x = Math.cos(angle) * 0.7;
-      const z = Math.sin(angle) * 0.7;
-      const boltGeo = new THREE.CylinderGeometry(0.03, 0.03, 0.06, 8, 1);
-      const bolt = new THREE.Mesh(boltGeo, meshMaterial);
-      bolt.position.set(x, 0.53, z + 0.3);
-      cncGroup.add(bolt);
+    var leftWallGeo = new THREE.BoxGeometry(0.35, 2.8, 2.6, 3, 10, 7);
+    var leftWall = new THREE.Mesh(leftWallGeo, mat);
+    leftWall.position.set(-1.9, 1.95, 0);
+    cncGroup.add(leftWall);
+
+    var rightWallGeo = new THREE.BoxGeometry(0.35, 2.8, 2.6, 3, 10, 7);
+    var rightWall = new THREE.Mesh(rightWallGeo, mat);
+    rightWall.position.set(1.9, 1.95, 0);
+    cncGroup.add(rightWall);
+
+    var backWallGeo = new THREE.BoxGeometry(4.2, 2.8, 0.2, 10, 10, 1);
+    var backWall = new THREE.Mesh(backWallGeo, mat);
+    backWall.position.set(0, 1.95, -1.5);
+    cncGroup.add(backWall);
+
+    var topPlateGeo = new THREE.BoxGeometry(4.2, 0.3, 2.8, 10, 2, 7);
+    var topPlate = new THREE.Mesh(topPlateGeo, mat);
+    topPlate.position.set(0, 3.5, -0.1);
+    cncGroup.add(topPlate);
+
+    var leftArchInner = new THREE.TorusGeometry(1.0, 0.18, 12, 24, Math.PI);
+    var leftArchMesh = new THREE.Mesh(leftArchInner, mat);
+    leftArchMesh.position.set(-1.9, 2.2, 1.0);
+    leftArchMesh.rotation.y = Math.PI / 2;
+    leftArchMesh.rotation.z = Math.PI / 2;
+    cncGroup.add(leftArchMesh);
+
+    var rightArchInner = new THREE.TorusGeometry(1.0, 0.18, 12, 24, Math.PI);
+    var rightArchMesh = new THREE.Mesh(rightArchInner, mat);
+    rightArchMesh.position.set(1.9, 2.2, 1.0);
+    rightArchMesh.rotation.y = Math.PI / 2;
+    rightArchMesh.rotation.z = Math.PI / 2;
+    cncGroup.add(rightArchMesh);
+
+    var xRailGroup = new THREE.Group();
+    xRailGroup.position.set(0, 3.3, 0);
+    cncGroup.add(xRailGroup);
+
+    for (var ri = 0; ri < 2; ri++) {
+      var railGeo = new THREE.CylinderGeometry(0.06, 0.06, 3.4, 12, 8);
+      var railMesh = new THREE.Mesh(railGeo, mat);
+      railMesh.rotation.z = Math.PI / 2;
+      railMesh.position.set(0, 0, -0.6 + ri * 0.5);
+      xRailGroup.add(railMesh);
     }
 
-    cncGroup.scale.set(0.5, 0.5, 0.5);
-    cncGroup.position.set(0, 0.2, 0);
+    var xCarriageGroup = new THREE.Group();
+    xCarriageGroup.position.set(0, 3.3, -0.35);
+    cncGroup.add(xCarriageGroup);
 
-    let isHovered = false;
-    let time = 0;
-    let animProgress = 0;
+    var xCarrGeo = new THREE.BoxGeometry(0.7, 0.35, 0.8, 4, 2, 4);
+    var xCarr = new THREE.Mesh(xCarrGeo, mat);
+    xCarriageGroup.add(xCarr);
 
-    const handleMouseEnter = () => {
-      isHovered = true;
-    };
+    var spindleAssembly = new THREE.Group();
+    spindleAssembly.position.y = -0.3;
+    xCarriageGroup.add(spindleAssembly);
 
-    const handleMouseLeave = () => {
-      isHovered = false;
-    };
+    var spindleMotorGeo = new THREE.CylinderGeometry(0.35, 0.3, 0.7, 24, 6);
+    var spindleMotor = new THREE.Mesh(spindleMotorGeo, mat);
+    spindleMotor.position.y = 0;
+    spindleAssembly.add(spindleMotor);
 
-    canvas.addEventListener('mouseenter', handleMouseEnter);
-    canvas.addEventListener('mouseleave', handleMouseLeave);
+    var spindleNeckGeo = new THREE.CylinderGeometry(0.25, 0.35, 0.5, 20, 4);
+    var spindleNeck = new THREE.Mesh(spindleNeckGeo, mat);
+    spindleNeck.position.y = -0.6;
+    spindleAssembly.add(spindleNeck);
+
+    var spindleMidGeo = new THREE.CylinderGeometry(0.28, 0.25, 0.4, 20, 4);
+    var spindleMid = new THREE.Mesh(spindleMidGeo, mat);
+    spindleMid.position.y = -1.05;
+    spindleAssembly.add(spindleMid);
+
+    var spindleBodyGeo = new THREE.CylinderGeometry(0.2, 0.28, 0.6, 20, 5);
+    var spindleBody = new THREE.Mesh(spindleBodyGeo, mat);
+    spindleBody.position.y = -1.55;
+    spindleAssembly.add(spindleBody);
+
+    var spindleTipGeo = new THREE.CylinderGeometry(0.12, 0.2, 0.3, 16, 3);
+    var spindleTip = new THREE.Mesh(spindleTipGeo, mat);
+    spindleTip.position.y = -2.0;
+    spindleAssembly.add(spindleTip);
+
+    var toolHolderGeo = new THREE.CylinderGeometry(0.06, 0.12, 0.25, 12, 3);
+    var toolHolderMesh = new THREE.Mesh(toolHolderGeo, mat);
+    toolHolderMesh.position.y = -2.25;
+    spindleAssembly.add(toolHolderMesh);
+
+    var cuttingBitGeo = new THREE.ConeGeometry(0.04, 0.3, 12, 4);
+    var cuttingBit = new THREE.Mesh(cuttingBitGeo, mat);
+    cuttingBit.position.y = -2.5;
+    spindleAssembly.add(cuttingBit);
+
+    for (var sr = 0; sr < 4; sr++) {
+      var ringGeo = new THREE.TorusGeometry(0.32 - sr * 0.04, 0.02, 8, 24);
+      var ringMesh = new THREE.Mesh(ringGeo, mat);
+      ringMesh.position.y = -0.2 - sr * 0.45;
+      ringMesh.rotation.x = Math.PI / 2;
+      spindleAssembly.add(ringMesh);
+    }
+
+    var rotaryGroup = new THREE.Group();
+    rotaryGroup.position.set(-0.3, 0.55, 0.4);
+    cncGroup.add(rotaryGroup);
+
+    var rotaryBaseGeo = new THREE.CylinderGeometry(0.9, 1.0, 0.3, 32, 3);
+    var rotaryBaseMesh = new THREE.Mesh(rotaryBaseGeo, mat);
+    rotaryGroup.add(rotaryBaseMesh);
+
+    var rotaryRingGeo = new THREE.TorusGeometry(0.85, 0.06, 12, 32);
+    var rotaryRing = new THREE.Mesh(rotaryRingGeo, mat);
+    rotaryRing.position.y = 0.18;
+    rotaryRing.rotation.x = Math.PI / 2;
+    rotaryGroup.add(rotaryRing);
+
+    for (var rib = 0; rib < 12; rib++) {
+      var ribAngle = (rib / 12) * Math.PI * 2;
+      var ribGeo = new THREE.BoxGeometry(0.04, 0.05, 0.4, 1, 1, 3);
+      var ribMesh = new THREE.Mesh(ribGeo, mat);
+      ribMesh.position.set(
+        Math.cos(ribAngle) * 0.7,
+        0.18,
+        Math.sin(ribAngle) * 0.7
+      );
+      ribMesh.rotation.y = -ribAngle;
+      rotaryGroup.add(ribMesh);
+    }
+
+    var tiltGroup = new THREE.Group();
+    tiltGroup.position.y = 0.35;
+    rotaryGroup.add(tiltGroup);
+
+    var leftSupportGeo = new THREE.TorusGeometry(0.65, 0.12, 12, 20, Math.PI);
+    var leftSupport = new THREE.Mesh(leftSupportGeo, mat);
+    leftSupport.position.set(-0.7, 0.3, 0);
+    leftSupport.rotation.z = Math.PI / 2;
+    tiltGroup.add(leftSupport);
+
+    var rightSupportGeo = new THREE.TorusGeometry(0.65, 0.12, 12, 20, Math.PI);
+    var rightSupport = new THREE.Mesh(rightSupportGeo, mat);
+    rightSupport.position.set(0.7, 0.3, 0);
+    rightSupport.rotation.z = -Math.PI / 2;
+    tiltGroup.add(rightSupport);
+
+    var leftArmGeo = new THREE.CylinderGeometry(0.1, 0.12, 0.7, 16, 4);
+    var leftArm = new THREE.Mesh(leftArmGeo, mat);
+    leftArm.position.set(-0.7, 0, 0);
+    tiltGroup.add(leftArm);
+
+    var rightArmGeo = new THREE.CylinderGeometry(0.1, 0.12, 0.7, 16, 4);
+    var rightArm = new THREE.Mesh(rightArmGeo, mat);
+    rightArm.position.set(0.7, 0, 0);
+    tiltGroup.add(rightArm);
+
+    var leftJointGeo = new THREE.SphereGeometry(0.14, 16, 16);
+    var leftJoint = new THREE.Mesh(leftJointGeo, mat);
+    leftJoint.position.set(-0.7, 0.35, 0);
+    tiltGroup.add(leftJoint);
+
+    var rightJointGeo = new THREE.SphereGeometry(0.14, 16, 16);
+    var rightJoint = new THREE.Mesh(rightJointGeo, mat);
+    rightJoint.position.set(0.7, 0.35, 0);
+    tiltGroup.add(rightJoint);
+
+    var tiltPlatformGroup = new THREE.Group();
+    tiltPlatformGroup.position.y = 0.55;
+    tiltGroup.add(tiltPlatformGroup);
+
+    var tiltPlateGeo = new THREE.BoxGeometry(1.0, 0.15, 0.8, 6, 1, 5);
+    var tiltPlate = new THREE.Mesh(tiltPlateGeo, mat);
+    tiltPlatformGroup.add(tiltPlate);
+
+    var workpieceGeo = new THREE.BoxGeometry(0.55, 0.55, 0.55, 6, 6, 6);
+    var workpiece = new THREE.Mesh(workpieceGeo, mat);
+    workpiece.position.y = 0.35;
+    tiltPlatformGroup.add(workpiece);
+
+    var wpChamfer1Geo = new THREE.BoxGeometry(0.35, 0.25, 0.35, 4, 3, 4);
+    var wpChamfer1 = new THREE.Mesh(wpChamfer1Geo, mat);
+    wpChamfer1.position.y = 0.55;
+    tiltPlatformGroup.add(wpChamfer1);
+
+    var wpHoleGeo = new THREE.TorusGeometry(0.12, 0.03, 8, 16);
+    var wpHole = new THREE.Mesh(wpHoleGeo, mat);
+    wpHole.position.set(0, 0.35, 0.28);
+    tiltPlatformGroup.add(wpHole);
+
+    var wpHole2Geo = new THREE.TorusGeometry(0.1, 0.03, 8, 16);
+    var wpHole2 = new THREE.Mesh(wpHole2Geo, mat);
+    wpHole2.position.set(0.28, 0.35, 0);
+    wpHole2.rotation.y = Math.PI / 2;
+    tiltPlatformGroup.add(wpHole2);
+
+    for (var ci = 0; ci < 4; ci++) {
+      var clampAngle = (ci / 4) * Math.PI * 2 + Math.PI / 4;
+      var clampGeo = new THREE.BoxGeometry(0.08, 0.12, 0.2, 2, 2, 3);
+      var clampMesh = new THREE.Mesh(clampGeo, mat);
+      clampMesh.position.set(
+        Math.cos(clampAngle) * 0.45,
+        0.12,
+        Math.sin(clampAngle) * 0.45
+      );
+      clampMesh.rotation.y = -clampAngle;
+      tiltPlatformGroup.add(clampMesh);
+    }
+
+    var leftChuckGeo = new THREE.CylinderGeometry(0.25, 0.25, 0.3, 20, 3);
+    var leftChuck = new THREE.Mesh(leftChuckGeo, mat);
+    leftChuck.position.set(-1.2, 0.55, 0.4);
+    leftChuck.rotation.z = Math.PI / 2;
+    cncGroup.add(leftChuck);
+
+    var leftChuckRingGeo = new THREE.TorusGeometry(0.22, 0.04, 10, 20);
+    var leftChuckRing = new THREE.Mesh(leftChuckRingGeo, mat);
+    leftChuckRing.position.set(-1.35, 0.55, 0.4);
+    leftChuckRing.rotation.y = Math.PI / 2;
+    cncGroup.add(leftChuckRing);
+
+    var leftChuckBaseGeo = new THREE.BoxGeometry(0.4, 0.5, 0.5, 3, 4, 3);
+    var leftChuckBase = new THREE.Mesh(leftChuckBaseGeo, mat);
+    leftChuckBase.position.set(-1.55, 0.55, 0.4);
+    cncGroup.add(leftChuckBase);
+
+    cncGroup.scale.set(0.48, 0.48, 0.48);
+    cncGroup.position.set(0, -0.2, 0);
+    cncGroup.rotation.y = -0.4;
+
+    var time = 0;
 
     function animate() {
       requestAnimationFrame(animate);
 
-      time += 0.01;
+      time += 0.008;
 
-      if (isHovered) {
-        animProgress = Math.min(animProgress + 0.015, 1);
-      } else {
-        animProgress = Math.max(animProgress - 0.01, 0);
-      }
+      xCarriageGroup.position.x = Math.sin(time * 0.7) * 0.6;
+      xCarriageGroup.position.z = -0.35 + Math.sin(time * 0.5 + 1.5) * 0.3;
 
-      xAxisGroup.position.x = Math.sin(time * 0.6) * 0.8 * animProgress;
+      spindleAssembly.position.y = -0.3 + Math.sin(time * 0.6 + 0.8) * 0.15;
 
-      yCarriage.position.y = -0.6 + Math.sin(time * 0.5 + 1) * 0.3 * animProgress;
+      spindleMotor.rotation.y += 0.12;
+      spindleNeck.rotation.y += 0.12;
+      spindleMid.rotation.y += 0.12;
+      spindleBody.rotation.y += 0.12;
+      spindleTip.rotation.y += 0.12;
+      toolHolderMesh.rotation.y += 0.12;
+      cuttingBit.rotation.y += 0.12;
 
-      zAxisGroup.position.y = -1.2 + Math.sin(time * 0.7 + 2) * 0.25 * animProgress;
+      rotaryGroup.rotation.y = Math.sin(time * 0.3) * 0.4;
 
-      rotaryTableGroup.rotation.y += 0.008 * animProgress;
+      tiltPlatformGroup.rotation.x = Math.sin(time * 0.4 + 1) * 0.2;
+      tiltPlatformGroup.rotation.z = Math.sin(time * 0.35 + 2) * 0.15;
 
-      tiltAxisGroup.rotation.x = Math.sin(time * 0.4) * 0.3 * animProgress;
-
-      spindle.rotation.y += 0.15 * animProgress;
-      spindleHead.rotation.y += 0.15 * animProgress;
-      toolHolder.rotation.y += 0.15 * animProgress;
-      cuttingTool.rotation.y += 0.15 * animProgress;
-
-      workpiece.rotation.z += 0.01 * animProgress;
-
-      meshMaterial.opacity = 0.32 + Math.sin(time * 1.8) * 0.06;
+      mat.opacity = 0.30 + Math.sin(time * 1.5) * 0.08;
 
       renderer.render(scene, camera);
     }
     animate();
 
-    const handleResize = () => {
-      const newWidth = container.offsetWidth;
-      const newHeight = container.offsetHeight;
-
+    var handleResize = function() {
+      var newWidth = container.offsetWidth;
+      var newHeight = container.offsetHeight;
       camera.aspect = newWidth / newHeight;
       camera.updateProjectionMatrix();
       renderer.setSize(newWidth, newHeight);
@@ -235,13 +346,11 @@
 
     window.addEventListener('resize', handleResize);
 
-    setTimeout(() => {
+    setTimeout(function() {
       canvas.style.opacity = '1';
     }, 100);
 
-    return () => {
-      canvas.removeEventListener('mouseenter', handleMouseEnter);
-      canvas.removeEventListener('mouseleave', handleMouseLeave);
+    return function() {
       window.removeEventListener('resize', handleResize);
       renderer.dispose();
     };
