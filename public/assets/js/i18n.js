@@ -244,7 +244,7 @@ const translations = {
     contact_desc: "Comparta los detalles de su proximo proyecto y nuestro equipo de ingenieria le respondera a la brevedad.",
     footer_tagline: "DISEÑO DE INGENIERÍA Y SERVICIO",
     footer_tagline_sub: "BUSCANDO LA MEJORA.",
-    footer_desc: "Soluciones de ingenieria para la industria automotriz con mas de 15 anos de experiencia.",
+    footer_desc: "Soluciones de ingenieria para la industria automotriz con mas de 15 años de experiencia.",
     footer_company: "Empresa",
     footer_services: "Servicios",
     footer_copyright: "Engineering EDS. Todos los derechos reservados.",
