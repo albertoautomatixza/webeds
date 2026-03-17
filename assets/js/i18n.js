@@ -197,7 +197,12 @@ const translations = {
     cta_title: "Ready to start your next project?",
     cta_desc: "Send us your project details and we will provide a competitive quote with fast turnaround times and guaranteed precision.",
     cta_btn_contact: "Request a Quote",
-    cta_btn_services: "Back to Home"
+    cta_btn_services: "Back to Home",
+    mach_cta_title_1: "Ready to start your",
+    mach_cta_title_2: "next project?",
+    mach_cta_desc: "Send us your drawings or specifications and we will provide a competitive quote with fast turnaround times and guaranteed precision.",
+    mach_cta_btn_quote: "Request a Quote",
+    mach_cta_btn_home: "Back to Home"
   },
   es: {
     nav_services: "Servicios",
@@ -397,7 +402,12 @@ const translations = {
     cta_title: "Listo para comenzar tu proximo proyecto?",
     cta_desc: "Envianos los detalles de tu proyecto y te proporcionaremos una cotizacion competitiva con tiempos rapidos de respuesta y precision garantizada.",
     cta_btn_contact: "Solicitar Cotizacion",
-    cta_btn_services: "Volver al Inicio"
+    cta_btn_services: "Volver al Inicio",
+    mach_cta_title_1: "Listo para comenzar tu",
+    mach_cta_title_2: "proximo proyecto?",
+    mach_cta_desc: "Envianos tus planos o especificaciones y te proporcionaremos una cotizacion competitiva con tiempos rapidos de entrega y precision garantizada.",
+    mach_cta_btn_quote: "Solicitar Cotizacion",
+    mach_cta_btn_home: "Volver al Inicio"
   }
 };
 
