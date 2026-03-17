@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Counter Test</title>
+  <style>
+    body {
+      background: #000;
+      color: #fff;
+      font-family: system-ui;
+      padding: 50px;
+      font-size: 48px;
+    }
+
+    .ticker-digit {
+      display: inline-block;
+      overflow: hidden;
+      height: 1em;
+      width: 0.6em;
+      position: relative;
+      border: 1px solid #333;
+    }
+
+    .ticker-digit-track {
+      display: flex;
+      flex-direction: column;
+      transform: translateY(0%);
+      transition: transform 2s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .ticker-digit-track.active {
+      transform: translateY(calc(var(--digit-final) * -100%));
+    }
+
+    .ticker-digit-slot {
+      height: 1em;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 16px;
+    }
+  </style>
+</head>
+<body>
+  <div>
+    Test Counter for "5":
+    <span class="ticker-digit">
+      <span class="ticker-digit-track" id="test-track" style="--digit-final: 5">
+        <span class="ticker-digit-slot">0</span>
+        <span class="ticker-digit-slot">1</span>
+        <span class="ticker-digit-slot">2</span>
+        <span class="ticker-digit-slot">3</span>
+        <span class="ticker-digit-slot">4</span>
+        <span class="ticker-digit-slot">5</span>
+        <span class="ticker-digit-slot">6</span>
+        <span class="ticker-digit-slot">7</span>
+        <span class="ticker-digit-slot">8</span>
+        <span class="ticker-digit-slot">9</span>
+      </span>
+    </span>
+  </div>
+
+  <button onclick="document.getElementById('test-track').classList.add('active')">
+    Activate Counter
+  </button>
+
+  <div style="margin-top: 20px; font-size: 14px; color: #888;">
+    Click the button to see if the counter animates from 0 to 5
+  </div>
+</body>
+</html>

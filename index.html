@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Engineering Design &amp; Service</title>
+    <meta
+      name="description"
+      content="Engineering Design & Service delivers advanced industrial automation and electrical engineering services with more than a decade of experience."
+    />
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/assets/css/styles.css" />
+  </head>
+  <body>
+
+    <header class="site-header" id="top">
+      <div class="container">
+        <a class="brand" href="#hero" aria-label="Engineering Design &amp; Service home">
+          <img src="/assets/logo.png" alt="EDS Logo" class="brand-logo">
+        </a>
+        <nav class="site-nav" aria-label="Primary navigation">
+          <ul class="nav-list">
+            <li><a href="#servicios"><span data-i18n="nav_services">Services</span></a></li>
+            <li><a href="about.html"><span data-i18n="nav_about">About Us</span></a></li>
+            <li><a href="projects.html"><span data-i18n="nav_portfolio">Portfolio</span></a></li>
+            <li><a href="automation.html"><span data-i18n="nav_automation">Automation</span></a></li>
+            <li><a href="machining.html"><span data-i18n="nav_manufacture">Manufacture</span></a></li>
+            <li><a href="#contacto"><span data-i18n="nav_contact">Contact</span></a></li>
+          </ul>
+        </nav>
+        <div class="lang-toggle">
+          <button type="button" class="lang-btn active" data-lang="en"><span>EN</span></button>
+          <button type="button" class="lang-btn" data-lang="es"><span>ES</span></button>
+        </div>
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu">
+          <span class="menu-bar"></span>
+          <span class="menu-bar"></span>
+          <span class="menu-bar"></span>
+          <span class="sr-only">Toggle navigation</span>
+        </button>
+        <a class="header-cta" href="mailto:sales@engineeringds.com.mx"><span data-i18n="contact_us">Contact Us</span></a>
+      </div>
+      <nav id="mobile-menu" class="mobile-menu" aria-label="Mobile navigation">
+        <ul>
+          <li><a href="#servicios" data-i18n="nav_services">Services</a></li>
+          <li><a href="about.html" data-i18n="nav_about">About Us</a></li>
+          <li><a href="projects.html" data-i18n="nav_portfolio">Portfolio</a></li>
+          <li><a href="automation.html" data-i18n="nav_automation">Automation</a></li>
+          <li><a href="machining.html" data-i18n="nav_manufacture">Manufacture</a></li>
+          <li><a href="#contacto" data-i18n="nav_contact">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section id="hero" class="hero">
+        <div class="hero-overlay"></div>
+        <div class="container hero-content">
+          <div class="hero-copy" data-reveal>
+            <p class="eyebrow" data-i18n="hero_eyebrow">Trusted industrial partner</p>
+            <h1>
+              <span data-i18n="hero_title_1">Your CNC isn't the problem.</span> <span style="color:#F5C100;" data-i18n="hero_title_2">Your support is</span>
+            </h1>
+            <p class="lead" data-i18n="hero_description">
+              We are a company with 10+ years of experience in the automotive industry; our goal is to provide the foremost solutions with
+              the most knowledgeable engineers. We are commited in offering reliable technics for innovation and workplace machinery,
+              besides the constat support of our technicians and specialized engineers.
+            </p>
+            <div class="hero-btns">
+              <a class="btn" href="mailto:sales@engineeringds.com.mx"><span data-i18n="hero_btn_quote">Get a Quote</span></a>
+              <a class="btn btn-outline" href="/about.html"><span data-i18n="hero_btn_about">About Us</span></a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="hero-stats">
+        <div class="container">
+          <div class="hero-stats-grid">
+            <div class="hero-stat" data-reveal data-reveal-delay="0">
+              <div class="hero-stat-inner">
+                <span class="hero-stat-number stat-number" data-stat-value="500" data-stat-suffix="+">500+</span>
+                <span class="hero-stat-label" data-i18n="stat_projects">Projects</span>
+              </div>
+            </div>
+            <div class="hero-stat" data-reveal data-reveal-delay="100">
+              <div class="hero-stat-inner">
+                <span class="hero-stat-number stat-number" data-stat-value="15" data-stat-suffix="+">15+</span>
+                <span class="hero-stat-label" data-i18n="stat_years">Years</span>
+              </div>
+            </div>
+            <div class="hero-stat" data-reveal data-reveal-delay="200">
+              <div class="hero-stat-inner">
+                <span class="hero-stat-number stat-number" data-stat-value="10" data-stat-suffix="+">10+</span>
+                <span class="hero-stat-label" data-i18n="stat_clients">Global Clients</span>
+              </div>
+            </div>
+            <div class="hero-stat" data-reveal data-reveal-delay="300">
+              <div class="hero-stat-inner">
+                <span class="hero-stat-number stat-number" data-stat-value="70000" data-stat-suffix="+">70,000+</span>
+                <span class="hero-stat-label" data-i18n="stat_hours">Support Hours</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="cnc-capabilities" class="section cnc-capabilities">
+        <div class="container">
+          <div class="section-heading" data-reveal>
+            <p class="eyebrow" data-i18n="cnc_eyebrow">Precision at every axis</p>
+            <h2 data-i18n="cnc_title">CNC Capabilities</h2>
+            <p class="section-subtitle" data-i18n="cnc_subtitle">End-to-end machining, programming, and support for the most demanding industrial environments.</p>
+          </div>
+          <div class="bento-grid" data-reveal data-reveal-delay="80">
+
+            <article class="bento-card bento-card--wide bento-card--milling">
+              <div class="bento-card-content">
+                <div class="bento-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <rect x="3" y="3" width="18" height="18" rx="2"/>
+                    <path d="M8 12h8M12 8v8"/>
+                  </svg>
+                </div>
+                <h3 data-i18n="cnc_control_title">CNC Control Support (Siemens &amp; Fanuc)</h3>
+                <p data-i18n="cnc_control_desc">Advanced technical support for CNC control systems including Siemens 840D and Fanuc Series 16 and newer, covering diagnostics, parameter adjustments, and system troubleshooting.</p>
+                <ul class="bento-tags">
+                  <li>3-Axis</li><li>4-Axis</li><li>5-Axis</li>
+                </ul>
+              </div>
+              <div class="bento-card-visual bento-card-visual--milling" aria-hidden="true"></div>
+            </article>
+
+            <article class="bento-card bento-card--turning">
+              <div class="bento-card-content">
+                <div class="bento-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <circle cx="12" cy="12" r="9"/>
+                    <circle cx="12" cy="12" r="3"/>
+                    <path d="M12 3v3M12 18v3M3 12h3M18 12h3"/>
+                  </svg>
+                </div>
+                <h3 data-i18n="cnc_turning_title">CNC Turning</h3>
+                <p data-i18n="cnc_turning_desc">High-precision turning of shafts, bushings, and rotational parts in steel, aluminum, and exotic alloys.</p>
+              </div>
+            </article>
+
+            <article class="bento-card bento-card--edm">
+              <div class="bento-card-content">
+                <div class="bento-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+                  </svg>
+                </div>
+                <h3 data-i18n="cnc_edm_title">EDM &amp; Wire Cutting</h3>
+                <p data-i18n="cnc_edm_desc">Electrical discharge machining for hardened tool steels, dies, and intricate internal profiles.</p>
+              </div>
+            </article>
+
+            <article class="bento-card bento-card--stat">
+              <div class="bento-stat-number">±0.001<span>mm</span></div>
+              <p class="bento-stat-label">Achievable tolerance on CNC machined components</p>
+            </article>
+
+            <article class="bento-card bento-card--programming">
+              <div class="bento-card-content">
+                <div class="bento-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <polyline points="16 18 22 12 16 6"/>
+                    <polyline points="8 6 2 12 8 18"/>
+                  </svg>
+                </div>
+                <h3>CNC Programming</h3>
+                <p>CAM programming with Mastercam, Siemens NX, and Fanuc/Mitsubishi/Okuma controllers. Rapid post-processing for any machine brand.</p>
+                <ul class="bento-tags">
+                  <li>Mastercam</li><li>Siemens NX</li><li>Fanuc</li><li>Mitsubishi</li>
+                </ul>
+              </div>
+            </article>
+
+            <article class="bento-card bento-card--laser">
+              <div class="bento-card-content">
+                <div class="bento-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4"/>
+                    <circle cx="12" cy="12" r="3"/>
+                  </svg>
+                </div>
+                <h3>Laser Cutting &amp; Marking</h3>
+                <p>Fiber laser cutting and part-marking with traceability codes, logos, and serial numbers on all metals.</p>
+              </div>
+            </article>
+
+            <article class="bento-card bento-card--cmm">
+              <div class="bento-card-content">
+                <div class="bento-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M2 12h20M12 2v20"/>
+                    <circle cx="12" cy="12" r="4"/>
+                    <path d="M12 8V2M12 22v-6M8 12H2M22 12h-6"/>
+                  </svg>
+                </div>
+                <h3 data-i18n="cnc_cmm_title">CMM Inspection</h3>
+                <p data-i18n="cnc_cmm_desc">In-process and final CMM dimensional verification ensuring every part meets print requirements before delivery.</p>
+              </div>
+            </article>
+
+            <article class="bento-card bento-card--stat bento-card--stat-alt">
+              <div class="bento-stat-number"><span data-i18n="cnc_stat">15+</span><span data-i18n="cnc_stat_suffix">yrs</span></div>
+              <p class="bento-stat-label" data-i18n="cnc_stat_label">CNC support experience in the automotive sector</p>
+            </article>
+
+          </div>
+        </div>
+      </section>
+
+      <section id="servicios" class="section other-services">
+        <div class="container">
+          <div class="section-heading" data-reveal>
+            <p class="eyebrow" data-i18n="services_eyebrow">What we deliver</p>
+            <h2 data-i18n="services_title">Other Services</h2>
+          </div>
+          <div class="services-list">
+            <article class="service-row" data-reveal data-reveal-delay="0">
+                            <div class="service-row-icon icon-fade" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+                  <line x1="8" y1="21" x2="16" y2="21"/>
+                  <line x1="12" y1="17" x2="12" y2="21"/>
+                  <path d="M6 8h.01M6 11h.01M6 14h.01"/>
+                  <rect x="9" y="7" width="10" height="8" rx="1"/>
+                </svg>
+              </div>
+              <div class="service-row-content">
+                <h3 data-i18n="service_cnc_title">CNC Support</h3>
+                <p data-i18n="service_cnc_desc">Advanced technical support for CNC machines including diagnostics, troubleshooting, geometric verification, spindle servicing, and optimization of machining performance for high-precision industrial environments.</p>
+              </div>
+            </article>
+            <article class="service-row" data-reveal data-reveal-delay="100">
+                            <div class="service-row-icon icon-fade" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 2a4 4 0 0 1 4 4v1a1 1 0 0 0 1 1h1a4 4 0 0 1 0 8h-1a1 1 0 0 0-1 1v1a4 4 0 0 1-8 0v-1a1 1 0 0 0-1-1H6a4 4 0 0 1 0-8h1a1 1 0 0 0 1-1V6a4 4 0 0 1 4-4z"/>
+                  <circle cx="12" cy="12" r="2"/>
+                </svg>
+              </div>
+              <div class="service-row-content">
+                <h3 data-i18n="service_automation_title">Automation</h3>
+                <p data-i18n="service_automation_desc">Design and integration of industrial automation systems including PLC programming, robotics, custom machinery, and production line optimization to improve efficiency, reliability, and process control.</p>
+              </div>
+            </article>
+            <article class="service-row" data-reveal data-reveal-delay="200">
+                            <div class="service-row-icon icon-fade" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="3"/>
+                  <path d="M12 2v2"/>
+                  <path d="M12 20v2"/>
+                  <path d="m4.93 4.93 1.41 1.41"/>
+                  <path d="m17.66 17.66 1.41 1.41"/>
+                  <path d="M2 12h2"/>
+                  <path d="M20 12h2"/>
+                  <path d="m4.93 19.07 1.41-1.41"/>
+                  <path d="m17.66 6.34 1.41-1.41"/>
+                  <circle cx="12" cy="12" r="8" stroke-dasharray="2 2"/>
+                </svg>
+              </div>
+              <div class="service-row-content">
+                <h3 data-i18n="service_precision_title">Precision Manufacturing</h3>
+                <p data-i18n="service_precision_desc">Manufacture of high-precision mechanical components and assemblies for industrial applications, ensuring strict tolerances, material quality, and dimensional verification.</p>
+              </div>
+            </article>
+            <article class="service-row" data-reveal data-reveal-delay="300">
+                            <div class="service-row-icon icon-fade" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M4 22V6l8-4 8 4v16"/>
+                  <path d="M4 10h16"/>
+                  <path d="M8 10v12"/>
+                  <path d="M16 10v12"/>
+                  <path d="M12 6v4"/>
+                </svg>
+              </div>
+              <div class="service-row-content">
+                <h3 data-i18n="service_steel_title">Steel Structure</h3>
+                <p data-i18n="service_steel_desc">Design and fabrication of industrial steel structures, machine bases, frames, and custom supports engineered for strength, stability, and integration with manufacturing equipment.</p>
+              </div>
+            </article>
+            <article class="service-row" data-reveal data-reveal-delay="400">
+                            <div class="service-row-icon icon-fade" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="1" y="12" width="22" height="5" rx="1"/>
+                  <path d="M4 12V8a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v4"/>
+                  <circle cx="6" cy="19" r="2"/>
+                  <circle cx="18" cy="19" r="2"/>
+                  <path d="M6 17v-2"/>
+                  <path d="M18 17v-2"/>
+                </svg>
+              </div>
+              <div class="service-row-content">
+                <h3 data-i18n="service_material_title">Material Handling Equipment</h3>
+                <p data-i18n="service_material_desc">Engineering and fabrication of custom material handling solutions including conveyors, lifting systems, carts, and automated transport equipment for manufacturing environments.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="proyectos" class="section benefits">
+        <div class="container">
+          <div class="section-heading" data-reveal>
+            <p class="eyebrow" data-i18n="benefits_eyebrow">Why teams choose us</p>
+            <h2 data-i18n="benefits_title">Benefits</h2>
+          </div>
+          <div class="benefits-slider" data-reveal data-reveal-delay="120">
+            <video class="benefits-video-bg" autoplay loop muted playsinline aria-hidden="true">
+              <source src="/assets/hero-video.mp4" type="video/mp4">
+            </video>
+            <div class="benefits-fade benefits-fade--left" aria-hidden="true"></div>
+            <div class="benefits-fade benefits-fade--right" aria-hidden="true"></div>
+            <button
+              class="benefits-arrow benefits-arrow--prev"
+              type="button"
+              aria-label="Scroll benefits left"
+              data-benefits-prev
+            >
+              <svg
+                class="icon-fade"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.4"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path d="M15 19 8 12l7-7" />
+              </svg>
+            </button>
+            <div class="benefits-viewport" data-benefits-viewport>
+              <div class="benefits-track">
+                <article class="benefit-card" data-reveal data-reveal-delay="0">
+                  <div class="benefit-icon icon-fade" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                    </svg>
+                  </div>
+                  <span class="benefit-title" data-i18n="benefit_safety_title">Safety First</span>
+                  <p class="benefit-description" data-i18n="benefit_safety_desc">All our projects comply with the highest safety standards in the industry.</p>
+                </article>
+                <article class="benefit-card" data-reveal data-reveal-delay="120">
+                  <div class="benefit-icon icon-fade" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+                      <circle cx="12" cy="12" r="10" />
+                      <circle cx="12" cy="12" r="2" />
+                      <path d="M12 2v4" />
+                      <path d="M12 18v4" />
+                      <path d="m4.93 4.93 2.83 2.83" />
+                      <path d="m16.24 16.24 2.83 2.83" />
+                    </svg>
+                  </div>
+                  <span class="benefit-title" data-i18n="benefit_precision_title">Precision Engineering</span>
+                  <p class="benefit-description" data-i18n="benefit_precision_desc">Detailed planning and execution with millimeter precision in every project.</p>
+                </article>
+                <article class="benefit-card" data-reveal data-reveal-delay="240">
+                  <div class="benefit-icon icon-fade" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                      <circle cx="8.5" cy="7" r="4" />
+                      <path d="M20 8v6" />
+                      <path d="M23 11h-6" />
+                    </svg>
+                  </div>
+                  <span class="benefit-title" data-i18n="benefit_team_title">Expert Team</span>
+                  <p class="benefit-description" data-i18n="benefit_team_desc">Certified engineers and technicians with years of experience in the automotive sector.</p>
+                </article>
+                <article class="benefit-card" data-reveal data-reveal-delay="360">
+                  <div class="benefit-icon icon-fade" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+                      <polyline points="17 1 21 5 17 9" />
+                      <path d="M3 11V9a4 4 0 0 1 4-4h14" />
+                      <polyline points="7 23 3 19 7 15" />
+                      <path d="M21 13v2a4 4 0 0 1-4 4H3" />
+                    </svg>
+                  </div>
+                  <span class="benefit-title" data-i18n="benefit_innovation_title">Continuous Innovation</span>
+                  <p class="benefit-description" data-i18n="benefit_innovation_desc">We constantly implement the latest technologies to improve our processes.</p>
+                </article>
+              </div>
+            </div>
+            <button
+              class="benefits-arrow benefits-arrow--next"
+              type="button"
+              aria-label="Scroll benefits right"
+              data-benefits-next
+            >
+              <svg
+                class="icon-fade"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.4"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path d="m9 5 7 7-7 7" />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <section id="success-stories" class="section success-stories">
+        <div class="container">
+          <div class="section-heading" data-reveal>
+            <p class="eyebrow">Real results, real clients</p>
+            <h2>Success Stories</h2>
+            <p class="section-subtitle">How we solved real challenges for industry leaders</p>
+          </div>
+          <div class="stories-grid">
+
+            <article class="story-card" data-reveal data-reveal-delay="0">
+              <div class="story-stars" aria-label="5 out of 5 stars">
+                <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 1.2l1.8 3.6 4 .6-2.9 2.8.7 4L8 10.1l-3.6 1.9.7-4L2.2 5.4l4-.6z"/></svg>
+                <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 1.2l1.8 3.6 4 .6-2.9 2.8.7 4L8 10.1l-3.6 1.9.7-4L2.2 5.4l4-.6z"/></svg>
+                <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 1.2l1.8 3.6 4 .6-2.9 2.8.7 4L8 10.1l-3.6 1.9.7-4L2.2 5.4l4-.6z"/></svg>
+                <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 1.2l1.8 3.6 4 .6-2.9 2.8.7 4L8 10.1l-3.6 1.9.7-4L2.2 5.4l4-.6z"/></svg>
+                <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 1.2l1.8 3.6 4 .6-2.9 2.8.7 4L8 10.1l-3.6 1.9.7-4L2.2 5.4l4-.6z"/></svg>
+              </div>
+              <div class="story-badge story-badge--problem">Challenge</div>
+              <p class="story-text">"Our stamping line had frequent unplanned stops due to outdated PLC logic, costing us over 40 hours of downtime per month."</p>
+              <div style="display:inline-flex;align-items:center;gap:6px;"><div class="story-badge story-badge--solution">Solution</div><span style="color:#F5C100;font-size:1rem;">&#10004;</span></div>
+              <p class="story-text story-solution">"EDS redesigned the entire control architecture, migrated to a modern PLC platform, and added predictive diagnostics — downtime dropped by 87% in the first quarter."</p>
+              <div class="story-client">
+                <img src="/assets/ford.svg" alt="Ford" class="story-logo" />
+                <div class="story-client-info">
+                  <span class="story-company">Ford Motor Company</span>
+                  <span class="story-role">Stamping Plant — Automotive Manufacturing</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="story-card" data-reveal data-reveal-delay="120">
+              <div class="story-stars" aria-label="5 out of 5 stars">
+                <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 1.2l1.8 3.6 4 .6-2.9 2.8.7 4L8 10.1l-3.6 1.9.7-4L2.2 5.4l4-.6z"/></svg>
+                <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 1.2l1.8 3.6 4 .6-2.9 2.8.7 4L8 10.1l-3.6 1.9.7-4L2.2 5.4l4-.6z"/></svg>
+                <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 1.2l1.8 3.6 4 .6-2.9 2.8.7 4L8 10.1l-3.6 1.9.7-4L2.2 5.4l4-.6z"/></svg>
+                <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 1.2l1.8 3.6 4 .6-2.9 2.8.7 4L8 10.1l-3.6 1.9.7-4L2.2 5.4l4-.6z"/></svg>
+                <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 1.2l1.8 3.6 4 .6-2.9 2.8.7 4L8 10.1l-3.6 1.9.7-4L2.2 5.4l4-.6z"/></svg>
+              </div>
+              <div class="story-badge story-badge--problem">Challenge</div>
+              <p class="story-text">"We needed to automate our coil handling process without interrupting ongoing steel production. A complete integration with zero production downtime was the requirement."</p>
+              <div style="display:inline-flex;align-items:center;gap:6px;"><div class="story-badge story-badge--solution">Solution</div><span style="color:#F5C100;font-size:1rem;">&#10004;</span></div>
+              <p class="story-text story-solution">"EDS engineered a fully automated coil transfer system with robotic arms and safety-certified interlocks, deployed during scheduled maintenance windows. Production efficiency increased by 32%."</p>
+              <div class="story-client">
+                <img src="/assets/arcelor-mittal.svg" alt="ArcelorMittal" class="story-logo" />
+                <div class="story-client-info">
+                  <span class="story-company">ArcelorMittal</span>
+                  <span class="story-role">Steel Production — Heavy Industry</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="story-card" data-reveal data-reveal-delay="240">
+              <div class="story-stars" aria-label="5 out of 5 stars">
+                <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 1.2l1.8 3.6 4 .6-2.9 2.8.7 4L8 10.1l-3.6 1.9.7-4L2.2 5.4l4-.6z"/></svg>
+                <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 1.2l1.8 3.6 4 .6-2.9 2.8.7 4L8 10.1l-3.6 1.9.7-4L2.2 5.4l4-.6z"/></svg>
+                <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 1.2l1.8 3.6 4 .6-2.9 2.8.7 4L8 10.1l-3.6 1.9.7-4L2.2 5.4l4-.6z"/></svg>
+                <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 1.2l1.8 3.6 4 .6-2.9 2.8.7 4L8 10.1l-3.6 1.9.7-4L2.2 5.4l4-.6z"/></svg>
+                <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 1.2l1.8 3.6 4 .6-2.9 2.8.7 4L8 10.1l-3.6 1.9.7-4L2.2 5.4l4-.6z"/></svg>
+              </div>
+              <div class="story-badge story-badge--problem">Challenge</div>
+              <p class="story-text">"Our assembly line robots lacked real-time communication with the MES system, creating data gaps and making traceability nearly impossible for quality audits."</p>
+              <div style="display:inline-flex;align-items:center;gap:6px;"><div class="story-badge story-badge--solution">Solution</div><span style="color:#F5C100;font-size:1rem;">&#10004;</span></div>
+              <p class="story-text story-solution">"EDS implemented a custom OPC-UA integration layer connecting all robotic cells to the MES in real time. Full traceability achieved — audit compliance reached 100% on the first review."</p>
+              <div class="story-client">
+                <img src="/assets/hitachi.svg" alt="Hitachi" class="story-logo" />
+                <div class="story-client-info">
+                  <span class="story-company">Hitachi</span>
+                  <span class="story-role">Assembly Automation — Electronics Manufacturing</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="story-card" data-reveal data-reveal-delay="360">
+              <div class="story-stars" aria-label="5 out of 5 stars">
+                <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 1.2l1.8 3.6 4 .6-2.9 2.8.7 4L8 10.1l-3.6 1.9.7-4L2.2 5.4l4-.6z"/></svg>
+                <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 1.2l1.8 3.6 4 .6-2.9 2.8.7 4L8 10.1l-3.6 1.9.7-4L2.2 5.4l4-.6z"/></svg>
+                <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 1.2l1.8 3.6 4 .6-2.9 2.8.7 4L8 10.1l-3.6 1.9.7-4L2.2 5.4l4-.6z"/></svg>
+                <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 1.2l1.8 3.6 4 .6-2.9 2.8.7 4L8 10.1l-3.6 1.9.7-4L2.2 5.4l4-.6z"/></svg>
+                <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 1.2l1.8 3.6 4 .6-2.9 2.8.7 4L8 10.1l-3.6 1.9.7-4L2.2 5.4l4-.6z"/></svg>
+              </div>
+              <div class="story-badge story-badge--problem">Challenge</div>
+              <p class="story-text">"Manual torque verification on our drivetrain assembly was causing cycle time bottlenecks and occasional escapes to the end-of-line test, impacting overall OEE."</p>
+              <div style="display:inline-flex;align-items:center;gap:6px;"><div class="story-badge story-badge--solution">Solution</div><span style="color:#F5C100;font-size:1rem;">&#10004;</span></div>
+              <p class="story-text story-solution">"EDS automated the torque verification station with servo-driven tooling and integrated error-proofing sensors. Cycle time reduced by 22% and zero escapes recorded in six months."</p>
+              <div class="story-client">
+                <img src="/assets/gm-orig.svg" alt="General Motors" class="story-logo" />
+                <div class="story-client-info">
+                  <span class="story-company">General Motors</span>
+                  <span class="story-role">Drivetrain Assembly — Automotive</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="story-card" data-reveal data-reveal-delay="480">
+              <div class="story-stars" aria-label="5 out of 5 stars">
+                <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 1.2l1.8 3.6 4 .6-2.9 2.8.7 4L8 10.1l-3.6 1.9.7-4L2.2 5.4l4-.6z"/></svg>
+                <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 1.2l1.8 3.6 4 .6-2.9 2.8.7 4L8 10.1l-3.6 1.9.7-4L2.2 5.4l4-.6z"/></svg>
+                <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 1.2l1.8 3.6 4 .6-2.9 2.8.7 4L8 10.1l-3.6 1.9.7-4L2.2 5.4l4-.6z"/></svg>
+                <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 1.2l1.8 3.6 4 .6-2.9 2.8.7 4L8 10.1l-3.6 1.9.7-4L2.2 5.4l4-.6z"/></svg>
+                <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 1.2l1.8 3.6 4 .6-2.9 2.8.7 4L8 10.1l-3.6 1.9.7-4L2.2 5.4l4-.6z"/></svg>
+              </div>
+              <div class="story-badge story-badge--problem">Challenge</div>
+              <p class="story-text">"Our hydraulic power unit control panels were aging and no longer supported by the manufacturer, creating serious risks of unplanned outages across multiple facilities."</p>
+              <div style="display:inline-flex;align-items:center;gap:6px;"><div class="story-badge story-badge--solution">Solution</div><span style="color:#F5C100;font-size:1rem;">&#10004;</span></div>
+              <p class="story-text story-solution">"EDS executed a phased panel modernization program across 3 facilities, replacing legacy components with current-gen hardware and fully documented SCADA dashboards. Zero production impact during migration."</p>
+              <div class="story-client">
+                <img src="/assets/eaton-orig.svg" alt="Eaton" class="story-logo" />
+                <div class="story-client-info">
+                  <span class="story-company">Eaton Corporation</span>
+                  <span class="story-role">Power Management — Industrial Controls</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="story-card" data-reveal data-reveal-delay="600">
+              <div class="story-stars" aria-label="5 out of 5 stars">
+                <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 1.2l1.8 3.6 4 .6-2.9 2.8.7 4L8 10.1l-3.6 1.9.7-4L2.2 5.4l4-.6z"/></svg>
+                <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 1.2l1.8 3.6 4 .6-2.9 2.8.7 4L8 10.1l-3.6 1.9.7-4L2.2 5.4l4-.6z"/></svg>
+                <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 1.2l1.8 3.6 4 .6-2.9 2.8.7 4L8 10.1l-3.6 1.9.7-4L2.2 5.4l4-.6z"/></svg>
+                <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 1.2l1.8 3.6 4 .6-2.9 2.8.7 4L8 10.1l-3.6 1.9.7-4L2.2 5.4l4-.6z"/></svg>
+                <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 1.2l1.8 3.6 4 .6-2.9 2.8.7 4L8 10.1l-3.6 1.9.7-4L2.2 5.4l4-.6z"/></svg>
+              </div>
+              <div class="story-badge story-badge--problem">Challenge</div>
+              <p class="story-text">"A new model launch required integrating a high-precision welding cell into an existing line in under 6 weeks, with no tolerance for delays given the production ramp schedule."</p>
+              <div style="display:inline-flex;align-items:center;gap:6px;"><div class="story-badge story-badge--solution">Solution</div><span style="color:#F5C100;font-size:1rem;">&#10004;</span></div>
+              <p class="story-text story-solution">"EDS delivered a fully commissioned welding cell — mechanical, electrical, and programming — in 5 weeks. The line launched on schedule and hit target cycle time on the first production run."</p>
+              <div class="story-client">
+                <img src="/assets/thyssenkrupp.svg" alt="Thyssenkrupp" class="story-logo" />
+                <div class="story-client-info">
+                  <span class="story-company">Thyssenkrupp</span>
+                  <span class="story-role">Welding Integration — Automotive Steel</span>
+                </div>
+              </div>
+            </article>
+
+          </div>
+
+          <div class="stories-cta" data-reveal>
+            <a class="btn" href="projects.html"><span data-i18n="stories_cta_btn">Explore Our Portfolio</span></a>
+          </div>
+        </div>
+      </section>
+
+      <section id="clientes" class="section clients">
+        <div class="container">
+          <div class="section-heading" data-reveal>
+            <p class="eyebrow" data-i18n="clients_eyebrow">Partners &amp; allies</p>
+            <h2 data-i18n="clients_title">Clients</h2>
+            <p class="section-subtitle" data-i18n="clients_subtitle">Companies that trust our engineering solutions</p>
+          </div>
+          <div class="clients-slider" data-reveal data-reveal-delay="120">
+            <div class="clients-fade clients-fade--left" aria-hidden="true"></div>
+            <div class="clients-fade clients-fade--right" aria-hidden="true"></div>
+            <button
+              class="clients-arrow clients-arrow--prev"
+              type="button"
+              aria-label="Scroll clients left"
+              data-clients-prev
+            >
+              <svg
+                class="icon-fade"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.4"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path d="M15 19 8 12l7-7" />
+              </svg>
+            </button>
+            <div class="clients-viewport" data-clients-viewport>
+              <div class="clients-track">
+                <article class="client-card" data-client="ford" data-reveal data-reveal-delay="0">
+                  <img src="/assets/ford.svg" alt="Ford" class="client-logo" />
+                </article>
+                <article class="client-card" data-client="arcelor-mittal" data-reveal data-reveal-delay="120">
+                  <img src="/assets/arcelor-mittal.svg" alt="ArcelorMittal" class="client-logo" />
+                </article>
+                <article class="client-card" data-client="thyssenkrupp" data-reveal data-reveal-delay="240">
+                  <img src="/assets/thyssenkrupp.svg" alt="Thyssenkrupp" class="client-logo" />
+                </article>
+                <article class="client-card" data-client="hitachi" data-reveal data-reveal-delay="360">
+                  <img src="/assets/hitachi.svg" alt="Hitachi" class="client-logo" />
+                </article>
+                <article class="client-card" data-client="eaton" data-reveal data-reveal-delay="480">
+                  <img src="/assets/eaton.svg" alt="Eaton" class="client-logo" />
+                </article>
+                <article class="client-card" data-client="gm" data-reveal data-reveal-delay="600">
+                  <img src="/assets/gm.svg" alt="General Motors" class="client-logo" />
+                </article>
+              </div>
+            </div>
+            <button
+              class="clients-arrow clients-arrow--next"
+              type="button"
+              aria-label="Scroll clients right"
+              data-clients-next
+            >
+              <svg
+                class="icon-fade"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.4"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path d="m9 5 7 7-7 7" />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <section id="contacto" class="section contact">
+        <div class="container contact-grid">
+          <div class="contact-panel" data-reveal data-reveal-delay="0">
+            <div class="section-heading" data-reveal data-reveal-delay="0">
+              <p class="eyebrow" data-i18n="contact_eyebrow">Work with us</p>
+              <h2 data-i18n="contact_title">Contact Us</h2>
+              <p class="section-subtitle" data-i18n="contact_desc">
+                Share the details of your next project and our engineering team will respond shortly.
+              </p>
+            </div>
+            <div class="calendly-wrapper">
+              <!-- Calendly inline widget begin -->
+              <div
+                class="calendly-inline-widget"
+                data-url="https://calendly.com/carlosacevestrillo?primary_color=ddd100"
+                style="min-width: 320px; height: 700px"
+              ></div>
+              <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+              <!-- Calendly inline widget end -->
+            </div>
+            <div class="contact-details">
+              <a class="contact-card" href="mailto:sales@engineeringds.com.mx" data-reveal data-reveal-delay="240">
+                <div class="icon icon-fade" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                    <polyline points="22,6 12,13 2,6" />
+                  </svg>
+                </div>
+                <div>
+                  <h3>Email</h3>
+                  <p>sales@engineeringds.com.mx</p>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <div class="footer-brand">
+          <a class="brand" href="#hero">
+            <img src="/assets/logo.png" alt="EDS Logo" class="footer-logo">
+          </a>
+          <p class="footer-tagline">
+            <span data-i18n="footer_tagline">ENGINEERING DESIGN &amp; SERVICE</span><br />
+            <span data-i18n="footer_tagline_sub">SEEKING TOWARDS IMPROVEMENT.</span>
+          </p>
+          <p data-i18n="footer_desc">
+            Engineering solutions for the automotive industry with over 15 years of experience.
+          </p>
+        </div>
+        <div class="footer-links">
+          <h3 data-i18n="footer_company">Company</h3>
+          <ul>
+            <li><a href="about.html" data-i18n="nav_about">About Us</a></li>
+            <li><a href="projects.html" data-i18n="nav_portfolio">Portfolio</a></li>
+            <li><a href="automation.html" data-i18n="nav_automation">Automation</a></li>
+            <li><a href="machining.html" data-i18n="nav_manufacture">Manufacture</a></li>
+            <li><a href="#servicios" data-i18n="nav_services">Services</a></li>
+            <li><a href="#contacto" data-i18n="nav_contact">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <h3 data-i18n="footer_services">Services</h3>
+          <ul>
+            <li><a href="#servicios" data-i18n="service_cnc_title">CNC Support</a></li>
+            <li><a href="#servicios" data-i18n="service_automation_title">Automation</a></li>
+            <li><a href="#servicios" data-i18n="service_precision_title">Precision Manufacturing</a></li>
+            <li><a href="#servicios" data-i18n="service_steel_title">Steel Structure</a></li>
+            <li><a href="#servicios" data-i18n="service_material_title">Material Handling Equipment</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>
+          © 2026 <span data-i18n="footer_copyright">Engineering EDS. All rights reserved.</span>
+          <span class="footer-credit">| <span data-i18n="footer_created_by">created by</span> <a href="https://wa.me/524491809587" target="_blank" rel="noopener noreferrer">Albertoautomatiza</a></span>
+        </p>
+        <div class="footer-legal">
+          <a href="#" data-modal="privacy" data-i18n="footer_privacy">Privacy</a>
+          <a href="#" data-modal="terms" data-i18n="footer_terms">Terms</a>
+          <a href="#" data-modal="legal" data-i18n="footer_legal">Legal</a>
+        </div>
+      </div>
+    </footer>
+
+    <button
+      class="scroll-top-button"
+      id="scroll-top-button"
+      aria-label="Scroll to top"
+    >
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <polyline points="18 15 12 9 6 15"></polyline>
+      </svg>
+    </button>
+
+    <script src="/assets/js/main.js"></script>
+    <script src="/assets/js/modals.js"></script>
+    <script type="module" src="/assets/js/i18n.js"></script>
+  </body>
+</html>

@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Automation Services — Engineering Design &amp; Service</title>
+    <meta
+      name="description"
+      content="Industrial automation integration services: PLC programming, HMI development, robotics integration, and multi-brand system connectivity."
+    />
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/assets/css/styles.css" />
+    <style>
+      .auto-hero {
+        min-height: 65vh;
+        display: flex;
+        align-items: flex-end;
+        padding-bottom: clamp(3.5rem, 7vw, 7rem);
+        position: relative;
+        overflow: hidden;
+        background: linear-gradient(160deg, #0d0d0d 0%, #111 60%, #050505 100%);
+      }
+
+      .auto-hero::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background:
+          radial-gradient(ellipse 70% 60% at 75% 15%, rgba(250, 204, 21, 0.08), transparent 65%),
+          linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px);
+        background-size: 100% 100%, 50px 50px, 50px 50px;
+        pointer-events: none;
+      }
+
+      .auto-hero-content {
+        position: relative;
+        z-index: 1;
+        max-width: 850px;
+        padding-top: 9rem;
+      }
+
+      .auto-hero-content .eyebrow {
+        color: var(--yellow);
+        font-size: 0.75rem;
+        font-weight: 700;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        margin-bottom: 1rem;
+        display: inline-block;
+      }
+
+      .auto-hero-content h1 {
+        font-size: clamp(2.6rem, 6vw, 5.2rem);
+        font-weight: 900;
+        line-height: 1.06;
+        letter-spacing: -0.01em;
+        color: var(--white);
+        margin-bottom: 1.5rem;
+      }
+
+      .auto-hero-content h1 span {
+        color: var(--yellow);
+      }
+
+      .auto-divider {
+        width: 48px;
+        height: 3px;
+        background: var(--yellow);
+        border: none;
+        margin: 0 0 2.5rem;
+        border-radius: 2px;
+      }
+
+      .auto-hero-content p {
+        font-size: clamp(1rem, 2vw, 1.2rem);
+        color: rgba(229, 231, 235, 0.72);
+        max-width: 640px;
+        line-height: 1.7;
+      }
+
+      .auto-brands {
+        padding: clamp(4rem, 7vw, 6rem) 0;
+        border-bottom: 1px solid rgba(255,255,255,0.06);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .auto-brands::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(ellipse 60% 80% at 20% 100%, rgba(250,204,21,0.04), transparent 60%);
+        pointer-events: none;
+      }
+
+      .auto-brands-header {
+        text-align: center;
+        margin-bottom: clamp(2.5rem, 5vw, 4rem);
+        position: relative;
+        z-index: 1;
+      }
+
+      .auto-brands-header h2 {
+        font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+        font-weight: 900;
+        color: var(--white);
+        letter-spacing: 0.02em;
+        margin-bottom: 1rem;
+      }
+
+      .auto-brands-header h2 span {
+        color: var(--yellow);
+      }
+
+      .auto-brands-header p {
+        font-size: 1rem;
+        color: rgba(229,231,235,0.6);
+        max-width: 600px;
+        margin: 0 auto;
+        line-height: 1.7;
+      }
+
+      .brands-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1.5rem;
+        position: relative;
+        z-index: 1;
+      }
+
+      .brand-card {
+        background: rgba(255,255,255,0.03);
+        border: 1px solid rgba(255,255,255,0.08);
+        border-radius: 1rem;
+        padding: 2rem 1.5rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 1rem;
+        transition: all 0.35s ease;
+      }
+
+      .brand-card:hover {
+        border-color: rgba(250,204,21,0.35);
+        background: rgba(250,204,21,0.05);
+        transform: translateY(-4px);
+      }
+
+      .brand-logo-wrap {
+        width: 72px;
+        height: 72px;
+        border-radius: 1rem;
+        background: rgba(255,255,255,0.06);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.75rem;
+        transition: background 0.3s ease;
+      }
+
+      .brand-card:hover .brand-logo-wrap {
+        background: rgba(250,204,21,0.1);
+      }
+
+      .brand-logo-wrap img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        filter: brightness(0) invert(1);
+        opacity: 0.75;
+        transition: opacity 0.3s ease;
+      }
+
+      .brand-card:hover .brand-logo-wrap img {
+        opacity: 1;
+      }
+
+      .brand-name {
+        font-size: 1rem;
+        font-weight: 700;
+        color: var(--white);
+        letter-spacing: 0.04em;
+      }
+
+      .brand-desc {
+        font-size: 0.85rem;
+        color: rgba(229,231,235,0.55);
+        line-height: 1.6;
+      }
+
+      .auto-capabilities {
+        padding: clamp(5rem, 9vw, 8rem) 0;
+        position: relative;
+        overflow: hidden;
+        background: linear-gradient(135deg, #0a0a0a 0%, #111 50%, #080808 100%);
+      }
+
+      .auto-capabilities::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background:
+          radial-gradient(ellipse 55% 70% at 85% 20%, rgba(250,204,21,0.05), transparent 65%);
+        pointer-events: none;
+      }
+
+      .auto-cap-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 1.5rem;
+        margin-top: clamp(3rem, 5vw, 4rem);
+        position: relative;
+        z-index: 1;
+      }
+
+      .auto-cap-card {
+        background: rgba(255,255,255,0.03);
+        border: 1px solid rgba(255,255,255,0.08);
+        border-radius: 1.25rem;
+        padding: 2rem;
+        transition: all 0.35s ease;
+      }
+
+      .auto-cap-card:hover {
+        border-color: rgba(250,204,21,0.4);
+        background: rgba(250,204,21,0.04);
+        transform: translateY(-5px);
+        box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+      }
+
+      .auto-cap-icon-wrap {
+        width: 3.5rem;
+        height: 3.5rem;
+        border-radius: 12px;
+        background: rgba(250,204,21,0.1);
+        border: 1px solid rgba(250,204,21,0.3);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 1.25rem;
+      }
+
+      .auto-cap-icon {
+        width: 1.6rem;
+        height: 1.6rem;
+        stroke: var(--yellow);
+        fill: none;
+        stroke-width: 1.5;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+
+      .auto-cap-card h3 {
+        font-size: 1.15rem;
+        font-weight: 800;
+        color: var(--white);
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        margin-bottom: 0.75rem;
+      }
+
+      .auto-cap-card p {
+        font-size: 0.95rem;
+        color: rgba(229,231,235,0.65);
+        line-height: 1.7;
+      }
+
+      .auto-services {
+        padding: clamp(5rem, 9vw, 8rem) 0;
+        border-top: 1px solid rgba(255,255,255,0.06);
+      }
+
+      .auto-services-inner {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: clamp(3rem, 6vw, 6rem);
+        align-items: center;
+        margin-top: clamp(3rem, 5vw, 4rem);
+      }
+
+      @media (max-width: 900px) {
+        .auto-services-inner {
+          grid-template-columns: 1fr;
+        }
+        .auto-services-visual {
+          order: -1;
+        }
+      }
+
+      .auto-services-content h3 {
+        font-size: clamp(1.5rem, 3vw, 2rem);
+        font-weight: 900;
+        color: var(--white);
+        margin-bottom: 1.5rem;
+        letter-spacing: 0.02em;
+      }
+
+      .auto-services-content h3 span {
+        color: var(--yellow);
+      }
+
+      .auto-services-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+      }
+
+      .auto-services-list li {
+        display: flex;
+        align-items: flex-start;
+        gap: 0.85rem;
+        font-size: 0.95rem;
+        font-weight: 500;
+        color: rgba(229,231,235,0.85);
+        padding: 0.85rem 1.25rem;
+        border-radius: 0.65rem;
+        background: rgba(255,255,255,0.03);
+        border: 1px solid rgba(255,255,255,0.06);
+        transition: all 0.25s ease;
+      }
+
+      .auto-services-list li:hover {
+        background: rgba(250,204,21,0.06);
+        border-color: rgba(250,204,21,0.2);
+        transform: translateX(6px);
+        color: var(--white);
+      }
+
+      .auto-services-list li .check-icon {
+        width: 20px;
+        height: 20px;
+        flex-shrink: 0;
+        stroke: var(--yellow);
+        fill: none;
+        stroke-width: 2;
+        margin-top: 1px;
+      }
+
+      .auto-services-visual {
+        position: relative;
+      }
+
+      .auto-services-visual img {
+        width: 100%;
+        border-radius: 1.25rem;
+        border: 1px solid rgba(250,204,21,0.15);
+        filter: brightness(0.85) saturate(1.05);
+        transition: filter 0.3s ease;
+      }
+
+      .auto-services-visual img:hover {
+        filter: brightness(1) saturate(1.15);
+      }
+
+      .auto-visual-badge {
+        position: absolute;
+        bottom: 1.5rem;
+        left: 1.5rem;
+        background: rgba(0,0,0,0.9);
+        border: 1px solid rgba(250,204,21,0.35);
+        border-radius: 0.85rem;
+        padding: 0.85rem 1.25rem;
+        backdrop-filter: blur(10px);
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+      }
+
+      .auto-visual-badge svg {
+        stroke: var(--yellow);
+      }
+
+      .auto-visual-badge span {
+        font-size: 0.85rem;
+        font-weight: 700;
+        color: var(--yellow);
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+      }
+
+      .auto-integration {
+        padding: clamp(5rem, 9vw, 8rem) 0;
+        background: linear-gradient(135deg, rgba(250,204,21,0.03) 0%, transparent 50%);
+        border-top: 1px solid rgba(255,255,255,0.06);
+      }
+
+      .auto-integration-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 1.5rem;
+        margin-top: clamp(3rem, 5vw, 4rem);
+      }
+
+      .integration-card {
+        background: rgba(255,255,255,0.03);
+        border: 1px solid rgba(255,255,255,0.08);
+        border-radius: 1rem;
+        padding: 1.75rem;
+        position: relative;
+        overflow: hidden;
+        transition: all 0.35s ease;
+      }
+
+      .integration-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 3px;
+        background: var(--yellow);
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.35s ease;
+      }
+
+      .integration-card:hover {
+        border-color: rgba(250,204,21,0.35);
+        background: rgba(250,204,21,0.04);
+        transform: translateY(-4px);
+      }
+
+      .integration-card:hover::before {
+        transform: scaleX(1);
+      }
+
+      .integration-card h4 {
+        font-size: 1.1rem;
+        font-weight: 800;
+        color: var(--white);
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        margin-bottom: 0.75rem;
+      }
+
+      .integration-card p {
+        font-size: 0.9rem;
+        color: rgba(229,231,235,0.6);
+        line-height: 1.65;
+        margin-bottom: 1rem;
+      }
+
+      .integration-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.4rem;
+      }
+
+      .integration-tag {
+        font-size: 0.7rem;
+        font-weight: 600;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        background: rgba(250,204,21,0.1);
+        color: var(--yellow);
+        border: 1px solid rgba(250,204,21,0.2);
+        border-radius: 4px;
+        padding: 0.25rem 0.5rem;
+      }
+
+      .auto-cta {
+        padding: clamp(4rem, 8vw, 7rem) 0;
+        background: linear-gradient(135deg, rgba(250,204,21,0.06) 0%, transparent 60%);
+        border-top: 1px solid rgba(255,255,255,0.06);
+      }
+
+      .auto-cta-inner {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 1.5rem;
+      }
+
+      .auto-cta h2 {
+        font-size: clamp(1.8rem, 4vw, 3rem);
+        font-weight: 900;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        color: var(--white);
+      }
+
+      .auto-cta h2 span {
+        color: var(--yellow);
+      }
+
+      .auto-cta p {
+        font-size: 1.05rem;
+        color: rgba(229,231,235,0.65);
+        max-width: 550px;
+        line-height: 1.7;
+      }
+
+      @media (max-width: 640px) {
+        .brands-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .auto-cap-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+
+    <header class="site-header" id="top">
+      <div class="container">
+        <a class="brand" href="index.html" aria-label="Engineering Design &amp; Service home">
+          <img src="/assets/logo.png" alt="EDS Logo" class="brand-logo">
+        </a>
+        <nav class="site-nav" aria-label="Primary navigation">
+          <ul class="nav-list">
+            <li><a href="index.html#servicios"><span data-i18n="nav_services">Services</span></a></li>
+            <li><a href="about.html"><span data-i18n="nav_about">About Us</span></a></li>
+            <li><a href="projects.html"><span data-i18n="nav_portfolio">Portfolio</span></a></li>
+            <li><a href="automation.html" class="nav-active"><span data-i18n="nav_automation">Automation</span></a></li>
+            <li><a href="machining.html"><span data-i18n="nav_manufacture">Manufacture</span></a></li>
+            <li><a href="index.html#contacto"><span data-i18n="nav_contact">Contact</span></a></li>
+          </ul>
+        </nav>
+        <div class="lang-toggle">
+          <button type="button" class="lang-btn active" data-lang="en"><span>EN</span></button>
+          <button type="button" class="lang-btn" data-lang="es"><span>ES</span></button>
+        </div>
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu">
+          <span class="menu-bar"></span>
+          <span class="menu-bar"></span>
+          <span class="menu-bar"></span>
+          <span class="sr-only">Toggle navigation</span>
+        </button>
+        <a class="header-cta" href="mailto:sales@engineeringds.com.mx"><span data-i18n="contact_us">Contact Us</span></a>
+      </div>
+      <nav id="mobile-menu" class="mobile-menu" aria-label="Mobile navigation">
+        <ul>
+          <li><a href="index.html#servicios" data-i18n="nav_services">Services</a></li>
+          <li><a href="about.html" data-i18n="nav_about">About Us</a></li>
+          <li><a href="projects.html" data-i18n="nav_portfolio">Portfolio</a></li>
+          <li><a href="automation.html" data-i18n="nav_automation">Automation</a></li>
+          <li><a href="machining.html" data-i18n="nav_manufacture">Manufacture</a></li>
+          <li><a href="index.html#contacto" data-i18n="nav_contact">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+
+      <section class="auto-hero">
+        <div class="container">
+          <div class="auto-hero-content" data-reveal>
+            <span class="eyebrow" data-i18n="auto_eyebrow">Industrial Automation Experts</span>
+            <h1><span data-i18n="auto_title_1">Automation</span> <span data-i18n="auto_title_2">Integration</span></h1>
+            <hr class="auto-divider" />
+            <p data-i18n="auto_desc">
+              We specialize in seamless automation integration across multiple platforms and manufacturers.
+              From PLC programming to complete system retrofits, our team delivers reliable solutions
+              that optimize your production efficiency and minimize downtime.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="auto-brands">
+        <div class="container">
+          <div class="auto-brands-header" data-reveal>
+            <p class="eyebrow" data-i18n="auto_brands_eyebrow">Multi-Platform Expertise</p>
+            <h2><span data-i18n="auto_brands_title_1">Manufacturer</span> <span data-i18n="auto_brands_title_2">Integration</span></h2>
+            <p data-i18n="auto_brands_desc">
+              We work with all major automation brands, providing unified solutions regardless of
+              your existing equipment. Our engineers are certified and experienced across platforms.
+            </p>
+          </div>
+          <div class="brands-grid">
+            <div class="brand-card" data-reveal data-reveal-delay="0">
+              <div class="brand-logo-wrap">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/a/a1/Siemens_AG_logo.svg" alt="Siemens" />
+              </div>
+              <span class="brand-name">Siemens</span>
+              <span class="brand-desc">S7-300/400/1200/1500, TIA Portal, WinCC, SIMATIC HMI</span>
+            </div>
+            <div class="brand-card" data-reveal data-reveal-delay="60">
+              <div class="brand-logo-wrap">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/1/1f/Allen-Bradley_logo.svg" alt="Allen-Bradley" />
+              </div>
+              <span class="brand-name">Allen-Bradley</span>
+              <span class="brand-desc">ControlLogix, CompactLogix, MicroLogix, PanelView Plus</span>
+            </div>
+            <div class="brand-card" data-reveal data-reveal-delay="120">
+              <div class="brand-logo-wrap">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/b/b8/Mitsubishi_logo.svg" alt="Mitsubishi" />
+              </div>
+              <span class="brand-name">Mitsubishi</span>
+              <span class="brand-desc">MELSEC Q/L/iQ-R Series, GOT HMI, GX Works</span>
+            </div>
+            <div class="brand-card" data-reveal data-reveal-delay="180">
+              <div class="brand-logo-wrap">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/e/eb/FANUC_logo.svg" alt="Fanuc" />
+              </div>
+              <span class="brand-name">Fanuc</span>
+              <span class="brand-desc">CNC Controls, Robotics, Series 0i/30i/31i, ROBOGUIDE</span>
+            </div>
+            <div class="brand-card" data-reveal data-reveal-delay="240">
+              <div class="brand-logo-wrap">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/0/0e/ABB_logo.svg" alt="ABB" />
+              </div>
+              <span class="brand-name">ABB</span>
+              <span class="brand-desc">AC500, Robotics, IRC5 Controller, RobotStudio</span>
+            </div>
+            <div class="brand-card" data-reveal data-reveal-delay="300">
+              <div class="brand-logo-wrap">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Omron_logo.svg" alt="Omron" />
+              </div>
+              <span class="brand-name">Omron</span>
+              <span class="brand-desc">NJ/NX Series, Sysmac Studio, NA HMI, Vision Systems</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="auto-capabilities">
+        <div class="container">
+          <div class="section-heading" data-reveal>
+            <p class="eyebrow" data-i18n="auto_cap_eyebrow">What We Deliver</p>
+            <h2 data-i18n="auto_cap_title">Core Capabilities</h2>
+          </div>
+          <div class="auto-cap-grid">
+            <div class="auto-cap-card" data-reveal data-reveal-delay="0">
+              <div class="auto-cap-icon-wrap">
+                <svg class="auto-cap-icon" viewBox="0 0 24 24">
+                  <rect x="2" y="3" width="20" height="14" rx="2"/>
+                  <path d="M8 21h8M12 17v4"/>
+                </svg>
+              </div>
+              <h3 data-i18n="auto_cap_plc_title">PLC Programming</h3>
+              <p data-i18n="auto_cap_plc_desc">Custom ladder logic, structured text, and function block development for all major PLC platforms. Full documentation and testing included.</p>
+            </div>
+            <div class="auto-cap-card" data-reveal data-reveal-delay="80">
+              <div class="auto-cap-icon-wrap">
+                <svg class="auto-cap-icon" viewBox="0 0 24 24">
+                  <rect x="3" y="3" width="18" height="18" rx="2"/>
+                  <path d="M3 9h18M9 21V9"/>
+                </svg>
+              </div>
+              <h3 data-i18n="auto_cap_hmi_title">HMI Development</h3>
+              <p data-i18n="auto_cap_hmi_desc">Intuitive operator interfaces with real-time monitoring, alarm management, and data logging. Multi-language support and remote access capabilities.</p>
+            </div>
+            <div class="auto-cap-card" data-reveal data-reveal-delay="160">
+              <div class="auto-cap-icon-wrap">
+                <svg class="auto-cap-icon" viewBox="0 0 24 24">
+                  <circle cx="12" cy="12" r="3"/>
+                  <path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/>
+                </svg>
+              </div>
+              <h3 data-i18n="auto_cap_integration_title">System Integration</h3>
+              <p data-i18n="auto_cap_integration_desc">Seamless connectivity between PLCs, robots, vision systems, and enterprise software. Industrial protocols including EtherNet/IP, Profinet, and Modbus.</p>
+            </div>
+            <div class="auto-cap-card" data-reveal data-reveal-delay="240">
+              <div class="auto-cap-icon-wrap">
+                <svg class="auto-cap-icon" viewBox="0 0 24 24">
+                  <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+                </svg>
+              </div>
+              <h3 data-i18n="auto_cap_retrofitting_title">Retrofitting</h3>
+              <p data-i18n="auto_cap_retrofitting_desc">Upgrade legacy systems with modern controls while preserving mechanical infrastructure. Minimize downtime with phased migration strategies.</p>
+            </div>
+            <div class="auto-cap-card" data-reveal data-reveal-delay="320">
+              <div class="auto-cap-icon-wrap">
+                <svg class="auto-cap-icon" viewBox="0 0 24 24">
+                  <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                  <path d="M2 17l10 5 10-5"/>
+                  <path d="M2 12l10 5 10-5"/>
+                </svg>
+              </div>
+              <h3>Robotics Integration</h3>
+              <p>Programming and integration of industrial robots for material handling, welding, assembly, and inspection. Safety system implementation included.</p>
+            </div>
+            <div class="auto-cap-card" data-reveal data-reveal-delay="400">
+              <div class="auto-cap-icon-wrap">
+                <svg class="auto-cap-icon" viewBox="0 0 24 24">
+                  <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+                </svg>
+              </div>
+              <h3>Diagnostics & Support</h3>
+              <p>24/7 remote monitoring, fault diagnosis, and emergency support. Predictive maintenance systems to prevent unplanned downtime.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="auto-services">
+        <div class="container">
+          <div class="section-heading" data-reveal>
+            <p class="eyebrow">Complete Solutions</p>
+            <h2>Automation Services</h2>
+          </div>
+          <div class="auto-services-inner">
+            <div class="auto-services-content" data-reveal>
+              <h3>End-to-End <span>Automation Support</span></h3>
+              <ul class="auto-services-list">
+                <li>
+                  <svg class="check-icon" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                  Automation and control fault diagnosis
+                </li>
+                <li>
+                  <svg class="check-icon" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                  Predictive, preventive and corrective maintenance
+                </li>
+                <li>
+                  <svg class="check-icon" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                  Error proofing development (Poka-Yoke)
+                </li>
+                <li>
+                  <svg class="check-icon" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                  Process Capability Analysis (Cp, Cpk)
+                </li>
+                <li>
+                  <svg class="check-icon" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                  Ladder logic editing and optimization
+                </li>
+                <li>
+                  <svg class="check-icon" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                  Production startups and PPAP support
+                </li>
+                <li>
+                  <svg class="check-icon" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                  Equipment refurbishment and upgrades
+                </li>
+                <li>
+                  <svg class="check-icon" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                  Servo and drive fine tuning
+                </li>
+              </ul>
+            </div>
+            <div class="auto-services-visual" data-reveal data-reveal-delay="120">
+              <img src="https://images.pexels.com/photos/257736/pexels-photo-257736.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Industrial PLC automation control panel" loading="lazy" />
+              <div class="auto-visual-badge">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <span>Industry 4.0 Ready</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="auto-integration">
+        <div class="container">
+          <div class="section-heading" data-reveal>
+            <p class="eyebrow">Connectivity</p>
+            <h2>Integration Protocols</h2>
+          </div>
+          <div class="auto-integration-grid">
+            <div class="integration-card" data-reveal data-reveal-delay="0">
+              <h4>Industrial Ethernet</h4>
+              <p>High-speed communication for real-time control and monitoring across your entire facility.</p>
+              <div class="integration-tags">
+                <span class="integration-tag">EtherNet/IP</span>
+                <span class="integration-tag">Profinet</span>
+                <span class="integration-tag">EtherCAT</span>
+              </div>
+            </div>
+            <div class="integration-card" data-reveal data-reveal-delay="80">
+              <h4>Fieldbus Networks</h4>
+              <p>Reliable device-level communication for sensors, actuators, and distributed I/O modules.</p>
+              <div class="integration-tags">
+                <span class="integration-tag">Profibus</span>
+                <span class="integration-tag">DeviceNet</span>
+                <span class="integration-tag">CC-Link</span>
+              </div>
+            </div>
+            <div class="integration-card" data-reveal data-reveal-delay="160">
+              <h4>Serial Protocols</h4>
+              <p>Legacy system connectivity and integration with older equipment and specialized devices.</p>
+              <div class="integration-tags">
+                <span class="integration-tag">Modbus RTU</span>
+                <span class="integration-tag">RS-232</span>
+                <span class="integration-tag">RS-485</span>
+              </div>
+            </div>
+            <div class="integration-card" data-reveal data-reveal-delay="240">
+              <h4>Enterprise Systems</h4>
+              <p>Connect shop floor to top floor with MES, SCADA, and ERP system integration.</p>
+              <div class="integration-tags">
+                <span class="integration-tag">OPC UA</span>
+                <span class="integration-tag">MQTT</span>
+                <span class="integration-tag">SQL</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="auto-cta">
+        <div class="container">
+          <div class="auto-cta-inner" data-reveal>
+            <h2><span data-i18n="auto_cta_title_1">Ready to</span> <span><span data-i18n="auto_cta_title_2">automate?</span></span></h2>
+            <p data-i18n="auto_cta_desc">
+              Whether you need a complete system integration or support for existing equipment,
+              our team is ready to help optimize your production processes.
+            </p>
+            <div class="hero-btns">
+              <a class="btn" href="mailto:sales@engineeringds.com.mx"><span data-i18n="auto_cta_btn_start">Get Started</span></a>
+              <a class="btn btn-outline" href="projects.html"><span data-i18n="auto_cta_btn_portfolio">View Portfolio</span></a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <div class="footer-brand">
+          <a class="brand" href="index.html">
+            <img src="/assets/logo.png" alt="EDS Logo" class="footer-logo">
+          </a>
+          <p class="footer-tagline">
+            <span data-i18n="footer_tagline">ENGINEERING DESIGN &amp; SERVICE</span><br />
+            <span data-i18n="footer_tagline_sub">SEEKING TOWARDS IMPROVEMENT.</span>
+          </p>
+          <p data-i18n="footer_desc">
+            Engineering solutions for the automotive industry with over 15 years of experience.
+          </p>
+        </div>
+        <div class="footer-links">
+          <h3 data-i18n="footer_company">Company</h3>
+          <ul>
+            <li><a href="about.html" data-i18n="nav_about">About Us</a></li>
+            <li><a href="projects.html" data-i18n="nav_portfolio">Portfolio</a></li>
+            <li><a href="automation.html" data-i18n="nav_automation">Automation</a></li>
+            <li><a href="machining.html" data-i18n="nav_manufacture">Manufacture</a></li>
+            <li><a href="index.html#servicios" data-i18n="nav_services">Services</a></li>
+            <li><a href="index.html#contacto" data-i18n="nav_contact">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <h3 data-i18n="nav_automation">Automation</h3>
+          <ul>
+            <li><a href="automation.html" data-i18n="auto_cap_plc_title">PLC Programming</a></li>
+            <li><a href="automation.html" data-i18n="auto_cap_hmi_title">HMI Development</a></li>
+            <li><a href="automation.html" data-i18n="auto_cap_robot_title">Robot Integration</a></li>
+            <li><a href="automation.html" data-i18n="auto_cap_retrofit_title">System Retrofits</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>
+          © 2026 <span data-i18n="footer_copyright">Engineering EDS. All rights reserved.</span>
+          <span class="footer-credit">| <span data-i18n="footer_created_by">created by</span> <a href="https://wa.me/524491809587" target="_blank" rel="noopener noreferrer">Albertoautomatiza</a></span>
+        </p>
+        <div class="footer-legal">
+          <a href="#" data-modal="privacy" data-i18n="footer_privacy">Privacy</a>
+          <a href="#" data-modal="terms" data-i18n="footer_terms">Terms</a>
+          <a href="#" data-modal="legal" data-i18n="footer_legal">Legal</a>
+        </div>
+      </div>
+    </footer>
+
+    <script src="/assets/js/main.js"></script>
+    <script src="/assets/js/modals.js"></script>
+    <script type="module" src="/assets/js/i18n.js"></script>
+  </body>
+</html>
