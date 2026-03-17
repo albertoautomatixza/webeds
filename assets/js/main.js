@@ -511,15 +511,12 @@ const ready = () => {
     const prevButton = slider.querySelector('.benefits-arrow--prev');
     const nextButton = slider.querySelector('.benefits-arrow--next');
 
-    if (!viewport || !track || cards.length === 0 || !prevButton || !nextButton) {
+    if (!viewport || !track || cards.length === 0) {
       return;
     }
 
     let activeIndex = 0;
     let autoSlideId = null;
-    let scrollTimeout;
-    let hasStarted = false;
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
     const normaliseIndex = (index) => {
       const length = cards.length;
@@ -538,104 +535,31 @@ const ready = () => {
       viewport.scrollTo({ left: target, behavior: smooth ? 'smooth' : 'auto' });
     };
 
-    const updateActiveFromScroll = () => {
-      const { scrollLeft, clientWidth } = viewport;
-      const center = scrollLeft + clientWidth / 2;
-      let closestIndex = activeIndex;
-      let minDistance = Infinity;
-
-      cards.forEach((card, index) => {
-        const cardCenter = card.offsetLeft + card.clientWidth / 2;
-        const distance = Math.abs(center - cardCenter);
-        if (distance < minDistance) {
-          minDistance = distance;
-          closestIndex = index;
-        }
-      });
-
-      activeIndex = closestIndex;
-    };
-
-    const stopAutoSlide = () => {
-      if (autoSlideId) {
-        window.clearInterval(autoSlideId);
-        autoSlideId = null;
-      }
-    };
-
     const startAutoSlide = () => {
-      stopAutoSlide();
-      if (prefersReducedMotion.matches) {
-        return;
-      }
+      if (autoSlideId) return;
       autoSlideId = window.setInterval(() => {
         goToIndex(activeIndex + 1);
       }, 4000);
     };
 
-    prevButton.addEventListener('click', () => {
-      stopAutoSlide();
-      goToIndex(activeIndex - 1);
-      startAutoSlide();
-    });
+    if (prevButton) {
+      prevButton.addEventListener('click', () => {
+        goToIndex(activeIndex - 1);
+      });
+    }
 
-    nextButton.addEventListener('click', () => {
-      stopAutoSlide();
-      goToIndex(activeIndex + 1);
-      startAutoSlide();
-    });
-
-    slider.addEventListener('mouseenter', stopAutoSlide);
-    slider.addEventListener('mouseleave', startAutoSlide);
-
-    viewport.addEventListener('scroll', () => {
-      if (scrollTimeout) {
-        window.clearTimeout(scrollTimeout);
-      }
-      scrollTimeout = window.setTimeout(updateActiveFromScroll, 120);
-    });
+    if (nextButton) {
+      nextButton.addEventListener('click', () => {
+        goToIndex(activeIndex + 1);
+      });
+    }
 
     window.addEventListener('resize', () => {
       goToIndex(activeIndex, false);
     });
 
-    const handleMotionPreference = () => {
-      if (prefersReducedMotion.matches) {
-        stopAutoSlide();
-      } else if (hasStarted) {
-        startAutoSlide();
-      }
-    };
-
-    if (typeof prefersReducedMotion.addEventListener === 'function') {
-      prefersReducedMotion.addEventListener('change', handleMotionPreference);
-    } else if (typeof prefersReducedMotion.addListener === 'function') {
-      prefersReducedMotion.addListener(handleMotionPreference);
-    }
-
     goToIndex(0, false);
-
-    if ('IntersectionObserver' in window) {
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting && !hasStarted) {
-              hasStarted = true;
-              startAutoSlide();
-            } else if (!entry.isIntersecting && hasStarted) {
-              stopAutoSlide();
-            } else if (entry.isIntersecting && hasStarted) {
-              startAutoSlide();
-            }
-          });
-        },
-        { threshold: 0.3 }
-      );
-      observer.observe(slider);
-    } else {
-      hasStarted = true;
-      startAutoSlide();
-    }
+    startAutoSlide();
   };
 
   initBenefitsSlider();
