@@ -978,7 +978,7 @@ main {
 
 .service-row {
   display: grid;
-  grid-template-columns: auto auto 1fr;
+  grid-template-columns: auto 1fr;
   align-items: center;
   gap: 1.5rem;
   padding: 1.75rem 2rem;
@@ -1010,19 +1010,6 @@ main {
 
 .service-row:hover::before {
   opacity: 1;
-}
-
-.service-row-number {
-  font-family: var(--font-heading);
-  font-size: 1.5rem;
-  font-weight: 800;
-  color: rgba(250, 204, 21, 0.25);
-  min-width: 2.5rem;
-  transition: color 0.3s ease;
-}
-
-.service-row:hover .service-row-number {
-  color: rgba(250, 204, 21, 0.5);
 }
 
 .service-row-icon {
