@@ -220,7 +220,7 @@
         <div class="container">
           <div class="section-heading" data-reveal>
             <p class="eyebrow">What we deliver</p>
-            <h2>CNC Services</h2>
+            <h2>Other Services</h2>
           </div>
           <div class="services-slider" data-reveal data-reveal-delay="120">
             <video class="services-video-bg" autoplay loop muted playsinline aria-hidden="true">
@@ -298,54 +298,103 @@
             <p class="eyebrow">Why teams choose us</p>
             <h2>Benefits</h2>
           </div>
-          <div class="benefits-grid">
-            <article class="benefit-card benefit-card-safety" data-reveal data-reveal-delay="0">
-              <div class="benefit-icon icon-fade" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-                </svg>
+          <div class="benefits-slider" data-reveal data-reveal-delay="120">
+            <video class="benefits-video-bg" autoplay loop muted playsinline aria-hidden="true">
+              <source src="/assets/hero-video.mp4" type="video/mp4">
+            </video>
+            <div class="benefits-fade benefits-fade--left" aria-hidden="true"></div>
+            <div class="benefits-fade benefits-fade--right" aria-hidden="true"></div>
+            <button
+              class="benefits-arrow benefits-arrow--prev"
+              type="button"
+              aria-label="Scroll benefits left"
+              data-benefits-prev
+            >
+              <svg
+                class="icon-fade"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.4"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path d="M15 19 8 12l7-7" />
+              </svg>
+            </button>
+            <div class="benefits-viewport" data-benefits-viewport>
+              <div class="benefits-track">
+                <article class="benefit-card" data-reveal data-reveal-delay="0">
+                  <div class="benefit-icon icon-fade" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                    </svg>
+                  </div>
+                  <span class="benefit-title">Safety First</span>
+                  <p class="benefit-description">All our projects comply with the highest safety standards in the industry.</p>
+                </article>
+                <article class="benefit-card" data-reveal data-reveal-delay="120">
+                  <div class="benefit-icon icon-fade" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+                      <circle cx="12" cy="12" r="10" />
+                      <circle cx="12" cy="12" r="2" />
+                      <path d="M12 2v4" />
+                      <path d="M12 18v4" />
+                      <path d="m4.93 4.93 2.83 2.83" />
+                      <path d="m16.24 16.24 2.83 2.83" />
+                    </svg>
+                  </div>
+                  <span class="benefit-title">Precision Engineering</span>
+                  <p class="benefit-description">Detailed planning and execution with millimeter precision in every project.</p>
+                </article>
+                <article class="benefit-card" data-reveal data-reveal-delay="240">
+                  <div class="benefit-icon icon-fade" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                      <circle cx="8.5" cy="7" r="4" />
+                      <path d="M20 8v6" />
+                      <path d="M23 11h-6" />
+                    </svg>
+                  </div>
+                  <span class="benefit-title">Expert Team</span>
+                  <p class="benefit-description">Certified engineers and technicians with years of experience in the automotive sector.</p>
+                </article>
+                <article class="benefit-card" data-reveal data-reveal-delay="360">
+                  <div class="benefit-icon icon-fade" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+                      <polyline points="17 1 21 5 17 9" />
+                      <path d="M3 11V9a4 4 0 0 1 4-4h14" />
+                      <polyline points="7 23 3 19 7 15" />
+                      <path d="M21 13v2a4 4 0 0 1-4 4H3" />
+                    </svg>
+                  </div>
+                  <span class="benefit-title">Continuous Innovation</span>
+                  <p class="benefit-description">We constantly implement the latest technologies to improve our processes.</p>
+                </article>
               </div>
-              <h3>Safety First</h3>
-              <p>All our projects comply with the highest safety standards in the industry.</p>
-            </article>
-            <article class="benefit-card benefit-card-precision" data-reveal data-reveal-delay="140">
-              <div class="benefit-icon icon-fade" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
-                  <circle cx="12" cy="12" r="10" />
-                  <circle cx="12" cy="12" r="2" />
-                  <path d="M12 2v4" />
-                  <path d="M12 18v4" />
-                  <path d="m4.93 4.93 2.83 2.83" />
-                  <path d="m16.24 16.24 2.83 2.83" />
-                </svg>
-              </div>
-              <h3>Precision Engineering</h3>
-              <p>Detailed planning and execution with millimeter precision in every project.</p>
-            </article>
-            <article class="benefit-card benefit-card-team" data-reveal data-reveal-delay="280">
-              <div class="benefit-icon icon-fade" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
-                  <circle cx="8.5" cy="7" r="4" />
-                  <path d="M20 8v6" />
-                  <path d="M23 11h-6" />
-                </svg>
-              </div>
-              <h3>Expert Team</h3>
-              <p>Certified engineers and technicians with years of experience in the automotive sector.</p>
-            </article>
-            <article class="benefit-card benefit-card-innovation" data-reveal data-reveal-delay="420">
-              <div class="benefit-icon icon-fade" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
-                  <polyline points="17 1 21 5 17 9" />
-                  <path d="M3 11V9a4 4 0 0 1 4-4h14" />
-                  <polyline points="7 23 3 19 7 15" />
-                  <path d="M21 13v2a4 4 0 0 1-4 4H3" />
-                </svg>
-              </div>
-              <h3>Continuous Innovation</h3>
-              <p>We constantly implement the latest technologies to improve our processes.</p>
-            </article>
+            </div>
+            <button
+              class="benefits-arrow benefits-arrow--next"
+              type="button"
+              aria-label="Scroll benefits right"
+              data-benefits-next
+            >
+              <svg
+                class="icon-fade"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.4"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path d="m9 5 7 7-7 7" />
+              </svg>
+            </button>
           </div>
         </div>
       </section>

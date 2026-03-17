@@ -964,96 +964,113 @@ main {
   background: linear-gradient(270deg, rgba(17, 17, 17, 0.85), rgba(17, 17, 17, 0));
 }
 
-/* Benefits */
-.benefits-grid {
-  display: grid;
-  gap: 1.5rem;
-  margin-bottom: clamp(3rem, 7vw, 4.5rem);
+/* Benefits Slider */
+.benefits {
+  overflow: hidden;
+}
+
+.benefits-slider {
+  position: relative;
+  overflow: visible;
+  border-radius: 2rem;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  background: linear-gradient(135deg, rgba(20, 20, 20, 0.92), rgba(17, 17, 17, 0.7));
+  padding: clamp(3.75rem, 8vw, 5.5rem) clamp(2.75rem, 6vw, 4rem);
+  box-shadow: 0 26px 70px rgba(0, 0, 0, 0.35);
+  isolation: isolate;
+}
+
+.benefits-video-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.25;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.benefits-viewport {
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
   position: relative;
   z-index: 1;
 }
 
-.benefit-card {
-  position: relative;
-  background: rgba(17, 17, 17, 0.85);
-  border-radius: 1.5rem;
-  padding: 2.5rem;
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  display: grid;
-  gap: 1.5rem;
-  text-align: left;
-  transition: transform 0.3s ease, border-color 0.3s ease;
-  overflow: hidden;
+.benefits-viewport::-webkit-scrollbar {
+  display: none;
 }
 
-.benefit-card::before {
+.benefits-track {
+  display: flex;
+  align-items: stretch;
+  gap: clamp(1.5rem, 4vw, 2.75rem);
+  width: max-content;
+  padding: clamp(1.25rem, 3vw, 2rem) clamp(1.25rem, 4vw, 2.5rem);
+  position: relative;
+  z-index: 1;
+}
+
+.benefits .benefit-card {
+  position: relative;
+  flex: 0 0 auto;
+  width: clamp(220px, 60vw, 320px);
+  padding: clamp(1.75rem, 4vw, 2.3rem);
+  border-radius: 2rem;
+  background: rgba(17, 17, 17, 0.65);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05), 0 20px 45px rgba(0, 0, 0, 0.35);
+  scroll-snap-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  text-align: center;
+  transition: transform 0.45s ease, border-color 0.45s ease, box-shadow 0.45s ease;
+}
+
+.benefits .benefit-card::before {
   content: '';
   position: absolute;
-  inset: 0;
-  background-size: cover;
-  background-position: center;
+  inset: clamp(0.3rem, 0.9vw, 0.75rem);
+  border-radius: 2rem;
+  background: radial-gradient(
+    circle at center,
+    rgba(250, 204, 21, 0.28) 0%,
+    rgba(250, 204, 21, 0.08) 55%,
+    transparent 80%
+  );
   filter: blur(8px);
-  opacity: 0.15;
-  z-index: 0;
-  transition: opacity 0.3s ease, filter 0.3s ease;
+  opacity: 0;
+  transition: opacity 0.45s ease;
+  z-index: -1;
 }
 
-.benefit-card:hover::before {
-  filter: blur(6px);
-  opacity: 0.25;
+.benefits .benefit-card:hover {
+  transform: translateY(-10px);
+  border-color: rgba(250, 204, 21, 0.3);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 32px 70px rgba(250, 204, 21, 0.18);
 }
 
-/* Safety First card - more visible image */
-.benefit-card-safety::before {
-  background-image: url('/assets/edswebimagen1.jpg');
-  filter: blur(2px);
-  opacity: 0.35;
+.benefits .benefit-card:hover::before {
+  opacity: 1;
 }
 
-.benefit-card-safety:hover::before {
-  filter: blur(1px);
-  opacity: 0.5;
+.benefit-title {
+  font-weight: 800;
+  font-size: clamp(1.15rem, 3vw, 1.45rem);
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  color: var(--yellow);
 }
 
-/* Precision Engineering card - more visible image */
-.benefit-card-precision::before {
-  background-image: url('/assets/edswebimagen2-copy.jpg');
-  filter: blur(2px);
-  opacity: 0.35;
-}
-
-.benefit-card-precision:hover::before {
-  filter: blur(1px);
-  opacity: 0.5;
-}
-
-/* Expert Team card - more visible image */
-.benefit-card-team::before {
-  background-image: url('/assets/edswebimagen3.jpg');
-  filter: blur(2px);
-  opacity: 0.35;
-}
-
-.benefit-card-team:hover::before {
-  filter: blur(1px);
-  opacity: 0.5;
-}
-
-/* Continuous Innovation card - more visible image */
-.benefit-card-innovation::before {
-  background-image: url('/assets/edswebimagen4.jpeg');
-  filter: blur(2px);
-  opacity: 0.35;
-}
-
-.benefit-card-innovation:hover::before {
-  filter: blur(1px);
-  opacity: 0.5;
-}
-
-.benefit-card:hover {
-  transform: translateY(-6px);
-  border-color: rgba(250, 204, 21, 0.35);
+.benefit-description {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: rgba(226, 232, 240, 0.76);
 }
 
 .benefit-icon {
@@ -1074,17 +1091,119 @@ main {
   height: 1.5rem;
 }
 
-.benefit-card h3 {
-  font-size: 1.3rem;
-  font-weight: 700;
-  position: relative;
+.benefits-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 10px;
+  border: 1px solid var(--yellow);
+  background: #111111;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--yellow);
+  cursor: pointer;
+  transition: box-shadow 0.3s ease, transform 0.25s ease;
+  z-index: 2;
+  overflow: hidden;
+}
+
+.benefits-arrow::before {
+  content: '';
+  position: absolute;
+  width: 250%;
+  aspect-ratio: 1;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+  background: conic-gradient(
+    from 0deg,
+    transparent 0deg,
+    transparent 80deg,
+    rgba(255, 255, 255, 0.1) 93deg,
+    rgba(255, 255, 255, 0.85) 105deg,
+    rgba(255, 255, 255, 0.1) 117deg,
+    transparent 130deg,
+    transparent 360deg
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 0;
+  animation: none;
+}
+
+.benefits-arrow::after {
+  content: '';
+  position: absolute;
+  inset: 1px;
+  border-radius: 9px;
+  background: #111111;
   z-index: 1;
 }
 
-.benefit-card p {
-  color: rgba(226, 232, 240, 0.85);
+.benefits-arrow svg {
+  width: 1.5rem;
+  height: 1.5rem;
   position: relative;
+  z-index: 2;
+}
+
+.benefits-arrow:hover::before {
+  opacity: 1;
+  animation: border-rotate 2.8s linear infinite;
+}
+
+.benefits-arrow:hover {
+  box-shadow: 0 8px 20px rgba(255, 255, 255, 0.15);
+}
+
+.benefits-arrow:active {
+  transform: translateY(-50%) scale(1.02);
+}
+
+.benefits-arrow:focus-visible {
+  outline: 2px solid var(--yellow);
+  outline-offset: 4px;
+}
+
+.benefits-arrow--prev {
+  left: clamp(-1rem, -2vw, -0.5rem);
+}
+
+.benefits-arrow--next {
+  right: clamp(-1rem, -2vw, -0.5rem);
+}
+
+.benefits-fade {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: min(18vw, 160px);
+  pointer-events: none;
   z-index: 1;
+}
+
+.benefits-fade--left {
+  left: 0;
+  background: linear-gradient(90deg, rgba(17, 17, 17, 0.85), rgba(17, 17, 17, 0));
+}
+
+.benefits-fade--right {
+  right: 0;
+  background: linear-gradient(270deg, rgba(17, 17, 17, 0.85), rgba(17, 17, 17, 0));
+}
+
+@media (max-width: 640px) {
+  .benefits-arrow {
+    width: 3rem;
+    height: 3rem;
+  }
+
+  .benefits .benefit-card {
+    width: min(80vw, 280px);
+  }
 }
 
 .stats-grid {
