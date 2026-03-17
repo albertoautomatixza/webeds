@@ -420,30 +420,34 @@
         </a>
         <nav class="site-nav" aria-label="Primary navigation">
           <ul class="nav-list">
-            <li><a href="index.html#servicios"><span>Services</span></a></li>
-            <li><a href="about.html"><span>About Us</span></a></li>
-            <li><a href="projects.html" class="nav-active"><span>Portfolio</span></a></li>
-            <li><a href="automation.html"><span>Automation</span></a></li>
-            <li><a href="machining.html"><span>Manufacture</span></a></li>
-            <li><a href="index.html#contacto"><span>Contact</span></a></li>
+            <li><a href="index.html#servicios"><span data-i18n="nav_services">Services</span></a></li>
+            <li><a href="about.html"><span data-i18n="nav_about">About Us</span></a></li>
+            <li><a href="projects.html" class="nav-active"><span data-i18n="nav_portfolio">Portfolio</span></a></li>
+            <li><a href="automation.html"><span data-i18n="nav_automation">Automation</span></a></li>
+            <li><a href="machining.html"><span data-i18n="nav_manufacture">Manufacture</span></a></li>
+            <li><a href="index.html#contacto"><span data-i18n="nav_contact">Contact</span></a></li>
           </ul>
         </nav>
+        <div class="lang-toggle">
+          <button type="button" class="lang-btn active" data-lang="en"><span>EN</span></button>
+          <button type="button" class="lang-btn" data-lang="es"><span>ES</span></button>
+        </div>
         <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu">
           <span class="menu-bar"></span>
           <span class="menu-bar"></span>
           <span class="menu-bar"></span>
           <span class="sr-only">Toggle navigation</span>
         </button>
-        <a class="header-cta" href="mailto:sales@engineeringds.com.mx"><span>Contact Us</span></a>
+        <a class="header-cta" href="mailto:sales@engineeringds.com.mx"><span data-i18n="contact_us">Contact Us</span></a>
       </div>
       <nav id="mobile-menu" class="mobile-menu" aria-label="Mobile navigation">
         <ul>
-          <li><a href="index.html#servicios">Services</a></li>
-          <li><a href="about.html">About Us</a></li>
-          <li><a href="projects.html">Portfolio</a></li>
-          <li><a href="automation.html">Automation</a></li>
-          <li><a href="machining.html">Manufacture</a></li>
-          <li><a href="index.html#contacto">Contact</a></li>
+          <li><a href="index.html#servicios" data-i18n="nav_services">Services</a></li>
+          <li><a href="about.html" data-i18n="nav_about">About Us</a></li>
+          <li><a href="projects.html" data-i18n="nav_portfolio">Portfolio</a></li>
+          <li><a href="automation.html" data-i18n="nav_automation">Automation</a></li>
+          <li><a href="machining.html" data-i18n="nav_manufacture">Manufacture</a></li>
+          <li><a href="index.html#contacto" data-i18n="nav_contact">Contact</a></li>
         </ul>
       </nav>
     </header>
@@ -1079,5 +1083,6 @@
 
     </script>
     <script src="/assets/js/modals.js"></script>
+    <script type="module" src="/assets/js/i18n.js"></script>
   </body>
 </html>
