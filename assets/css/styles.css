@@ -964,6 +964,113 @@ main {
   background: linear-gradient(270deg, rgba(17, 17, 17, 0.85), rgba(17, 17, 17, 0));
 }
 
+/* Other Services Grid */
+.other-services {
+  overflow: hidden;
+}
+
+.other-services-grid {
+  display: grid;
+  gap: 1.5rem;
+  margin-bottom: clamp(3rem, 7vw, 4.5rem);
+  position: relative;
+  z-index: 1;
+}
+
+.other-service-card {
+  position: relative;
+  background: rgba(17, 17, 17, 0.85);
+  border-radius: 1.5rem;
+  padding: 2.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  display: grid;
+  gap: 1.5rem;
+  text-align: left;
+  transition: transform 0.3s ease, border-color 0.3s ease;
+  overflow: hidden;
+}
+
+.other-service-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  filter: blur(2px);
+  opacity: 0.35;
+  z-index: 0;
+  transition: opacity 0.3s ease, filter 0.3s ease;
+}
+
+.other-service-card:hover::before {
+  filter: blur(1px);
+  opacity: 0.5;
+}
+
+.other-service-card-1::before {
+  background-image: url('/assets/edswebimagen1.jpg');
+}
+
+.other-service-card-2::before {
+  background-image: url('/assets/edswebimagen2-copy.jpg');
+}
+
+.other-service-card-3::before {
+  background-image: url('/assets/edswebimagen3.jpg');
+}
+
+.other-service-card-4::before {
+  background-image: url('/assets/edswebimagen4.jpeg');
+}
+
+.other-service-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(250, 204, 21, 0.35);
+}
+
+.other-service-icon {
+  width: 3.25rem;
+  height: 3.25rem;
+  border-radius: 10px;
+  background: rgba(250, 204, 21, 0.12);
+  border: 1px solid rgba(250, 204, 21, 0.35);
+  color: var(--yellow);
+  display: grid;
+  place-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+.other-service-icon svg {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.other-service-card h3 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  position: relative;
+  z-index: 1;
+}
+
+.other-service-card p {
+  color: rgba(226, 232, 240, 0.85);
+  position: relative;
+  z-index: 1;
+}
+
+@media (min-width: 768px) {
+  .other-services-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
+  .other-services-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
 /* Benefits Slider */
 .benefits {
   overflow: hidden;
