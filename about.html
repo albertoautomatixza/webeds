@@ -133,6 +133,30 @@
         filter: grayscale(0%);
       }
 
+      .about-story-image::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background:
+          linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+          repeating-linear-gradient(
+            0deg,
+            transparent,
+            transparent 40px,
+            rgba(250, 204, 21, 0.08) 40px,
+            rgba(250, 204, 21, 0.08) 41px
+          ),
+          repeating-linear-gradient(
+            90deg,
+            transparent,
+            transparent 40px,
+            rgba(250, 204, 21, 0.08) 40px,
+            rgba(250, 204, 21, 0.08) 41px
+          );
+        z-index: 1;
+        pointer-events: none;
+      }
+
       .about-story-image::after {
         content: '';
         position: absolute;
@@ -140,6 +164,7 @@
         border: 1px solid rgba(250, 204, 21, 0.15);
         border-radius: 4px;
         pointer-events: none;
+        z-index: 2;
       }
 
       .about-story-badge {
@@ -502,8 +527,8 @@
             </div>
             <div class="about-story-image" data-reveal data-reveal-delay="150">
               <img
-                src="https://images.pexels.com/photos/1108101/pexels-photo-1108101.jpeg?auto=compress&cs=tinysrgb&w=800"
-                alt="Industrial engineering facility"
+                src="/WhatsApp_Image_2026-03-16_at_7.38.41_PM.jpeg"
+                alt="EDS Engineer at work"
               />
               <div class="about-story-badge">
                 10+ Years<br>of Excellence
