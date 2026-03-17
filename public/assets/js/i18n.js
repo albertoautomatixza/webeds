@@ -207,7 +207,8 @@ const translations = {
     auto_cta_title_2: "automate?",
     auto_cta_desc: "Whether you need a complete system integration or support for existing equipment, our team is ready to help optimize your production processes.",
     auto_cta_btn_start: "Get Started",
-    auto_cta_btn_portfolio: "View Portfolio"
+    auto_cta_btn_portfolio: "View Portfolio",
+    stories_cta_btn: "Explore Our Portfolio"
   },
   es: {
     nav_services: "Servicios",
@@ -417,7 +418,8 @@ const translations = {
     auto_cta_title_2: "automatizar?",
     auto_cta_desc: "Ya sea que necesites una integracion completa de sistemas o soporte para equipos existentes, nuestro equipo esta listo para optimizar tus procesos de produccion.",
     auto_cta_btn_start: "Comenzar",
-    auto_cta_btn_portfolio: "Ver Portafolio"
+    auto_cta_btn_portfolio: "Ver Portafolio",
+    stories_cta_btn: "Explorar Nuestro Portafolio"
   }
 };
 
