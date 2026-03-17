@@ -26,30 +26,34 @@
         </a>
         <nav class="site-nav" aria-label="Primary navigation">
           <ul class="nav-list">
-            <li><a href="#servicios"><span>Services</span></a></li>
-            <li><a href="about.html"><span>About Us</span></a></li>
-            <li><a href="projects.html"><span>Portfolio</span></a></li>
-            <li><a href="automation.html"><span>Automation</span></a></li>
-            <li><a href="machining.html"><span>Manufacture</span></a></li>
-            <li><a href="#contacto"><span>Contact</span></a></li>
+            <li><a href="#servicios"><span data-i18n="nav_services">Services</span></a></li>
+            <li><a href="about.html"><span data-i18n="nav_about">About Us</span></a></li>
+            <li><a href="projects.html"><span data-i18n="nav_portfolio">Portfolio</span></a></li>
+            <li><a href="automation.html"><span data-i18n="nav_automation">Automation</span></a></li>
+            <li><a href="machining.html"><span data-i18n="nav_manufacture">Manufacture</span></a></li>
+            <li><a href="#contacto"><span data-i18n="nav_contact">Contact</span></a></li>
           </ul>
         </nav>
+        <div class="lang-toggle">
+          <button type="button" class="lang-btn active" data-lang="en">EN</button>
+          <button type="button" class="lang-btn" data-lang="es">ES</button>
+        </div>
         <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu">
           <span class="menu-bar"></span>
           <span class="menu-bar"></span>
           <span class="menu-bar"></span>
           <span class="sr-only">Toggle navigation</span>
         </button>
-        <a class="header-cta" href="mailto:sales@engineeringds.com.mx"><span>Contact Us</span></a>
+        <a class="header-cta" href="mailto:sales@engineeringds.com.mx"><span data-i18n="contact_us">Contact Us</span></a>
       </div>
       <nav id="mobile-menu" class="mobile-menu" aria-label="Mobile navigation">
         <ul>
-          <li><a href="#servicios">Services</a></li>
-          <li><a href="about.html">About Us</a></li>
-          <li><a href="projects.html">Portfolio</a></li>
-          <li><a href="automation.html">Automation</a></li>
-          <li><a href="machining.html">Manufacture</a></li>
-          <li><a href="#contacto">Contact</a></li>
+          <li><a href="#servicios" data-i18n="nav_services">Services</a></li>
+          <li><a href="about.html" data-i18n="nav_about">About Us</a></li>
+          <li><a href="projects.html" data-i18n="nav_portfolio">Portfolio</a></li>
+          <li><a href="automation.html" data-i18n="nav_automation">Automation</a></li>
+          <li><a href="machining.html" data-i18n="nav_manufacture">Manufacture</a></li>
+          <li><a href="#contacto" data-i18n="nav_contact">Contact</a></li>
         </ul>
       </nav>
     </header>
@@ -59,18 +63,18 @@
         <div class="hero-overlay"></div>
         <div class="container hero-content">
           <div class="hero-copy" data-reveal>
-            <p class="eyebrow">Trusted industrial partner</p>
+            <p class="eyebrow" data-i18n="hero_eyebrow">Trusted industrial partner</p>
             <h1>
-              Your CNC isn't the problem. <span style="color:#F5C100;">Your support is</span>
+              <span data-i18n="hero_title_1">Your CNC isn't the problem.</span> <span style="color:#F5C100;" data-i18n="hero_title_2">Your support is</span>
             </h1>
-            <p class="lead">
+            <p class="lead" data-i18n="hero_description">
               We are a company with 10+ years of experience in the automotive industry; our goal is to provide the foremost solutions with
               the most knowledgeable engineers. We are commited in offering reliable technics for innovation and workplace machinery,
               besides the constat support of our technicians and specialized engineers.
             </p>
             <div class="hero-btns">
-              <a class="btn" href="mailto:sales@engineeringds.com.mx"><span>Get a Quote</span></a>
-              <a class="btn btn-outline" href="/about.html"><span>About Us</span></a>
+              <a class="btn" href="mailto:sales@engineeringds.com.mx"><span data-i18n="hero_btn_quote">Get a Quote</span></a>
+              <a class="btn btn-outline" href="/about.html"><span data-i18n="hero_btn_about">About Us</span></a>
             </div>
           </div>
         </div>
@@ -219,8 +223,8 @@
       <section id="servicios" class="section other-services">
         <div class="container">
           <div class="section-heading" data-reveal>
-            <p class="eyebrow">What we deliver</p>
-            <h2>Other Services</h2>
+            <p class="eyebrow" data-i18n="services_eyebrow">What we deliver</p>
+            <h2 data-i18n="services_title">Other Services</h2>
           </div>
           <div class="services-list">
             <article class="service-row" data-reveal data-reveal-delay="0">
@@ -234,8 +238,8 @@
                 </svg>
               </div>
               <div class="service-row-content">
-                <h3>CNC Support</h3>
-                <p>Advanced technical support for CNC machines including diagnostics, troubleshooting, geometric verification, spindle servicing, and optimization of machining performance for high-precision industrial environments.</p>
+                <h3 data-i18n="service_cnc_title">CNC Support</h3>
+                <p data-i18n="service_cnc_desc">Advanced technical support for CNC machines including diagnostics, troubleshooting, geometric verification, spindle servicing, and optimization of machining performance for high-precision industrial environments.</p>
               </div>
             </article>
             <article class="service-row" data-reveal data-reveal-delay="100">
@@ -246,8 +250,8 @@
                 </svg>
               </div>
               <div class="service-row-content">
-                <h3>Automation</h3>
-                <p>Design and integration of industrial automation systems including PLC programming, robotics, custom machinery, and production line optimization to improve efficiency, reliability, and process control.</p>
+                <h3 data-i18n="service_automation_title">Automation</h3>
+                <p data-i18n="service_automation_desc">Design and integration of industrial automation systems including PLC programming, robotics, custom machinery, and production line optimization to improve efficiency, reliability, and process control.</p>
               </div>
             </article>
             <article class="service-row" data-reveal data-reveal-delay="200">
@@ -266,8 +270,8 @@
                 </svg>
               </div>
               <div class="service-row-content">
-                <h3>Precision Manufacturing</h3>
-                <p>Manufacture of high-precision mechanical components and assemblies for industrial applications, ensuring strict tolerances, material quality, and dimensional verification.</p>
+                <h3 data-i18n="service_precision_title">Precision Manufacturing</h3>
+                <p data-i18n="service_precision_desc">Manufacture of high-precision mechanical components and assemblies for industrial applications, ensuring strict tolerances, material quality, and dimensional verification.</p>
               </div>
             </article>
             <article class="service-row" data-reveal data-reveal-delay="300">
@@ -281,8 +285,8 @@
                 </svg>
               </div>
               <div class="service-row-content">
-                <h3>Steel Structure</h3>
-                <p>Design and fabrication of industrial steel structures, machine bases, frames, and custom supports engineered for strength, stability, and integration with manufacturing equipment.</p>
+                <h3 data-i18n="service_steel_title">Steel Structure</h3>
+                <p data-i18n="service_steel_desc">Design and fabrication of industrial steel structures, machine bases, frames, and custom supports engineered for strength, stability, and integration with manufacturing equipment.</p>
               </div>
             </article>
             <article class="service-row" data-reveal data-reveal-delay="400">
@@ -297,8 +301,8 @@
                 </svg>
               </div>
               <div class="service-row-content">
-                <h3>Material Handling Equipment</h3>
-                <p>Engineering and fabrication of custom material handling solutions including conveyors, lifting systems, carts, and automated transport equipment for manufacturing environments.</p>
+                <h3 data-i18n="service_material_title">Material Handling Equipment</h3>
+                <p data-i18n="service_material_desc">Engineering and fabrication of custom material handling solutions including conveyors, lifting systems, carts, and automated transport equipment for manufacturing environments.</p>
               </div>
             </article>
           </div>
@@ -308,8 +312,8 @@
       <section id="proyectos" class="section benefits">
         <div class="container">
           <div class="section-heading" data-reveal>
-            <p class="eyebrow">Why teams choose us</p>
-            <h2>Benefits</h2>
+            <p class="eyebrow" data-i18n="benefits_eyebrow">Why teams choose us</p>
+            <h2 data-i18n="benefits_title">Benefits</h2>
           </div>
           <div class="benefits-slider" data-reveal data-reveal-delay="120">
             <video class="benefits-video-bg" autoplay loop muted playsinline aria-hidden="true">
@@ -345,8 +349,8 @@
                       <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
                     </svg>
                   </div>
-                  <span class="benefit-title">Safety First</span>
-                  <p class="benefit-description">All our projects comply with the highest safety standards in the industry.</p>
+                  <span class="benefit-title" data-i18n="benefit_safety_title">Safety First</span>
+                  <p class="benefit-description" data-i18n="benefit_safety_desc">All our projects comply with the highest safety standards in the industry.</p>
                 </article>
                 <article class="benefit-card" data-reveal data-reveal-delay="120">
                   <div class="benefit-icon icon-fade" aria-hidden="true">
@@ -359,8 +363,8 @@
                       <path d="m16.24 16.24 2.83 2.83" />
                     </svg>
                   </div>
-                  <span class="benefit-title">Precision Engineering</span>
-                  <p class="benefit-description">Detailed planning and execution with millimeter precision in every project.</p>
+                  <span class="benefit-title" data-i18n="benefit_precision_title">Precision Engineering</span>
+                  <p class="benefit-description" data-i18n="benefit_precision_desc">Detailed planning and execution with millimeter precision in every project.</p>
                 </article>
                 <article class="benefit-card" data-reveal data-reveal-delay="240">
                   <div class="benefit-icon icon-fade" aria-hidden="true">
@@ -371,8 +375,8 @@
                       <path d="M23 11h-6" />
                     </svg>
                   </div>
-                  <span class="benefit-title">Expert Team</span>
-                  <p class="benefit-description">Certified engineers and technicians with years of experience in the automotive sector.</p>
+                  <span class="benefit-title" data-i18n="benefit_team_title">Expert Team</span>
+                  <p class="benefit-description" data-i18n="benefit_team_desc">Certified engineers and technicians with years of experience in the automotive sector.</p>
                 </article>
                 <article class="benefit-card" data-reveal data-reveal-delay="360">
                   <div class="benefit-icon icon-fade" aria-hidden="true">
@@ -383,8 +387,8 @@
                       <path d="M21 13v2a4 4 0 0 1-4 4H3" />
                     </svg>
                   </div>
-                  <span class="benefit-title">Continuous Innovation</span>
-                  <p class="benefit-description">We constantly implement the latest technologies to improve our processes.</p>
+                  <span class="benefit-title" data-i18n="benefit_innovation_title">Continuous Innovation</span>
+                  <p class="benefit-description" data-i18n="benefit_innovation_desc">We constantly implement the latest technologies to improve our processes.</p>
                 </article>
               </div>
             </div>
@@ -635,9 +639,9 @@
         <div class="container contact-grid">
           <div class="contact-panel" data-reveal data-reveal-delay="0">
             <div class="section-heading" data-reveal data-reveal-delay="0">
-              <p class="eyebrow">Work with us</p>
-              <h2>Contact Us</h2>
-              <p class="section-subtitle">
+              <p class="eyebrow" data-i18n="contact_eyebrow">Work with us</p>
+              <h2 data-i18n="contact_title">Contact Us</h2>
+              <p class="section-subtitle" data-i18n="contact_desc">
                 Share the details of your next project and our engineering team will respond shortly.
               </p>
             </div>
@@ -685,36 +689,36 @@
           </p>
         </div>
         <div class="footer-links">
-          <h3>Company</h3>
+          <h3 data-i18n="footer_company">Company</h3>
           <ul>
-            <li><a href="about.html">About Us</a></li>
-            <li><a href="projects.html">Portfolio</a></li>
-            <li><a href="automation.html">Automation</a></li>
-            <li><a href="machining.html">Manufacture</a></li>
-            <li><a href="#servicios">Services</a></li>
-            <li><a href="#contacto">Contact</a></li>
+            <li><a href="about.html" data-i18n="nav_about">About Us</a></li>
+            <li><a href="projects.html" data-i18n="nav_portfolio">Portfolio</a></li>
+            <li><a href="automation.html" data-i18n="nav_automation">Automation</a></li>
+            <li><a href="machining.html" data-i18n="nav_manufacture">Manufacture</a></li>
+            <li><a href="#servicios" data-i18n="nav_services">Services</a></li>
+            <li><a href="#contacto" data-i18n="nav_contact">Contact</a></li>
           </ul>
         </div>
         <div class="footer-links">
-          <h3>Services</h3>
+          <h3 data-i18n="footer_services">Services</h3>
           <ul>
-            <li><a href="#servicios">CNC Support</a></li>
-            <li><a href="#servicios">Automation</a></li>
-            <li><a href="#servicios">Precision Manufacturing</a></li>
-            <li><a href="#servicios">Steel Structure</a></li>
-            <li><a href="#servicios">Material Handling Equipment</a></li>
+            <li><a href="#servicios" data-i18n="service_cnc_title">CNC Support</a></li>
+            <li><a href="#servicios" data-i18n="service_automation_title">Automation</a></li>
+            <li><a href="#servicios" data-i18n="service_precision_title">Precision Manufacturing</a></li>
+            <li><a href="#servicios" data-i18n="service_steel_title">Steel Structure</a></li>
+            <li><a href="#servicios" data-i18n="service_material_title">Material Handling Equipment</a></li>
           </ul>
         </div>
       </div>
       <div class="footer-bottom">
         <p>
-          © 2026 Engineering EDS. All rights reserved.
-          <span class="footer-credit">⎸ creado por <a href="https://wa.me/524491809587" target="_blank" rel="noopener noreferrer">Albertoautomatiza</a></span>
+          © 2026 <span data-i18n="footer_copyright">Engineering EDS. All rights reserved.</span>
+          <span class="footer-credit">| <span data-i18n="footer_created_by">created by</span> <a href="https://wa.me/524491809587" target="_blank" rel="noopener noreferrer">Albertoautomatiza</a></span>
         </p>
         <div class="footer-legal">
-          <a href="#" data-modal="privacy">Privacy</a>
-          <a href="#" data-modal="terms">Terms</a>
-          <a href="#" data-modal="legal">Legal</a>
+          <a href="#" data-modal="privacy" data-i18n="footer_privacy">Privacy</a>
+          <a href="#" data-modal="terms" data-i18n="footer_terms">Terms</a>
+          <a href="#" data-modal="legal" data-i18n="footer_legal">Legal</a>
         </div>
       </div>
     </footer>
@@ -731,5 +735,6 @@
 
     <script src="/assets/js/main.js"></script>
     <script src="/assets/js/modals.js"></script>
+    <script type="module" src="/assets/js/i18n.js"></script>
   </body>
 </html>
