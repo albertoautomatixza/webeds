@@ -202,7 +202,12 @@ const translations = {
     mach_cta_title_2: "next project?",
     mach_cta_desc: "Send us your drawings or specifications and we will provide a competitive quote with fast turnaround times and guaranteed precision.",
     mach_cta_btn_quote: "Request a Quote",
-    mach_cta_btn_home: "Back to Home"
+    mach_cta_btn_home: "Back to Home",
+    auto_cta_title_1: "Ready to",
+    auto_cta_title_2: "automate?",
+    auto_cta_desc: "Whether you need a complete system integration or support for existing equipment, our team is ready to help optimize your production processes.",
+    auto_cta_btn_start: "Get Started",
+    auto_cta_btn_portfolio: "View Portfolio"
   },
   es: {
     nav_services: "Servicios",
@@ -407,7 +412,12 @@ const translations = {
     mach_cta_title_2: "proximo proyecto?",
     mach_cta_desc: "Envianos tus planos o especificaciones y te proporcionaremos una cotizacion competitiva con tiempos rapidos de entrega y precision garantizada.",
     mach_cta_btn_quote: "Solicitar Cotizacion",
-    mach_cta_btn_home: "Volver al Inicio"
+    mach_cta_btn_home: "Volver al Inicio",
+    auto_cta_title_1: "Listo para",
+    auto_cta_title_2: "automatizar?",
+    auto_cta_desc: "Ya sea que necesites una integracion completa de sistemas o soporte para equipos existentes, nuestro equipo esta listo para optimizar tus procesos de produccion.",
+    auto_cta_btn_start: "Comenzar",
+    auto_cta_btn_portfolio: "Ver Portafolio"
   }
 };
 
